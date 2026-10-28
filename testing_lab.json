@@ -1,0 +1,163 @@
+{
+  "status": "Active 1-Week Forward Strategy Test",
+  "benchmark_review_date": "2026-11-02",
+  "evaluation_window": "7 Days (26 Oct 2026 to 02 Nov 2026)",
+  "shadow_capital": {
+    "initial_capital": 65000.0,
+    "monthly_inflow": 65000.0,
+    "total_deployed": 64856.0,
+    "cash_balance": 144.0,
+    "current_value": 65000.0,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0
+  },
+  "active_testing_trades": [
+    {
+      "symbol": "VBL.NS",
+      "name": "Varun Beverages",
+      "action": "BUY",
+      "entry_date": "2026-10-26",
+      "entry_price": 408.0,
+      "current_price": 408.0,
+      "quantity": 35,
+      "allocated_capital": 14280.0,
+      "target_price": 432.0,
+      "stop_loss": 394.0,
+      "upside_potential_pct": 5.88,
+      "downside_risk_pct": 3.43,
+      "risk_reward_ratio": "1 : 1.71",
+      "duration": "1 Week (Review: 02 Nov 2026)",
+      "thesis_score": "7 / 8 Passed",
+      "thesis_checklist_summary": "Pepsi exclusive bottling moat, 27% ROCE, strong FCF, testing multi-month demand shelf \u20b9395-\u20b9408.",
+      "thesis_reason": "Sitting directly on Monthly S1 Demand Zone (\u20b9395 - \u20b9408) after 22.4% pullback. Q3 festive volume off-take and beverage consolidation makes this a prime 1-week oversold demand bounce candidate.",
+      "evaluation_criteria": {
+        "thesis_confirmed_if": "Holds above \u20b9395 and closes week above \u20b9420 (momentum returning to 20-DMA).",
+        "thesis_invalidated_if": "Daily close below \u20b9394 Stop Loss, signalling deeper consolidation towards BevCo debt absorption."
+      }
+    },
+    {
+      "symbol": "POLYCAB.NS",
+      "name": "Polycab India",
+      "action": "BUY",
+      "entry_date": "2026-10-26",
+      "entry_price": 7739.0,
+      "current_price": 7739.0,
+      "quantity": 2,
+      "allocated_capital": 15478.0,
+      "target_price": 8180.0,
+      "stop_loss": 7430.0,
+      "upside_potential_pct": 5.7,
+      "downside_risk_pct": 3.99,
+      "risk_reward_ratio": "1 : 1.43",
+      "duration": "1 Week (Review: 02 Nov 2026)",
+      "thesis_score": "8 / 8 Passed",
+      "thesis_checklist_summary": "Zero debt, 28% ROCE, 24% market share, resting at Fib 50% retracement demand zone.",
+      "thesis_reason": "Tested and held institutional Monthly Demand Zone (\u20b97,195 - \u20b97,440) on declining selling volume. FII/DII accumulation node at \u20b97,650-\u20b97,750 provides strong 1-week support for a relief rally towards 50-DMA.",
+      "evaluation_criteria": {
+        "thesis_confirmed_if": "Rebounds past \u20b97,950 with volume confirmation.",
+        "thesis_invalidated_if": "Breaks below \u20b97,430 S1 pivot support."
+      }
+    },
+    {
+      "symbol": "CDSL.NS",
+      "name": "Central Depository Services",
+      "action": "BUY",
+      "entry_date": "2026-10-26",
+      "entry_price": 1196.0,
+      "current_price": 1196.0,
+      "quantity": 12,
+      "allocated_capital": 14352.0,
+      "target_price": 1275.0,
+      "stop_loss": 1148.0,
+      "upside_potential_pct": 6.61,
+      "downside_risk_pct": 4.01,
+      "risk_reward_ratio": "1 : 1.65",
+      "duration": "1 Week (Review: 02 Nov 2026)",
+      "thesis_score": "8 / 8 Passed",
+      "thesis_checklist_summary": "70%+ demat market share monopoly duopoly, debt-free, 40%+ margins, 39.2% discount from ATH.",
+      "thesis_reason": "Formed a classic technical double bottom at \u20b91,150 - \u20b91,196 with 14-day RSI oversold at 34. Record October SIP flows (>\u20b925k Cr/mo) guarantee ongoing transaction revenue. High probability 1-week mean reversion bounce.",
+      "evaluation_criteria": {
+        "thesis_confirmed_if": "Closes week above \u20b91,240, confirming double-bottom reversal.",
+        "thesis_invalidated_if": "Breaks below \u20b91,148 52-week horizontal shelf."
+      }
+    },
+    {
+      "symbol": "TATSILV.NS",
+      "name": "Tata Silver ETF",
+      "action": "BUY",
+      "entry_date": "2026-10-26",
+      "entry_price": 18.78,
+      "current_price": 18.78,
+      "quantity": 600,
+      "allocated_capital": 11268.0,
+      "target_price": 20.15,
+      "stop_loss": 17.8,
+      "upside_potential_pct": 7.3,
+      "downside_risk_pct": 5.22,
+      "risk_reward_ratio": "1 : 1.40",
+      "duration": "1 Week (Review: 02 Nov 2026)",
+      "thesis_score": "8 / 8 Passed",
+      "thesis_checklist_summary": "Empirical Bloomberg thesis: Silver down -53.2% from ATH, GSR 73.75x vs 67.7x historical median.",
+      "thesis_reason": "Bloomberg 26-year study proves Silver has a 2.4x beta over Gold. With DXY pausing at 101.60 and spot silver finding buyers at $54/oz, Silver ETF is at extreme value demand accumulation band.",
+      "evaluation_criteria": {
+        "thesis_confirmed_if": "Crosses \u20b919.50 as global silver stabilizes above $55/oz.",
+        "thesis_invalidated_if": "Drops below \u20b917.80 (signalling dollar index breakout above 102.5)."
+      }
+    },
+    {
+      "symbol": "TATAPOWER.NS",
+      "name": "Tata Power",
+      "action": "BUY",
+      "entry_date": "2026-10-26",
+      "entry_price": 338.5,
+      "current_price": 338.5,
+      "quantity": 28,
+      "allocated_capital": 9478.0,
+      "target_price": 358.0,
+      "stop_loss": 328.0,
+      "upside_potential_pct": 5.76,
+      "downside_risk_pct": 3.1,
+      "risk_reward_ratio": "1 : 1.86",
+      "duration": "1 Week (Review: 02 Nov 2026)",
+      "thesis_score": "7 / 8 Passed",
+      "thesis_checklist_summary": "Clean energy capex leader, PM Surya Ghar solar execution, sitting at lower band of 10-month channel.",
+      "thesis_reason": "Hovering directly above Monthly S2 demand zone (\u20b9330.0 - \u20b9338.5) after 28.8% discount from peak. Energy transition fundamentals remain intact with expanding rooftop order book. High R:R 1-week swing.",
+      "evaluation_criteria": {
+        "thesis_confirmed_if": "Maintains \u20b9330 floor and rebounds above \u20b9348.",
+        "thesis_invalidated_if": "Decisive daily breakdown below \u20b9328."
+      }
+    }
+  ],
+  "virtual_short_exit_log": [
+    {
+      "symbol": "TCS.NS",
+      "name": "Tata Consultancy Services",
+      "action": "VIRTUAL SHORT / EXIT TEST",
+      "exit_date": "2026-10-26",
+      "exit_price": 2535.0,
+      "current_price": 2535.0,
+      "quantity": 4,
+      "virtual_capital": 10140.0,
+      "target_cover_price": 2420.0,
+      "stop_loss": 2610.0,
+      "expected_drift_pct": -4.54,
+      "post_exit_drift_pct": 0.0,
+      "duration": "1 Week (Review: 02 Nov 2026)",
+      "verdict": "MONITORING (Day 0 of 7)",
+      "hypothesis": "Testing tactical exit discipline: TCS hit upper channel resistance with IT discretionary spend slowdown. We simulate an exit at \u20b92,535 to test whether waiting to re-enter at Monthly S1 (\u20b92,420) saves 4.5% capital drag over 1 week."
+    }
+  ],
+  "one_week_benchmark_rules": [
+    "1. Decision Vindication: If 3 or more of 5 Long trades gain > 2.5% or hit target, the Demand Zone confluence thesis is confirmed.",
+    "2. Risk Strictness: If any trade hits its Stop Loss, that trade is exited immediately and capital saved is logged.",
+    "3. Virtual Short Test: If TCS drifts down towards \u20b92,420, it confirms tactical exits preserve capital during range-bound regimes."
+  ],
+  "forward_testing_policy": {
+    "start_date": "2026-10-26",
+    "review_date": "2026-11-02",
+    "duration": "1 Week",
+    "permitted_assets": "Cash Equities & ETFs ONLY",
+    "prohibited": "Futures, Options, and Commodity Derivatives strictly prohibited",
+    "post_exit_tracking": "Activates virtual short on strategy exits over 1W, 30D, 90D."
+  }
+}
