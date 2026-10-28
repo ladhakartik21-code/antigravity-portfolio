@@ -1246,6 +1246,36 @@ def get_sr_backtest():
             return json.load(f)
     return {"error": "Backtest file not found"}
 
+
+# ==============================================================================
+# INTRADAY AUTONOMOUS S&R EXECUTION ENGINE ENDPOINTS
+# ==============================================================================
+try:
+    import intraday_engine
+except ImportError:
+    from app import intraday_engine
+
+@app.get("/api/intraday")
+def get_intraday_status():
+    return intraday_engine.evaluate_intraday_engine(force_simulation=False)
+
+@app.post("/api/intraday/square-off")
+def intraday_square_off():
+    return intraday_engine.square_off_all_positions()
+
+@app.post("/api/intraday/toggle-auto")
+def intraday_toggle_auto():
+    new_state = intraday_engine.toggle_auto_pilot()
+    return {"auto_trading_enabled": new_state}
+
+@app.post("/api/intraday/simulate-trade")
+def intraday_simulate():
+    return intraday_engine.evaluate_intraday_engine(force_simulation=True)
+
+@app.post("/api/intraday/reset")
+def intraday_reset_acc():
+    return intraday_engine.reset_account()
+
 # Serve Static Frontend Files
 os.makedirs(STATIC_DIR, exist_ok=True)
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
