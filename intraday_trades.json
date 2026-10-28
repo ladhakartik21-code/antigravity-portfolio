@@ -1,0 +1,36 @@
+{
+  "account": {
+    "initial_capital": 100000.0,
+    "available_cash": 100000.0,
+    "deployed_capital": 0.0,
+    "realized_pnl": 0.0,
+    "unrealized_pnl": 0.0,
+    "total_value": 100000.0,
+    "day_return_pct": 0.0
+  },
+  "config": {
+    "auto_trading_enabled": true,
+    "max_concurrent_positions": 4,
+    "allocation_per_trade": 22000.0,
+    "max_risk_pct": 1.2,
+    "eod_square_off_time": "15:15 IST",
+    "benchmark": "S&R Confluence Model"
+  },
+  "market_status": {
+    "is_open": false,
+    "current_time_ist": "2026-10-28 21:52:26 IST",
+    "next_bell": "09:15 AM IST (Next Session)",
+    "message": "Market Closed - Engine Armed for 09:15 AM Bell"
+  },
+  "open_positions": [],
+  "closed_trades": [],
+  "performance_stats": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "win_rate_pct": 0.0,
+    "gross_profit": 0.0,
+    "gross_loss": 0.0,
+    "profit_factor": 0.0
+  }
+}
