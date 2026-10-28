@@ -189,7 +189,10 @@
                 <i data-lucide="milestone" class="w-4 h-4"></i> ₹10-15 Cr Goal Engine
             </button>
             <button onclick="switchTab('testing')" id="tab-testing" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-amber-400 hover:bg-amber-500/10 border border-amber-500/20">
-                <i data-lucide="flask-conical" class="w-4 h-4"></i> 🔬 Testing Lab (1-Week Test Active) (1-Week Test Active)
+                <i data-lucide="flask-conical" class="w-4 h-4"></i> 🔬 1-Week Testing Lab
+            </button>
+            <button onclick="switchTab('intraday')" id="tab-intraday" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 shadow">
+                <i data-lucide="zap" class="w-4 h-4 text-amber-400 animate-pulse"></i> ⚡ Intraday AI Lab (₹1L)
             </button>
         </div>
     </nav>
@@ -1065,6 +1068,172 @@
             </div>
         </section>
 
+    
+        <!-- ==================== VIEW 7: INTRADAY AI TRADING LAB (₹1,00,000 CAPITAL TEST) ==================== -->
+        <section id="view-intraday" class="space-y-6 hidden">
+            <!-- Hero Banner -->
+            <div class="glass-panel p-6 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-950/40 via-dark-800 to-amber-950/20 shadow-2xl">
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-amber-400">⚡ Autonomous S&R Execution Engine</span>
+                            <span id="itdMarketBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Live Market Monitored</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-dark-900/80 text-slate-300 border border-slate-700" id="itdClock">IST Time</span>
+                        </div>
+                        <h2 class="text-2xl font-black text-white flex items-center gap-2">
+                            <span>⚡ Intraday AI Trading Lab</span>
+                            <span class="text-xs font-normal px-2.5 py-1 bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-xl font-mono">₹1,00,000 Pool</span>
+                        </h2>
+                        <p class="text-xs text-slate-300 mt-1 max-w-3xl leading-relaxed">
+                            Testing whether Support & Resistance levels provide statistical edge during live intraday price discovery. 
+                            Auto-detects <b>S1/S2 Demand Zone tests</b>, enforces strict <b>1% Stop-Losses</b>, targets <b>R1 Supply Shelves</b>, and executes auto square-off at 15:15 IST.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 font-mono">
+                        <button onclick="toggleAutoTrading()" id="btnAutoTrading" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 shadow transition">
+                            <i data-lucide="bot" class="w-4 h-4"></i>
+                            <span id="txtAutoTrading">Auto-Pilot: ON</span>
+                        </button>
+                        <button onclick="simulateIntradayTrade()" class="px-3 py-2 rounded-xl text-xs font-bold bg-dark-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 shadow transition" title="Trigger Instant Test S&R Trade">
+                            <i data-lucide="play" class="w-3.5 h-3.5 text-amber-400"></i>
+                            <span>Test Trigger</span>
+                        </button>
+                        <button onclick="squareOffAll()" class="px-3 py-2 rounded-xl text-xs font-bold bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 flex items-center gap-1.5 shadow transition">
+                            <i data-lucide="x-circle" class="w-3.5 h-3.5"></i>
+                            <span>Square Off All</span>
+                        </button>
+                        <button onclick="resetIntradayAccount()" class="p-2 rounded-xl bg-dark-800 hover:bg-slate-700 text-slate-400 hover:text-white border border-slate-700 transition" title="Reset to ₹1,00,000">
+                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Intraday Metric Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Initial Capital</span>
+                    <span class="text-xl font-black text-white font-mono mt-1 block">₹1,00,000.00</span>
+                    <span class="text-[11px] text-slate-400 mt-0.5 block">Allocated Virtual Pool</span>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Available Margin</span>
+                    <span id="itdAvailableCash" class="text-xl font-black text-emerald-400 font-mono mt-1 block">₹1,00,000.00</span>
+                    <span class="text-[11px] text-emerald-500/80 mt-0.5 block">Liquid Cash for Deployment</span>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Active Deployed</span>
+                    <span id="itdDeployedCash" class="text-xl font-black text-purple-400 font-mono mt-1 block">₹0.00</span>
+                    <span id="itdOpenCount" class="text-[11px] text-purple-400/80 mt-0.5 block">0 Active Trades (Max 4)</span>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Day's Realized + Unrealized</span>
+                    <span id="itdTotalPnl" class="text-xl font-black text-slate-300 font-mono mt-1 block">₹0.00</span>
+                    <span id="itdDayReturnPct" class="text-[11px] text-slate-400 mt-0.5 block">0.00% Day Return</span>
+                </div>
+            </div>
+
+            <!-- Active Intraday Positions Table -->
+            <div class="glass-panel rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
+                <div class="p-4 bg-dark-800/90 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-3">
+                    <div class="flex items-center gap-2.5">
+                        <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
+                        <h3 class="font-extrabold text-white text-sm uppercase tracking-wider">
+                            Active Intraday Positions Book (Live NSE Prices)
+                        </h3>
+                    </div>
+                    <span class="text-[11px] px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-lg font-mono font-semibold">
+                        Cash Equities ONLY • 1:1.5 Min R:R
+                    </span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-dark-900/90 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700/60">
+                                <th class="p-3.5">Action</th>
+                                <th class="p-3.5">Security</th>
+                                <th class="p-3.5 text-right">Purchase Price</th>
+                                <th class="p-3.5 text-right">LTP (NSE)</th>
+                                <th class="p-3.5 text-right">Profit / Loss</th>
+                                <th class="p-3.5 text-right">Qty</th>
+                                <th class="p-3.5 text-right">Deployed</th>
+                                <th class="p-3.5 text-right">Target (R1)</th>
+                                <th class="p-3.5 text-right">Stop Loss</th>
+                                <th class="p-3.5 text-center">R : R</th>
+                                <th class="p-3.5">S&R Entry Confluence & Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itdOpenTableBody" class="divide-y divide-slate-800 font-mono">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Closed Intraday Trades History Book -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden shadow">
+                <div class="p-4 bg-dark-800/80 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="history" class="w-4 h-4 text-cyan-400"></i>
+                        <h3 class="font-bold text-white text-xs uppercase tracking-wider">
+                            Completed Intraday Trades Book (Today's Closed Trades)
+                        </h3>
+                    </div>
+                    <div id="itdStatsBadge" class="text-[11px] font-mono text-slate-300">
+                        Total Trades: <b>0</b> | Win Rate: <b>0.0%</b>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-dark-900/90 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700/60 font-mono">
+                                <th class="p-3">Time</th>
+                                <th class="p-3">Security</th>
+                                <th class="p-3 text-right">Buy Price</th>
+                                <th class="p-3 text-right">Exit Price</th>
+                                <th class="p-3 text-right">Realized P&L</th>
+                                <th class="p-3">Outcome</th>
+                                <th class="p-3">Thesis Vindication</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itdClosedTableBody" class="divide-y divide-slate-800 font-mono">
+                            <!-- Populated dynamically via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Intraday Risk Management Discipline Protocol -->
+            <div class="p-4 bg-dark-900/90 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed font-sans space-y-2">
+                <div class="flex items-center gap-2 text-amber-400 font-bold">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                    <span>Autonomous Intraday Risk Discipline Rules:</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-[11px] text-slate-400 font-mono pt-1">
+                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                        <b class="text-white block font-sans">1. Max Allocation:</b>
+                        ₹22,000 per trade (Max 4 concurrent trades = ₹88,000 max deployed).
+                    </div>
+                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                        <b class="text-white block font-sans">2. Strict Stop Loss:</b>
+                        Placed 1.0% to 1.5% below S2 Demand Zone (Max ₹250 loss/trade).
+                    </div>
+                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                        <b class="text-white block font-sans">3. Asymmetric R:R:</b>
+                        Target minimum 1:1.5 profit-to-loss ratio at R1 Supply Zone.
+                    </div>
+                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                        <b class="text-white block font-sans">4. Auto Square-Off:</b>
+                        Strictly 15:15 IST execution to carry zero overnight risk.
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- ==================== FOOTER ==================== -->
@@ -1419,6 +1588,7 @@
             const activeBtn = document.getElementById(`tab-${tabId}`);
             if (activeBtn) activeBtn.classList.add('active');
 
+            if (tabId === 'intraday') { loadIntradayData(); }
             if (tabId === 'terminal') {
                 setTimeout(() => {
                     if (!tvChart) initTradingView();
@@ -2069,6 +2239,191 @@
 
         function closeSrAuditModal() {
             document.getElementById('srAuditModal').classList.add('hidden');
+        }
+
+    
+        // ==================== INTRADAY AI TRADING LAB LOGIC ====================
+        let intradayData = null;
+        let intradayPollTimer = null;
+
+        async function loadIntradayData() {
+            try {
+                const res = await fetch('/api/intraday', { cache: 'no-store' });
+                const data = await res.json();
+                intradayData = data;
+
+                // 1. Account Stats
+                const acc = data.account;
+                if (acc) {
+                    const availElem = document.getElementById('itdAvailableCash');
+                    const depElem = document.getElementById('itdDeployedCash');
+                    const pnlElem = document.getElementById('itdTotalPnl');
+                    const dayRetElem = document.getElementById('itdDayReturnPct');
+                    const openCountElem = document.getElementById('itdOpenCount');
+
+                    if (availElem) availElem.innerText = formatINR(acc.available_cash);
+                    if (depElem) depElem.innerText = formatINR(acc.deployed_capital);
+                    if (openCountElem) openCountElem.innerText = `${data.open_positions ? data.open_positions.length : 0} Active Trades (Max 4)`;
+
+                    const totalPnl = (acc.realized_pnl || 0) + (acc.unrealized_pnl || 0);
+                    const isProf = totalPnl >= 0;
+                    const pnlPrefix = isProf ? '+' : '';
+
+                    if (pnlElem) {
+                        pnlElem.innerText = `${pnlPrefix}${formatINR(totalPnl)}`;
+                        pnlElem.className = `text-xl font-black font-mono mt-1 block ${isProf ? 'text-emerald-400' : 'text-rose-400'}`;
+                    }
+                    if (dayRetElem) {
+                        dayRetElem.innerText = `${pnlPrefix}${acc.day_return_pct.toFixed(2)}% Day Return`;
+                        dayRetElem.className = `text-[11px] mt-0.5 block ${isProf ? 'text-emerald-400/80' : 'text-rose-400/80'}`;
+                    }
+                }
+
+                // 2. Market Status & Clock
+                if (data.market_status) {
+                    const badge = document.getElementById('itdMarketBadge');
+                    const clock = document.getElementById('itdClock');
+                    if (badge) {
+                        if (data.market_status.is_open) {
+                            badge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+                            badge.innerText = '🟢 Market Open (09:15 - 15:30)';
+                        } else {
+                            badge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+                            badge.innerText = '🟡 Armed for 09:15 AM Bell';
+                        }
+                    }
+                    if (clock && data.market_status.current_time_ist) {
+                        clock.innerText = data.market_status.current_time_ist;
+                    }
+                }
+
+                // 3. Auto-Trading Toggle Button
+                if (data.config) {
+                    const btn = document.getElementById('btnAutoTrading');
+                    const txt = document.getElementById('txtAutoTrading');
+                    if (btn && txt) {
+                        if (data.config.auto_trading_enabled) {
+                            btn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 shadow transition';
+                            txt.innerText = 'Auto-Pilot: ON';
+                        } else {
+                            btn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-700 hover:bg-slate-600 text-slate-300 flex items-center gap-1.5 shadow transition';
+                            txt.innerText = 'Auto-Pilot: PAUSED';
+                        }
+                    }
+                }
+
+                // 4. Open Positions Table
+                const openTbody = document.getElementById('itdOpenTableBody');
+                if (openTbody) {
+                    openTbody.innerHTML = '';
+                    if (!data.open_positions || data.open_positions.length === 0) {
+                        openTbody.innerHTML = `<tr><td colspan="11" class="p-8 text-center text-slate-500 font-sans">No active intraday positions right now. Engine is scanning S1/S2 Demand Zones. Click <b>"Test Trigger"</b> to simulate an S&R bounce entry.</td></tr>`;
+                    } else {
+                        data.open_positions.forEach(p => {
+                            const isP = (p.unrealized_pnl || 0) >= 0;
+                            const prefix = isP ? '+' : '';
+                            const tr = document.createElement('tr');
+                            tr.className = 'hover:bg-slate-800/40 transition border-b border-slate-800/60';
+                            tr.innerHTML = `
+                                <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (INTRADAY)</span></td>
+                                <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">${p.name}</div><span class="text-[10px] text-slate-400 font-mono">${p.symbol} • ${p.sector}</span></td>
+                                <td class="p-3.5 text-right text-white font-bold">${formatINR(p.entry_price)}</td>
+                                <td class="p-3.5 text-right ${isP ? 'text-emerald-400' : 'text-slate-200'} font-bold">${formatINR(p.current_price)}</td>
+                                <td class="p-3.5 text-right ${isP ? 'text-emerald-400' : 'text-rose-400'} font-bold font-mono">${prefix}${formatINR(p.unrealized_pnl)} <span class="text-[10px] block ${isP ? 'text-emerald-300' : 'text-rose-300'}">(${prefix}${(p.unrealized_pnl_pct || 0).toFixed(2)}%)</span></td>
+                                <td class="p-3.5 text-right text-slate-300">${p.quantity}</td>
+                                <td class="p-3.5 text-right text-purple-400 font-bold">${formatINR(p.capital_deployed)}</td>
+                                <td class="p-3.5 text-right text-emerald-400 font-bold">${formatINR(p.target_price)} <span class="text-[10px] block text-emerald-300">(+${p.upside_target_pct}%)</span></td>
+                                <td class="p-3.5 text-right text-rose-400 font-bold">${formatINR(p.stop_loss)} <span class="text-[10px] block text-rose-300">(-${p.downside_risk_pct}%)</span></td>
+                                <td class="p-3.5 text-center text-amber-400 font-bold">${p.risk_reward_ratio}</td>
+                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">
+                                    <div class="text-amber-300 font-semibold mb-0.5">${p.zone_confluence || 'Demand Zone'}</div>
+                                    ${p.thesis_reason}
+                                </td>
+                            `;
+                            openTbody.appendChild(tr);
+                        });
+                    }
+                }
+
+                // 5. Closed Trades Table & Stats
+                const closedTbody = document.getElementById('itdClosedTableBody');
+                if (closedTbody) {
+                    closedTbody.innerHTML = '';
+                    if (!data.closed_trades || data.closed_trades.length === 0) {
+                        closedTbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-500 font-sans">No closed trades today yet. Completed trades will be archived here.</td></tr>`;
+                    } else {
+                        data.closed_trades.forEach(t => {
+                            const isP = (t.realized_pnl || 0) >= 0;
+                            const prefix = isP ? '+' : '';
+                            const tr = document.createElement('tr');
+                            tr.className = 'hover:bg-slate-800/40 transition border-b border-slate-800/60';
+                            tr.innerHTML = `
+                                <td class="p-3 text-slate-400">${t.entry_time} → ${t.exit_time}</td>
+                                <td class="p-3 font-sans"><div class="font-bold text-white text-xs">${t.name}</div><span class="text-[10px] text-slate-400 font-mono">${t.symbol}</span></td>
+                                <td class="p-3 text-right text-white">${formatINR(t.entry_price)}</td>
+                                <td class="p-3 text-right text-slate-200">${formatINR(t.exit_price)}</td>
+                                <td class="p-3 text-right font-bold ${isP ? 'text-emerald-400' : 'text-rose-400'}">${prefix}${formatINR(t.realized_pnl)} (${prefix}${(t.realized_pnl_pct || 0).toFixed(2)}%)</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded font-bold text-[10px] ${t.outcome && t.outcome.includes('WIN') ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'}">${t.outcome}</span></td>
+                                <td class="p-3 font-sans text-slate-300 text-[11px]">${t.thesis_vindication}</td>
+                            `;
+                            closedTbody.appendChild(tr);
+                        });
+                    }
+                }
+
+                // 6. Stats Badge
+                if (data.performance_stats) {
+                    const sb = document.getElementById('itdStatsBadge');
+                    if (sb) {
+                        const s = data.performance_stats;
+                        sb.innerHTML = `Total Trades: <b>${s.total_trades}</b> | Win Rate: <b class="${s.win_rate_pct >= 50 ? 'text-emerald-400' : 'text-slate-300'}">${s.win_rate_pct}%</b> | Profit Factor: <b class="text-amber-400">${s.profit_factor}</b>`;
+                    }
+                }
+
+                if (window.lucide) lucide.createIcons();
+            } catch (e) {
+                console.error('Error loading intraday data:', e);
+            }
+        }
+
+        async function toggleAutoTrading() {
+            try {
+                const res = await fetch('/api/intraday/toggle-auto', { method: 'POST' });
+                await loadIntradayData();
+            } catch (e) {
+                alert('Error toggling auto trading: ' + e);
+            }
+        }
+
+        async function squareOffAll() {
+            if (!confirm('Are you sure you want to Square Off all active intraday positions immediately at market LTP?')) return;
+            try {
+                const res = await fetch('/api/intraday/square-off', { method: 'POST' });
+                await loadIntradayData();
+                alert('All positions squared off successfully!');
+            } catch (e) {
+                alert('Error squaring off positions: ' + e);
+            }
+        }
+
+        async function simulateIntradayTrade() {
+            try {
+                const res = await fetch('/api/intraday/simulate-trade', { method: 'POST' });
+                await loadIntradayData();
+            } catch (e) {
+                alert('Error triggering test trade: ' + e);
+            }
+        }
+
+        async function resetIntradayAccount() {
+            if (!confirm('Reset Intraday Trading Lab back to initial fresh ₹1,00,000 capital?')) return;
+            try {
+                const res = await fetch('/api/intraday/reset', { method: 'POST' });
+                await loadIntradayData();
+                alert('Account reset to ₹1,00,000 cash balance!');
+            } catch (e) {
+                alert('Error resetting account: ' + e);
+            }
         }
 
     </script>
