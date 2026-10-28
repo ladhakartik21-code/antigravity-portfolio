@@ -1,0 +1,163 @@
+{
+  "system": {
+    "portfolio_name": "AntiGravity Sovereign Wealth Engine",
+    "investor_age": 22,
+    "horizon_years": 15,
+    "target_horizon_extended_years": 20,
+    "base_currency": "INR",
+    "ui_theme": "broker_dark_terminal",
+    "charting_engine": "TradingView_Lightweight_Charts",
+    "user_policy": {
+      "strategy_type": "Strictly_Long_Term_Compounder",
+      "shorting_allowed": false,
+      "fno_derivatives_allowed": false,
+      "mandate": "Hold through normal cycles for 15-20 years; exit ONLY on severe existential crises (Covid/War macro shocks) or company thesis destruction."
+    },
+    "paths": {
+      "holdings_excel": "Investment Made.xlsx",
+      "requirements_excel": "Data source and requirement.xlsx",
+      "work_dir": "Anti Work",
+      "backups_dir": "Anti Work/backups",
+      "testing_db": "Anti Work/testing_lab.db"
+    }
+  },
+  "investment_schedule": {
+    "monthly_capital": 65000,
+    "stocks_and_etfs_day": 1,
+    "stocks_and_etfs_capital": 50000,
+    "mutual_funds_day": 2,
+    "mutual_funds_capital": 15000,
+    "holiday_rollover_rule": "Exact_Next_NSE_Trading_Day",
+    "best_buy_engine": {
+      "enabled": true,
+      "frequency": "Monthly_On_1st",
+      "scoring_factors": [
+        "Discount from All-Time High (ATH %)",
+        "14-Day RSI Oversold Status",
+        "P/E vs 5-Year Historical Median",
+        "Current Portfolio Underweight Drift",
+        "Gold-to-Silver Ratio for ETFs"
+      ]
+    }
+  },
+  "thesis_risk_scorecard_feature": {
+    "enabled": true,
+    "checklist_total_pointers": 8,
+    "risk_warning_threshold": 2,
+    "rules": [
+      "Generates an Asset Health Score (e.g. 7/8 Passed).",
+      "Flags specific failed pointers (e.g. Valuation stretched, D/E elevated).",
+      "Displays an automated Risk Disclaimer & Portfolio Impact Alert before purchase."
+    ]
+  },
+  "testing_tab_specification": {
+    "module_name": "Testing & Thesis Laboratory",
+    "shadow_portfolio": {
+      "capital_inflow_monthly": 65000,
+      "execution_mode": "Autonomous_AI_Testing",
+      "shorting_enabled_for_ai": true,
+      "trading_styles_supported": [
+        "Intraday (Cash Equity / ETFs only)",
+        "BTST (Buy Today Sell Tomorrow)",
+        "Swing Trades (2-6 Weeks)",
+        "Short-Term Tactical (1-3 Months)",
+        "Long-Term Compounding (15-20Y Benchmark)"
+      ],
+      "prohibited_instruments": [
+        "Stock Futures",
+        "Index Futures",
+        "Call / Put Options",
+        "Physical Commodity Derivatives (ETFs are 100% permitted)"
+      ],
+      "universe": "NSE 500 & Curated Radar Compounders (Completely System-Driven, Zero Emotion)"
+    },
+    "post_exit_validation_engine": {
+      "mechanism": "Strategy_Virtual_Short_Tracking",
+      "applies_to": "AI_Testing_Portfolio_Exits_Only",
+      "user_sales_auto_shorted": false,
+      "drift_windows": ["30D", "90D", "180D", "365D"]
+    }
+  },
+  "wealth_goals": {
+    "monthly_target_inflow": 65000,
+    "annual_step_up_rate": 0.10,
+    "target_corpus_primary_15y_inr": 85000000,
+    "target_corpus_extended_18y_inr": 120000000,
+    "target_corpus_super_20y_inr": 150000000,
+    "target_cagr_hurdle_rate": 0.155,
+    "alpha_dip_buying_cagr_target": 0.175,
+    "milestones": [
+      { "amount": 2500000, "label": "Seed Capital (₹25 Lakhs)", "target_age": 25 },
+      { "amount": 5000000, "label": "Half-Crore Milestone (₹50 Lakhs)", "target_age": 27 },
+      { "amount": 10000000, "label": "First Crore (₹1.0 Crore)", "target_age": 29 },
+      { "amount": 25000000, "label": "Multi-Crore Compounding (₹2.5 Crores)", "target_age": 32 },
+      { "amount": 50000000, "label": "Financial Sovereignty (₹5.0 Crores)", "target_age": 35 },
+      { "amount": 100000000, "label": "Deca-Crore Milestone (₹10.0 Crores)", "target_age": 38 },
+      { "amount": 150000000, "label": "Dynasty Wealth Milestone (₹15.0 Crores)", "target_age": 41 }
+    ]
+  },
+  "asset_allocation_mandate": {
+    "monthly_total": 65000,
+    "direct_stocks": {
+      "target_weight": 0.4615,
+      "monthly_inflow": 30000,
+      "rebalance_tolerance": 0.05,
+      "execution_day": 1,
+      "description": "High-conviction individual compounders (Reliance, TCS, HDFC Bank, Varun Beverages + Radar Watchlist)"
+    },
+    "fixed_etfs": {
+      "target_weight": 0.3077,
+      "monthly_inflow": 20000,
+      "rebalance_tolerance": 0.04,
+      "execution_day": 1,
+      "description": "Dynamic commodity & index hedge (Gold, Silver, Nifty 50 weighted by GSR & ATH discount)"
+    },
+    "mutual_funds": {
+      "target_weight": 0.2308,
+      "monthly_inflow": 15000,
+      "per_fund_sip": 3000,
+      "rebalance_tolerance": 0.03,
+      "execution_day": 2,
+      "description": "5 Core Pillars @ ₹3,000/month each (Axis Small, Parag Parikh, JioBlackRock, HDFC Mid, SBI Contra)"
+    }
+  },
+  "investment_decision_checklist": {
+    "1_economic_moat": "High pricing power, switching costs, network effect, or massive scale cost advantage.",
+    "2_capital_efficiency": "Consistently ROCE > 18-20% and ROE > 15% across 5+ years.",
+    "3_balance_sheet": "Debt-to-Equity < 0.4 for non-financials; Gross NPA < 2.0% and PCR > 70% for private banks.",
+    "4_cash_flow": "Operating Cash Flow to EBITDA > 75%; consistently Free Cash Flow positive.",
+    "5_growth_runway": "Long structural tailwind (TAM expansion, organized transition) supporting 15%+ profit CAGR for 10Y.",
+    "6_valuation_safety": "Trading at 15% to 35% discount from All-Time High, or PEG < 1.7 relative to historical median.",
+    "7_promoter_integrity": "Clean corporate governance, zero forensic red flags, promoter pledging < 5%.",
+    "8_exit_protocol": "Exit triggered ONLY on moat erosion, severe macro shock (Covid/War), or extreme bubble (>100 P/E with no growth)."
+  },
+  "asset_mappings": {
+    "initial_core_stocks": {
+      "HDFC BANK": { "nse_ticker": "HDFCBANK.NS", "sector": "Private Banking", "role": "Moat Financial Leader" },
+      "TCS": { "nse_ticker": "TCS.NS", "sector": "Information Technology", "role": "Free Cash-Flow Compounder" },
+      "RELIANCE": { "nse_ticker": "RELIANCE.NS", "sector": "Diversified Conglomerate", "role": "Macro Growth Pillar" },
+      "VARUN BEVERAGES": { "nse_ticker": "VBL.NS", "sector": "Consumer Discretionary", "role": "High-Alpha Consumption" }
+    },
+    "investment_radar_watchlist": {
+      "TITAN": { "nse_ticker": "TITAN.NS", "sector": "Consumer Luxury / Jewelry", "moat": "Unrivaled brand trust in jewelry (Tanishq); organized market share shift.", "discount_bracket": "15-20% from ATH" },
+      "LARSEN & TOUBRO": { "nse_ticker": "LT.NS", "sector": "Capital Goods & Infrastructure", "moat": "Monopoly-scale EPC execution, multi-year record order book.", "discount_bracket": "15-20% from ATH" },
+      "BHARTI AIRTEL": { "nse_ticker": "BHARTIARTL.NS", "sector": "Telecom & Digital Services", "moat": "Duopoly pricing power, secular ARPU growth, high operating leverage.", "discount_bracket": "10-15% from ATH" },
+      "POLYCAB": { "nse_ticker": "POLYCAB.NS", "sector": "Wires & Cables / FMEG", "moat": "#1 market leader in wires/cables, massive real estate/infra tailwind.", "discount_bracket": "25-30% from ATH" },
+      "DIXON TECH": { "nse_ticker": "DIXON.NS", "sector": "Electronic Manufacturing Services", "moat": "#1 EMS player in India, PLI champion, rapid smartphone/telecom localization.", "discount_bracket": "35-45% from ATH" },
+      "CDSL": { "nse_ticker": "CDSL.NS", "sector": "Capital Market Infrastructure", "moat": "Duopoly depository, 60%+ EBITDA margin, toll-gate on Indian demat expansion.", "discount_bracket": "35-42% from ATH" },
+      "TATA POWER": { "nse_ticker": "TATAPOWER.NS", "sector": "Power & Renewable Energy", "moat": "Integrated clean energy transition, rooftop solar, EV charging leader.", "discount_bracket": "25-30% from ATH" }
+    },
+    "etfs": {
+      "TATASIL": { "nse_ticker": "TATSILV.NS", "category": "Precious Metals", "role": "Industrial Growth & Inflation Hedge" },
+      "TATAGOLD": { "nse_ticker": "TATAGOLD.NS", "category": "Precious Metals", "role": "Global Safe Haven & Rupee Depreciation Hedge" },
+      "NIFTYBEES": { "nse_ticker": "NIFTYBEES.NS", "category": "Equity Index", "role": "India Inc Top 50 Index Foundation" }
+    },
+    "mutual_funds": {
+      "Axis Small Cap Fund": { "amfi_code": 125354, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Small Cap" },
+      "Parag Parikh Flexi Cap Fund": { "amfi_code": 122639, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Flexi Cap" },
+      "JioBlackRock Flexi Cap": { "amfi_code": 153859, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Flexi Cap" },
+      "HDFC Mid Cap": { "amfi_code": 118989, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Mid Cap" },
+      "SBI Contra": { "amfi_code": 119835, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Contra / Value" }
+    }
+  }
+}
