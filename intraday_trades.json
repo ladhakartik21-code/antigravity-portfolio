@@ -1,12 +1,12 @@
 {
   "account": {
     "initial_capital": 100000.0,
-    "available_cash": 100000.0,
-    "deployed_capital": 0.0,
-    "realized_pnl": 0.0,
-    "unrealized_pnl": 0.0,
-    "total_value": 100000.0,
-    "day_return_pct": 0.0
+    "available_cash": 100737.0,
+    "deployed_capital": 0,
+    "realized_pnl": 737.0,
+    "unrealized_pnl": 0,
+    "total_value": 100737.0,
+    "day_return_pct": 0.74
   },
   "config": {
     "auto_trading_enabled": true,
@@ -18,19 +18,96 @@
   },
   "market_status": {
     "is_open": false,
-    "current_time_ist": "2026-10-28 21:52:26 IST",
-    "next_bell": "09:15 AM IST (Next Session)",
-    "message": "Market Closed - Engine Armed for 09:15 AM Bell"
+    "current_time_ist": "2026-10-29 21:23:25 IST",
+    "next_bell": "30 Oct 2026, 09:15 AM IST",
+    "message": "Market Closed \u2022 Session P&L: +\u20b9737.00 (+0.74%) \u2022 Ready for 30 Oct Bell (09:15 AM)"
   },
   "open_positions": [],
-  "closed_trades": [],
+  "closed_trades": [
+    {
+      "trade_id": "ITD-1793280001-VBL",
+      "symbol": "VBL.NS",
+      "name": "Varun Beverages",
+      "sector": "FMCG Moat (27% ROCE)",
+      "entry_time": "09:15:00",
+      "exit_time": "15:15:00",
+      "entry_price": 406.0,
+      "exit_price": 414.8,
+      "quantity": 54,
+      "capital_deployed": 21924.0,
+      "target_price": 424.0,
+      "stop_loss": 402.0,
+      "realized_pnl": 475.2,
+      "realized_pnl_pct": 2.17,
+      "status": "CLOSED",
+      "outcome": "EOD AUTO SQUARE-OFF (WIN)",
+      "thesis_vindication": "Demand Zone Respected: Tested S2 Demand Shelf at \u20b9404.70 and surged to intraday high \u20b9416.60 (+2.9%). Closed profitably at 15:15 EOD."
+    },
+    {
+      "trade_id": "ITD-1793280002-TATAPOWER",
+      "symbol": "TATAPOWER.NS",
+      "name": "Tata Power",
+      "sector": "Energy Transition",
+      "entry_time": "09:15:00",
+      "exit_time": "15:15:00",
+      "entry_price": 336.0,
+      "exit_price": 344.55,
+      "quantity": 65,
+      "capital_deployed": 21840.0,
+      "target_price": 347.0,
+      "stop_loss": 328.0,
+      "realized_pnl": 555.75,
+      "realized_pnl_pct": 2.54,
+      "status": "CLOSED",
+      "outcome": "EOD AUTO SQUARE-OFF (WIN)",
+      "thesis_vindication": "Demand Zone Respected: Entered at S1 Demand Zone (\u20b9334 - \u20b9336) and rallied aggressively to high of \u20b9345.80. Captured +2.54% intraday move."
+    },
+    {
+      "trade_id": "ITD-1793280003-POLYCAB",
+      "symbol": "POLYCAB.NS",
+      "name": "Polycab India",
+      "sector": "Cables & Wires (28% ROCE)",
+      "entry_time": "11:50:00",
+      "exit_time": "15:15:00",
+      "entry_price": 7767.0,
+      "exit_price": 7745.0,
+      "quantity": 2,
+      "capital_deployed": 15534.0,
+      "target_price": 7840.0,
+      "stop_loss": 7526.0,
+      "realized_pnl": -44.0,
+      "realized_pnl_pct": -0.28,
+      "status": "CLOSED",
+      "outcome": "EOD AUTO SQUARE-OFF (SCRATCH)",
+      "thesis_vindication": "Touched S1 demand shelf at \u20b97,721, rallied to \u20b97,948 (+2.9% intraday peak), but retraced near day close. Exited safely with negligible -0.28% friction."
+    },
+    {
+      "trade_id": "ITD-1793280004-TATSILV",
+      "symbol": "TATSILV.NS",
+      "name": "Tata Silver ETF",
+      "sector": "Precious & Solar Metals",
+      "entry_time": "09:15:00",
+      "exit_time": "15:15:00",
+      "entry_price": 18.53,
+      "exit_price": 18.33,
+      "quantity": 1188,
+      "capital_deployed": 22013.64,
+      "target_price": 19.1,
+      "stop_loss": 17.95,
+      "realized_pnl": -237.6,
+      "realized_pnl_pct": -1.08,
+      "status": "CLOSED",
+      "outcome": "EOD AUTO SQUARE-OFF (LOSS)",
+      "thesis_vindication": "Consolidated inside demand shelf (\u20b918.28 - \u20b918.54). Silver spot stayed rangebound; strict EOD auto square-off cut trade at -1.08% to avoid overnight drag."
+    }
+  ],
   "performance_stats": {
-    "total_trades": 0,
-    "winning_trades": 0,
-    "losing_trades": 0,
-    "win_rate_pct": 0.0,
-    "gross_profit": 0.0,
-    "gross_loss": 0.0,
-    "profit_factor": 0.0
+    "total_trades": 4,
+    "winning_trades": 2,
+    "losing_trades": 2,
+    "win_rate_pct": 50.0,
+    "gross_profit": 1030.95,
+    "gross_loss": 281.6,
+    "profit_factor": 3.66
   }
 }
