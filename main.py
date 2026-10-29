@@ -1293,6 +1293,30 @@ def get_daily_audit():
     return {"error": "daily_audit.json not found"}
 
 # ==============================================================================
+# SOVEREIGN MOAT & INTRINSIC VALUATION RADAR ENDPOINT
+# ==============================================================================
+MOAT_PATH = resolve_file_path("fundamental_moat.json", candidate_paths)
+
+@app.get("/api/fundamental-moat")
+def get_fundamental_moat():
+    if os.path.exists(MOAT_PATH):
+        try:
+            with open(MOAT_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for a in data.get("assets", []):
+                    sym = a.get("symbol")
+                    if sym in CACHE.get("prices", {}):
+                        live_p = CACHE["prices"][sym]
+                        a["ltp"] = live_p
+                        a["margin_of_safety_pct"] = round((a["blended_fair_value"] - live_p) / a["blended_fair_value"] * 100.0, 2)
+                        a["action_rating"] = "AGGRESSIVE BUY" if a["margin_of_safety_pct"] >= 15 else ("ACCUMULATE ON DIPS" if a["margin_of_safety_pct"] >= 0 else "HOLD / ACCUMULATE ON DIP")
+                return data
+        except Exception as e:
+            return {"error": f"Error loading fundamental moat: {e}"}
+    return {"error": "fundamental_moat.json not found"}
+
+
+# ==============================================================================
 # AUTONOMOUS INTRADAY BACKGROUND WORKER & RENDER KEEP-ALIVE
 # ==============================================================================
 import asyncio
