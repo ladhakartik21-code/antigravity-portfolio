@@ -1207,6 +1207,101 @@
                 </div>
             </div>
 
+            
+            <!-- ==================== DAILY POST-MARKET S&R DIAGNOSTIC & VARIANCE REVIEW ==================== -->
+            <div class="glass-panel rounded-2xl border border-indigo-500/40 bg-gradient-to-b from-dark-800 via-dark-900 to-indigo-950/20 overflow-hidden shadow-2xl space-y-6 p-5 md:p-6">
+                <!-- Section Header -->
+                <div class="flex flex-wrap justify-between items-start md:items-center gap-4 border-b border-slate-700/60 pb-5">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5">
+                                <i data-lucide="microscope" class="w-3 h-3 text-indigo-400"></i>
+                                EOD Forensic Algorithmic Review
+                            </span>
+                            <span id="auditSessionDateBadge" class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700">
+                                29 Oct 2026 Session Audited
+                            </span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-black text-white flex items-center gap-2">
+                            <span>🔍 Daily S&R Diagnostic & Variance Audit</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">
+                            Algorithmic post-market debrief answering: <b>Where did our levels hold? What runners did we miss? What data was analyzed incorrectly?</b> and <b>What concrete adjustments are deployed for tomorrow?</b>
+                        </p>
+                    </div>
+
+                    <!-- EOD Quick Scorecard -->
+                    <div class="flex flex-wrap items-center gap-2 font-mono">
+                        <div class="px-3.5 py-2 rounded-xl bg-dark-900/90 border border-slate-700 text-right">
+                            <span class="text-[10px] uppercase text-slate-400 block">Session Realized</span>
+                            <span id="auditRealizedPnl" class="text-base font-black text-emerald-400">+₹737.00 (+0.74%)</span>
+                        </div>
+                        <div class="px-3.5 py-2 rounded-xl bg-dark-900/90 border border-slate-700 text-right">
+                            <span class="text-[10px] uppercase text-slate-400 block">Win Rate / PF</span>
+                            <span id="auditWinRatePf" class="text-base font-black text-amber-400">50.0% • 3.66 PF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Forensic Audit Panels -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <!-- Panel 1: Demand Zones Respected (Hits) -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-black uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                                Demand Zones Respected (Hits)
+                            </h4>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">3 / 4 Validated</span>
+                        </div>
+                        <div id="auditHitsContainer" class="space-y-3 font-sans">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Missed Runners & Opportunity Variance -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+                                Missed Runners (Too Strong to Dip)
+                            </h4>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">Opportunity Variance</span>
+                        </div>
+                        <div id="auditMissedContainer" class="space-y-3 font-sans">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Systematic Errors & Root-Cause Diagnosis -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-black uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                                <i data-lucide="activity" class="w-4 h-4 text-rose-400"></i>
+                                Errors & What Data We Analyzed Wrong
+                            </h4>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 font-mono">Root Causes</span>
+                        </div>
+                        <div id="auditVarianceContainer" class="space-y-3 font-sans">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actionable Protocol Upgrades for Tomorrow -->
+                <div class="border-t border-slate-700/60 pt-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="zap" class="w-4 h-4 text-cyan-400"></i>
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-cyan-300">
+                            Actionable Protocol Upgrades & Calibration For Next Session (30 Oct 2026)
+                        </h4>
+                    </div>
+                    <div id="auditUpgradesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 font-sans">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+
             <!-- Intraday Risk Management Discipline Protocol -->
             <div class="p-4 bg-dark-900/90 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed font-sans space-y-2">
                 <div class="flex items-center gap-2 text-amber-400 font-bold">
@@ -2380,6 +2475,7 @@
                     }
                 }
 
+                loadDailyAudit();
                 if (window.lucide) lucide.createIcons();
             } catch (e) {
                 console.error('Error loading intraday data:', e);
@@ -2423,6 +2519,134 @@
                 alert('Account reset to ₹1,00,000 cash balance!');
             } catch (e) {
                 alert('Error resetting account: ' + e);
+            }
+        }
+
+    
+        // ==========================================
+        // DAILY S&R DIAGNOSTIC & VARIANCE REVIEW JS
+        // ==========================================
+        async function loadDailyAudit() {
+            try {
+                const res = await fetch('/api/daily-audit');
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data.error) return;
+
+                // 1. Session Badges & Scorecard
+                if (data.date) {
+                    const badge = document.getElementById('auditSessionDateBadge');
+                    if (badge) badge.innerText = `${data.date} Session Audited`;
+                }
+                if (data.summary) {
+                    const s = data.summary;
+                    const pnlElem = document.getElementById('auditRealizedPnl');
+                    if (pnlElem) {
+                        const sign = s.realized_pnl >= 0 ? '+' : '';
+                        pnlElem.innerText = `${sign}${formatINR(s.realized_pnl)} (${sign}${s.day_return_pct.toFixed(2)}%)`;
+                        pnlElem.className = `text-base font-black ${s.realized_pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+                    }
+                    const wrElem = document.getElementById('auditWinRatePf');
+                    if (wrElem) {
+                        wrElem.innerText = `${s.win_rate_pct.toFixed(1)}% WR • ${s.profit_factor} PF`;
+                    }
+                }
+
+                // 2. Hits & Respected Levels
+                const hitsContainer = document.getElementById('auditHitsContainer');
+                if (hitsContainer && data.hits_respected_levels) {
+                    hitsContainer.innerHTML = '';
+                    data.hits_respected_levels.forEach(h => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3.5 bg-dark-900/90 rounded-xl border border-emerald-500/30 hover:border-emerald-500/60 transition space-y-2';
+                        div.innerHTML = `
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="font-bold text-white text-xs">${h.name} <span class="text-slate-400 font-mono text-[10px]">(${h.symbol})</span></div>
+                                    <div class="text-[10px] text-emerald-400 font-mono font-semibold">${h.level_tested}</div>
+                                </div>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">${h.realized_pnl}</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-[10px] font-mono bg-slate-900/60 p-2 rounded-lg text-slate-300">
+                                <div><span class="text-slate-400">Peak Bounce:</span> <b class="text-white">${h.bounce_peak}</b></div>
+                                <div><span class="text-slate-400">Level Accuracy:</span> <b class="text-emerald-400">${h.level_precision}</b></div>
+                            </div>
+                            <p class="text-[11px] text-slate-300 leading-relaxed font-sans">${h.insight}</p>
+                        `;
+                        hitsContainer.appendChild(div);
+                    });
+                }
+
+                // 3. Missed Runners
+                const missedContainer = document.getElementById('auditMissedContainer');
+                if (missedContainer && data.missed_runners) {
+                    missedContainer.innerHTML = '';
+                    data.missed_runners.forEach(m => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3.5 bg-dark-900/90 rounded-xl border border-amber-500/30 hover:border-amber-500/60 transition space-y-2';
+                        div.innerHTML = `
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="font-bold text-white text-xs">${m.name} <span class="text-slate-400 font-mono text-[10px]">(${m.symbol})</span></div>
+                                    <div class="text-[10px] text-amber-400 font-mono font-semibold">Missed +${m.rally_pct}% Rally (Open ₹${m.day_open} → High ₹${m.day_high})</div>
+                                </div>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30">Missed ${m.missed_profit_est}</span>
+                            </div>
+                            <div class="text-[10px] font-mono bg-slate-900/60 p-2 rounded-lg text-slate-300">
+                                <div><span class="text-slate-400">Our S1 Zone:</span> ₹${m.configured_s1} <span class="text-amber-400">(Missed by ${m.missed_margin_pct}%)</span></div>
+                            </div>
+                            <div class="space-y-1 text-[11px] font-sans">
+                                <p class="text-slate-300 leading-relaxed"><b class="text-amber-300">Root Cause:</b> ${m.root_cause}</p>
+                                <p class="text-slate-400 leading-relaxed"><b class="text-slate-300">The Flaw:</b> ${m.flaw_identified}</p>
+                            </div>
+                        `;
+                        missedContainer.appendChild(div);
+                    });
+                }
+
+                // 4. Variance & Errors
+                const varContainer = document.getElementById('auditVarianceContainer');
+                if (varContainer && data.variance_and_flaw_analysis) {
+                    varContainer.innerHTML = '';
+                    data.variance_and_flaw_analysis.forEach(v => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3.5 bg-dark-900/90 rounded-xl border border-rose-500/30 hover:border-rose-500/60 transition space-y-2';
+                        div.innerHTML = `
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="font-bold text-white text-xs">${v.area}</div>
+                                    <span class="text-[10px] text-slate-400 font-mono">${v.symbol}</span>
+                                </div>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold font-mono bg-rose-500/20 text-rose-300 border border-rose-500/30">${v.impact}</span>
+                            </div>
+                            <p class="text-[11px] text-slate-300 leading-relaxed font-sans"><b class="text-rose-300">Diagnosis:</b> ${v.diagnostic}</p>
+                            <p class="text-[11px] text-emerald-300 leading-relaxed font-sans bg-emerald-950/30 p-2 rounded-lg border border-emerald-500/20"><b class="text-emerald-400">Correction:</b> ${v.correction}</p>
+                        `;
+                        varContainer.appendChild(div);
+                    });
+                }
+
+                // 5. Actionable Upgrades
+                const upgContainer = document.getElementById('auditUpgradesContainer');
+                if (upgContainer && data.actionable_upgrades_for_tomorrow) {
+                    upgContainer.innerHTML = '';
+                    data.actionable_upgrades_for_tomorrow.forEach(u => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3 bg-dark-900/90 rounded-xl border border-slate-700/80 space-y-1.5';
+                        div.innerHTML = `
+                            <div class="flex items-center justify-between gap-1">
+                                <span class="text-xs font-bold text-white">${u.title}</span>
+                                <span class="text-[9px] px-1.5 py-0.5 rounded font-mono font-bold bg-${u.color}-500/20 text-${u.color}-300 border border-${u.color}-500/30 whitespace-nowrap">${u.badge}</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-relaxed font-sans">${u.desc}</p>
+                        `;
+                        upgContainer.appendChild(div);
+                    });
+                }
+
+                if (window.lucide) lucide.createIcons();
+            } catch (e) {
+                console.error('Error loading daily audit data:', e);
             }
         }
 
