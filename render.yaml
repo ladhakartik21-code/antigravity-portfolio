@@ -8,3 +8,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
+      - key: DEPLOY_SYNC_ID
+        value: "v2.1-eod-audit-20261029-2147"
