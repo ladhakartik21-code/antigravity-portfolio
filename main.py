@@ -1276,6 +1276,82 @@ def intraday_simulate():
 def intraday_reset_acc():
     return intraday_engine.reset_account()
 
+
+# ==============================================================================
+# DAILY POST-MARKET S&R DIAGNOSTIC & VARIANCE REVIEW ENDPOINT
+# ==============================================================================
+AUDIT_PATH = resolve_file_path("daily_audit.json", candidate_paths)
+
+@app.get("/api/daily-audit")
+def get_daily_audit():
+    if os.path.exists(AUDIT_PATH):
+        try:
+            with open(AUDIT_PATH, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            return {"error": f"Error loading daily audit: {e}"}
+    return {"error": "daily_audit.json not found"}
+
+# ==============================================================================
+# AUTONOMOUS INTRADAY BACKGROUND WORKER & RENDER KEEP-ALIVE
+# ==============================================================================
+import asyncio
+import urllib.request
+
+async def background_market_worker():
+    """
+    Autonomous Background Worker & Keep-Alive Loop:
+    - Runs continuously on Render cloud.
+    - During NSE market hours (09:15 - 15:30 IST, Mon-Fri):
+      * Calls evaluate_intraday_engine(force_simulation=False) every 60 seconds.
+      * Prevents idle timeouts and executes real-time ticks hands-free.
+    - Every 10 minutes:
+      * Self-pings public Render URL to keep Render free tier awake.
+    """
+    print("[AntiGravity Engine] Background market worker started.", flush=True)
+    ping_counter = 0
+    render_url = os.environ.get("RENDER_EXTERNAL_URL", "https://antigravity-portfolio-4kon.onrender.com").rstrip("/")
+    
+    while True:
+        try:
+            is_market = intraday_engine.is_market_hours()
+            ist_now = intraday_engine.get_ist_now()
+            
+            if is_market:
+                try:
+                    res = intraday_engine.evaluate_intraday_engine(force_simulation=False)
+                    open_cnt = len(res.get("open_positions", []))
+                    closed_cnt = len(res.get("closed_trades", []))
+                    pnl = res.get("account", {}).get("realized_pnl", 0.0)
+                    print(f"[{ist_now.strftime('%H:%M:%S IST')}] [Market Active] Intraday Tick Evaluated: {open_cnt} Open, {closed_cnt} Closed, Realized PnL: Rs.{pnl}", flush=True)
+                except Exception as eval_err:
+                    print(f"[Worker Eval Error]: {eval_err}", flush=True)
+                
+                sleep_sec = 60
+            else:
+                sleep_sec = 180
+            
+            ping_counter += sleep_sec
+            if ping_counter >= 600:
+                ping_counter = 0
+                try:
+                    target_url = f"{render_url}/api/intraday"
+                    req = urllib.request.Request(target_url, headers={"User-Agent": "AntiGravity-KeepAlive/1.0"})
+                    with urllib.request.urlopen(req, timeout=15) as resp:
+                        status = resp.getcode()
+                    print(f"[{ist_now.strftime('%H:%M:%S IST')}] [Keep-Alive Ping] Hit {target_url} -> Status {status}", flush=True)
+                except Exception as ping_err:
+                    pass
+            
+            await asyncio.sleep(sleep_sec)
+        except Exception as loop_err:
+            print(f"[Background Worker Loop Error]: {loop_err}", flush=True)
+            await asyncio.sleep(60)
+
+@app.on_event("startup")
+async def start_background_tasks():
+    asyncio.create_task(background_market_worker())
+
 # Serve Static Frontend Files
 os.makedirs(STATIC_DIR, exist_ok=True)
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
