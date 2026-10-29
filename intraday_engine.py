@@ -18,68 +18,68 @@ INTRADAY_UNIVERSE = {
     "POLYCAB.NS": {
         "name": "Polycab India",
         "sector": "Cables & Wires (28% ROCE)",
-        "s1": 7680.0,
-        "s2": 7610.0,
-        "r1": 7840.0,
-        "r2": 7920.0,
-        "target_pct": 2.1,
+        "s1": 7780.0,
+        "s2": 7690.0,
+        "r1": 8050.0,
+        "r2": 8180.0,
+        "target_pct": 3.4,
         "sl_pct": 1.1,
-        "thesis": "Testing Institutional Demand Zone (₹7,610 - ₹7,680) with 15-min volume absorption. Target R1 Supply shelf."
+        "thesis": "Testing Institutional Demand Zone (₹7,690 - ₹7,780) with 15-min volume absorption. Target R1 Supply shelf."
     },
     "VBL.NS": {
         "name": "Varun Beverages",
         "sector": "FMCG Moat (27% ROCE)",
-        "s1": 412.0,
-        "s2": 407.0,
-        "r1": 424.0,
-        "r2": 431.0,
+        "s1": 410.0,
+        "s2": 405.0,
+        "r1": 425.0,
+        "r2": 434.0,
         "target_pct": 2.9,
         "sl_pct": 1.2,
-        "thesis": "Double-bottom at Monthly S1 Demand Zone (₹407 - ₹412). Intraday RSI oversold reversal."
+        "thesis": "Ascending floor above Monthly S1 Demand Zone (₹405 - ₹410). Intraday RSI oversold reversal."
     },
     "CDSL.NS": {
         "name": "Central Depository",
         "sector": "Demat Monopoly (Zero Debt)",
-        "s1": 1210.0,
-        "s2": 1195.0,
-        "r1": 1255.0,
-        "r2": 1278.0,
-        "target_pct": 3.7,
+        "s1": 1245.0,
+        "s2": 1230.0,
+        "r1": 1295.0,
+        "r2": 1320.0,
+        "target_pct": 4.0,
         "sl_pct": 1.2,
-        "thesis": "Monopoly duopoly resting on institutional liquidity shelf ₹1,195 - ₹1,210. Quick mean reversion to 20-EMA."
+        "thesis": "Monopoly duopoly resting on re-calibrated shelf ₹1,230 - ₹1,245. Dynamic VWAP continuation target R1."
     },
     "TATAPOWER.NS": {
         "name": "Tata Power",
         "sector": "Energy Transition",
-        "s1": 337.5,
-        "s2": 333.0,
-        "r1": 347.0,
-        "r2": 354.0,
-        "target_pct": 2.8,
-        "sl_pct": 1.3,
-        "thesis": "Tested lower channel demand at ₹333 - ₹337.5. Solar rooftop order execution supports high R:R intraday swing."
+        "s1": 338.0,
+        "s2": 334.0,
+        "r1": 352.0,
+        "r2": 360.0,
+        "target_pct": 3.2,
+        "sl_pct": 1.2,
+        "thesis": "Ascending channel support at ₹334 - ₹338. Solar rooftop order execution supports high R:R intraday swing."
     },
     "HDFCBANK.NS": {
         "name": "HDFC Bank",
         "sector": "Private Banking Bluechip",
-        "s1": 652.0,
-        "s2": 646.0,
-        "r1": 668.0,
-        "r2": 675.0,
-        "target_pct": 2.4,
+        "s1": 672.0,
+        "s2": 665.0,
+        "r1": 692.0,
+        "r2": 705.0,
+        "target_pct": 2.5,
         "sl_pct": 0.9,
-        "thesis": "Heavyweight banking pivot at Monthly S2 (₹646 - ₹652). Institutional accumulation on 5-min delivery bar."
+        "thesis": "Heavyweight banking pivot at calibrated support (₹665 - ₹672). Institutional accumulation on 5-min delivery bar."
     },
     "TATSILV.NS": {
         "name": "Tata Silver ETF",
         "sector": "Precious & Solar Metals",
-        "s1": 18.35,
-        "s2": 18.15,
-        "r1": 19.10,
-        "r2": 19.45,
-        "target_pct": 4.1,
+        "s1": 18.25,
+        "s2": 18.05,
+        "r1": 18.95,
+        "r2": 19.30,
+        "target_pct": 3.8,
         "sl_pct": 1.1,
-        "thesis": "Bloomberg GSR 73.7x mean-reversion with global spot finding $54 floor. ETF demand shelf accumulation."
+        "thesis": "Bloomberg GSR 73.7x mean-reversion with global spot finding $54 floor. Post-13:30 COMEX liquidity window."
     }
 }
 
@@ -187,12 +187,19 @@ def evaluate_intraday_engine(force_simulation: bool = False) -> Dict[str, Any]:
     market_active = is_market_hours() or force_simulation
     state["market_status"]["is_open"] = is_market_hours()
     state["market_status"]["current_time_ist"] = ist.strftime("%Y-%m-%d %H:%M:%S IST")
-    state["market_status"]["message"] = "Market Open - Live S&R Auto-Trading Active" if is_market_hours() else "Market Closed - Engine Armed for 09:15 AM Bell"
-
     open_pos = state.get("open_positions", [])
     closed = state.get("closed_trades", [])
     account = state["account"]
     config = state["config"]
+
+    pnl_val = account.get("realized_pnl", 0.0)
+    ret_pct = account.get("day_return_pct", 0.0)
+    sign = "+" if pnl_val >= 0 else ""
+    state["market_status"]["message"] = (
+        "Market Open - Live S&R Auto-Trading Active"
+        if is_market_hours()
+        else f"Market Closed • Session P&L: {sign}₹{pnl_val:.2f} ({sign}{ret_pct:.2f}%) • Ready for 30 Oct Bell (09:15 AM)"
+    )
 
     # 1. Update Open Positions & Check Target / Stop Loss
     remaining_open = []
@@ -204,6 +211,11 @@ def evaluate_intraday_engine(force_simulation: bool = False) -> Dict[str, Any]:
         pnl_pct = round((ltp - pos["entry_price"]) / pos["entry_price"] * 100, 2)
         pos["unrealized_pnl"] = pnl
         pos["unrealized_pnl_pct"] = pnl_pct
+
+        # Lock-in-Greens Trailing Stop: If position reaches +1.8% gain, lock stop loss to Entry + 0.4%
+        if pnl_pct >= 1.8 and pos["stop_loss"] < pos["entry_price"]:
+            pos["stop_loss"] = round(pos["entry_price"] * 1.004, 2)
+            pos["zone_confluence"] = (pos.get("zone_confluence", "") + " [Profit Locked]").strip()
 
         is_target_hit = ltp >= pos["target_price"]
         is_sl_hit = ltp <= pos["stop_loss"]
