@@ -9,4 +9,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DEPLOY_SYNC_ID
-        value: "v2.1-eod-audit-20261029-2147"
+        value: "v2.2-moat-vwap-20261029-2228"
