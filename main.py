@@ -282,13 +282,18 @@ def load_config():
             return json.load(f)
     return {}
 
-def is_market_open():
-    now = datetime.datetime.now()
-    if now.weekday() >= 5:
+def get_ist_now() -> datetime.datetime:
+    """Returns current datetime in Indian Standard Time (UTC+5:30)"""
+    utc = datetime.datetime.now(datetime.timezone.utc)
+    return utc + datetime.timedelta(hours=5, minutes=30)
+
+def is_market_open() -> bool:
+    """Checks if current IST time is during NSE market hours (Mon-Fri 09:15 to 15:30 IST)"""
+    ist = get_ist_now()
+    if ist.weekday() >= 5: # Saturday or Sunday
         return False
-    start = now.replace(hour=9, minute=15, second=0, microsecond=0)
-    end = now.replace(hour=15, minute=30, second=0, microsecond=0)
-    return start <= now <= end
+    t = ist.time()
+    return datetime.time(9, 15) <= t <= datetime.time(15, 30)
 
 def fetch_nse_price(symbol: str) -> float:
     now = time.time()
@@ -507,7 +512,7 @@ def read_portfolio_data():
             "mfs_cost": round(mfs_cost, 2),
             "mfs_weight": round(mfs_wt, 1),
             "market_open": is_market_open(),
-            "timestamp": datetime.datetime.now().strftime("%d %b %Y, %I:%M:%S %p")
+            "timestamp": get_ist_now().strftime("%d %b %Y, %I:%M:%S %p IST")
         },
         "stocks": stocks,
         "etfs": etfs,
