@@ -303,7 +303,7 @@ def evaluate_intraday_engine(force_simulation: bool = False) -> Dict[str, Any]:
 
         is_target_hit = ltp >= pos["target_price"]
         is_sl_hit = ltp <= pos["stop_loss"]
-        is_eod_square_off = is_square_off_time()
+        is_eod_square_off = is_square_off_time() or (not is_market_hours() and not force_simulation)
 
         if is_target_hit or is_sl_hit or is_eod_square_off:
             # Close Position
@@ -338,7 +338,7 @@ def evaluate_intraday_engine(force_simulation: bool = False) -> Dict[str, Any]:
     state["dynamic_intelligence"] = compute_dynamic_intelligence()
 
     # 2. Check for New Entries if Auto-Trading Enabled
-    if config.get("auto_trading_enabled", True) and market_active:
+    if config.get("auto_trading_enabled", True) and market_active and not is_square_off_time():
         current_symbols = [p["symbol"] for p in state["open_positions"]]
         max_pos = config.get("max_concurrent_positions", 4)
         alloc_per_trade = config.get("allocation_per_trade", 22000.0)
