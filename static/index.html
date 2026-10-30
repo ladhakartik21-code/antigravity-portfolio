@@ -1635,6 +1635,7 @@
                     body: JSON.stringify({ pin })
                 });
                 const data = await res.json();
+                window._cachedIndicesData = data;
                 if (data.success) {
                     sessionStorage.setItem('antigravity_token', data.token);
                     document.getElementById('pinLockModal').classList.add('hidden');
@@ -3099,14 +3100,19 @@
             const prefix = item.currency === 'INR' ? '₹' : (item.currency === 'USD' || item.currency === 'USD/bbl' ? '$' : '');
 
             return `
-            <div class="glass-panel p-3.5 rounded-xl border border-slate-800 hover:border-cyan-500/40 transition hover:shadow-lg hover:shadow-cyan-500/5 flex flex-col justify-between group">
+            <div onclick="openIndexChartModal('${item.symbol}', '${item.name.replace(/'/g, "\\'")}', '${item.flag || '📊'}', '${item.currency || 'INR'}', '${item.category || ''}')"
+                 class="glass-panel p-3.5 rounded-xl border border-slate-800 hover:border-cyan-400/80 transition-all duration-200 hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col justify-between group cursor-pointer relative"
+                 title="Click to open live ${item.name} broker chart">
                 <div>
                     <div class="flex items-start justify-between gap-1 mb-2">
                         <div class="flex items-center gap-1.5 min-w-0">
                             <span class="text-sm shrink-0">${item.flag || '📊'}</span>
-                            <span class="font-bold text-xs text-white truncate group-hover:text-cyan-300 transition" title="${item.name}">${item.name}</span>
+                            <span class="font-bold text-xs text-white tracking-tight group-hover:text-cyan-300 transition whitespace-nowrap overflow-hidden text-ellipsis" title="${item.name}">${item.name}</span>
                         </div>
-                        <span class="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 shrink-0 border border-slate-700/50">${item.category || ''}</span>
+                        <div class="flex items-center gap-1 shrink-0">
+                            <span class="text-[8px] uppercase font-semibold px-1.5 py-0.5 rounded bg-slate-800/90 text-slate-400 border border-slate-700/60">${item.category || ''}</span>
+                            <i data-lucide="line-chart" class="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 transition hidden sm:inline"></i>
+                        </div>
                     </div>
 
                     <div class="mt-1">
@@ -3148,7 +3154,9 @@
             const formattedPrice = item.price >= 1000 ? item.price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : item.price.toFixed(2);
 
             return `
-            <tr class="hover:bg-slate-800/40 transition">
+            <tr onclick="openIndexChartModal('${item.symbol}', '${item.name.replace(/'/g, "\\'")}', '${item.flag || '📊'}', '${item.currency || 'INR'}', '${item.category || ''}')"
+                class="hover:bg-slate-800/70 transition cursor-pointer group"
+                title="Click to open live ${item.name} broker chart">
                 <td class="p-3 font-sans font-bold text-white flex items-center gap-2">
                     <span>${item.flag || '📊'}</span>
                     <span>${item.name}</span>
@@ -3165,6 +3173,407 @@
                 <td class="p-3 text-right text-slate-400">${item.dayLow.toLocaleString('en-IN')}</td>
             </tr>
             `;
+        }
+
+        
+        // ==================== BROKER INDEX CHART MODAL CONTROLLER ====================
+        let indexTvChart = null;
+        let indexCandleSeries = null;
+        let indexAreaSeries = null;
+        let indexVolumeSeries = null;
+        let indexSma20Series = null;
+        let indexSma50Series = null;
+
+        let currentIdxSymbol = '^NSEI';
+        let currentIdxName = 'Nifty 50';
+        let currentIdxFlag = '🇮🇳';
+        let currentIdxCurrency = 'INR';
+        let currentIdxCategory = 'Benchmark';
+        let currentIdxPeriod = '1m';
+        let currentIdxChartType = 'candlestick';
+        let showSma20 = false;
+        let showSma50 = false;
+        let currentCandleRecords = [];
+        let allIndicesCacheList = [];
+
+        function initIndexTvChart() {
+            const container = document.getElementById('indexTvChartContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            indexTvChart = LightweightCharts.createChart(container, {
+                width: container.clientWidth,
+                height: 440,
+                layout: {
+                    background: { color: '#090d16' },
+                    textColor: '#94a3b8',
+                },
+                grid: {
+                    vertLines: { color: '#131d2e' },
+                    horzLines: { color: '#131d2e' },
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+                rightPriceScale: {
+                    borderColor: '#1e293b',
+                    scaleMargins: { top: 0.1, bottom: 0.22 },
+                },
+                timeScale: {
+                    borderColor: '#1e293b',
+                    timeVisible: true,
+                    secondsVisible: false,
+                },
+            });
+
+            // Candlestick series
+            indexCandleSeries = indexTvChart.addCandlestickSeries({
+                upColor: '#10b981',
+                downColor: '#ef4444',
+                borderVisible: false,
+                wickUpColor: '#10b981',
+                wickDownColor: '#ef4444',
+            });
+
+            // Area line series (for clean Mountain style)
+            indexAreaSeries = indexTvChart.addAreaSeries({
+                topColor: 'rgba(6, 182, 212, 0.4)',
+                bottomColor: 'rgba(6, 182, 212, 0.0)',
+                lineColor: '#06b6d4',
+                lineWidth: 2,
+                visible: false,
+            });
+
+            // Volume histogram
+            indexVolumeSeries = indexTvChart.addHistogramSeries({
+                priceFormat: { type: 'volume' },
+                priceScaleId: '',
+            });
+            indexVolumeSeries.priceScale().applyOptions({
+                scaleMargins: { top: 0.82, bottom: 0 },
+            });
+
+            // SMA 20 (Gold/Amber)
+            indexSma20Series = indexTvChart.addLineSeries({
+                color: '#f59e0b',
+                lineWidth: 1.5,
+                lineStyle: 0,
+                visible: false,
+            });
+
+            // SMA 50 (Purple)
+            indexSma50Series = indexTvChart.addLineSeries({
+                color: '#a855f7',
+                lineWidth: 1.5,
+                lineStyle: 0,
+                visible: false,
+            });
+
+            // Crosshair move listener
+            indexTvChart.subscribeCrosshairMove(param => {
+                if (!param || !param.time) {
+                    document.getElementById('idxTipOHLC').innerText = '';
+                    document.getElementById('idxTipDate').innerText = 'Hover chart to inspect';
+                    return;
+                }
+
+                let d = null;
+                if (indexCandleSeries && currentIdxChartType === 'candlestick') {
+                    d = param.seriesData.get(indexCandleSeries);
+                } else if (indexAreaSeries) {
+                    d = param.seriesData.get(indexAreaSeries);
+                }
+
+                if (d) {
+                    const prefix = currentIdxCurrency === 'INR' ? '₹' : (currentIdxCurrency === 'USD' || currentIdxCurrency === 'USD/bbl' ? '$' : '');
+                    if (d.open !== undefined) {
+                        document.getElementById('idxTipOHLC').innerText = `O: ${prefix}${d.open.toFixed(2)}  H: ${prefix}${d.high.toFixed(2)}  L: ${prefix}${d.low.toFixed(2)}  C: ${prefix}${d.close.toFixed(2)}`;
+                    } else if (d.value !== undefined) {
+                        document.getElementById('idxTipOHLC').innerText = `Price: ${prefix}${d.value.toFixed(2)}`;
+                    }
+
+                    if (typeof param.time === 'number') {
+                        const dateObj = new Date(param.time * 1000);
+                        document.getElementById('idxTipDate').innerText = dateObj.toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }) + ' ' + dateObj.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                    } else if (typeof param.time === 'string' || typeof param.time === 'object') {
+                        document.getElementById('idxTipDate').innerText = String(param.time);
+                    }
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (indexTvChart && container.clientWidth > 0) {
+                    indexTvChart.applyOptions({ width: container.clientWidth });
+                }
+            });
+        }
+
+        function calculateSMA(records, period) {
+            const sma = [];
+            for (let i = 0; i < records.length; i++) {
+                if (i < period - 1) continue;
+                let sum = 0;
+                for (let j = 0; j < period; j++) {
+                    sum += records[i - j].close;
+                }
+                sma.push({ time: records[i].time, value: parseFloat((sum / period).toFixed(2)) });
+            }
+            return sma;
+        }
+
+        async function openIndexChartModal(symbol, name, flag, currency, category) {
+            currentIdxSymbol = symbol;
+            currentIdxName = name;
+            currentIdxFlag = flag || '📊';
+            currentIdxCurrency = currency || 'INR';
+            currentIdxCategory = category || 'Index';
+
+            document.getElementById('indexModalTitle').innerText = currentIdxName;
+            document.getElementById('indexModalSymbolBadge').innerText = currentIdxSymbol;
+            document.getElementById('indexModalCategoryBadge').innerText = currentIdxCategory;
+            document.getElementById('indexModalFlag').innerText = currentIdxFlag;
+
+            // Find current price data in cached indices
+            if (window._cachedIndicesData) {
+                const all = (window._cachedIndicesData.indian || []).concat(window._cachedIndicesData.global || []);
+                const found = all.find(item => item.symbol === symbol);
+                if (found) {
+                    updateIndexModalStats(found);
+                }
+            }
+
+            // Render Quick Switch Watchlist Ribbon
+            renderQuickSwitchRibbon();
+
+            // Show Modal
+            const modal = document.getElementById('indexChartModal');
+            modal.classList.remove('hidden');
+
+            // Backdrop click handler to close
+            modal.onclick = function(e) {
+                if (e.target === modal) closeIndexChartModal();
+            };
+
+            // Keyboard handler (Esc)
+            window.onkeydown = function(e) {
+                if (e.key === 'Escape') closeIndexChartModal();
+            };
+
+            // Initialize LightweightCharts instance
+            setTimeout(() => {
+                if (!indexTvChart) {
+                    initIndexTvChart();
+                } else {
+                    const container = document.getElementById('indexTvChartContainer');
+                    if (container && container.clientWidth > 0) {
+                        indexTvChart.applyOptions({ width: container.clientWidth });
+                    }
+                }
+                loadIndexChart(currentIdxSymbol, currentIdxPeriod);
+            }, 60);
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeIndexChartModal() {
+            const modal = document.getElementById('indexChartModal');
+            if (modal) modal.classList.add('hidden');
+            window.onkeydown = null;
+        }
+
+        function updateIndexModalStats(item) {
+            const prefix = (item.currency === 'INR') ? '₹' : (item.currency === 'USD' || item.currency === 'USD/bbl' ? '$' : '');
+            const formattedPrice = item.price >= 1000 ? item.price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : item.price.toFixed(2);
+            document.getElementById('indexModalPrice').innerText = `${prefix}${formattedPrice}`;
+
+            const isUp = item.change > 0;
+            const isDown = item.change < 0;
+            const sign = isUp ? '+' : '';
+            const arrow = isUp ? '▲' : (isDown ? '▼' : '●');
+            const pillBg = isUp ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : (isDown ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' : 'bg-slate-700/30 text-slate-300 border border-slate-700/50');
+
+            const pill = document.getElementById('indexModalChangePill');
+            pill.className = `text-xs font-mono font-bold px-2.5 py-0.5 rounded-md ${pillBg} flex items-center gap-1`;
+            document.getElementById('indexModalArrow').innerText = arrow;
+            document.getElementById('indexModalPChange').innerText = `${sign}${item.pChange.toFixed(2)}% (${sign}${item.change.toFixed(2)})`;
+
+            document.getElementById('idxStatHigh').innerText = `${prefix}${(item.dayHigh || item.price).toLocaleString('en-IN')}`;
+            document.getElementById('idxStatLow').innerText = `${prefix}${(item.dayLow || item.price).toLocaleString('en-IN')}`;
+            document.getElementById('idxStatPrev').innerText = `${prefix}${(item.prev_close || item.price).toLocaleString('en-IN')}`;
+            document.getElementById('idxStat52H').innerText = `${prefix}${(item.yearHigh || item.price * 1.15).toLocaleString('en-IN')}`;
+            document.getElementById('idxStat52L').innerText = `${prefix}${(item.yearLow || item.price * 0.85).toLocaleString('en-IN')}`;
+        }
+
+        function setIndexChartPeriod(p) {
+            currentIdxPeriod = p;
+            document.querySelectorAll('.idx-pbtn').forEach(b => {
+                b.className = 'idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
+            });
+            const active = document.getElementById(`idxPbtn-${p}`);
+            if (active) {
+                active.className = 'idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition bg-cyan-600 text-white shadow';
+            }
+            loadIndexChart(currentIdxSymbol, currentIdxPeriod);
+        }
+
+        function setIndexChartType(type) {
+            currentIdxChartType = type;
+            const btnCandles = document.getElementById('idxBtnCandles');
+            const btnArea = document.getElementById('idxBtnArea');
+
+            if (type === 'candlestick') {
+                if (btnCandles) btnCandles.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-cyan-600 text-white shadow';
+                if (btnArea) btnArea.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white';
+                if (indexCandleSeries) indexCandleSeries.applyOptions({ visible: true });
+                if (indexAreaSeries) indexAreaSeries.applyOptions({ visible: false });
+            } else {
+                if (btnArea) btnArea.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-cyan-600 text-white shadow';
+                if (btnCandles) btnCandles.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white';
+                if (indexCandleSeries) indexCandleSeries.applyOptions({ visible: false });
+                if (indexAreaSeries) indexAreaSeries.applyOptions({ visible: true });
+            }
+        }
+
+        function toggleIndexOverlay(ind) {
+            if (ind === 'sma20') {
+                showSma20 = !showSma20;
+                const b = document.getElementById('idxBtnSma20');
+                if (showSma20) {
+                    b.className = 'px-2 py-1 rounded-lg text-[11px] font-bold transition bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow';
+                    if (indexSma20Series && currentCandleRecords.length > 0) {
+                        indexSma20Series.setData(calculateSMA(currentCandleRecords, 20));
+                        indexSma20Series.applyOptions({ visible: true });
+                    }
+                } else {
+                    b.className = 'px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-400 hover:text-white';
+                    if (indexSma20Series) indexSma20Series.applyOptions({ visible: false });
+                }
+            } else if (ind === 'sma50') {
+                showSma50 = !showSma50;
+                const b = document.getElementById('idxBtnSma50');
+                if (showSma50) {
+                    b.className = 'px-2 py-1 rounded-lg text-[11px] font-bold transition bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow';
+                    if (indexSma50Series && currentCandleRecords.length > 0) {
+                        indexSma50Series.setData(calculateSMA(currentCandleRecords, 50));
+                        indexSma50Series.applyOptions({ visible: true });
+                    }
+                } else {
+                    b.className = 'px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-400 hover:text-white';
+                    if (indexSma50Series) indexSma50Series.applyOptions({ visible: false });
+                }
+            }
+        }
+
+        async function loadIndexChart(symbol, period) {
+            const loader = document.getElementById('idxChartLoader');
+            if (loader) loader.classList.remove('hidden');
+
+            try {
+                const encodedSym = encodeURIComponent(symbol);
+                const res = await fetch(`/api/charts/${encodedSym}?period=${period}`);
+                const json = await res.json();
+
+                if (!json.data || json.data.length === 0) {
+                    throw new Error('No candle data received');
+                }
+
+                currentCandleRecords = json.data;
+
+                const ohlc = currentCandleRecords.map(d => ({
+                    time: d.time,
+                    open: d.open,
+                    high: d.high,
+                    low: d.low,
+                    close: d.close,
+                }));
+
+                const areaData = currentCandleRecords.map(d => ({
+                    time: d.time,
+                    value: d.close,
+                }));
+
+                const volumeData = currentCandleRecords.map(d => ({
+                    time: d.time,
+                    value: d.volume || 100,
+                    color: d.close >= d.open ? 'rgba(16, 185, 129, 0.4)' : 'rgba(239, 68, 68, 0.4)'
+                }));
+
+                // Update series
+                if (indexCandleSeries) indexCandleSeries.setData(ohlc);
+                if (indexAreaSeries) indexAreaSeries.setData(areaData);
+                if (indexVolumeSeries) indexVolumeSeries.setData(volumeData);
+
+                // Update SMA overlays
+                if (indexSma20Series) {
+                    if (showSma20) {
+                        indexSma20Series.setData(calculateSMA(currentCandleRecords, 20));
+                        indexSma20Series.applyOptions({ visible: true });
+                    } else {
+                        indexSma20Series.applyOptions({ visible: false });
+                    }
+                }
+
+                if (indexSma50Series) {
+                    if (showSma50) {
+                        indexSma50Series.setData(calculateSMA(currentCandleRecords, 50));
+                        indexSma50Series.applyOptions({ visible: true });
+                    } else {
+                        indexSma50Series.applyOptions({ visible: false });
+                    }
+                }
+
+                // Update Stats Bar with the first candle's open of this period
+                if (currentCandleRecords.length > 0) {
+                    const firstCandle = currentCandleRecords[0];
+                    const prefix = currentIdxCurrency === 'INR' ? '₹' : (currentIdxCurrency === 'USD' || currentIdxCurrency === 'USD/bbl' ? '$' : '');
+                    document.getElementById('idxStatOpen').innerText = `${prefix}${firstCandle.open.toLocaleString('en-IN')}`;
+                }
+
+                // Fit content cleanly
+                if (indexTvChart) {
+                    if (ohlc.length <= 35) {
+                        indexTvChart.timeScale().applyOptions({
+                            barSpacing: 14,
+                            rightOffset: 12,
+                        });
+                        indexTvChart.timeScale().scrollToPosition(4, false);
+                    } else {
+                        indexTvChart.timeScale().fitContent();
+                    }
+                }
+
+            } catch (err) {
+                console.error('Error loading index chart candles:', err);
+            } finally {
+                if (loader) setTimeout(() => loader.classList.add('hidden'), 200);
+            }
+        }
+
+        function renderQuickSwitchRibbon() {
+            const ribbon = document.getElementById('indexQuickSwitchRibbon');
+            if (!ribbon) return;
+
+            let all = [];
+            if (window._cachedIndicesData) {
+                all = (window._cachedIndicesData.indian || []).concat(window._cachedIndicesData.global || []);
+            }
+
+            if (all.length === 0) return;
+
+            ribbon.innerHTML = all.map(item => {
+                const isActive = item.symbol === currentIdxSymbol;
+                const activeClass = isActive ? 'bg-cyan-600 text-white font-bold shadow' : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80';
+                const sign = item.change >= 0 ? '+' : '';
+                const pColor = item.change >= 0 ? 'text-emerald-400' : 'text-rose-400';
+                return `
+                <button onclick="openIndexChartModal('${item.symbol}', '${item.name.replace(/'/g, "\\'")}', '${item.flag || ''}', '${item.currency || 'INR'}', '${item.category || ''}')"
+                        class="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap transition flex items-center gap-1.5 border border-slate-700/60 ${activeClass}">
+                    <span>${item.flag || ''}</span>
+                    <span>${item.name}</span>
+                    <span class="font-mono text-[10px] ${pColor}">${sign}${item.pChange.toFixed(1)}%</span>
+                </button>
+                `;
+            }).join('');
         }
 
         async function loadIndicesData(force = false) {
@@ -3265,5 +3674,111 @@
             </div>
         </div>
     </div>
+    <!-- ==================== INSTITUTIONAL BROKER INDEX CHART MODAL ==================== -->
+    <div id="indexChartModal" class="fixed inset-0 z-50 flex items-center justify-center bg-dark-950/85 backdrop-blur-md hidden p-2 sm:p-4 md:p-6 overflow-y-auto">
+        <div class="glass-panel max-w-6xl w-full rounded-2xl border border-slate-700 shadow-2xl p-4 sm:p-6 space-y-4 max-h-[96vh] flex flex-col justify-between" onclick="event.stopPropagation()">
+            
+            <!-- Modal Header: Asset Profile + Real-Time Price + Multi-Timeframe Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-slate-800">
+                <!-- Asset Info & Live Price -->
+                <div class="flex items-center gap-3">
+                    <span id="indexModalFlag" class="text-3xl shrink-0">🇮🇳</span>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 id="indexModalTitle" class="text-lg sm:text-xl font-black text-white">Nifty 50</h2>
+                            <span id="indexModalSymbolBadge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-800 text-cyan-400 border border-slate-700">^NSEI</span>
+                            <span id="indexModalCategoryBadge" class="text-[9px] uppercase font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">Benchmark</span>
+                        </div>
+                        <div class="flex items-baseline gap-2.5 mt-1">
+                            <span id="indexModalPrice" class="text-xl sm:text-2xl font-black font-mono text-white tracking-tight">₹23,053.10</span>
+                            <span id="indexModalChangePill" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                                <span id="indexModalArrow">▲</span>
+                                <span id="indexModalPChange">+0.51% (+116.35)</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Broker Timeframe & Display Controls -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <!-- Broker Timeframe Buttons (Zerodha / Groww Style) -->
+                    <div class="bg-dark-800 p-1 rounded-xl border border-slate-700 flex items-center gap-1">
+                        <button onclick="setIndexChartPeriod('1d')" id="idxPbtn-1d" class="idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">1D</button>
+                        <button onclick="setIndexChartPeriod('1w')" id="idxPbtn-1w" class="idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">1W</button>
+                        <button onclick="setIndexChartPeriod('1m')" id="idxPbtn-1m" class="idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition bg-cyan-600 text-white shadow">1M</button>
+                        <button onclick="setIndexChartPeriod('1y')" id="idxPbtn-1y" class="idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">1Y</button>
+                        <button onclick="setIndexChartPeriod('5y')" id="idxPbtn-5y" class="idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">5Y</button>
+                        <button onclick="setIndexChartPeriod('all')" id="idxPbtn-all" class="idx-pbtn px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">ALL</button>
+                    </div>
+
+                    <!-- Chart Type Switcher (Candles vs Area Line) -->
+                    <div class="bg-dark-800 p-1 rounded-xl border border-slate-700 flex items-center gap-1">
+                        <button onclick="setIndexChartType('candlestick')" id="idxBtnCandles" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-cyan-600 text-white shadow" title="Candlestick Chart">
+                            <span>🕯️</span> <span class="hidden sm:inline">Candles</span>
+                        </button>
+                        <button onclick="setIndexChartType('area')" id="idxBtnArea" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-slate-400 hover:text-white" title="Mountain Area Line">
+                            <span>📈</span> <span class="hidden sm:inline">Area</span>
+                        </button>
+                    </div>
+
+                    <!-- Indicator Overlays (SMA 20 & SMA 50) -->
+                    <div class="bg-dark-800 p-1 rounded-xl border border-slate-700 flex items-center gap-1">
+                        <button onclick="toggleIndexOverlay('sma20')" id="idxBtnSma20" class="px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-400 hover:text-white" title="20-day Simple Moving Average (Gold)">
+                            SMA 20
+                        </button>
+                        <button onclick="toggleIndexOverlay('sma50')" id="idxBtnSma50" class="px-2 py-1 rounded-lg text-[11px] font-bold transition text-slate-400 hover:text-white" title="50-day Simple Moving Average (Purple)">
+                            SMA 50
+                        </button>
+                    </div>
+
+                    <!-- Close Button -->
+                    <button onclick="closeIndexChartModal()" class="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition border border-transparent hover:border-slate-700" title="Close Chart (Esc)">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Broker Stats Bar (Open, High, Low, Prev Close, 52W High, 52W Low, Crosshair Tooltip) -->
+            <div class="glass-panel p-2.5 rounded-xl border border-slate-800/80 flex flex-wrap items-center justify-between text-xs font-mono gap-3 bg-dark-900/50">
+                <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-400">
+                    <div>Open: <span id="idxStatOpen" class="text-white font-bold">--</span></div>
+                    <div>High: <span id="idxStatHigh" class="text-emerald-400 font-bold">--</span></div>
+                    <div>Low: <span id="idxStatLow" class="text-rose-400 font-bold">--</span></div>
+                    <div>Prev Close: <span id="idxStatPrev" class="text-slate-300 font-bold">--</span></div>
+                    <div class="hidden md:block">52W High: <span id="idxStat52H" class="text-slate-300">--</span></div>
+                    <div class="hidden md:block">52W Low: <span id="idxStat52L" class="text-slate-300">--</span></div>
+                </div>
+
+                <!-- Dynamic Hover Tooltip -->
+                <div id="idxCrosshairTooltip" class="flex items-center gap-3 text-[11px] text-slate-300">
+                    <span id="idxTipDate" class="text-slate-500 font-semibold">Hover chart to inspect</span>
+                    <span id="idxTipOHLC" class="text-cyan-300"></span>
+                </div>
+            </div>
+
+            <!-- TradingView Chart Canvas Container -->
+            <div class="relative w-full rounded-xl overflow-hidden border border-slate-800/80 bg-dark-900/90" style="min-height: 440px;">
+                <!-- Loading Overlay -->
+                <div id="idxChartLoader" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-dark-950/70 backdrop-blur-sm hidden">
+                    <div class="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin mb-2"></div>
+                    <span class="text-xs text-slate-400 font-medium font-mono">Streaming Chart Candles...</span>
+                </div>
+
+                <div id="indexTvChartContainer" class="w-full" style="height: 440px;"></div>
+            </div>
+
+            <!-- Watchlist Quick-Switch Ribbon (Broker Style) -->
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between gap-3 text-xs">
+                <span class="text-slate-500 font-bold uppercase text-[10px] shrink-0 flex items-center gap-1">
+                    <i data-lucide="zap" class="w-3.5 h-3.5 text-cyan-400"></i> Quick Switch:
+                </span>
+                <div id="indexQuickSwitchRibbon" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                    <!-- Populated dynamically via JS with all 32 index quick pills -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 </html>
