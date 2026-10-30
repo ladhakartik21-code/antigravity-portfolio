@@ -9,4 +9,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DEPLOY_SYNC_ID
-        value: "v2.3-ist-timezone-fix-20261030-2107"
+        value: "v2.4-portfolio-holdings-30oct-2130"
