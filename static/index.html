@@ -1648,7 +1648,19 @@
 
             const badge = document.getElementById('marketBadge');
             const statusText = document.getElementById('marketStatusText');
-            if (sum.market_open) {
+
+            // Robust IST Market Hours Verification (Mon-Fri 09:15 to 15:30 IST)
+            const clientNow = new Date();
+            const utcTime = clientNow.getTime() + (clientNow.getTimezoneOffset() * 60000);
+            const istDate = new Date(utcTime + (3600000 * 5.5));
+            const dayOfWeek = istDate.getDay(); // 0 is Sun, 6 is Sat
+            const istMins = istDate.getHours() * 60 + istDate.getMinutes();
+            const isWeekday = dayOfWeek >= 1 && dayOfWeek <= 5;
+            const isNSEHours = isWeekday && (istMins >= (9 * 60 + 15) && istMins <= (15 * 60 + 30));
+
+            const isMarketActive = (sum && sum.market_open !== undefined) ? (sum.market_open && isNSEHours) : isNSEHours;
+
+            if (isMarketActive) {
                 badge.className = 'inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
                 statusText.innerText = 'NSE: Live Market Open';
             } else {
