@@ -1322,6 +1322,19 @@ def get_fundamental_moat():
 
 
 # ==============================================================================
+# REAL-TIME MAJOR & GLOBAL INDICES RADAR ENDPOINTS (4x4 Matrix)
+# ==============================================================================
+try:
+    import indices_engine
+except ImportError:
+    from app import indices_engine
+
+@app.get("/api/indices")
+def get_indices_data(refresh: bool = False):
+    return indices_engine.get_all_indices(force_refresh=refresh)
+
+
+# ==============================================================================
 # AUTONOMOUS INTRADAY BACKGROUND WORKER & RENDER KEEP-ALIVE
 # ==============================================================================
 import asyncio
