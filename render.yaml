@@ -9,4 +9,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DEPLOY_SYNC_ID
-        value: "v2.5-indices-tab-4x4-radar"
+        value: "v2.6-interactive-broker-index-charts"
