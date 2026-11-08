@@ -9,4 +9,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DEPLOY_SYNC_ID
-        value: "v2.8-portfolio-5-mf-sync-nov8"
+        value: "v2.9-live-ticks-3s-stream"
