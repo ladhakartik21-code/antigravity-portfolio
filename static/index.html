@@ -1326,6 +1326,10 @@
                             <i data-lucide="play" class="w-3.5 h-3.5 text-amber-400"></i>
                             <span>Test Trigger</span>
                         </button>
+                        <button onclick="downloadMuhuratExcel()" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-dark-900 border border-amber-500/40 flex items-center gap-1.5 shadow transition" title="Export Full Muhurat Trading Session Audit to Excel">
+                            <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>
+                            <span>Export Muhurat Audit (.xlsx)</span>
+                        </button>
                         <button onclick="squareOffAll()" class="px-3 py-2 rounded-xl text-xs font-bold bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 flex items-center gap-1.5 shadow transition">
                             <i data-lucide="x-circle" class="w-3.5 h-3.5"></i>
                             <span>Square Off All</span>
@@ -2622,6 +2626,11 @@
         let intradayData = null;
         let intradayPollTimer = null;
 
+        
+        function downloadMuhuratExcel() {
+            window.location.href = '/api/intraday/export-muhurat-excel';
+        }
+    
         async function loadIntradayData() {
             try {
                 const res = await fetch('/api/intraday', { cache: 'no-store' });
