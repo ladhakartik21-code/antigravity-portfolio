@@ -1356,7 +1356,7 @@
                 <div class="glass-panel p-4 rounded-xl border border-slate-800">
                     <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Active Deployed</span>
                     <span id="itdDeployedCash" class="text-xl font-black text-purple-400 font-mono mt-1 block">₹0.00</span>
-                    <span id="itdOpenCount" class="text-[11px] text-purple-400/80 mt-0.5 block">0 Active Trades (Max 4)</span>
+                    <span id="itdOpenCount" class="text-[11px] text-purple-400/80 mt-0.5 block">0 Active Trades (Max 10)</span>
                 </div>
                 <div class="glass-panel p-4 rounded-xl border border-slate-800">
                     <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Day's Realized + Unrealized</span>
@@ -1397,11 +1397,18 @@
             <!-- Active Intraday Positions Table -->
             <div class="glass-panel rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
                 <div class="p-4 bg-dark-800/90 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex items-center gap-2.5">
+                    <div class="flex items-center gap-2.5 flex-wrap">
                         <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
                         <h3 class="font-extrabold text-white text-sm uppercase tracking-wider">
                             Active Intraday Positions Book (Live NSE Prices)
                         </h3>
+                        <span class="flex items-center gap-1.5 px-2.5 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-[10px] font-mono font-bold">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            LIVE 3S STREAM
+                        </span>
                     </div>
                     <span class="text-[11px] px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-lg font-mono font-semibold">
                         Cash Equities ONLY • 1:1.5 Min R:R
@@ -1605,6 +1612,8 @@
         let chartPeriod = '1y';
         let chartInterval = '1d';
         let portfolioData = null;
+        let intradayInterval = null;
+        let lastIntradayPrices = {};
         let inactivityTimer = null;
 
         // Auto-lock after 15 mins
@@ -1967,7 +1976,21 @@
                     }, 30000);
                 }
             }
-            if (tabId === 'intraday') { loadIntradayData(); }
+            if (tabId === 'intraday') {
+                loadIntradayData();
+                if (!intradayInterval) {
+                    intradayInterval = setInterval(() => {
+                        if (currentTab === 'intraday') {
+                            loadIntradayData();
+                        }
+                    }, 3000);
+                }
+            } else {
+                if (intradayInterval) {
+                    clearInterval(intradayInterval);
+                    intradayInterval = null;
+                }
+            }
             if (tabId === 'allocator') { loadFundamentalMoat(); }
             if (tabId === 'terminal') {
                 setTimeout(() => {
@@ -2648,7 +2671,7 @@
 
                     if (availElem) availElem.innerText = formatINR(acc.available_cash);
                     if (depElem) depElem.innerText = formatINR(acc.deployed_capital);
-                    if (openCountElem) openCountElem.innerText = `${data.open_positions ? data.open_positions.length : 0} Active Trades (Max 4)`;
+                    if (openCountElem) openCountElem.innerText = `${data.open_positions ? data.open_positions.length : 0} Active Trades (Max 10)`;
 
                     const totalPnl = (acc.realized_pnl || 0) + (acc.unrealized_pnl || 0);
                     const isProf = totalPnl >= 0;
@@ -2707,13 +2730,31 @@
                         data.open_positions.forEach(p => {
                             const isP = (p.unrealized_pnl || 0) >= 0;
                             const prefix = isP ? '+' : '';
+                            const prevPx = lastIntradayPrices[p.symbol];
+                            let tickBadge = '';
+                            let tickFlash = '';
+                            if (prevPx !== undefined) {
+                                if (p.current_price > prevPx) {
+                                    tickBadge = '<span class="inline-block text-[10px] text-emerald-400 font-black ml-1 animate-pulse">▲</span>';
+                                    tickFlash = 'text-emerald-300 bg-emerald-500/10 rounded px-1.5 py-0.5';
+                                } else if (p.current_price < prevPx) {
+                                    tickBadge = '<span class="inline-block text-[10px] text-rose-400 font-black ml-1 animate-pulse">▼</span>';
+                                    tickFlash = 'text-rose-300 bg-rose-500/10 rounded px-1.5 py-0.5';
+                                }
+                            }
+                            lastIntradayPrices[p.symbol] = p.current_price;
+
                             const tr = document.createElement('tr');
                             tr.className = 'hover:bg-slate-800/40 transition border-b border-slate-800/60';
                             tr.innerHTML = `
                                 <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (INTRADAY)</span></td>
                                 <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">${p.name}</div><span class="text-[10px] text-slate-400 font-mono">${p.symbol} • ${p.sector}</span></td>
-                                <td class="p-3.5 text-right text-white font-bold">${formatINR(p.entry_price)}</td>
-                                <td class="p-3.5 text-right ${isP ? 'text-emerald-400' : 'text-slate-200'} font-bold">${formatINR(p.current_price)}</td>
+                                <td class="p-3.5 text-right text-slate-300 font-bold">${formatINR(p.entry_price)}</td>
+                                <td class="p-3.5 text-right font-bold">
+                                    <span class="${tickFlash || (isP ? 'text-emerald-400' : 'text-slate-200')} transition-colors duration-300">
+                                        ${formatINR(p.current_price)} ${tickBadge}
+                                    </span>
+                                </td>
                                 <td class="p-3.5 text-right ${isP ? 'text-emerald-400' : 'text-rose-400'} font-bold font-mono">${prefix}${formatINR(p.unrealized_pnl)} <span class="text-[10px] block ${isP ? 'text-emerald-300' : 'text-rose-300'}">(${prefix}${(p.unrealized_pnl_pct || 0).toFixed(2)}%)</span></td>
                                 <td class="p-3.5 text-right text-slate-300">${p.quantity}</td>
                                 <td class="p-3.5 text-right text-purple-400 font-bold">${formatINR(p.capital_deployed)}</td>
