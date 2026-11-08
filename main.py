@@ -288,11 +288,13 @@ def get_ist_now() -> datetime.datetime:
     return utc + datetime.timedelta(hours=5, minutes=30)
 
 def is_market_open() -> bool:
-    """Checks if current IST time is during NSE market hours (Mon-Fri 09:15 to 15:30 IST)"""
+    """Checks if current IST time is during NSE market hours (Mon-Fri 09:15 to 15:30 IST or Muhurat session)"""
     ist = get_ist_now()
+    t = ist.time()
+    if ist.date() == datetime.date(2026, 11, 8):
+        return datetime.time(14, 20) <= t <= datetime.time(15, 30)
     if ist.weekday() >= 5: # Saturday or Sunday
         return False
-    t = ist.time()
     return datetime.time(9, 15) <= t <= datetime.time(15, 30)
 
 def fetch_nse_price(symbol: str) -> float:
@@ -1276,6 +1278,11 @@ def intraday_toggle_auto():
 @app.post("/api/intraday/simulate-trade")
 def intraday_simulate():
     return intraday_engine.evaluate_intraday_engine(force_simulation=True)
+
+@app.get("/api/intraday/export-muhurat-excel")
+def download_muhurat_excel():
+    excel_path = intraday_engine.export_muhurat_session_to_excel()
+    return FileResponse(excel_path, filename=os.path.basename(excel_path), media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 @app.post("/api/intraday/reset")
 def intraday_reset_acc():
