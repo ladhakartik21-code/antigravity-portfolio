@@ -1376,9 +1376,9 @@ async def background_market_worker():
                 except Exception as eval_err:
                     print(f"[Worker Eval Error]: {eval_err}", flush=True)
                 
-                sleep_sec = 60
+                sleep_sec = 3
             else:
-                sleep_sec = 180
+                sleep_sec = 30
             
             ping_counter += sleep_sec
             if ping_counter >= 600:
