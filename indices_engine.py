@@ -486,10 +486,14 @@ def get_all_indices(force_refresh: bool = False, max_cache_age_seconds: int = 45
         global_results = [_fetch_single_index(d) for d in GLOBAL_INDEX_DEFINITIONS]
 
     ist_now = get_ist_now()
-    market_active = (ist_now.weekday() < 5) and (
-        (ist_now.hour > 9 or (ist_now.hour == 9 and ist_now.minute >= 15)) and
-        (ist_now.hour < 15 or (ist_now.hour == 15 and ist_now.minute <= 30))
-    )
+    t = ist_now.time()
+    if ist_now.date() == datetime.date(2026, 11, 8):
+        market_active = datetime.time(14, 20) <= t <= datetime.time(15, 30)
+    else:
+        market_active = (ist_now.weekday() < 5) and (
+            (ist_now.hour > 9 or (ist_now.hour == 9 and ist_now.minute >= 15)) and
+            (ist_now.hour < 15 or (ist_now.hour == 15 and ist_now.minute <= 30))
+        )
 
     data = {
         "timestamp": ist_now.strftime("%Y-%m-%d %H:%M:%S IST"),
