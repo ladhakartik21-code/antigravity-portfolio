@@ -1354,6 +1354,201 @@ def get_indices_data(refresh: bool = False):
 
 
 # ==============================================================================
+# MASTER ROADMAP & PROJECT TRACKER READER (READ-ONLY EXCEL MIRROR)
+# ==============================================================================
+def resolve_tracker_excel_path() -> str:
+    """Prefers live Output master tracker locally; falls back to bundled APP_DIR copy in cloud."""
+    root_output = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(APP_DIR))), "Output", "AnitGravity Wealth.xlsx")
+    candidates = [
+        root_output,
+        r"C:\Users\KARTIK\Desktop\AntiGravity\Output\AnitGravity Wealth.xlsx",
+        os.path.join(APP_DIR, "AnitGravity Wealth.xlsx"),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return candidates[0]
+
+
+def _cell_str(val) -> str:
+    return "" if val is None else str(val).strip()
+
+
+def read_roadmap_data(response: Response = None) -> Dict[str, Any]:
+    import io
+    if response is not None:
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    tracker_path = resolve_tracker_excel_path()
+    if not os.path.exists(tracker_path):
+        return {"error": f"Tracker workbook not found at {tracker_path}"}
+
+    try:
+        mtime = os.path.getmtime(tracker_path)
+        mod_ist = datetime.datetime.fromtimestamp(mtime, datetime.timezone.utc) + datetime.timedelta(hours=5, minutes=30)
+        with open(tracker_path, "rb") as f:
+            raw_bytes = io.BytesIO(f.read())
+        wb = openpyxl.load_workbook(raw_bytes, data_only=True)
+    except Exception as e:
+        return {"error": f"Unable to read tracker Excel: {e}", "source_path": tracker_path}
+
+    # 1. Parse Journey sheet dynamically (supports any rows user adds/edits/removes in Excel)
+    journey = []
+    if "Journey" in wb.sheetnames:
+        ws_j = wb["Journey"]
+        # Detect header row cleanly (Row 4 in upgraded template, Row 1 in minimal layout)
+        start_row = 5 if _cell_str(ws_j.cell(4, 3).value).lower().startswith("part") else 2
+        auto_sr = 1
+        for r in range(start_row, ws_j.max_row + 1):
+            particulars = _cell_str(ws_j.cell(r, 3).value)
+            if not particulars:
+                # Fallback if 4-col legacy layout was kept
+                legacy_part = _cell_str(ws_j.cell(r, 2).value)
+                if start_row == 2 and legacy_part:
+                    particulars = legacy_part
+                else:
+                    continue
+            sr_raw = ws_j.cell(r, 1).value
+            sr_num = sr_raw if isinstance(sr_raw, (int, float)) else auto_sr
+            if start_row == 2:
+                status_val = _cell_str(ws_j.cell(r, 3).value) or "Planned"
+                journey.append({
+                    "sr_no": int(sr_num),
+                    "workstream": "General",
+                    "particulars": particulars,
+                    "priority": "P1 - High",
+                    "status": status_val,
+                    "date_window": "",
+                    "verified_proof": "",
+                    "remarks": _cell_str(ws_j.cell(r, 4).value),
+                })
+            else:
+                journey.append({
+                    "sr_no": int(sr_num),
+                    "workstream": _cell_str(ws_j.cell(r, 2).value) or "General",
+                    "particulars": particulars,
+                    "priority": _cell_str(ws_j.cell(r, 4).value) or "P1 - High",
+                    "status": _cell_str(ws_j.cell(r, 5).value) or "Planned",
+                    "date_window": _cell_str(ws_j.cell(r, 6).value),
+                    "verified_proof": _cell_str(ws_j.cell(r, 7).value),
+                    "remarks": _cell_str(ws_j.cell(r, 8).value),
+                })
+            auto_sr += 1
+
+    # Compute live scorecard dynamically directly from Journey rows (never stale)
+    counts = {"Done": 0, "In Progress": 0, "Pending User": 0, "Planned": 0, "Continuous": 0}
+    workstreams = {}
+    for item in journey:
+        st = item["status"]
+        matched = False
+        for key in counts:
+            if st.lower() == key.lower():
+                counts[key] += 1
+                matched = True
+                break
+        if not matched:
+            counts["Planned"] += 1
+        ws_name = item["workstream"]
+        workstreams[ws_name] = workstreams.get(ws_name, 0) + 1
+
+    total = len(journey)
+    completion_pct = round((counts["Done"] / total * 100.0), 1) if total > 0 else 0.0
+
+    # 2. Parse Executive Summary Portfolio & CAGR Bridge (Rows 15..19)
+    cagr_bridge = []
+    if "Executive Summary" in wb.sheetnames:
+        ws_e = wb["Executive Summary"]
+        for r in range(15, min(20, ws_e.max_row + 1)):
+            pillar = _cell_str(ws_e.cell(r, 1).value)
+            if pillar:
+                cagr_bridge.append({
+                    "pillar": pillar,
+                    "cost": ws_e.cell(r, 2).value,
+                    "current_value": ws_e.cell(r, 3).value,
+                    "pnl": ws_e.cell(r, 4).value,
+                    "role_or_return": ws_e.cell(r, 5).value,
+                })
+
+    # 3. Parse Validation & Lessons dynamically
+    validations = []
+    if "Validation & Lessons" in wb.sheetnames:
+        ws_v = wb["Validation & Lessons"]
+        for r in range(5, ws_v.max_row + 1):
+            aid = _cell_str(ws_v.cell(r, 1).value)
+            exp = _cell_str(ws_v.cell(r, 2).value)
+            if not aid and not exp:
+                continue
+            validations.append({
+                "audit_id": aid,
+                "experiment": exp,
+                "date_regime": _cell_str(ws_v.cell(r, 3).value),
+                "sample_rules": _cell_str(ws_v.cell(r, 4).value),
+                "measured_outcome": _cell_str(ws_v.cell(r, 5).value),
+                "finding": _cell_str(ws_v.cell(r, 6).value),
+                "rule_upgrade": _cell_str(ws_v.cell(r, 7).value),
+            })
+
+    # 4. Parse Upcoming Pipeline dynamically
+    staged_datasets = []
+    breakout_blueprints = []
+    if "Upcoming Pipeline" in wb.sheetnames:
+        ws_p = wb["Upcoming Pipeline"]
+        mode = "staged"
+        for r in range(6, ws_p.max_row + 1):
+            c1 = _cell_str(ws_p.cell(r, 1).value)
+            c2 = _cell_str(ws_p.cell(r, 2).value)
+            if c1.startswith("PART B") or c1 == "Blueprint Ref":
+                mode = "blueprint"
+                continue
+            if not c1 and not c2:
+                continue
+            if mode == "staged":
+                staged_datasets.append({
+                    "item_id": c1,
+                    "name": c2,
+                    "location": _cell_str(ws_p.cell(r, 3).value),
+                    "category": _cell_str(ws_p.cell(r, 4).value),
+                    "status": _cell_str(ws_p.cell(r, 5).value),
+                    "integration": _cell_str(ws_p.cell(r, 6).value),
+                })
+            else:
+                breakout_blueprints.append({
+                    "ref": c1,
+                    "prototype": c2,
+                    "base_structure": _cell_str(ws_p.cell(r, 3).value),
+                    "trigger_rule": _cell_str(ws_p.cell(r, 4).value),
+                    "allocation_rule": _cell_str(ws_p.cell(r, 5).value),
+                    "risk_checklist": _cell_str(ws_p.cell(r, 6).value),
+                })
+
+    return {
+        "read_only": True,
+        "source_file": tracker_path,
+        "source_label": os.path.basename(tracker_path),
+        "last_modified_ist": mod_ist.strftime("%d %b %Y, %I:%M %p IST"),
+        "scorecard": {
+            "total": total,
+            "done": counts["Done"],
+            "in_progress": counts["In Progress"],
+            "pending_user": counts["Pending User"],
+            "planned": counts["Planned"],
+            "continuous": counts["Continuous"],
+            "completion_pct": completion_pct,
+            "workstreams": workstreams,
+        },
+        "cagr_bridge": cagr_bridge,
+        "journey": journey,
+        "validations": validations,
+        "staged_datasets": staged_datasets,
+        "breakout_blueprints": breakout_blueprints,
+    }
+
+
+@app.get("/api/roadmap")
+def get_roadmap(response: Response):
+    return read_roadmap_data(response)
+
+
+# ==============================================================================
 # AUTONOMOUS INTRADAY BACKGROUND WORKER & RENDER KEEP-ALIVE
 # ==============================================================================
 import asyncio
