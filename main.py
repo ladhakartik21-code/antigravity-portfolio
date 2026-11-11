@@ -322,12 +322,12 @@ def fetch_nse_price(symbol: str) -> float:
 def fetch_amfi_nav(scheme_code: int) -> tuple[float, str]:
     cache_key = f"mf_{scheme_code}"
     now = time.time()
-    if cache_key in CACHE["prices"] and (now - CACHE["prices"][cache_key]["time"] < 300):
+    if cache_key in CACHE["prices"] and (now - CACHE["prices"][cache_key]["time"] < 14400):
         return CACHE["prices"][cache_key]["price"], CACHE["prices"][cache_key]["date"]
 
     try:
         url = f"https://api.mfapi.in/mf/{scheme_code}"
-        res = requests.get(url, timeout=5).json()
+        res = requests.get(url, timeout=12).json()
         data = res.get("data", [])
         if data:
             nav = round(float(data[0]["nav"]), 4)
@@ -340,11 +340,23 @@ def fetch_amfi_nav(scheme_code: int) -> tuple[float, str]:
     return None, ""
 
 def read_portfolio_data():
+    from concurrent.futures import ThreadPoolExecutor
     config = load_config()
     mappings = config.get("asset_mappings", {})
     stock_map = mappings.get("initial_core_stocks", {})
     etf_map = mappings.get("etfs", {})
     mf_map = mappings.get("mutual_funds", {})
+
+    # Concurrent pre-warm of uncached symbols & MF schemes so sequential table loop is instant
+    nse_syms = [v.get("nse_ticker") for v in list(stock_map.values()) + list(etf_map.values()) if v.get("nse_ticker")]
+    mf_codes = [v.get("amfi_code") for v in mf_map.values() if v.get("amfi_code")]
+    with ThreadPoolExecutor(max_workers=10) as pool:
+        futs = [pool.submit(fetch_nse_price, s) for s in nse_syms] + [pool.submit(fetch_amfi_nav, c) for c in mf_codes]
+        for fut in futs:
+            try:
+                fut.result(timeout=14)
+            except Exception:
+                pass
 
     wb = openpyxl.load_workbook(EXCEL_PATH, data_only=True)
 
@@ -1368,7 +1380,7 @@ async def background_market_worker():
             
             if is_market:
                 try:
-                    res = intraday_engine.evaluate_intraday_engine(force_simulation=False)
+                    res = await asyncio.to_thread(intraday_engine.evaluate_intraday_engine, False)
                     open_cnt = len(res.get("open_positions", []))
                     closed_cnt = len(res.get("closed_trades", []))
                     pnl = res.get("account", {}).get("realized_pnl", 0.0)
@@ -1376,9 +1388,9 @@ async def background_market_worker():
                 except Exception as eval_err:
                     print(f"[Worker Eval Error]: {eval_err}", flush=True)
                 
-                sleep_sec = 3
+                sleep_sec = 15
             else:
-                sleep_sec = 30
+                sleep_sec = 150
             
             ping_counter += sleep_sec
             if ping_counter >= 600:
@@ -1399,6 +1411,7 @@ async def background_market_worker():
 
 @app.on_event("startup")
 async def start_background_tasks():
+    asyncio.create_task(asyncio.to_thread(read_portfolio_data))
     asyncio.create_task(background_market_worker())
 
 # Serve Static Frontend Files
