@@ -9,4 +9,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DEPLOY_SYNC_ID
-        value: "v2.11-readonly-master-tracker"
+        value: "v2.12-clean-3folder-architecture"
