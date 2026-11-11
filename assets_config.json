@@ -14,11 +14,12 @@
       "mandate": "Hold through normal cycles for 15-20 years; exit ONLY on severe existential crises (Covid/War macro shocks) or company thesis destruction."
     },
     "paths": {
-      "holdings_excel": "Investment Made.xlsx",
-      "requirements_excel": "Data source and requirement.xlsx",
-      "work_dir": "Anti Work",
-      "backups_dir": "Anti Work/backups",
-      "testing_db": "Anti Work/testing_lab.db"
+      "holdings_excel": "1. Data given by Kartik/Portfolio Data/Investment Made.xlsx",
+      "requirements_excel": "1. Data given by Kartik/Portfolio Data/Data source and requirement.xlsx",
+      "tracker_excel": "2. Output Generated/AnitGravity Wealth.xlsx",
+      "work_dir": "3. Data saved by Antigravity for Website",
+      "backups_dir": "3. Data saved by Antigravity for Website/backups",
+      "testing_db": "3. Data saved by Antigravity for Website/app/testing_lab.json"
     }
   },
   "investment_schedule": {
@@ -159,5 +160,20 @@
       "HDFC Mid Cap": { "amfi_code": 118989, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Mid Cap" },
       "SBI Contra": { "amfi_code": 119835, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Contra / Value" }
     }
-  }
+  },
+  "module_registry": [
+    { "id": "dashboard", "title": "Overview & Trajectory", "icon": "layout-dashboard", "accent": "blue", "status": "Pending Review", "description": "Core portfolio KPIs, Allocation Drift Donut & ₹10–15 Cr 15-Year compounding curve." },
+    { "id": "holdings", "title": "Holdings & Markets", "icon": "wallet", "accent": "emerald", "status": "Pending Review", "description": "Live valuation across Stocks (3), ETFs (3) & Mutual Funds (5 Direct Growth schemes)." },
+    { "id": "indices", "title": "Index Matrix (32)", "icon": "line-chart", "accent": "cyan", "status": "Pending Review", "description": "Real-time 4×4 NSE & Global market matrices with interactive multi-timeframe candlesticks." },
+    { "id": "terminal", "title": "S&R Terminal", "icon": "candlestick-chart", "accent": "indigo", "status": "Pending Review", "description": "TradingView chart workspace overlaid with S1/S2 Demand & R1/R2 Supply levels." },
+    { "id": "roadmap", "title": "Master Tracker", "icon": "clipboard-check", "accent": "emerald", "status": "Pending Review", "description": "Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge." },
+    { "id": "allocator", "title": "Best Monthly Buy", "icon": "target", "accent": "violet", "status": "Pending Review", "description": "Fundamental Moat scores, DCF Margin of Safety & Bloomberg Precious Metals Thesis." },
+    { "id": "goal", "title": "₹10–15 Cr Goal", "icon": "milestone", "accent": "sky", "status": "Pending Review", "description": "Monthly SIP step-up compounding calculator tracking your 14%–16% CAGR path." },
+    { "id": "testing", "title": "1-Week Testing Lab", "icon": "flask-conical", "accent": "amber", "status": "Live Lab", "description": "5-Year walk-forward S&R backtest (90.6% accuracy) & forward test bench." },
+    { "id": "intraday", "title": "Intraday AI Lab", "icon": "zap", "accent": "amber", "status": "Live Lab", "description": "High-frequency S&R proving lab with 3s stream & auto EOD Test Analysis exports." },
+    { "id": "planned-breakout", "title": "Breakout Scanner", "icon": "radar", "accent": "slate", "status": "Planned", "target_tab": "roadmap", "subtab": "pipeline", "description": "Multi-Year Stage-1 to R1 breakout finder (Sterlite Blueprint) for 14%–16% alpha." },
+    { "id": "planned-mf", "title": "MF Macro Flows", "icon": "pie-chart", "accent": "slate", "status": "Pending User", "target_tab": "roadmap", "subtab": "pipeline", "description": "Equity, Debt, Passive ETF & SIF AUM analytics from Mutual Fund Data folder." },
+    { "id": "planned-research", "title": "Research Reports", "icon": "file-text", "accent": "slate", "status": "Pending User", "target_tab": "roadmap", "subtab": "pipeline", "description": "Institutional research PDF ingestion & Moat consensus cross-verification." },
+    { "id": "planned-allocator", "title": "Monthly Tranche Rule", "icon": "calendar-check", "accent": "slate", "status": "Planned", "target_tab": "roadmap", "subtab": "journey", "description": "December fresh capital allocation signals gated strictly by S1/S2 & MOS triggers." }
+  ]
 }
