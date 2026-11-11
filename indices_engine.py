@@ -14,9 +14,9 @@ import yfinance as yf
 
 # Indian Standard Time Helper
 def get_ist_now():
-    utc_now = datetime.timezone.utc
+    utc_now = datetime.datetime.now(datetime.timezone.utc)
     ist_tz = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
-    return datetime.datetime.now(ist_tz)
+    return utc_now.astimezone(ist_tz)
 
 INDIAN_INDEX_DEFINITIONS = [
     {
