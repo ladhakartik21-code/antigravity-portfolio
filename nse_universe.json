@@ -1,0 +1,3904 @@
+{
+  "generated_from": "niftyindices.com official constituent lists",
+  "total_stocks": 350,
+  "sensex_tagged": 33,
+  "stocks": [
+    {
+      "symbol": "ABB.NS",
+      "ticker": "ABB",
+      "name": "ABB India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE117A01022",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ADANIENSOL.NS",
+      "ticker": "ADANIENSOL",
+      "name": "Adani Energy Solutions Ltd.",
+      "sector": "Power",
+      "isin": "INE931S01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ADANIENT.NS",
+      "ticker": "ADANIENT",
+      "name": "Adani Enterprises Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE423A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "ADANIGREEN.NS",
+      "ticker": "ADANIGREEN",
+      "name": "Adani Green Energy Ltd.",
+      "sector": "Power",
+      "isin": "INE364U01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ADANIPORTS.NS",
+      "ticker": "ADANIPORTS",
+      "name": "Adani Ports and Special Economic Zone Ltd.",
+      "sector": "Services",
+      "isin": "INE742F01042",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "ADANIPOWER.NS",
+      "ticker": "ADANIPOWER",
+      "name": "Adani Power Ltd.",
+      "sector": "Power",
+      "isin": "INE814H01029",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "AMBUJACEM.NS",
+      "ticker": "AMBUJACEM",
+      "name": "Ambuja Cements Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE079A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "APOLLOHOSP.NS",
+      "ticker": "APOLLOHOSP",
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE437A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "ASIANPAINT.NS",
+      "ticker": "ASIANPAINT",
+      "name": "Asian Paints Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE021A01026",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "AUBANK.NS",
+      "ticker": "AUBANK",
+      "name": "AU Small Finance Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE949L01017",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "BANKNIFTY",
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "AXISBANK.NS",
+      "ticker": "AXISBANK",
+      "name": "Axis Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE238A01034",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "BANKNIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "BAJAJ-AUTO.NS",
+      "ticker": "BAJAJ-AUTO",
+      "name": "Bajaj Auto Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE917I01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "BAJAJFINSV.NS",
+      "ticker": "BAJAJFINSV",
+      "name": "Bajaj Finserv Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE918I01026",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "BAJAJHLDNG.NS",
+      "ticker": "BAJAJHLDNG",
+      "name": "Bajaj Holdings & Investment Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE118A01012",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "BAJFINANCE.NS",
+      "ticker": "BAJFINANCE",
+      "name": "Bajaj Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE296A01032",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "BANKBARODA.NS",
+      "ticker": "BANKBARODA",
+      "name": "Bank of Baroda",
+      "sector": "Financial Services",
+      "isin": "INE028A01039",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50",
+        "BANKNIFTY"
+      ]
+    },
+    {
+      "symbol": "BEL.NS",
+      "ticker": "BEL",
+      "name": "Bharat Electronics Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE263A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "BHARTIARTL.NS",
+      "ticker": "BHARTIARTL",
+      "name": "Bharti Airtel Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE397D01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "BOSCHLTD.NS",
+      "ticker": "BOSCHLTD",
+      "name": "Bosch Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE323A01026",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "BPCL.NS",
+      "ticker": "BPCL",
+      "name": "Bharat Petroleum Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE029A01011",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "BRITANNIA.NS",
+      "ticker": "BRITANNIA",
+      "name": "Britannia Industries Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE216A01030",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "BSE.NS",
+      "ticker": "BSE",
+      "name": "BSE Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE118H01025",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "CANBK.NS",
+      "ticker": "CANBK",
+      "name": "Canara Bank",
+      "sector": "Financial Services",
+      "isin": "INE476A01022",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50",
+        "BANKNIFTY"
+      ]
+    },
+    {
+      "symbol": "CGPOWER.NS",
+      "ticker": "CGPOWER",
+      "name": "CG Power and Industrial Solutions Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE067A01029",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "CHOLAFIN.NS",
+      "ticker": "CHOLAFIN",
+      "name": "Cholamandalam Investment and Finance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE121A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "CIPLA.NS",
+      "ticker": "CIPLA",
+      "name": "Cipla Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE059A01026",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "COALINDIA.NS",
+      "ticker": "COALINDIA",
+      "name": "Coal India Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE522F01014",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "CUMMINSIND.NS",
+      "ticker": "CUMMINSIND",
+      "name": "Cummins India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE298A01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "DIVISLAB.NS",
+      "ticker": "DIVISLAB",
+      "name": "Divi's Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE361B01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "DLF.NS",
+      "ticker": "DLF",
+      "name": "DLF Ltd.",
+      "sector": "Realty",
+      "isin": "INE271C01023",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "DMART.NS",
+      "ticker": "DMART",
+      "name": "Avenue Supermarts Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE192R01011",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "DRREDDY.NS",
+      "ticker": "DRREDDY",
+      "name": "Dr. Reddy's Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE089A01031",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "EICHERMOT.NS",
+      "ticker": "EICHERMOT",
+      "name": "Eicher Motors Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE066A01021",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "ENRIN.NS",
+      "ticker": "ENRIN",
+      "name": "Siemens Energy India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE1NPP01017",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ETERNAL.NS",
+      "ticker": "ETERNAL",
+      "name": "Eternal Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE758T01015",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "FEDERALBNK.NS",
+      "ticker": "FEDERALBNK",
+      "name": "Federal Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE171A01029",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "BANKNIFTY",
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GAIL.NS",
+      "ticker": "GAIL",
+      "name": "GAIL (India) Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE129A01019",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "GODREJCP.NS",
+      "ticker": "GODREJCP",
+      "name": "Godrej Consumer Products Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE102D01028",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "GRASIM.NS",
+      "ticker": "GRASIM",
+      "name": "Grasim Industries Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE047A01021",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "HAL.NS",
+      "ticker": "HAL",
+      "name": "Hindustan Aeronautics Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE066F01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "HCLTECH.NS",
+      "ticker": "HCLTECH",
+      "name": "HCL Technologies Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE860A01027",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "HDFCAMC.NS",
+      "ticker": "HDFCAMC",
+      "name": "HDFC Asset Management Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE127D01025",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "HDFCBANK.NS",
+      "ticker": "HDFCBANK",
+      "name": "HDFC Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE040A01034",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "BANKNIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "HDFCLIFE.NS",
+      "ticker": "HDFCLIFE",
+      "name": "HDFC Life Insurance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE795G01014",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "HINDALCO.NS",
+      "ticker": "HINDALCO",
+      "name": "Hindalco Industries Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE038A01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "HINDUNILVR.NS",
+      "ticker": "HINDUNILVR",
+      "name": "Hindustan Unilever Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE030A01027",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "HINDZINC.NS",
+      "ticker": "HINDZINC",
+      "name": "Hindustan Zinc Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE267A01025",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "HYUNDAI.NS",
+      "ticker": "HYUNDAI",
+      "name": "Hyundai Motor India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE0V6F01027",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ICICIBANK.NS",
+      "ticker": "ICICIBANK",
+      "name": "ICICI Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE090A01021",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "BANKNIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "IDEA.NS",
+      "ticker": "IDEA",
+      "name": "Vodafone Idea Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE669E01016",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "IDFCFIRSTB.NS",
+      "ticker": "IDFCFIRSTB",
+      "name": "IDFC First Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE092T01019",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "BANKNIFTY",
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "INDIGO.NS",
+      "ticker": "INDIGO",
+      "name": "InterGlobe Aviation Ltd.",
+      "sector": "Services",
+      "isin": "INE646L01027",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "INDUSINDBK.NS",
+      "ticker": "INDUSINDBK",
+      "name": "IndusInd Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE095A01012",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "BANKNIFTY",
+        "MIDCAP150",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "INFY.NS",
+      "ticker": "INFY",
+      "name": "Infosys Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE009A01021",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "IOC.NS",
+      "ticker": "IOC",
+      "name": "Indian Oil Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE242A01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "IRFC.NS",
+      "ticker": "IRFC",
+      "name": "Indian Railway Finance Corporation Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE053F01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ITC.NS",
+      "ticker": "ITC",
+      "name": "ITC Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE154A01025",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "JINDALSTEL.NS",
+      "ticker": "JINDALSTEL",
+      "name": "Jindal Steel Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE749A01030",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "JIOFIN.NS",
+      "ticker": "JIOFIN",
+      "name": "Jio Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE758E01017",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "JSWSTEEL.NS",
+      "ticker": "JSWSTEEL",
+      "name": "JSW Steel Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE019A01038",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "KOTAKBANK.NS",
+      "ticker": "KOTAKBANK",
+      "name": "Kotak Mahindra Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE237A01036",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "BANKNIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "LT.NS",
+      "ticker": "LT",
+      "name": "Larsen & Toubro Ltd.",
+      "sector": "Construction",
+      "isin": "INE018A01030",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "LTM.NS",
+      "ticker": "LTM",
+      "name": "LTM Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE214T01019",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "M&M.NS",
+      "ticker": "M&M",
+      "name": "Mahindra & Mahindra Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE101A01026",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "MARUTI.NS",
+      "ticker": "MARUTI",
+      "name": "Maruti Suzuki India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE585B01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "MAXHEALTH.NS",
+      "ticker": "MAXHEALTH",
+      "name": "Max Healthcare Institute Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE027H01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "MAZDOCK.NS",
+      "ticker": "MAZDOCK",
+      "name": "Mazagoan Dock Shipbuilders Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE249Z01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "MOTHERSON.NS",
+      "ticker": "MOTHERSON",
+      "name": "Samvardhana Motherson International Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE775A01035",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "MUTHOOTFIN.NS",
+      "ticker": "MUTHOOTFIN",
+      "name": "Muthoot Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE414G01012",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "NESTLEIND.NS",
+      "ticker": "NESTLEIND",
+      "name": "Nestle India Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE239A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "NTPC.NS",
+      "ticker": "NTPC",
+      "name": "NTPC Ltd.",
+      "sector": "Power",
+      "isin": "INE733E01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "ONGC.NS",
+      "ticker": "ONGC",
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE213A01029",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "PFC.NS",
+      "ticker": "PFC",
+      "name": "Power Finance Corporation Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE134E01011",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "PIDILITIND.NS",
+      "ticker": "PIDILITIND",
+      "name": "Pidilite Industries Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE318A01026",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "PNB.NS",
+      "ticker": "PNB",
+      "name": "Punjab National Bank",
+      "sector": "Financial Services",
+      "isin": "INE160A01022",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50",
+        "BANKNIFTY"
+      ]
+    },
+    {
+      "symbol": "POLYCAB.NS",
+      "ticker": "POLYCAB",
+      "name": "Polycab India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE455K01017",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "POWERGRID.NS",
+      "ticker": "POWERGRID",
+      "name": "Power Grid Corporation of India Ltd.",
+      "sector": "Power",
+      "isin": "INE752E01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "POWERINDIA.NS",
+      "ticker": "POWERINDIA",
+      "name": "Hitachi Energy India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE07Y701011",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "RELIANCE.NS",
+      "ticker": "RELIANCE",
+      "name": "Reliance Industries Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE002A01018",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "SBILIFE.NS",
+      "ticker": "SBILIFE",
+      "name": "SBI Life Insurance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE123W01016",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "SBIN.NS",
+      "ticker": "SBIN",
+      "name": "State Bank of India",
+      "sector": "Financial Services",
+      "isin": "INE062A01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "BANKNIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "SHRIRAMFIN.NS",
+      "ticker": "SHRIRAMFIN",
+      "name": "Shriram Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE721A01047",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "SIEMENS.NS",
+      "ticker": "SIEMENS",
+      "name": "Siemens Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE003A01024",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "SOLARINDS.NS",
+      "ticker": "SOLARINDS",
+      "name": "Solar Industries India Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE343H01029",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "SUNPHARMA.NS",
+      "ticker": "SUNPHARMA",
+      "name": "Sun Pharmaceutical Industries Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE044A01036",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TATACAP.NS",
+      "ticker": "TATACAP",
+      "name": "Tata Capital Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE976I01016",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "TATACONSUM.NS",
+      "ticker": "TATACONSUM",
+      "name": "Tata Consumer Products Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE192A01025",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50"
+      ]
+    },
+    {
+      "symbol": "TATAPOWER.NS",
+      "ticker": "TATAPOWER",
+      "name": "Tata Power Co. Ltd.",
+      "sector": "Power",
+      "isin": "INE245A01021",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "TATASTEEL.NS",
+      "ticker": "TATASTEEL",
+      "name": "Tata Steel Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE081A01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TCS.NS",
+      "ticker": "TCS",
+      "name": "Tata Consultancy Services Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE467B01029",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TECHM.NS",
+      "ticker": "TECHM",
+      "name": "Tech Mahindra Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE669C01036",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TITAN.NS",
+      "ticker": "TITAN",
+      "name": "Titan Company Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE280A01028",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TMCV.NS",
+      "ticker": "TMCV",
+      "name": "Tata Motors Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE1TAE01010",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "TMPV.NS",
+      "ticker": "TMPV",
+      "name": "Tata Motors Passenger Vehicles Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE155A01022",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TORNTPHARM.NS",
+      "ticker": "TORNTPHARM",
+      "name": "Torrent Pharmaceuticals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE685A01028",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "TRENT.NS",
+      "ticker": "TRENT",
+      "name": "Trent Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE849A01020",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "TVSMOTOR.NS",
+      "ticker": "TVSMOTOR",
+      "name": "TVS Motor Company Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE494B01023",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "ULTRACEMCO.NS",
+      "ticker": "ULTRACEMCO",
+      "name": "UltraTech Cement Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE481G01011",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NIFTY50",
+        "SENSEX"
+      ]
+    },
+    {
+      "symbol": "UNIONBANK.NS",
+      "ticker": "UNIONBANK",
+      "name": "Union Bank of India",
+      "sector": "Financial Services",
+      "isin": "INE692A01016",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50",
+        "BANKNIFTY"
+      ]
+    },
+    {
+      "symbol": "VAML.NS",
+      "ticker": "VAML",
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE1CDF01017",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "VBL.NS",
+      "ticker": "VBL",
+      "name": "Varun Beverages Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE200M01039",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "VEDL.NS",
+      "ticker": "VEDL",
+      "name": "Vedanta Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE205A01025",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "WIPRO.NS",
+      "ticker": "WIPRO",
+      "name": "Wipro Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE075A01022",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "YESBANK.NS",
+      "ticker": "YESBANK",
+      "name": "Yes Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE528G01035",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "BANKNIFTY",
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ZYDUSLIFE.NS",
+      "ticker": "ZYDUSLIFE",
+      "name": "Zydus Lifesciences Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE010B01027",
+      "cap_tier": "Large Cap",
+      "indices": [
+        "NEXT50"
+      ]
+    },
+    {
+      "symbol": "360ONE.NS",
+      "ticker": "360ONE",
+      "name": "360 ONE WAM Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE466L01038",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ABBOTINDIA.NS",
+      "ticker": "ABBOTINDIA",
+      "name": "Abbott India Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE358A01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ABCAPITAL.NS",
+      "ticker": "ABCAPITAL",
+      "name": "Aditya Birla Capital Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE674K01013",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "AIAENG.NS",
+      "ticker": "AIAENG",
+      "name": "AIA Engineering Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE212H01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "AIIL.NS",
+      "ticker": "AIIL",
+      "name": "Authum Investment & Infrastructure Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE206F01022",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "AJANTPHARM.NS",
+      "ticker": "AJANTPHARM",
+      "name": "Ajanta Pharmaceuticals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE031B01049",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ALKEM.NS",
+      "ticker": "ALKEM",
+      "name": "Alkem Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE540L01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ANTHEM.NS",
+      "ticker": "ANTHEM",
+      "name": "Anthem Biosciences Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE0CZ201020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "APARINDS.NS",
+      "ticker": "APARINDS",
+      "name": "Apar Industries Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE372A01015",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "APLAPOLLO.NS",
+      "ticker": "APLAPOLLO",
+      "name": "APL Apollo Tubes Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE702C01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ASHOKLEY.NS",
+      "ticker": "ASHOKLEY",
+      "name": "Ashok Leyland Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE208A01029",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ASTERDM.NS",
+      "ticker": "ASTERDM",
+      "name": "Aster DM Quality Care Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE914M01019",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ASTRAL.NS",
+      "ticker": "ASTRAL",
+      "name": "Astral Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE006I01046",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ATGL.NS",
+      "ticker": "ATGL",
+      "name": "Adani Total Gas Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE399L01023",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "AUROPHARMA.NS",
+      "ticker": "AUROPHARMA",
+      "name": "Aurobindo Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE406A01037",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BAJAJHFL.NS",
+      "ticker": "BAJAJHFL",
+      "name": "Bajaj Housing Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE377Y01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BALKRISIND.NS",
+      "ticker": "BALKRISIND",
+      "name": "Balkrishna Industries Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE787D01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BANKINDIA.NS",
+      "ticker": "BANKINDIA",
+      "name": "Bank of India",
+      "sector": "Financial Services",
+      "isin": "INE084A01016",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BDL.NS",
+      "ticker": "BDL",
+      "name": "Bharat Dynamics Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE171Z01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BERGEPAINT.NS",
+      "ticker": "BERGEPAINT",
+      "name": "Berger Paints India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE463A01038",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BHARATFORG.NS",
+      "ticker": "BHARATFORG",
+      "name": "Bharat Forge Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE465A01025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BHARTIHEXA.NS",
+      "ticker": "BHARTIHEXA",
+      "name": "Bharti Hexacom Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE343G01021",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BHEL.NS",
+      "ticker": "BHEL",
+      "name": "Bharat Heavy Electricals Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE257A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BIOCON.NS",
+      "ticker": "BIOCON",
+      "name": "Biocon Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE376G01013",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "BLUESTARCO.NS",
+      "ticker": "BLUESTARCO",
+      "name": "Blue Star Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE472A01039",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "COCHINSHIP.NS",
+      "ticker": "COCHINSHIP",
+      "name": "Cochin Shipyard Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE704P01025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "COFORGE.NS",
+      "ticker": "COFORGE",
+      "name": "Coforge Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE591G01025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "COLPAL.NS",
+      "ticker": "COLPAL",
+      "name": "Colgate Palmolive (India) Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE259A01022",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "CONCOR.NS",
+      "ticker": "CONCOR",
+      "name": "Container Corporation of India Ltd.",
+      "sector": "Services",
+      "isin": "INE111A01025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "COROMANDEL.NS",
+      "ticker": "COROMANDEL",
+      "name": "Coromandel International Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE169A01031",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "CRISIL.NS",
+      "ticker": "CRISIL",
+      "name": "CRISIL Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE007A01025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "DABUR.NS",
+      "ticker": "DABUR",
+      "name": "Dabur India Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE016A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "DALBHARAT.NS",
+      "ticker": "DALBHARAT",
+      "name": "Dalmia Bharat Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE00R701025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "DIXON.NS",
+      "ticker": "DIXON",
+      "name": "Dixon Technologies (India) Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE935N01020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "EMBASSY.NS",
+      "ticker": "EMBASSY",
+      "name": "EMBASSY OFFICE PARKS REIT",
+      "sector": "Realty",
+      "isin": "INE041025011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ENDURANCE.NS",
+      "ticker": "ENDURANCE",
+      "name": "Endurance Technologies Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE913H01037",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ESCORTS.NS",
+      "ticker": "ESCORTS",
+      "name": "Escorts Kubota Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE042A01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "EXIDEIND.NS",
+      "ticker": "EXIDEIND",
+      "name": "Exide Industries Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE302A01020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "FACT.NS",
+      "ticker": "FACT",
+      "name": "Fertilisers and Chemicals Travancore Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE188A01015",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "FLUOROCHEM.NS",
+      "ticker": "FLUOROCHEM",
+      "name": "Gujarat Fluorochemicals Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE09N301011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "FORTIS.NS",
+      "ticker": "FORTIS",
+      "name": "Fortis Healthcare Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE061F01013",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GICRE.NS",
+      "ticker": "GICRE",
+      "name": "General Insurance Corporation of India",
+      "sector": "Financial Services",
+      "isin": "INE481Y01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GLAXO.NS",
+      "ticker": "GLAXO",
+      "name": "Glaxosmithkline Pharmaceuticals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE159A01016",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GLENMARK.NS",
+      "ticker": "GLENMARK",
+      "name": "Glenmark Pharmaceuticals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE935A01035",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GMRAIRPORT.NS",
+      "ticker": "GMRAIRPORT",
+      "name": "GMR Airports Ltd.",
+      "sector": "Services",
+      "isin": "INE776C01039",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GODFRYPHLP.NS",
+      "ticker": "GODFRYPHLP",
+      "name": "Godfrey Phillips India Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE260B01028",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GODREJIND.NS",
+      "ticker": "GODREJIND",
+      "name": "Godrej Industries Ltd.",
+      "sector": "Diversified",
+      "isin": "INE233A01035",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GODREJPROP.NS",
+      "ticker": "GODREJPROP",
+      "name": "Godrej Properties Ltd.",
+      "sector": "Realty",
+      "isin": "INE484J01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GROWW.NS",
+      "ticker": "GROWW",
+      "name": "Billionbrains Garage Ventures Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE0HOQ01053",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "GVT&D.NS",
+      "ticker": "GVT&D",
+      "name": "GE Vernova T&D India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE200A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HAVELLS.NS",
+      "ticker": "HAVELLS",
+      "name": "Havells India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE176B01034",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HDBFS.NS",
+      "ticker": "HDBFS",
+      "name": "HDB Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE756I01012",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HEROMOTOCO.NS",
+      "ticker": "HEROMOTOCO",
+      "name": "Hero MotoCorp Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE158A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HEXT.NS",
+      "ticker": "HEXT",
+      "name": "Hexaware Technologies Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE093A01041",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HINDCOPPER.NS",
+      "ticker": "HINDCOPPER",
+      "name": "Hindustan Copper Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE531E01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HINDPETRO.NS",
+      "ticker": "HINDPETRO",
+      "name": "Hindustan Petroleum Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE094A01015",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "HUDCO.NS",
+      "ticker": "HUDCO",
+      "name": "Housing & Urban Development Corporation Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE031A01017",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ICICIAMC.NS",
+      "ticker": "ICICIAMC",
+      "name": "ICICI Prudential Asset Management Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE346A01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ICICIGI.NS",
+      "ticker": "ICICIGI",
+      "name": "ICICI Lombard General Insurance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE765G01017",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ICICILIFE.NS",
+      "ticker": "ICICILIFE",
+      "name": "ICICI Life Insurance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE726G01019",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "INDHOTEL.NS",
+      "ticker": "INDHOTEL",
+      "name": "Indian Hotels Co. Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE053A01029",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "INDIANB.NS",
+      "ticker": "INDIANB",
+      "name": "Indian Bank",
+      "sector": "Financial Services",
+      "isin": "INE562A01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "INDUSTOWER.NS",
+      "ticker": "INDUSTOWER",
+      "name": "Indus Towers Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE121J01017",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "IOB.NS",
+      "ticker": "IOB",
+      "name": "Indian Overseas Bank",
+      "sector": "Financial Services",
+      "isin": "INE565A01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "IPCALAB.NS",
+      "ticker": "IPCALAB",
+      "name": "Ipca Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE571A01038",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "IRCTC.NS",
+      "ticker": "IRCTC",
+      "name": "Indian Railway Catering And Tourism Corporation Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE335Y01020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "IREDA.NS",
+      "ticker": "IREDA",
+      "name": "Indian Renewable Energy Development Agency Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE202E01016",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "ITCHOTELS.NS",
+      "ticker": "ITCHOTELS",
+      "name": "ITC Hotels Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE379A01028",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "JKCEMENT.NS",
+      "ticker": "JKCEMENT",
+      "name": "J.K. Cement Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE823G01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "JSL.NS",
+      "ticker": "JSL",
+      "name": "Jindal Stainless Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE220G01021",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "JSWENERGY.NS",
+      "ticker": "JSWENERGY",
+      "name": "JSW Energy Ltd.",
+      "sector": "Power",
+      "isin": "INE121E01018",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "JSWINFRA.NS",
+      "ticker": "JSWINFRA",
+      "name": "JSW Infrastructure Ltd.",
+      "sector": "Services",
+      "isin": "INE880J01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "JUBLFOOD.NS",
+      "ticker": "JUBLFOOD",
+      "name": "Jubilant Foodworks Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE797F01020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "KALYANKJIL.NS",
+      "ticker": "KALYANKJIL",
+      "name": "Kalyan Jewellers India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE303R01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "KEI.NS",
+      "ticker": "KEI",
+      "name": "KEI Industries Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE878B01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "KPRMILL.NS",
+      "ticker": "KPRMILL",
+      "name": "K.P.R. Mill Ltd.",
+      "sector": "Textiles",
+      "isin": "INE930H01031",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LAURUSLABS.NS",
+      "ticker": "LAURUSLABS",
+      "name": "Laurus Labs Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE947Q01028",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LENSKART.NS",
+      "ticker": "LENSKART",
+      "name": "Lenskart Solutions Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE956O01016",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LGEINDIA.NS",
+      "ticker": "LGEINDIA",
+      "name": "LG Electronics India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE324D01010",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LICHSGFIN.NS",
+      "ticker": "LICHSGFIN",
+      "name": "LIC Housing Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE115A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LICI.NS",
+      "ticker": "LICI",
+      "name": "Life Insurance Corporation of India",
+      "sector": "Financial Services",
+      "isin": "INE0J1Y01017",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LINDEINDIA.NS",
+      "ticker": "LINDEINDIA",
+      "name": "Linde India Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE473A01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LLOYDSME.NS",
+      "ticker": "LLOYDSME",
+      "name": "Lloyds Metals And Energy Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE281B01032",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LODHA.NS",
+      "ticker": "LODHA",
+      "name": "Lodha Developers Ltd.",
+      "sector": "Realty",
+      "isin": "INE670K01029",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LTF.NS",
+      "ticker": "LTF",
+      "name": "L&T Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE498L01015",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LTTS.NS",
+      "ticker": "LTTS",
+      "name": "L&T Technology Services Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE010V01017",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "LUPIN.NS",
+      "ticker": "LUPIN",
+      "name": "Lupin Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE326A01037",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "M&MFIN.NS",
+      "ticker": "M&MFIN",
+      "name": "Mahindra & Mahindra Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE774D01024",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MAHABANK.NS",
+      "ticker": "MAHABANK",
+      "name": "Bank of Maharashtra",
+      "sector": "Financial Services",
+      "isin": "INE457A01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MANKIND.NS",
+      "ticker": "MANKIND",
+      "name": "Mankind Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE634S01028",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MARICO.NS",
+      "ticker": "MARICO",
+      "name": "Marico Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE196A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MCX.NS",
+      "ticker": "MCX",
+      "name": "Multi Commodity Exchange of India Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE745G01043",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MEDANTA.NS",
+      "ticker": "MEDANTA",
+      "name": "Global Health Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE474Q01031",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MEESHO.NS",
+      "ticker": "MEESHO",
+      "name": "Meesho Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE0VDM01015",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MFSL.NS",
+      "ticker": "MFSL",
+      "name": "Max Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE180A01020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MOTILALOFS.NS",
+      "ticker": "MOTILALOFS",
+      "name": "Motilal Oswal Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE338I01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MPHASIS.NS",
+      "ticker": "MPHASIS",
+      "name": "MphasiS Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE356A01018",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "MRF.NS",
+      "ticker": "MRF",
+      "name": "MRF Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE883A01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NAM-INDIA.NS",
+      "ticker": "NAM-INDIA",
+      "name": "Nippon Life India Asset Management Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE298J01013",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NATIONALUM.NS",
+      "ticker": "NATIONALUM",
+      "name": "National Aluminium Co. Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE139A01034",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NAUKRI.NS",
+      "ticker": "NAUKRI",
+      "name": "Info Edge (India) Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE663F01032",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NH.NS",
+      "ticker": "NH",
+      "name": "Narayana Hrudayalaya Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE410P01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NHPC.NS",
+      "ticker": "NHPC",
+      "name": "NHPC Ltd.",
+      "sector": "Power",
+      "isin": "INE848E01016",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NLCINDIA.NS",
+      "ticker": "NLCINDIA",
+      "name": "NLC India Ltd.",
+      "sector": "Power",
+      "isin": "INE589A01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NMDC.NS",
+      "ticker": "NMDC",
+      "name": "NMDC Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE584A01023",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NTPCGREEN.NS",
+      "ticker": "NTPCGREEN",
+      "name": "NTPC Green Energy Ltd.",
+      "sector": "Power",
+      "isin": "INE0ONG01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "NYKAA.NS",
+      "ticker": "NYKAA",
+      "name": "FSN E-Commerce Ventures Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE388Y01029",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "OBEROIRLTY.NS",
+      "ticker": "OBEROIRLTY",
+      "name": "Oberoi Realty Ltd.",
+      "sector": "Realty",
+      "isin": "INE093I01010",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "OFSS.NS",
+      "ticker": "OFSS",
+      "name": "Oracle Financial Services Software Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE881D01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "OIL.NS",
+      "ticker": "OIL",
+      "name": "Oil India Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE274J01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PAGEIND.NS",
+      "ticker": "PAGEIND",
+      "name": "Page Industries Ltd.",
+      "sector": "Textiles",
+      "isin": "INE761H01022",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PATANJALI.NS",
+      "ticker": "PATANJALI",
+      "name": "Patanjali Foods Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE619A01035",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PAYTM.NS",
+      "ticker": "PAYTM",
+      "name": "One 97 Communications Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE982J01020",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PERSISTENT.NS",
+      "ticker": "PERSISTENT",
+      "name": "Persistent Systems Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE262H01021",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PETRONET.NS",
+      "ticker": "PETRONET",
+      "name": "Petronet LNG Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE347G01014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PHOENIXLTD.NS",
+      "ticker": "PHOENIXLTD",
+      "name": "Phoenix Mills Ltd.",
+      "sector": "Realty",
+      "isin": "INE211B01039",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PIIND.NS",
+      "ticker": "PIIND",
+      "name": "PI Industries Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE603J01030",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PIRAMALFIN.NS",
+      "ticker": "PIRAMALFIN",
+      "name": "Piramal Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE202B01038",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "POLICYBZR.NS",
+      "ticker": "POLICYBZR",
+      "name": "PB Fintech Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE417T01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PREMIERENE.NS",
+      "ticker": "PREMIERENE",
+      "name": "Premier Energies Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE0BS701011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "PRESTIGE.NS",
+      "ticker": "PRESTIGE",
+      "name": "Prestige Estates Projects Ltd.",
+      "sector": "Realty",
+      "isin": "INE811K01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "RADICO.NS",
+      "ticker": "RADICO",
+      "name": "Radico Khaitan Ltd",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE944F01028",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "RECLTD.NS",
+      "ticker": "RECLTD",
+      "name": "REC Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE020B01018",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "RVNL.NS",
+      "ticker": "RVNL",
+      "name": "Rail Vikas Nigam Ltd.",
+      "sector": "Construction",
+      "isin": "INE415G01027",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SAIL.NS",
+      "ticker": "SAIL",
+      "name": "Steel Authority of India Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE114A01011",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SBICARD.NS",
+      "ticker": "SBICARD",
+      "name": "SBI Cards and Payment Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE018E01016",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SCHAEFFLER.NS",
+      "ticker": "SCHAEFFLER",
+      "name": "Schaeffler India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE513A01022",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SHREECEM.NS",
+      "ticker": "SHREECEM",
+      "name": "Shree Cement Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE070A01015",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SRF.NS",
+      "ticker": "SRF",
+      "name": "SRF Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE647A01010",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SUNDARMFIN.NS",
+      "ticker": "SUNDARMFIN",
+      "name": "Sundaram Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE660A01013",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SUPREMEIND.NS",
+      "ticker": "SUPREMEIND",
+      "name": "Supreme Industries Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE195A01028",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SUZLON.NS",
+      "ticker": "SUZLON",
+      "name": "Suzlon Energy Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE040H01021",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "SWIGGY.NS",
+      "ticker": "SWIGGY",
+      "name": "Swiggy Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE00H001014",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "TATACOMM.NS",
+      "ticker": "TATACOMM",
+      "name": "Tata Communications Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE151A01013",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "TATAINVEST.NS",
+      "ticker": "TATAINVEST",
+      "name": "Tata Investment Corporation Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE672A01026",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "THERMAX.NS",
+      "ticker": "THERMAX",
+      "name": "Thermax Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE152A01029",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "TIINDIA.NS",
+      "ticker": "TIINDIA",
+      "name": "Tube Investments of India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE974X01010",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "TORNTPOWER.NS",
+      "ticker": "TORNTPOWER",
+      "name": "Torrent Power Ltd.",
+      "sector": "Power",
+      "isin": "INE813H01021",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "UBL.NS",
+      "ticker": "UBL",
+      "name": "United Breweries Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE686F01025",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "UNITDSPR.NS",
+      "ticker": "UNITDSPR",
+      "name": "United Spirits Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE854D01024",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "UNOMINDA.NS",
+      "ticker": "UNOMINDA",
+      "name": "UNO Minda Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE405E01023",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "UPL.NS",
+      "ticker": "UPL",
+      "name": "UPL Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE628A01036",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "VMM.NS",
+      "ticker": "VMM",
+      "name": "Vishal Mega Mart Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE01EA01019",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "VOLTAS.NS",
+      "ticker": "VOLTAS",
+      "name": "Voltas Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE226A01021",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "WAAREEENER.NS",
+      "ticker": "WAAREEENER",
+      "name": "Waaree Energies Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE377N01017",
+      "cap_tier": "Mid Cap",
+      "indices": [
+        "MIDCAP150"
+      ]
+    },
+    {
+      "symbol": "AARTIIND.NS",
+      "ticker": "AARTIIND",
+      "name": "Aarti Industries Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE769A01020",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ACUTAAS.NS",
+      "ticker": "ACUTAAS",
+      "name": "Acutaas Chemicals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE00FF01025",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "AEGISLOG.NS",
+      "ticker": "AEGISLOG",
+      "name": "Aegis Logistics Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE208C01025",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "AFFLE.NS",
+      "ticker": "AFFLE",
+      "name": "Affle 3i Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE00WC01027",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "AMBER.NS",
+      "ticker": "AMBER",
+      "name": "Amber Enterprises India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE371P01015",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ANANDRATHI.NS",
+      "ticker": "ANANDRATHI",
+      "name": "Anand Rathi Wealth Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE463V01026",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ANANTRAJ.NS",
+      "ticker": "ANANTRAJ",
+      "name": "Anant Raj Ltd.",
+      "sector": "Realty",
+      "isin": "INE242C01024",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ANGELONE.NS",
+      "ticker": "ANGELONE",
+      "name": "Angel One Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE732I01021",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "APOLLOTYRE.NS",
+      "ticker": "APOLLOTYRE",
+      "name": "Apollo Tyres Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE438A01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ARE&M.NS",
+      "ticker": "ARE&M",
+      "name": "Amara Raja Energy & Mobility Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE885A01032",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ATHERENERG.NS",
+      "ticker": "ATHERENERG",
+      "name": "Ather Energy Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE0LEZ01016",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "AVANTIFEED.NS",
+      "ticker": "AVANTIFEED",
+      "name": "Avanti Feeds Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE871C01038",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "BANDHANBNK.NS",
+      "ticker": "BANDHANBNK",
+      "name": "Bandhan Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE545U01014",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "BELRISE.NS",
+      "ticker": "BELRISE",
+      "name": "Belrise Industries Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE894V01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "BEML.NS",
+      "ticker": "BEML",
+      "name": "BEML Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE258A01024",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "BHARATCOAL.NS",
+      "ticker": "BHARATCOAL",
+      "name": "Bharat Coking Coal Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE05XR01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "BRIGADE.NS",
+      "ticker": "BRIGADE",
+      "name": "Brigade Enterprises Ltd.",
+      "sector": "Realty",
+      "isin": "INE791I01019",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CAMS.NS",
+      "ticker": "CAMS",
+      "name": "Computer Age Management Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE596I01020",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CDSL.NS",
+      "ticker": "CDSL",
+      "name": "Central Depository Services (India) Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE736A01011",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CEMPRO.NS",
+      "ticker": "CEMPRO",
+      "name": "Cemindia Projects Ltd.",
+      "sector": "Construction",
+      "isin": "INE686A01026",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CESC.NS",
+      "ticker": "CESC",
+      "name": "CESC Ltd.",
+      "sector": "Power",
+      "isin": "INE486A01021",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CGCL.NS",
+      "ticker": "CGCL",
+      "name": "Capri Global Capital Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE180C01042",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CHENNPETRO.NS",
+      "ticker": "CHENNPETRO",
+      "name": "Chennai Petroleum Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE178A01016",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CHOLAHLDNG.NS",
+      "ticker": "CHOLAHLDNG",
+      "name": "Cholamandalam Financial Holdings Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE149A01033",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CMPDI.NS",
+      "ticker": "CMPDI",
+      "name": "Central Mine Planning & Design Institute Ltd.",
+      "sector": "Services",
+      "isin": "INE05HV01027",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "COHANCE.NS",
+      "ticker": "COHANCE",
+      "name": "Cohance Lifesciences Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE03QK01018",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CREDITACC.NS",
+      "ticker": "CREDITACC",
+      "name": "CreditAccess Grameen Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE741K01010",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CROMPTON.NS",
+      "ticker": "CROMPTON",
+      "name": "Crompton Greaves Consumer Electricals Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE299U01018",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CUB.NS",
+      "ticker": "CUB",
+      "name": "City Union Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE491A01021",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "CUPID.NS",
+      "ticker": "CUPID",
+      "name": "Cupid Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE509F01029",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "DATAPATTNS.NS",
+      "ticker": "DATAPATTNS",
+      "name": "Data Patterns (India) Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE0IX101010",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "DEEPAKFERT.NS",
+      "ticker": "DEEPAKFERT",
+      "name": "Deepak Fertilisers & Petrochemicals Corp. Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE501A01019",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "DELHIVERY.NS",
+      "ticker": "DELHIVERY",
+      "name": "Delhivery Ltd.",
+      "sector": "Services",
+      "isin": "INE148O01028",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "DEVYANI.NS",
+      "ticker": "DEVYANI",
+      "name": "Devyani International Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE872J01023",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "EMMVEE.NS",
+      "ticker": "EMMVEE",
+      "name": "Emmvee Photovoltaic Power Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE1C6T01020",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "FORCEMOT.NS",
+      "ticker": "FORCEMOT",
+      "name": "Force Motors Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE451A01017",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "FSL.NS",
+      "ticker": "FSL",
+      "name": "Firstsource Solutions Ltd.",
+      "sector": "Services",
+      "isin": "INE684F01012",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "GALLANTT.NS",
+      "ticker": "GALLANTT",
+      "name": "Gallantt Ispat Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE297H01019",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "GESHIP.NS",
+      "ticker": "GESHIP",
+      "name": "Great Eastern Shipping Co. Ltd.",
+      "sector": "Services",
+      "isin": "INE017A01032",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "GLAND.NS",
+      "ticker": "GLAND",
+      "name": "Gland Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE068V01023",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "GMDCLTD.NS",
+      "ticker": "GMDCLTD",
+      "name": "Gujarat Mineral Development Corporation Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE131A01031",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "GPIL.NS",
+      "ticker": "GPIL",
+      "name": "Godawari Power & Ispat Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE177H01039",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "GRSE.NS",
+      "ticker": "GRSE",
+      "name": "Garden Reach Shipbuilders & Engineers Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE382Z01011",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "HBLENGINE.NS",
+      "ticker": "HBLENGINE",
+      "name": "HBL Engineering Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE292B01021",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "HFCL.NS",
+      "ticker": "HFCL",
+      "name": "HFCL Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE548A01028",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "HSCL.NS",
+      "ticker": "HSCL",
+      "name": "Himadri Speciality Chemical Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE019C01026",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "IDBI.NS",
+      "ticker": "IDBI",
+      "name": "IDBI Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE008A01015",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "IFCI.NS",
+      "ticker": "IFCI",
+      "name": "IFCI Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE039A01010",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "IGL.NS",
+      "ticker": "IGL",
+      "name": "Indraprastha Gas Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE203G01027",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "IIFL.NS",
+      "ticker": "IIFL",
+      "name": "IIFL Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE530B01024",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "IKS.NS",
+      "ticker": "IKS",
+      "name": "Inventurus Knowledge Solutions Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE115Q01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "INOXWIND.NS",
+      "ticker": "INOXWIND",
+      "name": "Inox Wind Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE066P01011",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ITI.NS",
+      "ticker": "ITI",
+      "name": "ITI Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE248A01017",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "JBMA.NS",
+      "ticker": "JBMA",
+      "name": "JBM Auto Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE927D01051",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "JSWCEMENT.NS",
+      "ticker": "JSWCEMENT",
+      "name": "JSW Cement Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE718I01012",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "JYOTICNC.NS",
+      "ticker": "JYOTICNC",
+      "name": "Jyoti CNC Automation Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE980O01024",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "KARURVYSYA.NS",
+      "ticker": "KARURVYSYA",
+      "name": "Karur Vysya Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE036D01028",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "KAYNES.NS",
+      "ticker": "KAYNES",
+      "name": "Kaynes Technology India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE918Z01012",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "KEC.NS",
+      "ticker": "KEC",
+      "name": "Kec International Ltd.",
+      "sector": "Construction",
+      "isin": "INE389H01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "KFINTECH.NS",
+      "ticker": "KFINTECH",
+      "name": "Kfin Technologies Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE138Y01010",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "KIRLOSENG.NS",
+      "ticker": "KIRLOSENG",
+      "name": "Kirloskar Oil Eng Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE146L01010",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "KPITTECH.NS",
+      "ticker": "KPITTECH",
+      "name": "KPIT Technologies Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE04I401011",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "LALPATHLAB.NS",
+      "ticker": "LALPATHLAB",
+      "name": "Dr. Lal Path Labs Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE600L01024",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "MANAPPURAM.NS",
+      "ticker": "MANAPPURAM",
+      "name": "Manappuram Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE522D01027",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "MRPL.NS",
+      "ticker": "MRPL",
+      "name": "Mangalore Refinery & Petrochemicals Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE103A01014",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "MTARTECH.NS",
+      "ticker": "MTARTECH",
+      "name": "MTAR Technologies Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE864I01014",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "NATCOPHARM.NS",
+      "ticker": "NATCOPHARM",
+      "name": "NATCO Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE987B01026",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "NAVINFLUOR.NS",
+      "ticker": "NAVINFLUOR",
+      "name": "Navin Fluorine International Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE048G01026",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "NBCC.NS",
+      "ticker": "NBCC",
+      "name": "NBCC (India) Ltd.",
+      "sector": "Construction",
+      "isin": "INE095N01031",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "NETWEB.NS",
+      "ticker": "NETWEB",
+      "name": "Netweb Technologies India Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE0NT901020",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "NEULANDLAB.NS",
+      "ticker": "NEULANDLAB",
+      "name": "Neuland Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE794A01010",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "NUVAMA.NS",
+      "ticker": "NUVAMA",
+      "name": "Nuvama Wealth Management Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE531F01023",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "OLAELEC.NS",
+      "ticker": "OLAELEC",
+      "name": "Ola Electric Mobility Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE0LXG01040",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "ONESOURCE.NS",
+      "ticker": "ONESOURCE",
+      "name": "Onesource Specialty Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE013P01021",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "PGEL.NS",
+      "ticker": "PGEL",
+      "name": "PG Electroplast Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE457L01029",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "PINELABS.NS",
+      "ticker": "PINELABS",
+      "name": "Pine Labs Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE15B701018",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "PNBHOUSING.NS",
+      "ticker": "PNBHOUSING",
+      "name": "PNB Housing Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE572E01012",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "POONAWALLA.NS",
+      "ticker": "POONAWALLA",
+      "name": "Poonawalla Fincorp Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE511C01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "PPLPHARMA.NS",
+      "ticker": "PPLPHARMA",
+      "name": "Piramal Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE0DK501011",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "PWL.NS",
+      "ticker": "PWL",
+      "name": "Physicswallah Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE0LP301011",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "RBLBANK.NS",
+      "ticker": "RBLBANK",
+      "name": "RBL Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE976G01028",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "REDINGTON.NS",
+      "ticker": "REDINGTON",
+      "name": "Redington Ltd.",
+      "sector": "Services",
+      "isin": "INE891D01026",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "RRKABEL.NS",
+      "ticker": "RRKABEL",
+      "name": "R R Kabel Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE777K01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "SAGILITY.NS",
+      "ticker": "SAGILITY",
+      "name": "Sagility Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE0W2G01015",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "SAILIFE.NS",
+      "ticker": "SAILIFE",
+      "name": "Sai Life Sciences Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE570L01029",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "SAMMAANCAP.NS",
+      "ticker": "SAMMAANCAP",
+      "name": "Sammaan Capital Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE148I01020",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "SONACOMS.NS",
+      "ticker": "SONACOMS",
+      "name": "Sona BLW Precision Forgings Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE073K01018",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "STLTECH.NS",
+      "ticker": "STLTECH",
+      "name": "Sterlite Technologies Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE089C01029",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "SYNGENE.NS",
+      "ticker": "SYNGENE",
+      "name": "Syngene International Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE398R01022",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "SYRMA.NS",
+      "ticker": "SYRMA",
+      "name": "Syrma SGS Technology Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE0DYJ01015",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "TATACHEM.NS",
+      "ticker": "TATACHEM",
+      "name": "Tata Chemicals Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE092A01019",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "TATAELXSI.NS",
+      "ticker": "TATAELXSI",
+      "name": "Tata Elxsi Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE670A01012",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "TATATECH.NS",
+      "ticker": "TATATECH",
+      "name": "Tata Technologies Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE142M01025",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "TDPOWERSYS.NS",
+      "ticker": "TDPOWERSYS",
+      "name": "TD Power Systems Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE419M01035",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "TENNIND.NS",
+      "ticker": "TENNIND",
+      "name": "Tenneco Clean Air India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE19RI01016",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "TRITURBINE.NS",
+      "ticker": "TRITURBINE",
+      "name": "Triveni Turbine Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE152M01016",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "URBANCO.NS",
+      "ticker": "URBANCO",
+      "name": "Urban Company Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE0CAZ01013",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "VEDPOWER.NS",
+      "ticker": "VEDPOWER",
+      "name": "Vedanta Power Ltd.",
+      "sector": "Power",
+      "isin": "INE694L01019",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "WELCORP.NS",
+      "ticker": "WELCORP",
+      "name": "Welspun Corp Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE191B01025",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    },
+    {
+      "symbol": "WOCKPHARMA.NS",
+      "ticker": "WOCKPHARMA",
+      "name": "Wockhardt Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE049B01025",
+      "cap_tier": "Small Cap",
+      "indices": [
+        "SMALLCAP100"
+      ]
+    }
+  ]
+}
