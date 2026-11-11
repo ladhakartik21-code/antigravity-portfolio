@@ -596,7 +596,10 @@ def export_muhurat_session_to_excel(filepath: str = None) -> str:
 
     if not filepath:
         filename = f"Muhurat_Trading_Analysis_{ist.strftime('%Y%m%d_%H%M%S')}.xlsx"
-        filepath = os.path.join(ENGINE_DIR, filename)
+        base_root = os.path.dirname(os.path.dirname(ENGINE_DIR))
+        output_dir = os.path.join(base_root, "2. Output Generated")
+        dest_dir = output_dir if os.path.isdir(output_dir) else ENGINE_DIR
+        filepath = os.path.join(dest_dir, filename)
 
     wb = openpyxl.Workbook()
     # Sheet 1: Trade Log
