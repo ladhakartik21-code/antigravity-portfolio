@@ -599,6 +599,11 @@ def export_muhurat_session_to_excel(filepath: str = None) -> str:
         base_root = os.path.dirname(os.path.dirname(ENGINE_DIR))
         output_dir = os.path.join(base_root, "2. Output Generated")
         dest_dir = output_dir if os.path.isdir(output_dir) else ENGINE_DIR
+        for sub in ("Test Analysis", "Test result", "Test Results"):
+            cand = os.path.join(output_dir, sub)
+            if os.path.isdir(cand):
+                dest_dir = cand
+                break
         filepath = os.path.join(dest_dir, filename)
 
     wb = openpyxl.Workbook()
