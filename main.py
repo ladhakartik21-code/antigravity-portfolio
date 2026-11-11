@@ -1557,6 +1557,12 @@ def get_roadmap(response: Response):
     return read_roadmap_data(response)
 
 
+@app.get("/api/modules")
+def get_modules():
+    cfg = load_config()
+    return {"modules": cfg.get("module_registry", [])}
+
+
 # ==============================================================================
 # AUTONOMOUS INTRADAY BACKGROUND WORKER & RENDER KEEP-ALIVE
 # ==============================================================================
