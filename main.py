@@ -36,13 +36,19 @@ def resolve_file_path(filename, candidate_dirs):
             return p
     return os.path.join(APP_DIR, filename)
 
+ROOT_WORKSPACE = os.path.dirname(os.path.dirname(APP_DIR))
+candidate_excel_paths = [
+    os.path.join(ROOT_WORKSPACE, "1. Data given by Kartik", "Portfolio Data"),
+    r"C:\Users\KARTIK\Desktop\AntiGravity\1. Data given by Kartik\Portfolio Data",
+    APP_DIR,
+]
 candidate_paths = [
     APP_DIR,
     os.path.dirname(APP_DIR),
-    os.path.dirname(os.path.dirname(APP_DIR))
+    ROOT_WORKSPACE,
 ]
 
-EXCEL_PATH = resolve_file_path("Investment Made.xlsx", candidate_paths)
+EXCEL_PATH = resolve_file_path("Investment Made.xlsx", candidate_excel_paths)
 CONFIG_PATH = resolve_file_path("assets_config.json", candidate_paths)
 TEST_DB_PATH = resolve_file_path("testing_lab.json", candidate_paths)
 
@@ -358,7 +364,10 @@ def read_portfolio_data():
             except Exception:
                 pass
 
-    wb = openpyxl.load_workbook(EXCEL_PATH, data_only=True)
+    import io as _io
+    with open(EXCEL_PATH, "rb") as _ef:
+        _excel_bytes = _io.BytesIO(_ef.read())
+    wb = openpyxl.load_workbook(_excel_bytes, data_only=True)
 
     # 1. Stocks
     stocks = []
@@ -555,8 +564,8 @@ def network_info(request: Request):
     # Check possible tunnel file paths
     possible_paths = [
         os.path.join(APP_DIR, "tunnel_url.txt"),
-        os.path.join(APP_DIR, "..", "tunnel_url.txt"),
-        os.path.join(APP_DIR, "..", "..", "tunnel_url.txt")
+        os.path.join(APP_DIR, "..", "launchers", "tunnel_url.txt"),
+        os.path.join(APP_DIR, "..", "tunnel_url.txt")
     ]
     for tf in possible_paths:
         if os.path.exists(tf):
@@ -1358,10 +1367,10 @@ def get_indices_data(refresh: bool = False):
 # ==============================================================================
 def resolve_tracker_excel_path() -> str:
     """Prefers live Output master tracker locally; falls back to bundled APP_DIR copy in cloud."""
-    root_output = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(APP_DIR))), "Output", "AnitGravity Wealth.xlsx")
+    root_output = os.path.join(os.path.dirname(os.path.dirname(APP_DIR)), "2. Output Generated", "AnitGravity Wealth.xlsx")
     candidates = [
         root_output,
-        r"C:\Users\KARTIK\Desktop\AntiGravity\Output\AnitGravity Wealth.xlsx",
+        r"C:\Users\KARTIK\Desktop\AntiGravity\2. Output Generated\AnitGravity Wealth.xlsx",
         os.path.join(APP_DIR, "AnitGravity Wealth.xlsx"),
     ]
     for p in candidates:
