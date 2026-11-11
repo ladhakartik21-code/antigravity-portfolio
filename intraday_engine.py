@@ -239,11 +239,12 @@ def save_state(state: Dict[str, Any]):
         print(f"Error saving intraday state: {e}")
 
 TICK_CACHE: Dict[str, Any] = {}
+YF_LIVE_CACHE: Dict[str, Any] = {}
 
 def fetch_live_ltp(symbol: str, fallback_price: float = None, entry_price: float = None) -> float:
     """
     Real-Time Institutional Price Feed Engine:
-    1. Tries yfinance fast_info live quote if on regular weekday.
+    1. Tries yfinance fast_info live quote if on regular weekday (with 8s TTL cache to avoid blocking).
     2. During live market hours (or festive Muhurat sessions), if external feeds return
        static weekend batch quotes without live micro-ticks:
        Engages institutional micro-tick price discovery simulation with realistic
@@ -252,18 +253,26 @@ def fetch_live_ltp(symbol: str, fallback_price: float = None, entry_price: float
     ref_price = float(fallback_price or entry_price or 100.0)
     ist = get_ist_now()
     market_active = is_market_hours() or (ist.date() == datetime.date(2026, 11, 8) and datetime.time(14, 20) <= ist.time() <= datetime.time(15, 30))
+    now = time.time()
     
-    # Try real-time yfinance first if on regular trading day
+    # Try real-time yfinance first if on regular trading day (cached for 8s)
     if ist.weekday() < 5:
+        cached = YF_LIVE_CACHE.get(symbol)
+        if cached and (now - cached["ts"] < 8.0):
+            return cached["price"]
         try:
             import yfinance as yf
             ticker = yf.Ticker(symbol)
             fi = ticker.fast_info
             p = float(fi.get('lastPrice', 0) or 0)
             if p > 0:
-                return round(p, 2)
+                val = round(p, 2)
+                YF_LIVE_CACHE[symbol] = {"price": val, "ts": now}
+                return val
         except Exception:
             pass
+        if cached:
+            return cached["price"]
 
     if not market_active:
         return round(ref_price, 2)
@@ -357,6 +366,15 @@ def evaluate_intraday_engine(force_simulation: bool = False) -> Dict[str, Any]:
     """
     state = load_state()
     ist = get_ist_now()
+    if ist.weekday() < 5:
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=10) as pool:
+            futs = [pool.submit(fetch_live_ltp, s, (m["s1"] + m["r1"]) / 2.0) for s, m in INTRADAY_UNIVERSE.items()]
+            for fut in futs:
+                try:
+                    fut.result(timeout=6)
+                except Exception:
+                    pass
     market_active = is_market_hours() or force_simulation
     state["market_status"]["is_open"] = is_market_hours()
     state["market_status"]["current_time_ist"] = ist.strftime("%Y-%m-%d %H:%M:%S IST")
