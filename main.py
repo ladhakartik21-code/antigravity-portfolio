@@ -1,8 +1,9 @@
 """
-AntiGravity Sovereign Wealth Engine - Backend Server v2.1
+AntiGravity Sovereign Wealth Engine - Backend Server v2.2
 FastAPI Local Server providing real-time data, TradingView OHLCV feeds,
-Multi-Source Support & Resistance Zones, Bloomberg Metals Analytics, and AI Testing Lab.
-Location: Website Data/Anti Work/app/main.py
+350+ NSE/BSE Institutional Screener, Multi-Source Support & Resistance Zones,
+COMEX/MCX Metals Analytics, and AI Testing Lab.
+Location: 3. Data saved by Antigravity for Website/app/main.py
 """
 
 import os
@@ -19,6 +20,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import yfinance as yf
+import screener_engine
 
 # Set stdout encoding
 try:
@@ -877,90 +879,70 @@ def get_all_sr_levels():
     return INSTITUTIONAL_SR_MAP
 
 @app.get("/api/macro/metals-thesis")
-def get_metals_thesis():
-    # Empirical parameters from the 4 Bloomberg files
-    return {
-        "data_source": "Bloomberg Professional Terminal (1999-2026 Daily Feeds)",
-        "gold_xau": {
-            "current_usd": 4024.85,
-            "ath_usd": 5417.21,
-            "discount_ath_pct": 25.7,
-            "cagr_usd_26y": 10.5,
-            "cagr_inr_26y": 13.7,
-            "50_dma": 4308.88,
-            "200_dma": 4512.97,
-            "status": "Healthy -25.7% Correction Zone from ATH",
-            "demand_zone_usd": "$3,850 - $4,050 / oz",
-            "supply_zone_usd": "$4,800 - $5,400 / oz",
-            "thesis_role": "Monetary Bedrock, Sovereign Reserve Asset & Rupee Devaluation Shield"
-        },
-        "silver_xag": {
-            "current_usd": 54.57,
-            "ath_usd": 116.70,
-            "discount_ath_pct": 53.2,
-            "cagr_usd_26y": 9.2,
-            "cagr_inr_26y": 12.4,
-            "50_dma": 63.31,
-            "200_dma": 71.49,
-            "status": "Deep -53.2% Cyclical Correction Zone",
-            "demand_zone_usd": "$48.00 - $55.00 / oz",
-            "supply_zone_usd": "$85.00 - $115.00 / oz",
-            "thesis_role": "High-Beta Industrial Accelerator (Solar PV, EV, AI Electronics) + Inflation Hedge"
-        },
-        "gold_silver_ratio": {
-            "current_gsr": 73.75,
-            "historical_mean_26y": 68.69,
-            "historical_median_26y": 67.67,
-            "percentile_25": 58.73,
-            "percentile_75": 78.18,
-            "percentile_90": 85.74,
-            "current_valuation_regime": "Silver Undervalued relative to Historical 67.7 Median",
-            "actionable_signal": "Overweight Silver ETF (TATSILV) over Gold ETF (TATAGOLD) on monthly allocations."
-        },
-        "dollar_index_dxy": {
-            "current_dxy": 101.61,
-            "mean_26y": 93.05,
-            "correlation_with_gsr": 0.494,
-            "thesis": "Dollar consolidation in 101-102 range. A softening DXY creates strong multi-year tailwind for Silver outperformance."
-        }
-    }
+def get_metals_thesis(refresh: bool = False):
+    return screener_engine.fetch_live_metals_macro(force_refresh=refresh)
 
 @app.get("/api/best-buy")
-def get_best_buy():
-    gsr = 73.75
-    # Optimal ETF allocation based on Bloomberg GSR data
-    if gsr > 72.0:
-        etf_plan = {
-            "regime": f"Silver Undervalued (GSR: {gsr} vs 26Y Median 67.7)",
-            "silver_etf": 11000,
-            "gold_etf": 5000,
-            "nifty_bees": 4000,
-            "reason": f"Bloomberg GSR shows Silver trading at 73.8x (above 26-year median of 67.7x). Allocate 55% to Tata Silver ETF (TATSILV) to exploit 53.2% drop from ATH."
-        }
-    else:
-        etf_plan = {
-            "regime": "Balanced Commodity Regime",
-            "silver_etf": 7000,
-            "gold_etf": 7000,
-            "nifty_bees": 6000,
-            "reason": "Gold and Silver in historical parity. Balanced accumulation across both metals with Nifty 50 base."
-        }
+def get_best_buy(
+    budget: float = Query(50000.0, ge=5000.0, le=5000000.0),
+    mode: str = Query("balanced_with_breakout"),
+):
+    return screener_engine.build_monthly_execution_plan(
+        budget=budget,
+        mode=mode,
+        sr_map=INSTITUTIONAL_SR_MAP,
+    )
 
-    stock_candidates = [
-        {"name": "Polycab India", "symbol": "POLYCAB.NS", "discount_ath": 26.5, "score": 8, "rec_amount": 10000, "tranches": 2, "why": "In Monthly Demand Zone (₹7,195 - ₹7,440). 28% ROCE, zero net debt."},
-        {"name": "CDSL", "symbol": "CDSL.NS", "discount_ath": 39.2, "score": 8, "rec_amount": 10000, "tranches": 2, "why": "Deep 39.2% correction at major double-bottom support. Debt-free depository monopoly."},
-        {"name": "HDFC Bank", "symbol": "HDFCBANK.NS", "discount_ath": 15.2, "score": 8, "rec_amount": 5000, "tranches": 1, "why": "Testing multi-year demand floor (₹646 - ₹677). Merger consolidation complete."},
-        {"name": "Varun Beverages", "symbol": "VBL.NS", "discount_ath": 18.5, "score": 6, "rec_amount": 5000, "tranches": 2, "why": "Testing Monthly S1 Support (₹395). Stagger in 2 tranches to manage valuation risk."}
-    ]
+@app.get("/api/screener")
+def get_nse_screener(
+    index: str = Query("ALL"),
+    cap: str = Query("ALL"),
+    signal: str = Query("ALL"),
+    q: str = Query(""),
+    safe_only: bool = Query(False),
+    sort: str = Query("composite_score"),
+    limit: int = Query(150, ge=10, le=400),
+    refresh: bool = Query(False),
+):
+    snap = screener_engine.get_screener_snapshot(sr_map=INSTITUTIONAL_SR_MAP, force_refresh=refresh)
+    rows = snap.get("stocks", [])
+    idx_up = (index or "ALL").upper()
+    cap_norm = (cap or "ALL").strip()
+    sig_up = (signal or "ALL").upper()
+    q_up = (q or "").strip().upper()
+
+    filtered = []
+    for r in rows:
+        if idx_up != "ALL" and idx_up not in [x.upper() for x in r.get("indices", [])]:
+            continue
+        if cap_norm != "ALL" and r.get("cap_tier", "").lower() != cap_norm.lower():
+            continue
+        if sig_up == "BREAKOUT":
+            if r.get("breakout_score", 0) < 58.0:
+                continue
+        elif sig_up != "ALL" and r.get("signal_code", "").upper() != sig_up:
+            continue
+        if safe_only and not r.get("safety_eligible", False):
+            continue
+        if q_up and q_up not in r.get("symbol", "").upper() and q_up not in r.get("name", "").upper() and q_up not in r.get("sector", "").upper():
+            continue
+        filtered.append(r)
+
+    if sort == "breakout_score":
+        filtered.sort(key=lambda x: (x.get("breakout_score", 0), x.get("vol_ratio", 0)), reverse=True)
+    elif sort == "ath_discount_pct":
+        filtered.sort(key=lambda x: x.get("ath_discount_pct", 0), reverse=True)
+    elif sort == "rsi_14":
+        filtered.sort(key=lambda x: x.get("rsi_14", 50))
+    else:
+        filtered.sort(key=lambda x: (x.get("safety_eligible", False), x.get("composite_score", 0)), reverse=True)
 
     return {
-        "next_stock_etf_date": "1st of next month (or exact next trading day)",
-        "next_mf_sip_date": "2nd of next month (or exact next trading day)",
-        "etf_allocation": etf_plan,
-        "stock_allocation": {
-            "total_capital": 30000,
-            "candidates": stock_candidates
-        }
+        "updated_at": snap.get("updated_at"),
+        "scan_duration_sec": snap.get("scan_duration_sec"),
+        "counts": snap.get("counts", {}),
+        "filtered_count": len(filtered),
+        "stocks": filtered[:limit],
     }
 
 @app.get("/api/scorecard/{symbol}")
@@ -1155,8 +1137,8 @@ def get_testing_data(response: Response):
             "risk_reward_ratio": "1 : 1.40",
             "duration": "1 Week (Review: 02 Nov 2026)",
             "thesis_score": "8 / 8 Passed",
-            "thesis_checklist_summary": "Empirical Bloomberg thesis: Silver down -53.2% from ATH, GSR 73.75x vs 67.7x historical median.",
-            "thesis_reason": "Bloomberg 26-year study proves Silver has a 2.4x beta over Gold. With DXY pausing at 101.60 and spot silver finding buyers at $54/oz, Silver ETF is at extreme value demand accumulation band.",
+            "thesis_checklist_summary": "Empirical COMEX/MCX thesis: Silver down -53.2% from ATH, GSR 73.75x vs 67.7x historical median.",
+            "thesis_reason": "26-year COMEX/LBMA precious metals study proves Silver has a 2.4x beta over Gold. With DXY pausing at 101.60 and spot silver finding buyers at $54/oz, Silver ETF is at extreme value demand accumulation band.",
             "evaluation_criteria": {
                 "thesis_confirmed_if": "Crosses ₹19.50 as global silver stabilizes above $55/oz.",
                 "thesis_invalidated_if": "Drops below ₹17.80 (signalling dollar index breakout above 102.5)."
@@ -1336,14 +1318,53 @@ def get_fundamental_moat():
         try:
             with open(MOAT_PATH, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                for a in data.get("assets", []):
-                    sym = a.get("symbol")
-                    if sym in CACHE.get("prices", {}):
-                        live_p = CACHE["prices"][sym]
-                        a["ltp"] = live_p
-                        a["margin_of_safety_pct"] = round((a["blended_fair_value"] - live_p) / a["blended_fair_value"] * 100.0, 2)
-                        a["action_rating"] = "AGGRESSIVE BUY" if a["margin_of_safety_pct"] >= 15 else ("ACCUMULATE ON DIPS" if a["margin_of_safety_pct"] >= 0 else "HOLD / ACCUMULATE ON DIP")
-                return data
+            screener_map = {}
+            try:
+                snap = screener_engine.get_screener_snapshot(sr_map=INSTITUTIONAL_SR_MAP)
+                screener_map = {s["symbol"]: s for s in snap.get("stocks", [])}
+            except Exception:
+                pass
+
+            assets = data.get("assets", [])
+            mos_list = []
+            aggressive_count = 0
+            for a in assets:
+                sym = a.get("symbol")
+                live_p = None
+                cached_entry = CACHE.get("prices", {}).get(sym)
+                if isinstance(cached_entry, dict) and cached_entry.get("price"):
+                    live_p = float(cached_entry["price"])
+                elif isinstance(cached_entry, (int, float)) and cached_entry > 0:
+                    live_p = float(cached_entry)
+                elif sym in screener_map and screener_map[sym].get("ltp"):
+                    live_p = float(screener_map[sym]["ltp"])
+                else:
+                    fetched = fetch_nse_price(sym)
+                    if fetched:
+                        live_p = float(fetched)
+
+                if live_p and live_p > 0 and a.get("blended_fair_value", 0) > 0:
+                    a["ltp"] = round(live_p, 2)
+                    a["margin_of_safety_pct"] = round((a["blended_fair_value"] - live_p) / a["blended_fair_value"] * 100.0, 2)
+                    a["action_rating"] = "AGGRESSIVE BUY" if a["margin_of_safety_pct"] >= 15 else ("ACCUMULATE ON DIPS" if a["margin_of_safety_pct"] >= 0 else "HOLD / ACCUMULATE ON DIP")
+                if sym in screener_map:
+                    a["zone_signal"] = screener_map[sym].get("zone_signal")
+                    a["s1"] = screener_map[sym].get("s1")
+                    a["r1"] = screener_map[sym].get("r1")
+                    a["rsi_14"] = screener_map[sym].get("rsi_14")
+                mos_list.append(a.get("margin_of_safety_pct", 0.0))
+                if a.get("action_rating") == "AGGRESSIVE BUY":
+                    aggressive_count += 1
+
+            assets.sort(key=lambda x: x.get("margin_of_safety_pct", -999), reverse=True)
+            data["assets"] = assets
+            summary = data.setdefault("summary", {})
+            summary["total_assets_monitored"] = len(assets)
+            summary["aggressive_buy_count"] = aggressive_count
+            if mos_list:
+                summary["portfolio_average_mos_pct"] = round(sum(mos_list) / len(mos_list), 2)
+            summary["top_margin_of_safety_picks"] = [x.get("name") for x in assets[:3]]
+            return data
         except Exception as e:
             return {"error": f"Error loading fundamental moat: {e}"}
     return {"error": "fundamental_moat.json not found"}
@@ -1622,6 +1643,8 @@ async def background_market_worker():
 @app.on_event("startup")
 async def start_background_tasks():
     asyncio.create_task(asyncio.to_thread(read_portfolio_data))
+    asyncio.create_task(asyncio.to_thread(screener_engine.fetch_live_metals_macro))
+    asyncio.create_task(asyncio.to_thread(screener_engine.get_screener_snapshot, INSTITUTIONAL_SR_MAP))
     asyncio.create_task(background_market_worker())
 
 # Serve Static Frontend Files
