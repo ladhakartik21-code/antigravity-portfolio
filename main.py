@@ -1642,9 +1642,9 @@ async def background_market_worker():
 
 @app.on_event("startup")
 async def start_background_tasks():
+    screener_engine.warm_disk_cache()
     asyncio.create_task(asyncio.to_thread(read_portfolio_data))
     asyncio.create_task(asyncio.to_thread(screener_engine.fetch_live_metals_macro))
-    asyncio.create_task(asyncio.to_thread(screener_engine.get_screener_snapshot, INSTITUTIONAL_SR_MAP))
     asyncio.create_task(background_market_worker())
 
 # Serve Static Frontend Files

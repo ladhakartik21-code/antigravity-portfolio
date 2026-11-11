@@ -9,4 +9,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: DEPLOY_SYNC_ID
-        value: "v2.14-5col-command-hub-ui"
+        value: "v2.15-350-screener-bestbuy-atomic"

@@ -7,6 +7,7 @@ AntiGravity Institutional NSE/BSE Equity & Breakout Screener Engine
   and Live COMEX/MCX Gold-Silver Ratio Macro Analytics.
 """
 
+import gc
 import json
 import math
 import os
@@ -23,7 +24,8 @@ UNIVERSE_PATH = os.path.join(APP_DIR, "nse_universe.json")
 CACHE_PATH = os.path.join(APP_DIR, "screener_cache.json")
 MOAT_PATH = os.path.join(APP_DIR, "fundamental_moat.json")
 
-SCREENER_TTL_SEC = 900  # 15 minutes
+IS_CLOUD_ENV = bool(os.environ.get("RENDER") or os.environ.get("RENDER_EXTERNAL_URL"))
+SCREENER_TTL_SEC = 21600 if IS_CLOUD_ENV else 14400  # 6h on Render free tier (low RAM), 4h local
 MACRO_TTL_SEC = 300     # 5 minutes
 
 _LOCK = threading.Lock()
@@ -343,9 +345,21 @@ def _evaluate_stock_df(
     }
 
 
-def _run_batch_download(symbols: List[str]) -> Dict[str, pd.DataFrame]:
-    frames: Dict[str, pd.DataFrame] = {}
-    chunk_size = 50
+def _run_streaming_scan(
+    universe: List[Dict[str, Any]],
+    moat_map: Dict[str, Dict[str, Any]],
+    sr_map: Dict[str, Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """
+    Download and evaluate 1Y daily OHLCV incrementally in small chunks, releasing each chunk's
+    DataFrames immediately with gc.collect() so peak memory stays minimal on 512MB cloud tiers.
+    """
+    results: List[Dict[str, Any]] = []
+    meta_map = {u["symbol"]: u for u in universe}
+    symbols = [u["symbol"] for u in universe]
+    chunk_size = 25 if IS_CLOUD_ENV else 50
+    threads = 2 if IS_CLOUD_ENV else 6
+
     for i in range(0, len(symbols), chunk_size):
         chunk = symbols[i : i + chunk_size]
         try:
@@ -354,25 +368,45 @@ def _run_batch_download(symbols: List[str]) -> Dict[str, pd.DataFrame]:
                 period="1y",
                 interval="1d",
                 group_by="ticker",
-                threads=8,
+                threads=threads,
                 timeout=15,
                 progress=False,
                 auto_adjust=True,
             )
-            if data is None or data.empty:
-                continue
-            if len(chunk) == 1:
-                frames[chunk[0]] = data
-            else:
-                if isinstance(data.columns, pd.MultiIndex):
+            if data is not None and not data.empty:
+                if len(chunk) == 1:
+                    item = _evaluate_stock_df(meta_map[chunk[0]], data, moat_map, sr_map)
+                    if item:
+                        results.append(item)
+                elif isinstance(data.columns, pd.MultiIndex):
                     top_level = set(data.columns.get_level_values(0))
                     for sym in chunk:
                         if sym in top_level:
-                            frames[sym] = data[sym]
+                            item = _evaluate_stock_df(meta_map[sym], data[sym], moat_map, sr_map)
+                            if item:
+                                results.append(item)
+            del data
+            gc.collect()
             print(f"[Screener] Batch {i + len(chunk)}/{len(symbols)} complete.", flush=True)
         except Exception as e:
             print(f"[Screener Batch Error] chunk {i}: {e}", flush=True)
-    return frames
+    return results
+
+
+def warm_disk_cache() -> bool:
+    """Loads precomputed screener_cache.json into memory cleanly on server startup without network I/O."""
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, "r", encoding="utf-8") as f:
+                disk_data = json.load(f)
+            if disk_data.get("stocks"):
+                with _LOCK:
+                    _MEMORY_CACHE["data"] = disk_data
+                    _MEMORY_CACHE["timestamp"] = disk_data.get("_ts", time.time())
+                return True
+        except Exception:
+            pass
+    return False
 
 
 def _trigger_background_refresh(sr_map: Optional[Dict[str, Dict[str, Any]]] = None) -> None:
@@ -420,7 +454,7 @@ def get_screener_snapshot(
             except Exception:
                 pass
 
-    # Serve warm disk/memory snapshot immediately while refreshing in background
+    # Serve warm disk/memory snapshot immediately while refreshing gently in background
     if not force_refresh and stale_snapshot:
         _trigger_background_refresh(sr_map)
         return stale_snapshot
@@ -428,16 +462,9 @@ def get_screener_snapshot(
     sr_map = sr_map or {}
     universe = load_universe_metadata()
     moat_map = _load_moat_lookup()
-    symbols = [u["symbol"] for u in universe]
 
     t0 = time.time()
-    frames = _run_batch_download(symbols)
-    results: List[Dict[str, Any]] = []
-    for meta in universe:
-        sym = meta["symbol"]
-        item = _evaluate_stock_df(meta, frames.get(sym), moat_map, sr_map)
-        if item:
-            results.append(item)
+    results = _run_streaming_scan(universe, moat_map, sr_map)
 
     # Sort primarily by composite score descending
     results.sort(key=lambda x: (x["safety_eligible"], x["composite_score"], -x["dist_to_s1_pct"]), reverse=True)
