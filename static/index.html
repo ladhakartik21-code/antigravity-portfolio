@@ -2951,7 +2951,10 @@
         function capTierBadge(tier) {
             if (tier === 'Large Cap') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">Large Cap</span>`;
             if (tier === 'Mid Cap') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">Mid Cap</span>`;
-            return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">Small Cap</span>`;
+            if (tier === 'Small Cap') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">Small Cap</span>`;
+            if (tier === 'Commodity ETF') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Commodity ETF</span>`;
+            if (tier === 'Index ETF') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Index ETF</span>`;
+            return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-700/60 text-slate-200 border border-slate-600/50">${tier || 'Equity'}</span>`;
         }
 
         async function loadBestBuy() {
