@@ -167,7 +167,7 @@
     { "id": "indices", "title": "Index Matrix (32)", "icon": "line-chart", "accent": "cyan", "status": "Pending Review", "description": "Real-time 4×4 NSE & Global market matrices with interactive multi-timeframe candlesticks." },
     { "id": "terminal", "title": "S&R Terminal", "icon": "candlestick-chart", "accent": "indigo", "status": "Pending Review", "description": "TradingView chart workspace overlaid with S1/S2 Demand & R1/R2 Supply levels." },
     { "id": "roadmap", "title": "Master Tracker", "icon": "clipboard-check", "accent": "emerald", "status": "Pending Review", "description": "Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge." },
-    { "id": "allocator", "title": "Best Monthly Buy", "icon": "target", "accent": "violet", "status": "Pending Review", "description": "Fundamental Moat scores, DCF Margin of Safety & Bloomberg Precious Metals Thesis." },
+    { "id": "allocator", "title": "Best Monthly Buy", "icon": "target", "accent": "violet", "status": "Pending Review", "description": "350+ NSE/BSE Dual-Filter Screener, Breakout Alpha Bucket & Precious Metals Ratio Thesis." },
     { "id": "goal", "title": "₹10–15 Cr Goal", "icon": "milestone", "accent": "sky", "status": "Pending Review", "description": "Monthly SIP step-up compounding calculator tracking your 14%–16% CAGR path." },
     { "id": "testing", "title": "1-Week Testing Lab", "icon": "flask-conical", "accent": "amber", "status": "Live Lab", "description": "5-Year walk-forward S&R backtest (90.6% accuracy) & forward test bench." },
     { "id": "intraday", "title": "Intraday AI Lab", "icon": "zap", "accent": "amber", "status": "Live Lab", "description": "High-frequency S&R proving lab with 3s stream & auto EOD Test Analysis exports." },
