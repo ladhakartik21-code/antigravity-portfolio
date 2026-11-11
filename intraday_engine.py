@@ -24,6 +24,11 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
+try:
+    import tracker_utils
+except ImportError:
+    from app import tracker_utils
+
 ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE = os.path.join(ENGINE_DIR, "intraday_trades.json")
 
@@ -523,6 +528,17 @@ def evaluate_intraday_engine(force_simulation: bool = False) -> Dict[str, Any]:
     }
 
     save_state(state)
+
+    # Auto-export once per trading day when EOD square-off finishes & log to Validation & Lessons
+    today_str = ist.strftime("%Y-%m-%d")
+    if is_square_off_time() and state.get("closed_trades") and state.get("last_eod_export_date") != today_str:
+        state["last_eod_export_date"] = today_str
+        save_state(state)
+        try:
+            export_muhurat_session_to_excel(auto_log=True)
+        except Exception as eod_err:
+            print(f"[EOD Auto-Export Notice]: {eod_err}")
+
     return state
 
 def reset_account() -> Dict[str, Any]:
@@ -584,27 +600,21 @@ def toggle_auto_pilot() -> bool:
     return state["config"]["auto_trading_enabled"]
 
 # ==============================================================================
-# MUHURAT TRADING EXCEL REPORT GENERATOR
+# INTRADAY & MUHURAT S&R EXCEL REPORT GENERATOR
 # ==============================================================================
-def export_muhurat_session_to_excel(filepath: str = None) -> str:
+def export_muhurat_session_to_excel(filepath: str = None, auto_log: bool = True) -> str:
     """
-    Generates an institutional-grade Excel report analyzing all Muhurat trades:
-    - Entry Price, Entry Reason, Exit Price, Exit Reason, P&L, Risk:Reward, Accuracy.
+    Generates an institutional-grade Excel report analyzing all session trades:
+    - Uses YYYY-MM-DD date-first naming inside 2. Output Generated/Test Analysis/Intraday_SR_Tests/
+    - Auto-summarizes accuracy metrics into AnitGravity Wealth.xlsx -> 'Validation & Lessons'.
     """
     state = load_state()
     ist = get_ist_now()
+    is_muhurat = (ist.date() == datetime.date(2026, 11, 8))
 
     if not filepath:
-        filename = f"Muhurat_Trading_Analysis_{ist.strftime('%Y%m%d_%H%M%S')}.xlsx"
-        base_root = os.path.dirname(os.path.dirname(ENGINE_DIR))
-        output_dir = os.path.join(base_root, "2. Output Generated")
-        dest_dir = output_dir if os.path.isdir(output_dir) else ENGINE_DIR
-        for sub in ("Test Analysis", "Test result", "Test Results"):
-            cand = os.path.join(output_dir, sub)
-            if os.path.isdir(cand):
-                dest_dir = cand
-                break
-        filepath = os.path.join(dest_dir, filename)
+        slug = "Muhurat_Trading_Audit" if is_muhurat else "Intraday_SR_Audit"
+        filepath = tracker_utils.resolve_test_output_path(slug, category="intraday", dt=ist)
 
     wb = openpyxl.Workbook()
     # Sheet 1: Trade Log
@@ -635,14 +645,19 @@ def export_muhurat_session_to_excel(filepath: str = None) -> str:
 
     # Title Block
     ws_trades.merge_cells("A1:Q1")
-    ws_trades["A1"] = "ANTI-GRAVITY SOVEREIGN ENGINE — DIWALI MUHURAT TRADING AUDIT (SAMVAT 2083)"
+    ws_trades["A1"] = (
+        "ANTI-GRAVITY SOVEREIGN ENGINE — DIWALI MUHURAT TRADING AUDIT (SAMVAT 2083)"
+        if is_muhurat else
+        f"ANTI-GRAVITY SOVEREIGN ENGINE — INTRADAY S&R VALIDATION AUDIT ({ist.strftime('%d %b %Y').upper()})"
+    )
     ws_trades["A1"].font = font_title
     ws_trades["A1"].fill = navy_fill
     ws_trades["A1"].alignment = Alignment(horizontal="center", vertical="center")
     ws_trades.row_dimensions[1].height = 32
 
     ws_trades.merge_cells("A2:Q2")
-    ws_trades["A2"] = f"Session Date: {ist.strftime('%d November %Y')} | Trading Window: 14:20 to 15:30 IST | Capital: ₹1,00,000 | Strategy: S&R Demand Confluence"
+    session_win = "14:20 to 15:30 IST" if is_muhurat else "09:15 to 15:30 IST"
+    ws_trades["A2"] = f"Session Date: {ist.strftime('%d November %Y')} | Trading Window: {session_win} | Capital: ₹1,00,000 | Strategy: S&R Demand Confluence"
     ws_trades["A2"].font = font_sub
     ws_trades["A2"].fill = navy_fill
     ws_trades["A2"].alignment = Alignment(horizontal="center", vertical="center")
@@ -731,7 +746,7 @@ def export_muhurat_session_to_excel(filepath: str = None) -> str:
     ws_summary.views.sheetView[0].showGridLines = True
 
     ws_summary.merge_cells("A1:D1")
-    ws_summary["A1"] = "MUHURAT SESSION PERFORMANCE SCORECARD"
+    ws_summary["A1"] = "MUHURAT SESSION PERFORMANCE SCORECARD" if is_muhurat else f"INTRADAY S&R AUDIT SCORECARD ({ist.strftime('%d %b %Y')})"
     ws_summary["A1"].font = font_title
     ws_summary["A1"].fill = navy_fill
     ws_summary["A1"].alignment = Alignment(horizontal="center", vertical="center")
@@ -746,13 +761,13 @@ def export_muhurat_session_to_excel(filepath: str = None) -> str:
         ("Total Net Realized P&L", f"₹{acc['realized_pnl']:,.2f}"),
         ("Total Unrealized P&L", f"₹{acc['unrealized_pnl']:,.2f}"),
         ("Net Account Value", f"₹{acc['total_value']:,.2f}"),
-        ("Muhurat Session Return %", f"{acc['day_return_pct']:.2f}%"),
+        ("Session Return %", f"{acc['day_return_pct']:.2f}%"),
         ("Total Trades Evaluated", str(len(all_trades))),
         ("Winning Trades", str(stats.get("winning_trades", 0))),
         ("Losing Trades", str(stats.get("losing_trades", 0))),
         ("Win Rate %", f"{stats.get('win_rate_pct', 0.0)}%"),
         ("Profit Factor", str(stats.get("profit_factor", 0.0))),
-        ("Execution Discipline", "100.0% (Zero human bias, 15:25 IST Auto Square-off enforced)")
+        ("Execution Discipline", "100.0% (Zero human bias, automated S&R Target/SL + EOD Square-Off)")
     ]
 
     for idx, (metric, val) in enumerate(summary_rows, 3):
@@ -767,5 +782,40 @@ def export_muhurat_session_to_excel(filepath: str = None) -> str:
     ws_summary.column_dimensions["B"].width = 35
 
     wb.save(filepath)
-    print(f"Successfully generated Muhurat Excel analysis report at: {filepath}")
+    print(f"Successfully generated Intraday S&R Excel analysis report at: {filepath}")
+
+    if auto_log:
+        closed_list = state.get("closed_trades", [])
+        open_list = state.get("open_positions", [])
+        tgt_cnt = sum(1 for c in closed_list if "TARGET" in str(c.get("exit_reason", "")).upper())
+        sl_cnt = sum(1 for c in closed_list if "STOP LOSS" in str(c.get("exit_reason", "")).upper())
+        sq_cnt = sum(1 for c in closed_list if "SQUARE" in str(c.get("exit_reason", "")).upper())
+        date_label = f"{ist.strftime('%d %b %Y')} ({'Muhurat' if is_muhurat else 'Live NSE'})"
+        exp_label = f"Intraday S&R Live Test Audit ({ist.strftime('%Y-%m-%d')})"
+        sample_desc = f"{len(all_trades)} positions ({len(closed_list)} closed, {len(open_list)} open); R1 Target + Trailing SL"
+        outcome_desc = (
+            f"Win Rate: {stats.get('win_rate_pct', 0.0)}% | PF: {stats.get('profit_factor', 0.0)} | "
+            f"Targets: {tgt_cnt}, SL: {sl_cnt}, Squared: {sq_cnt} | "
+            f"Realized: ₹{acc['realized_pnl']:+,.2f}, Unrealized: ₹{acc['unrealized_pnl']:+,.2f} ({acc['day_return_pct']:+.2f}%)"
+        )
+        finding_desc = (
+            f"Auto-captured empirical S&R session snapshot. Equity ₹{acc['total_value']:,.2f} across "
+            f"{stats.get('winning_trades', 0)}W / {stats.get('losing_trades', 0)}L closed executions."
+        )
+        rule_desc = "Stored in Intraday_SR_Tests/ with date-first sorting; rules feeding multi-year breakout model."
+        try:
+            log_res = tracker_utils.record_test_to_validation_sheet(
+                experiment=exp_label,
+                date_regime=date_label,
+                sample_rules=sample_desc,
+                measured_outcome=outcome_desc,
+                finding=finding_desc,
+                rule_upgrade=rule_desc,
+                test_filepath=filepath,
+                dedup_key=ist.strftime("%Y-%m-%d"),
+            )
+            print("Validation & Lessons auto-sync:", log_res)
+        except Exception as sync_err:
+            print(f"[Tracker Auto-Log Notice]: {sync_err}")
+
     return filepath
