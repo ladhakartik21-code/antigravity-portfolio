@@ -122,14 +122,14 @@
     <header class="glass-panel sticky top-0 z-40 border-b border-slate-800/80 px-4 lg:px-8 py-3.5">
         <div class="w-full mx-auto flex flex-wrap items-center justify-between gap-4">
             
-            <!-- Left Branding -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <!-- Left Branding (Click to return to Command Hub) -->
+            <div onclick="switchTab('hub')" title="Return to Command Hub" class="flex items-center gap-3 cursor-pointer group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition">
                     <i data-lucide="trending-up" class="w-5 h-5 text-white"></i>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="font-extrabold text-white text-base tracking-tight">AntiGravity</span>
+                        <span class="font-extrabold text-white text-base tracking-tight group-hover:text-blue-400 transition">AntiGravity</span>
                         <span class="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">Wealth 2.1</span>
                     </div>
                     <p class="text-[11px] text-slate-400 flex items-center gap-1.5">
@@ -170,44 +170,95 @@
         </div>
     </header>
 
-    <!-- ==================== SUB NAVIGATION TABS ==================== -->
-    <nav class="bg-dark-800/60 border-b border-slate-800 px-4 lg:px-8 py-2 sticky top-[69px] z-30 backdrop-blur">
-        <div class="w-full mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar">
-            <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-btn active px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-slate-300">
-                <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Overview
-            </button>
-            <button onclick="switchTab('holdings')" id="tab-holdings" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-700/50">
-                <i data-lucide="wallet" class="w-4 h-4"></i> Holdings & Markets
-            </button>
-            <button onclick="switchTab('indices')" id="tab-indices" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-cyan-400 hover:bg-cyan-500/10 border border-cyan-500/20">
-                <i data-lucide="line-chart" class="w-4 h-4 text-cyan-400"></i> Index
-            </button>
-            <button onclick="switchTab('terminal')" id="tab-terminal" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-700/50">
-                <i data-lucide="candlestick-chart" class="w-4 h-4"></i> S&R Candlestick Terminal
-            </button>
-            <button onclick="switchTab('allocator')" id="tab-allocator" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-700/50">
-                <i data-lucide="target" class="w-4 h-4"></i> Best Monthly Buy & Bloomberg Thesis
-            </button>
-            <button onclick="switchTab('goal')" id="tab-goal" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-700/50">
-                <i data-lucide="milestone" class="w-4 h-4"></i> ₹10-15 Cr Goal Engine
-            </button>
-            <button onclick="switchTab('testing')" id="tab-testing" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-amber-400 hover:bg-amber-500/10 border border-amber-500/20">
-                <i data-lucide="flask-conical" class="w-4 h-4"></i> 🔬 1-Week Testing Lab
-            </button>
-            <button onclick="switchTab('intraday')" id="tab-intraday" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 shadow">
-                <i data-lucide="zap" class="w-4 h-4 text-amber-400 animate-pulse"></i> ⚡ Intraday AI Lab (₹1L)
-            </button>
-            <button onclick="switchTab('roadmap')" id="tab-roadmap" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
-                <i data-lucide="clipboard-check" class="w-4 h-4 text-emerald-400"></i> 📋 Master Tracker
-            </button>
+    <!-- ==================== COMMAND SUB-NAVIGATION BAR (ZERO SLIDING) ==================== -->
+    <nav class="bg-dark-800/80 border-b border-slate-800 px-4 lg:px-8 py-2.5 sticky top-[69px] z-30 backdrop-blur">
+        <!-- Mode A: Shown when on Command Hub Landing Screen -->
+        <div id="hubNavBar" class="w-full mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+                <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-300 border border-blue-500/30 text-xs font-extrabold flex items-center gap-1.5">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-blue-400"></i>
+                    Command Hub
+                </span>
+                <span class="text-xs text-slate-400 hidden sm:inline">Select any module tile below to open, review &amp; freeze</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-1.5" id="hubFilterBar">
+                <button onclick="setHubFilter('ALL')" data-hubfilter="ALL" class="hub-filter-btn px-3 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white transition">All Modules</button>
+                <button onclick="setHubFilter('ACTIVE')" data-hubfilter="ACTIVE" class="hub-filter-btn px-3 py-1 rounded-lg text-[11px] font-bold bg-dark-900 text-slate-300 border border-slate-700 hover:text-white transition">Active Live</button>
+                <button onclick="setHubFilter('FROZEN')" data-hubfilter="FROZEN" class="hub-filter-btn px-3 py-1 rounded-lg text-[11px] font-bold bg-dark-900 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/10 transition">Frozen ✅</button>
+                <button onclick="setHubFilter('PLANNED')" data-hubfilter="PLANNED" class="hub-filter-btn px-3 py-1 rounded-lg text-[11px] font-bold bg-dark-900 text-sky-400 border border-sky-500/30 hover:bg-sky-500/10 transition">Planned 🗓️</button>
+            </div>
+        </div>
+
+        <!-- Mode B: Shown cleanly inside any opened module (Breadcrumb + Quick Jump Dropdown) -->
+        <div id="moduleBreadcrumbBar" class="hidden w-full mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 flex-wrap">
+                <button onclick="switchTab('hub')" class="px-3 py-1.5 rounded-lg bg-dark-900 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 flex items-center gap-1.5 transition shadow">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-blue-400"></i>
+                    <span>All Modules Grid</span>
+                </button>
+                <span class="text-slate-600 font-bold">›</span>
+                <span id="breadcrumbTitle" class="text-sm font-black text-white tracking-tight">Module</span>
+                <span id="breadcrumbStatusPill" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Pending Review</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <span class="text-[10px] uppercase text-slate-500 font-bold hidden sm:inline">Quick Switch:</span>
+                <select id="quickModuleSelect" onchange="if(this.value) switchTab(this.value)" class="bg-dark-900 border border-slate-700 text-xs font-semibold text-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-blue-500 cursor-pointer">
+                    <option value="hub">⊞ Command Hub (Home)</option>
+                    <option value="dashboard">📊 Overview &amp; Trajectory</option>
+                    <option value="holdings">💼 Holdings &amp; Markets</option>
+                    <option value="indices">📈 Index Matrix (32 Live)</option>
+                    <option value="terminal">🕯️ S&amp;R Candlestick Terminal</option>
+                    <option value="roadmap">📋 Master Tracker</option>
+                    <option value="allocator">🎯 Best Monthly Buy &amp; Thesis</option>
+                    <option value="goal">🏆 ₹10–15 Cr Goal Engine</option>
+                    <option value="testing">🔬 1-Week Testing Lab</option>
+                    <option value="intraday">⚡ Intraday AI Lab (₹1L)</option>
+                </select>
+            </div>
         </div>
     </nav>
 
     <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
     <main class="flex-1 w-full mx-auto px-4 lg:px-8 py-6">
 
+        <!-- ==================== VIEW 0: 5-COLUMN COMMAND HUB (DEFAULT LANDING PAGE) ==================== -->
+        <section id="view-hub" class="space-y-6">
+            <!-- Hub Executive Pulse Strip -->
+            <div class="glass-panel p-5 rounded-2xl border border-slate-800 bg-gradient-to-r from-dark-900 via-dark-900 to-blue-950/20 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] uppercase tracking-widest font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">Sovereign Cockpit</span>
+                        <span id="hubFreezeSummary" class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">0 / 9 Active Modules Frozen</span>
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-black text-white tracking-tight">AntiGravity Command Workspace</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">Select any workspace module below. Review, refine, finalize &amp; freeze one screen at a time.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 font-mono">
+                    <div class="px-4 py-2.5 rounded-xl bg-dark-900/90 border border-slate-800 text-right">
+                        <span class="text-[10px] uppercase text-slate-500 block">Portfolio Valuation</span>
+                        <span id="hubPulseValue" class="text-base font-black text-white">Loading...</span>
+                    </div>
+                    <div class="px-4 py-2.5 rounded-xl bg-dark-900/90 border border-slate-800 text-right">
+                        <span class="text-[10px] uppercase text-slate-500 block">CAGR Goal Target</span>
+                        <span class="text-base font-black text-emerald-400">14% – 16%</span>
+                    </div>
+                    <div class="px-4 py-2.5 rounded-xl bg-dark-900/90 border border-slate-800 text-right">
+                        <span class="text-[10px] uppercase text-slate-500 block">Tracker Milestones</span>
+                        <span id="hubPulseTracker" class="text-base font-black text-cyan-400">-- / --</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5-Column Responsive Tile Matrix (Scales cleanly up to 5x5 = 25 modules) -->
+            <div id="commandHubGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Populated dynamically from module_registry -->
+            </div>
+        </section>
+
         <!-- ==================== VIEW 1: DASHBOARD OVERVIEW ==================== -->
-        <section id="view-dashboard" class="space-y-6">
+        <section id="view-dashboard" class="hidden space-y-6">
             <!-- 4 Metric Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="glass-panel p-5 rounded-2xl border border-slate-800">
@@ -1836,7 +1887,7 @@
 
     <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
-        let currentTab = 'dashboard';
+        let currentTab = 'hub';
         let tvChart = null;
         let tvCandleSeries = null;
         let tvVolumeSeries = null;
@@ -1847,6 +1898,22 @@
         let intradayInterval = null;
         let lastIntradayPrices = {};
         let inactivityTimer = null;
+        let hubFilterMode = 'ALL';
+        let moduleRegistryList = [
+            { id: 'dashboard', title: 'Overview & Trajectory', icon: 'layout-dashboard', accent: 'blue', status: 'Pending Review', description: 'Core portfolio KPIs, Allocation Drift Donut & ₹10–15 Cr 15-Year compounding curve.' },
+            { id: 'holdings', title: 'Holdings & Markets', icon: 'wallet', accent: 'emerald', status: 'Pending Review', description: 'Live valuation across Stocks (3), ETFs (3) & Mutual Funds (5 Direct Growth schemes).' },
+            { id: 'indices', title: 'Index Matrix (32)', icon: 'line-chart', accent: 'cyan', status: 'Pending Review', description: 'Real-time 4×4 NSE & Global market matrices with interactive multi-timeframe candlesticks.' },
+            { id: 'terminal', title: 'S&R Terminal', icon: 'candlestick-chart', accent: 'indigo', status: 'Pending Review', description: 'TradingView chart workspace overlaid with S1/S2 Demand & R1/R2 Supply levels.' },
+            { id: 'roadmap', title: 'Master Tracker', icon: 'clipboard-check', accent: 'emerald', status: 'Pending Review', description: 'Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge.' },
+            { id: 'allocator', title: 'Best Monthly Buy', icon: 'target', accent: 'violet', status: 'Pending Review', description: 'Fundamental Moat scores, DCF Margin of Safety & Bloomberg Precious Metals Thesis.' },
+            { id: 'goal', title: '₹10–15 Cr Goal', icon: 'milestone', accent: 'sky', status: 'Pending Review', description: 'Monthly SIP step-up compounding calculator tracking your 14%–16% CAGR path.' },
+            { id: 'testing', title: '1-Week Testing Lab', icon: 'flask-conical', accent: 'amber', status: 'Live Lab', description: '5-Year walk-forward S&R backtest (90.6% accuracy) & forward test bench.' },
+            { id: 'intraday', title: 'Intraday AI Lab', icon: 'zap', accent: 'amber', status: 'Live Lab', description: 'High-frequency S&R proving lab with 3s stream & auto EOD Test Analysis exports.' },
+            { id: 'planned-breakout', title: 'Breakout Scanner', icon: 'radar', accent: 'slate', status: 'Planned', target_tab: 'roadmap', subtab: 'pipeline', description: 'Multi-Year Stage-1 to R1 breakout finder (Sterlite Blueprint) for 14%–16% alpha.' },
+            { id: 'planned-mf', title: 'MF Macro Flows', icon: 'pie-chart', accent: 'slate', status: 'Pending User', target_tab: 'roadmap', subtab: 'pipeline', description: 'Equity, Debt, Passive ETF & SIF AUM analytics from Mutual Fund Data folder.' },
+            { id: 'planned-research', title: 'Research Reports', icon: 'file-text', accent: 'slate', status: 'Pending User', target_tab: 'roadmap', subtab: 'pipeline', description: 'Institutional research PDF ingestion & Moat consensus cross-verification.' },
+            { id: 'planned-allocator', title: 'Monthly Tranche Rule', icon: 'calendar-check', accent: 'slate', status: 'Planned', target_tab: 'roadmap', subtab: 'journey', description: 'December fresh capital allocation signals gated strictly by S1/S2 & MOS triggers.' }
+        ];
 
         // Auto-lock after 15 mins
         function resetInactivityTimer() {
@@ -1977,12 +2044,17 @@
         // App Init
         async function initApp() {
             lucide.createIcons();
+            switchTab('hub');
+            loadModulesRegistry();
+            loadRoadmapData();
+            loadIntradayData();
             await fetchPortfolio();
             initCharts();
             loadBestBuy();
             loadScorecard();
             loadTestingData();
-        loadSrBacktest();
+            loadSrBacktest();
+            renderCommandHub();
         }
 
         // Fetch Portfolio
@@ -2073,6 +2145,7 @@
             renderEtfsTable();
             renderMfsTable();
             updateAllocationChart();
+            if (currentTab === 'hub') renderCommandHub();
         }
 
         function renderStocksTable() {
@@ -2186,18 +2259,40 @@
             loadTerminalChart();
         }
 
-        // Tab Switching
-        function switchTab(tabId) {
+        // Tab Switching + Zero-Overflow Breadcrumb Navigation
+        function switchTab(tabId, subTab = null) {
             currentTab = tabId;
             document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-            
             const activeSec = document.getElementById(`view-${tabId}`);
             if (activeSec) activeSec.classList.remove('hidden');
-            
-            const activeBtn = document.getElementById(`tab-${tabId}`);
-            if (activeBtn) activeBtn.classList.add('active');
 
+            const hubBar = document.getElementById('hubNavBar');
+            const crumbBar = document.getElementById('moduleBreadcrumbBar');
+            const quickSel = document.getElementById('quickModuleSelect');
+
+            if (tabId === 'hub') {
+                if (hubBar) hubBar.classList.remove('hidden');
+                if (crumbBar) crumbBar.classList.add('hidden');
+                renderCommandHub();
+            } else {
+                if (hubBar) hubBar.classList.add('hidden');
+                if (crumbBar) crumbBar.classList.remove('hidden');
+                if (quickSel) quickSel.value = tabId;
+
+                const modMeta = moduleRegistryList.find(m => m.id === tabId);
+                const crumbTitle = document.getElementById('breadcrumbTitle');
+                const crumbPill = document.getElementById('breadcrumbStatusPill');
+                if (modMeta) {
+                    if (crumbTitle) crumbTitle.innerText = modMeta.title;
+                    if (crumbPill) {
+                        crumbPill.outerHTML = hubModuleStatusPill(modMeta.status, 'breadcrumbStatusPill');
+                    }
+                }
+            }
+
+            if (tabId === 'dashboard' || tabId === 'goal') {
+                setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 60);
+            }
             if (tabId === 'indices') {
                 loadIndicesData();
                 if (!indicesInterval) {
@@ -2224,7 +2319,11 @@
                 }
             }
             if (tabId === 'allocator') { loadFundamentalMoat(); }
-            if (tabId === 'roadmap') { loadRoadmapData(); }
+            if (tabId === 'roadmap') {
+                loadRoadmapData().then(() => {
+                    if (subTab) switchRoadmapSubtab(subTab);
+                });
+            }
             if (tabId === 'terminal') {
                 setTimeout(() => {
                     if (!tvChart) initTradingView();
@@ -2233,9 +2332,175 @@
             }
             if (tabId === 'testing') {
                 loadTestingData();
-        loadSrBacktest();
+                loadSrBacktest();
             }
+            if (window.lucide) lucide.createIcons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        function hubModuleStatusPill(status, elemId = '') {
+            const idAttr = elemId ? `id="${elemId}"` : '';
+            const s = (status || '').toLowerCase();
+            if (s === 'frozen') return `<span ${idAttr} class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 whitespace-nowrap">✅ Frozen</span>`;
+            if (s === 'live lab') return `<span ${idAttr} class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 whitespace-nowrap">🧪 Live Lab</span>`;
+            if (s === 'pending user') return `<span ${idAttr} class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 whitespace-nowrap">⏳ Pending User</span>`;
+            if (s === 'planned') return `<span ${idAttr} class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-500/20 text-sky-300 border border-sky-500/40 whitespace-nowrap">🗓️ Planned</span>`;
+            return `<span ${idAttr} class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 whitespace-nowrap">🔧 Review</span>`;
+        }
+
+        function setHubFilter(mode) {
+            hubFilterMode = mode;
+            document.querySelectorAll('.hub-filter-btn').forEach(btn => {
+                const m = btn.getAttribute('data-hubfilter');
+                if (m === mode) {
+                    btn.classList.add('ring-2', 'ring-blue-400');
+                } else {
+                    btn.classList.remove('ring-2', 'ring-blue-400');
+                }
+            });
+            renderCommandHub();
+        }
+
+        async function loadModulesRegistry() {
+            try {
+                const res = await fetch('/api/modules', { cache: 'no-store' });
+                const d = await res.json();
+                if (d.modules && Array.isArray(d.modules) && d.modules.length > 0) {
+                    moduleRegistryList = d.modules;
+                }
+            } catch (e) {
+                console.warn('Using embedded module defaults:', e);
+            }
+            renderCommandHub();
+        }
+
+        function getHubLiveMetric(modId) {
+            try {
+                if (modId === 'dashboard' && portfolioData?.summary) {
+                    const s = portfolioData.summary;
+                    const pfx = s.total_pnl >= 0 ? '+' : '';
+                    return { text: `${formatINR(s.total_value)} (${pfx}${s.total_pnl_pct.toFixed(2)}%)`, cls: s.total_pnl >= 0 ? 'text-emerald-400' : 'text-rose-400' };
+                }
+                if (modId === 'holdings' && portfolioData) {
+                    return { text: `${portfolioData.stocks.length} Stocks • ${portfolioData.etfs.length} ETFs • ${portfolioData.mutual_funds.length} MFs`, cls: 'text-emerald-300' };
+                }
+                if (modId === 'indices') {
+                    return { text: '16 Indian + 16 Global Live', cls: 'text-cyan-300' };
+                }
+                if (modId === 'terminal') {
+                    return { text: 'S1/S2 Demand & R1/R2 Overlay', cls: 'text-indigo-300' };
+                }
+                if (modId === 'roadmap' && roadmapData?.scorecard) {
+                    const sc = roadmapData.scorecard;
+                    return { text: `${sc.done}/${sc.total} Done (${sc.completion_pct.toFixed(1)}%)`, cls: 'text-emerald-400' };
+                }
+                if (modId === 'allocator') {
+                    return { text: 'Moat Score + DCF MOS Engine', cls: 'text-violet-300' };
+                }
+                if (modId === 'goal') {
+                    return { text: '₹65k/mo @ 14%–16% CAGR Path', cls: 'text-sky-300' };
+                }
+                if (modId === 'testing') {
+                    return { text: '5Y S&R Backtest: 90.6% Acc', cls: 'text-amber-300' };
+                }
+                if (modId === 'intraday' && intradayData?.account) {
+                    const a = intradayData.account;
+                    const pfx = a.day_return_pct >= 0 ? '+' : '';
+                    return { text: `${formatINR(a.total_value)} (${pfx}${a.day_return_pct.toFixed(2)}%)`, cls: a.day_return_pct >= 0 ? 'text-emerald-400' : 'text-rose-400' };
+                }
+            } catch (e) {}
+            if (modId.startsWith('planned-')) return { text: 'Open in Master Tracker →', cls: 'text-slate-400' };
+            return { text: 'Open Workspace →', cls: 'text-slate-300' };
+        }
+
+        function renderCommandHub() {
+            const grid = document.getElementById('commandHubGrid');
+            if (!grid) return;
+
+            // Update Hub Executive Pulse metrics
+            if (portfolioData?.summary) {
+                const s = portfolioData.summary;
+                const pfx = s.total_pnl >= 0 ? '+' : '';
+                const el = document.getElementById('hubPulseValue');
+                if (el) {
+                    el.innerText = `${formatINR(s.total_value)} (${pfx}${s.total_pnl_pct.toFixed(2)}%)`;
+                    el.className = `text-base font-black ${s.total_pnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+                }
+            }
+            if (roadmapData?.scorecard) {
+                const sc = roadmapData.scorecard;
+                const el = document.getElementById('hubPulseTracker');
+                if (el) el.innerText = `${sc.done} / ${sc.total} (${sc.completion_pct.toFixed(0)}%)`;
+            }
+
+            const activeMods = moduleRegistryList.filter(m => !m.target_tab);
+            const frozenCnt = activeMods.filter(m => (m.status || '').toLowerCase() === 'frozen').length;
+            const fEl = document.getElementById('hubFreezeSummary');
+            if (fEl) fEl.innerText = `${frozenCnt} / ${activeMods.length} Active Modules Frozen`;
+
+            const filtered = moduleRegistryList.filter(m => {
+                const st = (m.status || '').toLowerCase();
+                const isPlan = st === 'planned' || st === 'pending user';
+                if (hubFilterMode === 'ACTIVE') return !isPlan;
+                if (hubFilterMode === 'FROZEN') return st === 'frozen';
+                if (hubFilterMode === 'PLANNED') return isPlan;
+                return true;
+            });
+
+            const accentMap = {
+                blue: 'hover:border-blue-500/60 from-blue-500/15 text-blue-400 border-blue-500/30',
+                emerald: 'hover:border-emerald-500/60 from-emerald-500/15 text-emerald-400 border-emerald-500/30',
+                cyan: 'hover:border-cyan-500/60 from-cyan-500/15 text-cyan-400 border-cyan-500/30',
+                indigo: 'hover:border-indigo-500/60 from-indigo-500/15 text-indigo-400 border-indigo-500/30',
+                violet: 'hover:border-violet-500/60 from-violet-500/15 text-violet-400 border-violet-500/30',
+                sky: 'hover:border-sky-500/60 from-sky-500/15 text-sky-400 border-sky-500/30',
+                amber: 'hover:border-amber-500/60 from-amber-500/15 text-amber-400 border-amber-500/30',
+                slate: 'hover:border-slate-500/60 from-slate-700/20 text-slate-400 border-slate-700/60'
+            };
+
+            grid.innerHTML = '';
+            filtered.forEach(m => {
+                const isPlan = (m.status || '').toLowerCase() === 'planned' || (m.status || '').toLowerCase() === 'pending user';
+                const ac = accentMap[m.accent] || accentMap.blue;
+                const [hoverBorder, gradFrom, iconText, iconBorder] = ac.split(' ');
+                const metric = getHubLiveMetric(m.id);
+                const destTab = m.target_tab || m.id;
+                const destSub = m.subtab ? `'${m.subtab}'` : 'null';
+
+                const card = document.createElement('div');
+                card.onclick = () => switchTab(destTab, m.subtab || null);
+                card.className = `glass-panel p-4 rounded-2xl border border-slate-800 ${hoverBorder} bg-gradient-to-br ${gradFrom} via-dark-900 to-dark-900/95 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between min-h-[168px] ${isPlan ? 'opacity-80 hover:opacity-100 border-dashed' : ''}`;
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-2 mb-3">
+                            <div class="w-9 h-9 rounded-xl bg-dark-900/90 border ${iconBorder} flex items-center justify-center shrink-0">
+                                <i data-lucide="${m.icon || 'box'}" class="w-4 h-4 ${iconText}"></i>
+                            </div>
+                            ${hubModuleStatusPill(m.status)}
+                        </div>
+                        <h3 class="font-extrabold text-white text-sm tracking-tight mb-1">${m.title}</h3>
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-2">${m.description || ''}</p>
+                    </div>
+                    <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                        <span class="text-[11px] font-mono font-bold truncate ${metric.cls}">${metric.text}</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && currentTab !== 'hub') {
+                const pinModal = document.getElementById('pinLockModal');
+                const mobModal = document.getElementById('mobileModal');
+                const idxModal = document.getElementById('indexChartModal');
+                const srModal = document.getElementById('srAuditModal');
+                const anyModalOpen = [pinModal, mobModal, idxModal, srModal].some(el => el && !el.classList.contains('hidden'));
+                if (!anyModalOpen) switchTab('hub');
+            }
+        });
 
         // TradingView Canvas Terminal with Support & Resistance Price Lines
         function initTradingView() {
@@ -2892,6 +3157,7 @@
                 const res = await fetch('/api/intraday', { cache: 'no-store' });
                 const data = await res.json();
                 intradayData = data;
+                if (currentTab === 'hub') renderCommandHub();
 
                 // 1. Account Stats
                 const acc = data.account;
@@ -4111,6 +4377,7 @@
                 renderRoadmapValidations();
                 renderRoadmapPipeline();
                 renderRoadmapCagr();
+                if (currentTab === 'hub') renderCommandHub();
                 if (window.lucide) lucide.createIcons();
             } catch (e) {
                 console.error('Failed to load roadmap tracker:', e);
