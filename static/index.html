@@ -750,12 +750,282 @@
             </div>
         </section>
 
-        <!-- ==================== VIEW 4: BEST MONTHLY BUY & BLOOMBERG THESIS ==================== -->
+        <!-- ==================== VIEW 4: BEST MONTHLY BUY & 350+ NSE SCREENER ==================== -->
         <section id="view-allocator" class="space-y-6 hidden">
+
+            <!-- Monthly Capital Control & Scope Header -->
+            <div class="glass-panel p-5 rounded-2xl border border-violet-500/40 bg-gradient-to-r from-dark-800 via-dark-900 to-violet-950/20 shadow-xl">
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-violet-500/20 text-violet-300 border border-violet-500/30 font-mono">Institutional Allocation Engine v2.2</span>
+                            <span id="universeCoverageBadge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-mono">Scanning 350+ NSE/BSE Stocks...</span>
+                        </div>
+                        <h2 class="text-xl font-black text-white mt-1.5">🎯 Best Monthly Buy • Equity, ETF &amp; Breakout Allocator</h2>
+                        <p class="text-xs text-slate-400 mt-0.5">
+                            Dual-Filter Gate (Margin of Safety + Demand/Supply S&amp;R) • Capital-Safety Priority: Large Cap Core + Deep-Discount Mid/Small Exceptions (≥25–30% off peak).
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <div class="flex items-center gap-1.5 bg-dark-900/90 border border-slate-700 rounded-xl px-3 py-1.5">
+                            <span class="text-[11px] text-slate-400 font-bold">Monthly Capital (₹):</span>
+                            <input id="bestBuyBudgetInput" type="number" min="5000" step="5000" value="50000"
+                                class="w-24 bg-transparent text-white font-mono font-bold text-sm focus:outline-none text-right">
+                        </div>
+                        <select id="bestBuyModeSelect" onchange="loadBestBuy()" class="bg-dark-900 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-2 focus:outline-none">
+                            <option value="balanced_with_breakout">Core + Breakout Alpha (14%–16% Target)</option>
+                            <option value="pure_largecap_safe">Pure Large-Cap Safe Mode (60% Eq / 40% ETF)</option>
+                        </select>
+                        <button onclick="loadBestBuy()" class="px-3.5 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-xl text-xs font-bold transition shadow">
+                            Recalculate Plan
+                        </button>
+                        <button onclick="refreshUniverseScan()" id="btnRescanUniverse" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-cyan-300 rounded-xl text-xs font-bold transition">
+                            ↻ Refresh Scan
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-800/80 flex flex-wrap justify-between items-center gap-2 text-[11px]">
+                    <span class="text-slate-300"><b class="text-amber-400">MF Scope Policy:</b> Monthly SIPs (₹15,000/mo long-term core) are excluded from active shifting here and will be tracked in a dedicated Mutual Funds tab.</span>
+                    <span id="screenerTimestampNote" class="text-slate-400 font-mono">Universe: Nifty 50 • Next 50 • Midcap 150 • Smallcap 100 • BankNifty • Sensex</span>
+                </div>
+            </div>
+
+            <!-- Live COMEX / NSE / MCX Metals Macro Thesis -->
+            <div class="glass-panel p-5 md:p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-950/20 to-dark-800">
+                <div class="flex flex-wrap justify-between items-center mb-3 gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center">
+                            <i data-lucide="gem" class="w-4 h-4 text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-white text-sm">Live COMEX / NSE / MCX Precious Metals Ratio Thesis (1999–2026 Baseline)</h3>
+                            <p class="text-[11px] text-slate-400">Real-time Gold (GC=F), Silver (SI=F), Gold/Silver Ratio (GSR) &amp; US Dollar Index (DX-Y.NYB)</p>
+                        </div>
+                    </div>
+                    <span id="metalsGsrBadge" class="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold font-mono">
+                        Live GSR: Loading... (26Y Median: 67.67x)
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs mt-3">
+                    <div class="p-3 bg-dark-800/90 rounded-xl border border-slate-700/60">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Gold Futures (GC=F)</span>
+                        <span id="metalsGoldPrice" class="text-white font-mono font-bold text-base block mt-0.5">--</span>
+                        <span id="metalsGoldChg" class="text-emerald-400 font-semibold block text-[11px]">26Y CAGR in INR: +13.7%</span>
+                        <span class="text-slate-500 text-[10px] block mt-1">Monetary Bedrock &amp; INR Hedge (r=0.90)</span>
+                    </div>
+                    <div class="p-3 bg-dark-800/90 rounded-xl border border-slate-700/60">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Silver Futures (SI=F)</span>
+                        <span id="metalsSilverPrice" class="text-white font-mono font-bold text-base block mt-0.5">--</span>
+                        <span id="metalsSilverChg" class="text-emerald-400 font-semibold block text-[11px]">Beta vs Gold: 2.40x</span>
+                        <span class="text-slate-500 text-[10px] block mt-1">Solar/EV/AI Industrial Accelerator</span>
+                    </div>
+                    <div class="p-3 bg-dark-800/90 rounded-xl border border-slate-700/60">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Live Gold / Silver Ratio (GSR)</span>
+                        <span id="metalsGsrVal" class="text-amber-400 font-mono font-bold text-base block mt-0.5">--</span>
+                        <span class="text-slate-300 block text-[11px]">26Y Mean: 68.69 | Median: 67.67</span>
+                        <span id="metalsGsrRegimeShort" class="text-emerald-400 text-[10px] block mt-1">Computing regime...</span>
+                    </div>
+                    <div class="p-3 bg-dark-800/90 rounded-xl border border-slate-700/60">
+                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Dollar Index (DX-Y.NYB)</span>
+                        <span id="metalsDxyVal" class="text-white font-mono font-bold text-base block mt-0.5">--</span>
+                        <span id="metalsDxyChg" class="text-slate-300 block text-[11px]">Silver DXY Corr: -0.68 | GSR: +0.494</span>
+                        <span class="text-slate-500 text-[10px] block mt-1">DXY softening = Silver outperformance</span>
+                    </div>
+                </div>
+
+                <div id="metalsThesisDirective" class="p-3.5 bg-dark-800/90 rounded-xl border border-slate-700/80 mt-3 text-xs leading-relaxed text-slate-300">
+                    Fetching live COMEX Gold/Silver ratio regime and NSE ETF quotes...
+                </div>
+            </div>
+
+            <!-- Dynamic ETF Allocator & Dual-Filter Equity Picks -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- ETF Dynamic Allocator (40% Allocation) -->
+                <div class="lg:col-span-5 glass-panel p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-white text-sm flex items-center gap-2 mb-1">
+                            <i data-lucide="scale" class="w-4 h-4 text-emerald-400"></i> Dynamic ETF Hedge Deployment (40% Bucket)
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4" id="etfRegimeText">Computing live GSR regime...</p>
+
+                        <div class="space-y-3">
+                            <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center">
+                                <div>
+                                    <span class="font-bold text-white text-xs block">Tata Silver ETF (TATSILV.NS)</span>
+                                    <span id="etfSilverSub" class="text-[10px] text-slate-400 font-mono">Loading live NSE price &amp; qty...</span>
+                                </div>
+                                <span class="font-mono font-bold text-emerald-400 text-sm" id="etfSilverAmt">--</span>
+                            </div>
+                            <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center">
+                                <div>
+                                    <span class="font-bold text-white text-xs block">Tata Gold ETF (TATAGOLD.NS)</span>
+                                    <span id="etfGoldSub" class="text-[10px] text-slate-400 font-mono">Loading live NSE price &amp; qty...</span>
+                                </div>
+                                <span class="font-mono font-bold text-amber-400 text-sm" id="etfGoldAmt">--</span>
+                            </div>
+                            <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center">
+                                <div>
+                                    <span class="font-bold text-white text-xs block">Nifty 50 BeES (NIFTYBEES.NS)</span>
+                                    <span id="etfNiftySub" class="text-[10px] text-slate-400 font-mono">Loading live NSE price &amp; qty...</span>
+                                </div>
+                                <span class="font-mono font-bold text-blue-400 text-sm" id="etfNiftyAmt">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-xl bg-dark-900/90 border border-slate-800 text-[11px] text-slate-400">
+                        <b class="text-emerald-300">Why Dynamic ETFs?</b> Keeps portfolio beta hedged while automatically over-weighting Silver whenever GSR trades above the 26Y COMEX/MCX median (67.67x).
+                    </div>
+                </div>
+
+                <!-- Dual-Filter Stock Recommendations (Core Large-Cap Safe + Deep-Discount Exceptions) -->
+                <div class="lg:col-span-7 glass-panel p-5 rounded-2xl border border-slate-800">
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-1">
+                        <h3 class="font-bold text-white text-sm flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400"></i> Top Eligible Direct Equities (Dual-Filter Demand Gate)
+                        </h3>
+                        <span id="stockBucketCapBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/15 text-blue-300 border border-blue-500/30">Safe Core Priority</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3" id="stockSafetyRuleNote">Ranked across 350+ NSE stocks: Large Caps prioritized; Mid/Small Caps included only at ≥25–30% peak discount near Demand floor.</p>
+
+                    <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1" id="stockRecList">
+                        <div class="text-xs text-slate-400 py-6 text-center">Scanning 350+ NSE equities for Demand Zone setups...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executable Monthly Order Ticket (Upgrade 2: Whole-Share Sizing & Limit Prices) -->
+            <div class="glass-panel p-5 md:p-6 rounded-2xl border border-emerald-500/40 bg-dark-900/70 shadow-xl">
+                <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+                    <div>
+                        <h3 class="font-black text-white text-base flex items-center gap-2">
+                            <span>📋 Executable Monthly Order Ticket (Whole-Share Sizing &amp; S1 Limit Prices)</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Exact whole quantities, GTC Limit vs Immediate Demand entry prices, and unallocated residual cash sweep.</p>
+                    </div>
+                    <button onclick="copyOrderTicket()" class="px-3.5 py-2 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-bold transition">
+                        📋 Copy Broker Order Plan
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-800">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-dark-900 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800 font-mono">
+                                <th class="p-3">Bucket</th>
+                                <th class="p-3">Security</th>
+                                <th class="p-3">Cap Tier</th>
+                                <th class="p-3">Action / Limit Rule</th>
+                                <th class="p-3 text-right">Order Price</th>
+                                <th class="p-3 text-right">S1 Floor / R1 Target</th>
+                                <th class="p-3 text-right">Whole Qty</th>
+                                <th class="p-3 text-right">Deployed ₹</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTicketTableBody" class="divide-y divide-slate-800 font-mono">
+                            <tr><td colspan="8" class="p-4 text-center text-slate-400">Building exact order quantities...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-3 p-3.5 rounded-xl bg-dark-800/90 border border-slate-700/70 flex flex-wrap justify-between items-center gap-3 text-xs">
+                    <div class="flex flex-wrap items-center gap-4 font-mono">
+                        <span>Target Capital: <b id="ticketTargetBudget" class="text-white">₹50,000</b></span>
+                        <span>Actual Deployed: <b id="ticketTotalDeployed" class="text-emerald-400">--</b></span>
+                        <span>Residual Cash: <b id="ticketResidualCash" class="text-amber-400">--</b></span>
+                    </div>
+                    <span id="ticketResidualSweep" class="text-[11px] text-cyan-300 font-semibold">Calculating residual cash sweep...</span>
+                </div>
+            </div>
+
+            <!-- Breakout Alpha Satellite Bucket (10-12% -> 14-16% CAGR Booster) -->
+            <div class="glass-panel p-5 md:p-6 rounded-2xl border border-rose-500/35 bg-gradient-to-br from-dark-800 via-dark-900 to-rose-950/15">
+                <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+                    <div>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-rose-500/20 text-rose-300 border border-rose-500/30 font-mono">Asymmetric CAGR Accelerator (14%–16% Engine)</span>
+                        <h3 class="font-black text-white text-base mt-1 flex items-center gap-2">
+                            <span>🚀 Breakout Alpha Bucket (Multi-Month Base → R1 Ignition)</span>
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5" id="breakoutBucketThesis">Scans Nifty 50 / Next 50 / Midcap 150 / Smallcap 100 for Stage-1 bases expanding above 50-DMA with rising institutional volume (Sterlite Blueprint).</p>
+                    </div>
+                </div>
+                <div id="breakoutBucketGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+                    <div class="col-span-full text-xs text-slate-400 py-4 text-center">Scanning for Stage-2 volume breakout setups...</div>
+                </div>
+            </div>
+
+            <!-- Full 350+ NSE/BSE Multi-Index Quantitative Screener -->
+            <div class="glass-panel p-5 md:p-6 rounded-2xl border border-cyan-500/30 bg-dark-900/60">
+                <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+                    <div>
+                        <h3 class="font-black text-white text-base">🌐 NSE &amp; BSE Multi-Index Quantitative Screener (350+ Live Stocks)</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Daily technical + demand/supply screen across Nifty 50, Nifty Next 50, Midcap 150, Smallcap 100, BankNifty &amp; BSE Sensex.</p>
+                    </div>
+                    <span id="screenerResultCount" class="px-2.5 py-1 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-bold">-- stocks</span>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-4 text-xs">
+                    <select id="scrIndexFilter" onchange="loadScreenerTable()" class="bg-dark-800 border border-slate-700 text-white rounded-xl px-3 py-2 font-bold">
+                        <option value="ALL">All Indices (350+)</option>
+                        <option value="NIFTY50">Nifty 50</option>
+                        <option value="NEXT50">Nifty Next 50</option>
+                        <option value="SENSEX">BSE Sensex</option>
+                        <option value="BANKNIFTY">Nifty Bank</option>
+                        <option value="MIDCAP150">Nifty Midcap 150</option>
+                        <option value="SMALLCAP100">Nifty Smallcap 100</option>
+                    </select>
+                    <select id="scrCapFilter" onchange="loadScreenerTable()" class="bg-dark-800 border border-slate-700 text-white rounded-xl px-3 py-2 font-bold">
+                        <option value="ALL">All Cap Tiers</option>
+                        <option value="Large Cap">Large Cap</option>
+                        <option value="Mid Cap">Mid Cap</option>
+                        <option value="Small Cap">Small Cap</option>
+                    </select>
+                    <select id="scrSigFilter" onchange="loadScreenerTable()" class="bg-dark-800 border border-slate-700 text-white rounded-xl px-3 py-2 font-bold">
+                        <option value="ALL">All Zone Signals</option>
+                        <option value="BUY">BUY NOW (Demand Zone)</option>
+                        <option value="STAGGER">50% Stagger (Mid-Zone)</option>
+                        <option value="WAIT">WAIT (At Resistance)</option>
+                        <option value="BREAKOUT">Breakout Alpha (≥58)</option>
+                    </select>
+                    <select id="scrSortBy" onchange="loadScreenerTable()" class="bg-dark-800 border border-slate-700 text-white rounded-xl px-3 py-2 font-bold">
+                        <option value="composite_score">Sort: Composite Score</option>
+                        <option value="breakout_score">Sort: Breakout Score</option>
+                        <option value="ath_discount_pct">Sort: Highest 52W Discount</option>
+                        <option value="rsi_14">Sort: Most Oversold (RSI)</option>
+                    </select>
+                    <label class="flex items-center gap-2 bg-dark-800 border border-slate-700 rounded-xl px-3 py-2 text-slate-200 cursor-pointer font-semibold">
+                        <input id="scrSafeOnly" type="checkbox" checked onchange="loadScreenerTable()" class="accent-violet-500">
+                        <span class="truncate">Safe Core Only</span>
+                    </label>
+                    <input id="scrSearchInput" type="text" placeholder="Search ticker / sector..." oninput="loadScreenerTable()"
+                        class="bg-dark-800 border border-slate-700 text-white rounded-xl px-3 py-2 font-mono placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-800 max-h-[460px] overflow-y-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead class="sticky top-0 z-10">
+                            <tr class="bg-dark-900 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700 font-mono">
+                                <th class="p-3">Symbol &amp; Indices</th>
+                                <th class="p-3">Cap Tier</th>
+                                <th class="p-3 text-right">LTP (NSE)</th>
+                                <th class="p-3 text-right">52W Disc</th>
+                                <th class="p-3 text-right">S1 Demand → R1 Supply</th>
+                                <th class="p-3 text-right">RSI(14)</th>
+                                <th class="p-3">Dual-Filter Signal</th>
+                                <th class="p-3 text-center">Score / Brk</th>
+                                <th class="p-3 text-center">Chart</th>
+                            </tr>
+                        </thead>
+                        <tbody id="screenerTableBody" class="divide-y divide-slate-800 font-mono">
+                            <tr><td colspan="9" class="p-4 text-center text-slate-400">Loading 350+ NSE constituents...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <!-- ==================== SOVEREIGN MOAT & INTRINSIC VALUATION RADAR ==================== -->
             <div class="glass-panel rounded-2xl border border-emerald-500/40 bg-gradient-to-b from-dark-800 via-dark-900 to-emerald-950/20 overflow-hidden shadow-2xl p-5 md:p-6 space-y-5">
-                <!-- Header -->
                 <div class="flex flex-wrap justify-between items-start md:items-center gap-4 border-b border-slate-700/60 pb-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
@@ -763,51 +1033,28 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-black text-white flex items-center gap-2">
-                                <span>🧠 Sovereign Moat & Intrinsic Valuation Radar</span>
+                                <span>🧠 Sovereign Moat &amp; Intrinsic Valuation Radar</span>
                             </h3>
                             <p class="text-xs text-slate-400 mt-0.5">
-                                Two-Stage 10-Year Discounted Cash Flow (DCF) + 5-Year Historical P/E Multiple Consensus • Margin of Safety (MoS) Scoring
+                                Two-Stage 10-Year DCF + 5-Year Historical P/E Consensus • Live NSE LTP Margin of Safety (MoS) Scoring
                             </p>
                         </div>
                     </div>
                     <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
                         <div class="px-3 py-1.5 rounded-xl bg-dark-900/90 border border-slate-700">
                             <span class="text-[10px] uppercase text-slate-400 block">Avg Margin of Safety</span>
-                            <span id="moatAvgMos" class="font-bold text-emerald-400">+18.4%</span>
+                            <span id="moatAvgMos" class="font-bold text-emerald-400">--</span>
                         </div>
                         <div class="px-3 py-1.5 rounded-xl bg-dark-900/90 border border-slate-700">
                             <span class="text-[10px] uppercase text-slate-400 block">Avg Moat Score</span>
-                            <span id="moatAvgScore" class="font-bold text-cyan-400">86.5 / 100</span>
+                            <span id="moatAvgScore" class="font-bold text-cyan-400">--</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3 Top Valuation Alpha Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-sans">
-                    <div class="p-3.5 bg-dark-900/80 rounded-xl border border-emerald-500/30">
-                        <div class="flex justify-between items-start">
-                            <span class="text-[10px] uppercase tracking-wider text-emerald-400 font-bold font-mono">Top Deep-Discount Pick</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 font-mono">+37.2% MoS</span>
-                        </div>
-                        <div class="font-black text-white text-base mt-1">HDFC Bank (HDFCBANK.NS)</div>
-                        <p class="text-[11px] text-slate-300 mt-1">Fair Value: <b>₹1,087.47</b> vs LTP: <b>₹683.30</b>. Mega merger absorption completed; low-cost CASA franchise trading at rare 19.5x multiple.</p>
-                    </div>
-                    <div class="p-3.5 bg-dark-900/80 rounded-xl border border-emerald-500/30">
-                        <div class="flex justify-between items-start">
-                            <span class="text-[10px] uppercase tracking-wider text-emerald-400 font-bold font-mono">Toll-Gate Monopoly Pick</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 font-mono">+25.9% MoS</span>
-                        </div>
-                        <div class="font-black text-white text-base mt-1">CDSL (CDSL.NS)</div>
-                        <p class="text-[11px] text-slate-300 mt-1">Fair Value: <b>₹1,730.67</b> vs LTP: <b>₹1,282.00</b>. 72% demat market share, 62% EBITDA margin, zero debt. Pure toll on Indian equity formalization.</p>
-                    </div>
-                    <div class="p-3.5 bg-dark-900/80 rounded-xl border border-emerald-500/30">
-                        <div class="flex justify-between items-start">
-                            <span class="text-[10px] uppercase tracking-wider text-emerald-400 font-bold font-mono">Energy Transition Pick</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 font-mono">+17.6% MoS</span>
-                        </div>
-                        <div class="font-black text-white text-base mt-1">Tata Power (TATAPOWER.NS)</div>
-                        <p class="text-[11px] text-slate-300 mt-1">Fair Value: <b>₹417.92</b> vs LTP: <b>₹344.55</b>. Scale leader in national rooftop solar EPC and clean transmission network.</p>
-                    </div>
+                <!-- Dynamic 3 Top Valuation Alpha Cards (Populated live from /api/fundamental-moat) -->
+                <div id="moatTopCards" class="grid grid-cols-1 md:grid-cols-3 gap-3 font-sans">
+                    <div class="col-span-full text-xs text-slate-400 py-2 text-center">Hydrating live Margin of Safety leaders...</div>
                 </div>
 
                 <!-- Valuation Radar Table -->
@@ -815,7 +1062,7 @@
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr class="bg-dark-900/90 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700/60 font-mono">
-                                <th class="p-3.5">Security & Sector</th>
+                                <th class="p-3.5">Security &amp; Sector</th>
                                 <th class="p-3.5 text-right">LTP (NSE)</th>
                                 <th class="p-3.5 text-right">10Y DCF Value</th>
                                 <th class="p-3.5 text-right">5Y PE Fair Val</th>
@@ -823,119 +1070,23 @@
                                 <th class="p-3.5 text-right">Margin of Safety</th>
                                 <th class="p-3.5 text-center">Moat Score</th>
                                 <th class="p-3.5">Algorithmic Rating</th>
-                                <th class="p-3.5">Key Moat & Catalyst</th>
+                                <th class="p-3.5">Key Moat &amp; Catalyst</th>
                             </tr>
                         </thead>
                         <tbody id="moatRadarTableBody" class="divide-y divide-slate-800 font-mono">
-                            <!-- Populated dynamically via JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Bloomberg Terminal Empirical Metals Thesis -->
-            <div class="glass-panel p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-950/20 to-dark-800">
-                <div class="flex flex-wrap justify-between items-center mb-3 gap-2">
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center">
-                            <i data-lucide="gem" class="w-4 h-4 text-amber-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-extrabold text-white text-sm">Bloomberg Professional Terminal Data (1999–2026 Analysis)</h3>
-                            <p class="text-[11px] text-slate-400">Empirical study of XAU (Gold), XAG (Silver), Gold/Silver Ratio (.GOLD/SLV), & DXY Index</p>
-                        </div>
-                    </div>
-                    <span class="px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full text-xs font-bold font-mono">
-                        Live GSR: 73.75 (26Y Median: 67.7)
-                    </span>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs mt-4">
-                    <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60">
-                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Gold Spot (XAU USD)</span>
-                        <span class="text-white font-mono font-bold text-sm block mt-0.5">$4,024.85 / oz</span>
-                        <span class="text-emerald-400 font-semibold block text-[11px]">26Y CAGR in INR: +13.7%</span>
-                        <span class="text-slate-500 text-[10px] block mt-1">ATH: $5,417 (Correction: -25.7%)</span>
-                    </div>
-                    <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60">
-                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Silver Spot (XAG USD)</span>
-                        <span class="text-white font-mono font-bold text-sm block mt-0.5">$54.57 / oz</span>
-                        <span class="text-emerald-400 font-semibold block text-[11px]">26Y CAGR in INR: +12.4%</span>
-                        <span class="text-rose-400 text-[10px] block mt-1">ATH: $116.70 (Correction: -53.2%)</span>
-                    </div>
-                    <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60">
-                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Gold / Silver Ratio (GSR)</span>
-                        <span class="text-amber-400 font-mono font-bold text-sm block mt-0.5">73.75x</span>
-                        <span class="text-slate-300 block text-[11px]">26Y Mean: 68.7 | Median: 67.7</span>
-                        <span class="text-emerald-400 text-[10px] block mt-1">Silver is undervalued vs Gold</span>
-                    </div>
-                    <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60">
-                        <span class="text-slate-400 block text-[10px] uppercase font-bold">Dollar Index (DXY)</span>
-                        <span class="text-white font-mono font-bold text-sm block mt-0.5">101.61</span>
-                        <span class="text-slate-300 block text-[11px]">GSR Correlation: +0.494</span>
-                        <span class="text-slate-500 text-[10px] block mt-1">Dollar easing = Silver breakout</span>
-                    </div>
-                </div>
-
-                <div class="p-3.5 bg-dark-800/90 rounded-xl border border-slate-700/80 mt-4 text-xs leading-relaxed text-slate-300">
-                    <b class="text-amber-400 font-bold">Updated Metals Thesis Directive:</b> Silver has suffered a sharp <b>-53.2% cyclical pullback</b> from its $116.70 peak, while Gold is in a healthy <b>-25.7% consolidation</b>. Because current GSR is <b>73.75</b> (well above the 26-year historical median of 67.7), **Tata Silver ETF (TATSILV)** offers higher mean-reversion alpha than Gold. We recommend deploying **55% of monthly ETF capital into Silver ETF (₹11,000)** and **25% into Gold ETF (₹5,000)**.
-                </div>
-            </div>
-
-            <!-- Dynamic ETF Allocator & Best Buy Split -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- ETF Dynamic Allocator -->
-                <div class="glass-panel p-5 rounded-2xl border border-slate-800">
-                    <h3 class="font-bold text-white text-sm flex items-center gap-2 mb-2">
-                        <i data-lucide="scale" class="w-4 h-4 text-emerald-400"></i> Dynamic ETF Deployment (₹20,000 on 1st)
-                    </h3>
-                    <p class="text-xs text-slate-400 mb-4" id="etfRegimeText">Loading Bloomberg GSR Engine...</p>
-                    
-                    <div class="space-y-3">
-                        <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center">
-                            <div>
-                                <span class="font-bold text-white text-xs block">Tata Silver ETF (TATSILV.NS)</span>
-                                <span class="text-[10px] text-slate-400">Overweighted: 53% off ATH, GSR 73.8x</span>
-                            </div>
-                            <span class="font-mono font-bold text-emerald-400 text-sm" id="etfSilverAmt">₹11,000</span>
-                        </div>
-                        <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center">
-                            <div>
-                                <span class="font-bold text-white text-xs block">Tata Gold ETF (TATAGOLD.NS)</span>
-                                <span class="text-[10px] text-slate-400">Monetary Hedge & Rupee Shield</span>
-                            </div>
-                            <span class="font-mono font-bold text-amber-400 text-sm" id="etfGoldAmt">₹5,000</span>
-                        </div>
-                        <div class="p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center">
-                            <div>
-                                <span class="font-bold text-white text-xs block">Nifty 50 BeES (NIFTYBEES.NS)</span>
-                                <span class="text-[10px] text-slate-400">Core India Bluechip Growth Foundation</span>
-                            </div>
-                            <span class="font-mono font-bold text-blue-400 text-sm" id="etfNiftyAmt">₹4,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Best Stock Buy Recommendation -->
-                <div class="glass-panel p-5 rounded-2xl border border-slate-800">
-                    <h3 class="font-bold text-white text-sm flex items-center gap-2 mb-2">
-                        <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-400"></i> Recommended Stock Deployment (₹30,000 on 1st)
-                    </h3>
-                    <p class="text-xs text-slate-400 mb-4">Ranked by Monthly Demand Zone confluence and 10-point checklist</p>
-
-                    <div class="space-y-3" id="stockRecList">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Asset Thesis & Risk Disclaimer Scorecard -->
+            <!-- Asset Thesis & Risk Disclaimer Scorecard (8-Pointer Baseline) -->
             <div class="glass-panel p-6 rounded-2xl border border-slate-800">
                 <div class="flex flex-wrap justify-between items-center mb-4">
                     <div>
                         <h3 class="font-bold text-white text-base flex items-center gap-2">
-                            <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i> Thesis Compliance & Risk Disclaimer Scorecard
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i> Thesis Compliance &amp; Risk Disclaimer Scorecard
                         </h3>
-                        <p class="text-xs text-slate-400">Audits any holding against the 8-pointer purchase framework to detect elevated portfolio risk</p>
+                        <p class="text-xs text-slate-400">Audits any holding against the 8-pointer purchase framework (expansion to 15–20 pointers queued next)</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <select id="scorecardSelect" onchange="loadScorecard()" class="bg-dark-800 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none">
@@ -1163,7 +1314,7 @@
                                 <td class="p-3.5 text-right text-rose-400 font-bold">₹17.80 <span class="text-[10px] block text-rose-300">(-5.22%)</span></td>
                                 <td class="p-3.5 text-center text-amber-400 font-bold">1 : 1.40</td>
                                 <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-bold">8 / 8 Passed</span></td>
-                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Empirical Bloomberg thesis: Silver down -53.2% from peak, GSR 73.75x vs 67.7x median. Spot finding $54 floor.</td>
+                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Empirical COMEX/MCX thesis: Silver down -53.2% from peak, GSR 73.75x vs 67.7x median. Spot finding $54 floor.</td>
                             </tr>
                             <!-- Pre-rendered Static Fallback: Row 5 TATAPOWER -->
                             <tr class="hover:bg-slate-800/40 transition">
@@ -1882,7 +2033,7 @@
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="border-t border-slate-800/80 py-4 px-4 text-center text-xs text-slate-500">
-        AntiGravity Wealth Engine • 100% Sovereign & Localhost Private • NSE Live, Bloomberg Verified & AMFI Automated
+        AntiGravity Wealth Engine • 100% Sovereign & Localhost Private • NSE / BSE Live, COMEX/MCX Verified & AMFI Automated
     </footer>
 
     <!-- ==================== JAVASCRIPT LOGIC ==================== -->
@@ -1905,7 +2056,7 @@
             { id: 'indices', title: 'Index Matrix (32)', icon: 'line-chart', accent: 'cyan', status: 'Pending Review', description: 'Real-time 4×4 NSE & Global market matrices with interactive multi-timeframe candlesticks.' },
             { id: 'terminal', title: 'S&R Terminal', icon: 'candlestick-chart', accent: 'indigo', status: 'Pending Review', description: 'TradingView chart workspace overlaid with S1/S2 Demand & R1/R2 Supply levels.' },
             { id: 'roadmap', title: 'Master Tracker', icon: 'clipboard-check', accent: 'emerald', status: 'Pending Review', description: 'Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge.' },
-            { id: 'allocator', title: 'Best Monthly Buy', icon: 'target', accent: 'violet', status: 'Pending Review', description: 'Fundamental Moat scores, DCF Margin of Safety & Bloomberg Precious Metals Thesis.' },
+            { id: 'allocator', title: 'Best Monthly Buy', icon: 'target', accent: 'violet', status: 'Pending Review', description: '350+ NSE/BSE Dual-Filter Screener, Breakout Alpha Bucket & Precious Metals Ratio Thesis.' },
             { id: 'goal', title: '₹10–15 Cr Goal', icon: 'milestone', accent: 'sky', status: 'Pending Review', description: 'Monthly SIP step-up compounding calculator tracking your 14%–16% CAGR path.' },
             { id: 'testing', title: '1-Week Testing Lab', icon: 'flask-conical', accent: 'amber', status: 'Live Lab', description: '5-Year walk-forward S&R backtest (90.6% accuracy) & forward test bench.' },
             { id: 'intraday', title: 'Intraday AI Lab', icon: 'zap', accent: 'amber', status: 'Live Lab', description: 'High-frequency S&R proving lab with 3s stream & auto EOD Test Analysis exports.' },
@@ -2051,6 +2202,7 @@
             await fetchPortfolio();
             initCharts();
             loadBestBuy();
+            loadFundamentalMoat();
             loadScorecard();
             loadTestingData();
             loadSrBacktest();
@@ -2080,7 +2232,8 @@
                 loadTestingData();
         loadSrBacktest();
                 loadScorecard();
-                fetchBestBuy();
+                loadBestBuy();
+                loadFundamentalMoat();
                 loadIndicesData(true);
             } catch (e) {
                 console.error(e);
@@ -2254,8 +2407,15 @@
         }
 
         function openInTerminal(symbol) {
+            const sel = document.getElementById('terminalSymbolSelect');
+            if (sel && !Array.from(sel.options).some(o => o.value === symbol)) {
+                const opt = document.createElement('option');
+                opt.value = symbol;
+                opt.textContent = symbol;
+                sel.appendChild(opt);
+            }
             switchTab('terminal');
-            document.getElementById('terminalSymbolSelect').value = symbol;
+            if (sel) sel.value = symbol;
             loadTerminalChart();
         }
 
@@ -2318,7 +2478,7 @@
                     intradayInterval = null;
                 }
             }
-            if (tabId === 'allocator') { loadFundamentalMoat(); }
+            if (tabId === 'allocator') { loadBestBuy(); loadFundamentalMoat(); }
             if (tabId === 'roadmap') {
                 loadRoadmapData().then(() => {
                     if (subTab) switchRoadmapSubtab(subTab);
@@ -2395,7 +2555,7 @@
                     return { text: `${sc.done}/${sc.total} Done (${sc.completion_pct.toFixed(1)}%)`, cls: 'text-emerald-400' };
                 }
                 if (modId === 'allocator') {
-                    return { text: 'Moat Score + DCF MOS Engine', cls: 'text-violet-300' };
+                    return { text: '350+ NSE/BSE Screener & Breakout', cls: 'text-violet-300' };
                 }
                 if (modId === 'goal') {
                     return { text: '₹65k/mo @ 14%–16% CAGR Path', cls: 'text-sky-300' };
@@ -2780,35 +2940,240 @@
             priceLines = [];
         }
 
-        // Best Buy Loader
+        let lastOrderTicketLines = [];
+
+        function zoneSignalBadge(code, label) {
+            if (code === 'BUY') return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">${label}</span>`;
+            if (code === 'STAGGER') return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">${label}</span>`;
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">${label}</span>`;
+        }
+
+        function capTierBadge(tier) {
+            if (tier === 'Large Cap') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">Large Cap</span>`;
+            if (tier === 'Mid Cap') return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">Mid Cap</span>`;
+            return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">Small Cap</span>`;
+        }
+
         async function loadBestBuy() {
             try {
-                const res = await fetch('/api/best-buy');
-                const data = await res.json();
+                const budgetEl = document.getElementById('bestBuyBudgetInput');
+                const modeEl = document.getElementById('bestBuyModeSelect');
+                const budget = budgetEl ? (parseFloat(budgetEl.value) || 50000) : 50000;
+                const mode = modeEl ? modeEl.value : 'balanced_with_breakout';
 
-                const etf = data.etf_allocation;
-                document.getElementById('etfRegimeText').innerText = etf.regime + ': ' + etf.reason;
-                document.getElementById('etfSilverAmt').innerText = formatINR(etf.silver_etf);
-                document.getElementById('etfGoldAmt').innerText = formatINR(etf.gold_etf);
-                document.getElementById('etfNiftyAmt').innerText = formatINR(etf.nifty_bees);
+                const [resBuy, resMacro] = await Promise.all([
+                    fetch(`/api/best-buy?budget=${encodeURIComponent(budget)}&mode=${encodeURIComponent(mode)}`),
+                    fetch('/api/macro/metals-thesis')
+                ]);
+                const data = await resBuy.json();
+                const macro = await resMacro.json();
 
-                const container = document.getElementById('stockRecList');
-                container.innerHTML = '';
-                data.stock_allocation.candidates.forEach(c => {
-                    const div = document.createElement('div');
-                    div.className = 'p-3 bg-dark-800 rounded-xl border border-slate-700/60 flex justify-between items-center';
-                    div.innerHTML = `
-                        <div>
-                            <span class="font-bold text-white text-xs block">${c.name} (${c.symbol})</span>
-                            <span class="text-[10px] text-slate-400">Discount: <b class="text-emerald-400">-${c.discount_ath}% ATH</b> • Score: ${c.score}/8 • ${c.why}</span>
-                        </div>
-                        <span class="font-mono font-bold text-blue-400 text-sm">${formatINR(c.rec_amount)}</span>
-                    `;
-                    container.appendChild(div);
-                });
+                // Update Coverage Badge
+                const covBadge = document.getElementById('universeCoverageBadge');
+                const tsNote = document.getElementById('screenerTimestampNote');
+                const cnt = data.universe_summary || {};
+                if (covBadge && cnt.scanned_ok) {
+                    covBadge.innerText = `Live Screened: ${cnt.scanned_ok} Stocks (${cnt.large_cap || 0} LC • ${cnt.mid_cap || 0} MC • ${cnt.small_cap || 0} SC)`;
+                }
+                if (tsNote && data.scanned_at) {
+                    tsNote.innerText = `Updated: ${data.scanned_at} • Safe Core Eligible: ${cnt.safe_eligible || 0} (${cnt.deep_discount_midsmall || 0} Deep-Disc Mid/Small Exceptions)`;
+                }
+
+                // Live Metals Macro Panel
+                const snap = macro.live_market_snapshot || {};
+                const setTxt = (id, v) => { const el = document.getElementById(id); if (el) el.innerText = v; };
+                setTxt('metalsGoldPrice', snap.gold_usd ? `$${Number(snap.gold_usd).toLocaleString('en-US', { minimumFractionDigits: 2 })} / oz` : '--');
+                setTxt('metalsGoldChg', `Day: ${(snap.gold_chg_pct >= 0 ? '+' : '')}${(snap.gold_chg_pct || 0).toFixed(2)}% • 26Y INR CAGR: +13.7%`);
+                setTxt('metalsSilverPrice', snap.silver_usd ? `$${Number(snap.silver_usd).toFixed(2)} / oz` : '--');
+                setTxt('metalsSilverChg', `Day: ${(snap.silver_chg_pct >= 0 ? '+' : '')}${(snap.silver_chg_pct || 0).toFixed(2)}% • 2.40x Gold Beta`);
+                setTxt('metalsGsrVal', snap.gold_silver_ratio ? `${snap.gold_silver_ratio}x` : '--');
+                setTxt('metalsGsrBadge', `Live GSR: ${snap.gold_silver_ratio || '--'}x (26Y Median: 67.67x)`);
+                setTxt('metalsGsrRegimeShort', (snap.gold_silver_ratio || 0) >= 67.67 ? 'Silver Undervalued vs Gold Median' : 'Balanced / Gold Favored');
+                setTxt('metalsDxyVal', snap.dxy ? `${snap.dxy}` : '--');
+                setTxt('metalsDxyChg', `Day: ${(snap.dxy_chg_pct >= 0 ? '+' : '')}${(snap.dxy_chg_pct || 0).toFixed(2)}% • Silver Corr: -0.68`);
+                const dirEl = document.getElementById('metalsThesisDirective');
+                if (dirEl && macro.tactical_allocation_rule) {
+                    dirEl.innerHTML = `<b class="text-amber-400 font-bold">Live Allocation Rule (${macro.data_source || 'COMEX/MCX Feed'}):</b> ${macro.tactical_allocation_rule} (${snap.gsr_verdict || ''}).`;
+                }
+
+                // Dynamic ETF Panel
+                const etf = data.etf_allocation || {};
+                setTxt('etfRegimeText', `${etf.regime || ''} — ${etf.reason || ''}`);
+                setTxt('etfSilverAmt', formatINR(etf.silver_etf || 0));
+                setTxt('etfSilverSub', `LTP: ₹${etf.silver_ltp || '--'} • Whole Qty: ${etf.silver_qty || 0} units`);
+                setTxt('etfGoldAmt', formatINR(etf.gold_etf || 0));
+                setTxt('etfGoldSub', `LTP: ₹${etf.gold_ltp || '--'} • Whole Qty: ${etf.gold_qty || 0} units`);
+                setTxt('etfNiftyAmt', formatINR(etf.nifty_bees || 0));
+                setTxt('etfNiftySub', `LTP: ₹${etf.nifty_ltp || '--'} • Whole Qty: ${etf.nifty_qty || 0} units`);
+
+                // Direct Equities Cards
+                const eqData = data.stock_allocation || {};
+                setTxt('stockBucketCapBadge', `Equity Budget: ${formatINR(eqData.total_capital || 0)}`);
+                setTxt('stockSafetyRuleNote', eqData.safety_rule || '');
+                const recContainer = document.getElementById('stockRecList');
+                if (recContainer) {
+                    recContainer.innerHTML = '';
+                    (eqData.candidates || []).forEach(c => {
+                        const div = document.createElement('div');
+                        div.className = 'p-3 bg-dark-800/90 rounded-xl border border-slate-700/70 flex flex-wrap justify-between items-center gap-2';
+                        div.innerHTML = `
+                            <div class="min-w-[220px] flex-1">
+                                <div class="flex flex-wrap items-center gap-1.5">
+                                    <span class="font-bold text-white text-xs">${c.name}</span>
+                                    <span class="text-[10px] font-mono text-slate-400">(${c.symbol})</span>
+                                    ${capTierBadge(c.cap_tier)}
+                                    ${zoneSignalBadge(c.signal_code, c.zone_signal)}
+                                </div>
+                                <div class="text-[10px] text-slate-300 mt-1 font-mono">
+                                    LTP: <b class="text-white">₹${c.ltp}</b> • S1 Floor: <b class="text-emerald-400">₹${c.s1}</b> • R1 Ceiling: <b class="text-amber-300">₹${c.r1}</b> • Peak Disc: <b class="text-cyan-300">-${c.ath_discount_pct}%</b> • RSI: <b>${c.rsi_14}</b>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">${c.safety_note}</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="text-right font-mono">
+                                    <span class="text-xs font-bold text-blue-400 block">Score ${c.composite_score}/100</span>
+                                    <span class="text-[10px] text-slate-400">R:R 1:${c.rr_ratio}</span>
+                                </div>
+                                <button onclick="openInTerminal('${c.symbol}')" class="px-2.5 py-1.5 rounded-lg bg-slate-700/70 hover:bg-blue-600 text-white text-[10px] font-bold transition">Chart S&amp;R</button>
+                            </div>
+                        `;
+                        recContainer.appendChild(div);
+                    });
+                }
+
+                // Order Ticket Table
+                const ticket = data.execution_ticket || {};
+                lastOrderTicketLines = ticket.lines || [];
+                const tBody = document.getElementById('orderTicketTableBody');
+                if (tBody) {
+                    tBody.innerHTML = '';
+                    lastOrderTicketLines.forEach(line => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-slate-800/40 transition';
+                        tr.innerHTML = `
+                            <td class="p-3 font-sans text-[11px] font-bold text-violet-300">${line.bucket}</td>
+                            <td class="p-3 font-sans"><div class="font-bold text-white text-xs">${line.name}</div><span class="text-[10px] font-mono text-slate-400">${line.symbol}</span></td>
+                            <td class="p-3 font-sans">${capTierBadge(line.cap_tier)}</td>
+                            <td class="p-3 font-sans text-[10px] text-emerald-300 font-bold">${line.order_type}</td>
+                            <td class="p-3 text-right font-bold text-white">${formatINR(line.entry_price)}</td>
+                            <td class="p-3 text-right text-slate-400">₹${line.limit_s1} / <span class="text-amber-300">₹${line.target_r1}</span></td>
+                            <td class="p-3 text-right font-black text-cyan-300">${line.qty}</td>
+                            <td class="p-3 text-right font-bold text-emerald-400">${formatINR(line.deployed_capital)}</td>
+                        `;
+                        tBody.appendChild(tr);
+                    });
+                }
+                setTxt('ticketTargetBudget', formatINR(data.budget || budget));
+                setTxt('ticketTotalDeployed', formatINR(ticket.total_deployed || 0));
+                setTxt('ticketResidualCash', formatINR(ticket.residual_cash || 0));
+                setTxt('ticketResidualSweep', ticket.residual_sweep_suggestion || '');
+
+                // Breakout Alpha Bucket
+                const brk = data.breakout_bucket || {};
+                setTxt('breakoutBucketThesis', brk.thesis || '');
+                const brkGrid = document.getElementById('breakoutBucketGrid');
+                if (brkGrid) {
+                    brkGrid.innerHTML = '';
+                    (brk.candidates || []).forEach(b => {
+                        const card = document.createElement('div');
+                        card.className = 'p-3.5 bg-dark-900/90 rounded-xl border border-rose-500/30 flex flex-col justify-between gap-2';
+                        card.innerHTML = `
+                            <div>
+                                <div class="flex justify-between items-start gap-1">
+                                    <span class="font-black text-white text-xs">${b.name}</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-mono font-bold">${b.breakout_score}/100</span>
+                                </div>
+                                <div class="flex items-center gap-1.5 mt-1">${capTierBadge(b.cap_tier)} <span class="text-[10px] font-mono text-slate-400">${b.symbol}</span></div>
+                                <div class="text-[10px] text-amber-300 font-bold mt-1.5">${b.breakout_stage}</div>
+                                <div class="text-[10px] font-mono text-slate-300 mt-1">LTP ₹${b.ltp} • R1 Trigger ₹${b.r1} • Vol <b>${b.vol_ratio}x</b> • 20D <b class="${b.roc_20d >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${b.roc_20d >= 0 ? '+' : ''}${b.roc_20d}%</b></div>
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t border-slate-800">
+                                <span class="text-[10px] text-slate-400 font-mono">52W Disc: -${b.ath_discount_pct}%</span>
+                                <button onclick="openInTerminal('${b.symbol}')" class="px-2 py-1 rounded bg-rose-600/20 hover:bg-rose-600 text-rose-200 text-[10px] font-bold transition">Chart S&amp;R</button>
+                            </div>
+                        `;
+                        brkGrid.appendChild(card);
+                    });
+                }
+
+                // Hydrate 350+ Universe Screener Table
+                loadScreenerTable();
             } catch (e) {
-                console.error(e);
+                console.error('loadBestBuy error:', e);
             }
+        }
+        const fetchBestBuy = loadBestBuy;
+
+        async function loadScreenerTable() {
+            const tbody = document.getElementById('screenerTableBody');
+            if (!tbody) return;
+            try {
+                const idx = document.getElementById('scrIndexFilter')?.value || 'ALL';
+                const cap = document.getElementById('scrCapFilter')?.value || 'ALL';
+                const sig = document.getElementById('scrSigFilter')?.value || 'ALL';
+                const sort = document.getElementById('scrSortBy')?.value || 'composite_score';
+                const safeOnly = document.getElementById('scrSafeOnly')?.checked ? 'true' : 'false';
+                const q = document.getElementById('scrSearchInput')?.value || '';
+
+                const url = `/api/screener?index=${encodeURIComponent(idx)}&cap=${encodeURIComponent(cap)}&signal=${encodeURIComponent(sig)}&sort=${encodeURIComponent(sort)}&safe_only=${safeOnly}&q=${encodeURIComponent(q)}&limit=150`;
+                const res = await fetch(url);
+                const data = await res.json();
+                const cntBadge = document.getElementById('screenerResultCount');
+                if (cntBadge) cntBadge.innerText = `${data.filtered_count || 0} matching (of ${data.counts?.scanned_ok || 0} scanned)`;
+
+                const rows = data.stocks || [];
+                if (rows.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="9" class="p-4 text-center text-slate-400">No stocks matched current filters. Try unchecking "Safe Core Only" to inspect Mid/Small Cap candidates.</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = rows.map(r => {
+                    const chgCls = (r.day_chg_pct || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400';
+                    const chgPfx = (r.day_chg_pct || 0) >= 0 ? '+' : '';
+                    const idxTags = (r.indices || []).slice(0, 3).join(', ');
+                    return `
+                        <tr class="hover:bg-slate-800/40 transition">
+                            <td class="p-3 font-sans">
+                                <div class="font-bold text-white text-xs">${r.name}</div>
+                                <div class="text-[10px] font-mono text-slate-400">${r.symbol} • <span class="text-cyan-400">${idxTags}</span></div>
+                            </td>
+                            <td class="p-3 font-sans">${capTierBadge(r.cap_tier)}</td>
+                            <td class="p-3 text-right">
+                                <div class="font-bold text-white">₹${r.ltp}</div>
+                                <span class="text-[10px] ${chgCls}">${chgPfx}${r.day_chg_pct}%</span>
+                            </td>
+                            <td class="p-3 text-right text-cyan-300 font-bold">-${r.ath_discount_pct}%</td>
+                            <td class="p-3 text-right text-slate-300"><span class="text-emerald-400">₹${r.s1}</span> → <span class="text-amber-300">₹${r.r1}</span></td>
+                            <td class="p-3 text-right font-bold ${r.rsi_14 <= 42 ? 'text-emerald-400' : (r.rsi_14 >= 68 ? 'text-rose-400' : 'text-slate-200')}">${r.rsi_14}</td>
+                            <td class="p-3 font-sans">${zoneSignalBadge(r.signal_code, r.zone_signal)}</td>
+                            <td class="p-3 text-center"><b class="text-white">${r.composite_score}</b> / <span class="text-rose-300">${r.breakout_score}</span></td>
+                            <td class="p-3 text-center"><button onclick="openInTerminal('${r.symbol}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-cyan-600 text-cyan-300 hover:text-white text-[10px] font-bold transition">Chart</button></td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (e) {
+                console.error('loadScreenerTable error:', e);
+            }
+        }
+
+        async function refreshUniverseScan() {
+            const btn = document.getElementById('btnRescanUniverse');
+            if (btn) { btn.disabled = true; btn.innerText = 'Scanning NSE/BSE...'; }
+            try {
+                await fetch('/api/screener?refresh=true&limit=10');
+                await loadBestBuy();
+                await loadFundamentalMoat();
+            } finally {
+                if (btn) { btn.disabled = false; btn.innerText = '↻ Refresh Scan'; }
+            }
+        }
+
+        function copyOrderTicket() {
+            if (!lastOrderTicketLines.length) return;
+            const lines = lastOrderTicketLines.map(o => `${o.bucket} | ${o.symbol} (${o.cap_tier}) | ${o.order_type} @ ₹${o.entry_price} x ${o.qty} = ₹${o.deployed_capital}`);
+            const text = `AntiGravity Monthly Order Ticket\n` + lines.join('\n');
+            navigator.clipboard?.writeText(text).then(() => {
+                alert('Copied executable monthly order plan to clipboard!');
+            });
         }
 
         // Scorecard Loader
@@ -3541,10 +3906,36 @@
 
                 if (data.summary) {
                     const s = data.summary;
+                    const avgMos = Number(s.portfolio_average_mos_pct || 0);
                     const avgMosElem = document.getElementById('moatAvgMos');
-                    if (avgMosElem) avgMosElem.innerText = `+${s.portfolio_average_mos_pct}%`;
+                    if (avgMosElem) {
+                        avgMosElem.innerText = `${avgMos >= 0 ? '+' : ''}${avgMos.toFixed(2)}%`;
+                        avgMosElem.className = `font-bold ${avgMos >= 0 ? 'text-emerald-400' : 'text-amber-400'}`;
+                    }
                     const avgScoreElem = document.getElementById('moatAvgScore');
                     if (avgScoreElem) avgScoreElem.innerText = `${s.portfolio_average_moat_score} / 100`;
+                }
+
+                // Hydrate Top 3 Live Valuation Alpha Cards (no hardcoded stale Oct prices)
+                const cardsContainer = document.getElementById('moatTopCards');
+                if (cardsContainer && Array.isArray(data.assets)) {
+                    const topThree = data.assets.slice(0, 3);
+                    cardsContainer.innerHTML = topThree.map((a, idx) => {
+                        const mos = Number(a.margin_of_safety_pct || 0);
+                        const isPos = mos >= 0;
+                        const badgeCls = isPos ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300';
+                        const borderCls = isPos ? 'border-emerald-500/30' : 'border-amber-500/30';
+                        return `
+                            <div class="p-3.5 bg-dark-900/80 rounded-xl border ${borderCls}">
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[10px] uppercase tracking-wider text-emerald-400 font-bold font-mono">${a.action_rating || 'MOAT WATCH'}</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold ${badgeCls} font-mono">${mos >= 0 ? '+' : ''}${mos.toFixed(1)}% MoS</span>
+                                </div>
+                                <div class="font-black text-white text-base mt-1">${a.name} (${a.symbol})</div>
+                                <p class="text-[11px] text-slate-300 mt-1">Fair Value: <b>${formatINR(a.blended_fair_value)}</b> vs Live LTP: <b>${formatINR(a.ltp)}</b>. ${a.catalyst || ''}</p>
+                            </div>
+                        `;
+                    }).join('');
                 }
 
                 const tbody = document.getElementById('moatRadarTableBody');
