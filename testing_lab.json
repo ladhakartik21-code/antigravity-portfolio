@@ -105,8 +105,8 @@
       "risk_reward_ratio": "1 : 1.40",
       "duration": "1 Week (Review: 02 Nov 2026)",
       "thesis_score": "8 / 8 Passed",
-      "thesis_checklist_summary": "Empirical Bloomberg thesis: Silver down -53.2% from ATH, GSR 73.75x vs 67.7x historical median.",
-      "thesis_reason": "Bloomberg 26-year study proves Silver has a 2.4x beta over Gold. With DXY pausing at 101.60 and spot silver finding buyers at $54/oz, Silver ETF is at extreme value demand accumulation band.",
+      "thesis_checklist_summary": "Empirical COMEX/MCX thesis: Silver down -53.2% from ATH, GSR 73.75x vs 67.7x historical median.",
+      "thesis_reason": "26-year COMEX/LBMA precious metals study proves Silver has a 2.4x beta over Gold. With DXY pausing at 101.60 and spot silver finding buyers at $54/oz, Silver ETF is at extreme value demand accumulation band.",
       "evaluation_criteria": {
         "thesis_confirmed_if": "Crosses \u20b919.50 as global silver stabilizes above $55/oz.",
         "thesis_invalidated_if": "Drops below \u20b917.80 (signalling dollar index breakout above 102.5)."
