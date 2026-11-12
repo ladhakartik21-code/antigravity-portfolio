@@ -21,6 +21,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import yfinance as yf
 import screener_engine
+import thesis_engine
 
 # Set stdout encoding
 try:
@@ -946,76 +947,19 @@ def get_nse_screener(
     }
 
 @app.get("/api/scorecard/{symbol}")
-def get_scorecard(symbol: str):
-    sym = symbol.strip().upper()
-    database = {
-        "VBL": {
-            "name": "Varun Beverages Limited",
-            "score": "6 / 8 Passed",
-            "passed": ["Economic Moat (Pepsi Franchise)", "Capital Efficiency (ROCE 25%+)", "Cash Flow Conversion", "Secular Runway (TAM)", "Promoter Governance", "Exit Criteria Pre-defined"],
-            "cautions": [
-                {"pointer": "Valuation Margin of Safety", "detail": "P/E is currently at ~65, above historical median of 55."},
-                {"pointer": "Balance Sheet Solvency", "detail": "Debt-to-Equity temporarily elevated due to BevCo Africa expansion."}
-            ],
-            "disclaimer": "⚠️ RISK DISCLAIMER: Varun Beverages satisfies moat & compounding metrics but trades at premium valuation with elevated debt from international acquisition. Adding VBL now increases valuation sensitivity on your portfolio.",
-            "recommendation": "Deploy monthly capital in 2 tranches (50% on 1st, 50% on an 8-10% dip) rather than a single buy."
-        },
-        "HDFCBANK": {
-            "name": "HDFC Bank Limited",
-            "score": "8 / 8 Passed",
-            "passed": ["Economic Moat (Deposit Franchise)", "Capital Efficiency (ROE 16%+)", "Balance Sheet (Gross NPA < 1.4%)", "Cash Flow / Provisioning", "Secular Credit Runway", "Valuation Margin of Safety (P/B historic low)", "Promoter / Institutional Governance", "Exit Criteria Pre-defined"],
-            "cautions": [],
-            "disclaimer": "✅ HIGH CONVICTION: HDFC Bank fulfills all 8 checklist pillars. Trading in Major Monthly Demand Zone (₹646 - ₹677).",
-            "recommendation": "Full tranche allocation recommended on the 1st of the month."
-        },
-        "POLYCAB": {
-            "name": "Polycab India Limited",
-            "score": "8 / 8 Passed",
-            "passed": ["Economic Moat (24%+ Market Share)", "Capital Efficiency (ROCE 28%+)", "Balance Sheet (Zero Net Debt)", "Cash Flow Conversion (>85%)", "Secular Runway (Infra & Real Estate)", "Valuation Safety (26.5% ATH Discount)", "Promoter Governance", "Exit Criteria Pre-defined"],
-            "cautions": [],
-            "disclaimer": "✅ PRIME DEMAND REBOUND: Polycab passes all 8 pillars. Sitting directly on its institutional Monthly Demand Zone (₹7,195 - ₹7,440).",
-            "recommendation": "High-priority buy for this month's stock allocation."
-        },
-        "CDSL": {
-            "name": "Central Depository Services (CDSL)",
-            "score": "8 / 8 Passed",
-            "passed": ["Economic Moat (Duopoly 70%+ Demat Share)", "Capital Efficiency (ROCE 32%+)", "Zero Debt Balance Sheet", "Cash Flow (>90% FCF)", "Secular Financialization Runway", "Valuation Safety (39.2% ATH Discount)", "Regulatory Governance", "Exit Criteria Pre-defined"],
-            "cautions": [],
-            "disclaimer": "✅ DEEP CORRECTION MONOPOLY: 39.2% discount from ATH. Debt-free cash tollgate on Indian retail investing.",
-            "recommendation": "Allocate in 2 tranches at current demand shelf."
-        },
-        "RELIANCE": {
-            "name": "Reliance Industries Limited",
-            "score": "7 / 8 Passed",
-            "passed": ["Economic Moat (Telecom/Retail/Energy)", "Capital Efficiency", "Secular Runway", "Cash Flow", "Valuation Safety", "Governance", "Exit Criteria"],
-            "cautions": [
-                {"pointer": "Balance Sheet Net Debt", "detail": "Capex in 5G and New Energy continues; watch net debt trajectory."}
-            ],
-            "disclaimer": "⚡ MODERATE CAUTION: Substantial ongoing capex in clean energy and retail. Long-term compounding intact.",
-            "recommendation": "Accumulate steadily during market dips."
-        },
-        "TCS": {
-            "name": "Tata Consultancy Services",
-            "score": "8 / 8 Passed",
-            "passed": ["Economic Moat", "Capital Efficiency (ROCE 45%+)", "Zero Debt Balance Sheet", "100% Free Cash Flow Conversion", "Global Enterprise IT Runway", "Valuation Safety", "Tata Governance", "Exit Criteria"],
-            "cautions": [],
-            "disclaimer": "✅ PURE CASH-FLOW MOAT: Zero debt, dividend machine, unmatched ROCE in Indian corporate history.",
-            "recommendation": "Anchor allocation on 1st of the month."
-        }
-    }
-    
-    key = sym.replace(".NS", "").replace(" ", "")
-    result = database.get(key)
-    if not result:
-        result = {
-            "name": symbol,
-            "score": "7 / 8 Passed",
-            "passed": ["Economic Moat", "Capital Efficiency", "Balance Sheet", "Cash Flow", "Secular Runway", "Governance", "Exit Criteria"],
-            "cautions": [{"pointer": "Valuation Check", "detail": "Check 15% discount from ATH before entry."}],
-            "disclaimer": f"ℹ️ CHECKLIST AUDIT: {symbol} passes core financial and moat checks. Ensure entry occurs in correction zone.",
-            "recommendation": "Accumulate in staggered tranches."
-        }
-    return result
+def get_scorecard(symbol: str, refresh: bool = False):
+    port_data = CACHE.get("portfolio")
+    if port_data is None:
+        try:
+            port_data = read_portfolio_data()
+        except Exception:
+            port_data = None
+    return thesis_engine.evaluate_stock_18pt(
+        symbol=symbol,
+        sr_map=INSTITUTIONAL_SR_MAP,
+        portfolio_data=port_data,
+        force_refresh=refresh,
+    )
 
 @app.get("/api/radar")
 def get_radar():

@@ -1079,42 +1079,80 @@
                 </div>
             </div>
 
-            <!-- Asset Thesis & Risk Disclaimer Scorecard (8-Pointer Baseline) -->
-            <div class="glass-panel p-6 rounded-2xl border border-slate-800">
-                <div class="flex flex-wrap justify-between items-center mb-4">
+            <!-- Asset Thesis & Risk Disclaimer Scorecard (Frozen v1.0 | 18 Criteria) -->
+            <div class="glass-panel p-6 rounded-2xl border border-violet-500/35 bg-dark-900/70">
+                <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
                     <div>
-                        <h3 class="font-bold text-white text-base flex items-center gap-2">
-                            <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i> Thesis Compliance &amp; Risk Disclaimer Scorecard
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">FROZEN v1.0 • 18 CRITERIA</span>
+                            <span id="scorecardScoreBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-cyan-300 border border-slate-700 font-mono">-- / 18</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base flex items-center gap-2 mt-1">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i> Investment Thesis Compliance &amp; Audit Scorecard
                         </h3>
-                        <p class="text-xs text-slate-400">Audits any holding against the 8-pointer purchase framework (expansion to 15–20 pointers queued next)</p>
+                        <p class="text-xs text-slate-400">Evaluates any NSE stock against all 18 Frozen Criteria (Rolling 5Y Window + Specific Pass/Fail Reason per rule).</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <select id="scorecardSelect" onchange="loadScorecard()" class="bg-dark-800 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none">
-                            <option value="VBL">Varun Beverages (VBL)</option>
-                            <option value="POLYCAB">Polycab India</option>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <select id="scorecardSelect" onchange="onScorecardSelectChange()" class="bg-dark-800 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-2 focus:outline-none">
+                            <option value="HDFCBANK">HDFC Bank (HDFCBANK)</option>
+                            <option value="POLYCAB">Polycab India (POLYCAB)</option>
                             <option value="CDSL">CDSL</option>
-                            <option value="HDFCBANK">HDFC Bank</option>
                             <option value="TCS">TCS</option>
-                            <option value="RELIANCE">Reliance Industries</option>
+                            <option value="RELIANCE">Reliance Industries (RELIANCE)</option>
+                            <option value="VBL">Varun Beverages (VBL)</option>
+                            <option value="TATAPOWER">Tata Power (TATAPOWER)</option>
+                            <option value="LT">Larsen &amp; Toubro (LT)</option>
+                            <option value="TITAN">Titan Company (TITAN)</option>
+                            <option value="ICICIBANK">ICICI Bank (ICICIBANK)</option>
                         </select>
+                        <div class="flex items-center bg-dark-800 border border-slate-700 rounded-xl overflow-hidden">
+                            <input id="scorecardCustomInput" type="text" placeholder="Any NSE ticker e.g. INFY"
+                                onkeydown="if(event.key==='Enter') auditInScorecard(this.value)"
+                                class="w-40 bg-transparent px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none">
+                            <button onclick="auditInScorecard(document.getElementById('scorecardCustomInput').value)"
+                                class="px-3 py-2 bg-violet-600 hover:bg-violet-500 text-white text-xs font-bold transition">Audit 18-Pt</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Disclaimer Banner -->
-                <div id="scorecardDisclaimer" class="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300 font-medium mb-4">
-                    Loading audit...
+                <!-- Summary Pills & Filter Tabs -->
+                <div class="flex flex-wrap justify-between items-center gap-3 mb-3">
+                    <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+                        <span id="scPassCountPill" class="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">Passed: --</span>
+                        <span id="scFailCountPill" class="px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30 font-bold">Failed/Caution: --</span>
+                        <span id="scManualCountPill" class="px-2.5 py-1 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 font-bold">Manual Audit: --</span>
+                        <span id="scTier1FailPill" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 font-bold">Tier-1 Fails: --</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-xs">
+                        <button onclick="setScorecardFilter('ALL')" data-scfilter="ALL" class="sc-filter-btn px-2.5 py-1 rounded-lg bg-violet-600 text-white font-bold">All 18</button>
+                        <button onclick="setScorecardFilter('PASS')" data-scfilter="PASS" class="sc-filter-btn px-2.5 py-1 rounded-lg bg-dark-800 text-slate-300 border border-slate-700 font-bold">Passed</button>
+                        <button onclick="setScorecardFilter('FAIL')" data-scfilter="FAIL" class="sc-filter-btn px-2.5 py-1 rounded-lg bg-dark-800 text-slate-300 border border-slate-700 font-bold">Failed</button>
+                        <button onclick="setScorecardFilter('MANUAL_CHECK')" data-scfilter="MANUAL_CHECK" class="sc-filter-btn px-2.5 py-1 rounded-lg bg-dark-800 text-slate-300 border border-slate-700 font-bold">Manual Audit</button>
+                    </div>
                 </div>
 
-                <!-- Details Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="p-4 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <span class="text-xs font-bold text-emerald-400 block mb-2">✓ Verified Passed Pointers</span>
-                        <ul id="scorecardPassedList" class="space-y-1.5 text-xs text-slate-300"></ul>
-                    </div>
-                    <div class="p-4 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <span class="text-xs font-bold text-rose-400 block mb-2">⚠️ Failed / Elevated Risk Pointers</span>
-                        <ul id="scorecardCautionsList" class="space-y-1.5 text-xs text-slate-300"></ul>
-                    </div>
+                <!-- Verdict Banner -->
+                <div id="scorecardDisclaimer" class="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-200 font-medium mb-4">
+                    Loading 18-Criteria audit...
+                </div>
+
+                <!-- Full 18-Criteria Audit Table -->
+                <div class="overflow-x-auto rounded-xl border border-slate-800 max-h-[520px] overflow-y-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead class="sticky top-0 z-10">
+                            <tr class="bg-dark-900 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700 font-mono">
+                                <th class="p-3">#</th>
+                                <th class="p-3">Severity Tier</th>
+                                <th class="p-3">Criterion &amp; Category</th>
+                                <th class="p-3 text-center">Status</th>
+                                <th class="p-3">Actual Metric vs Rule</th>
+                                <th class="p-3">Reason Why Passed / Failed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scorecardTableBody" class="divide-y divide-slate-800">
+                            <tr><td colspan="6" class="p-4 text-center text-slate-400">Running 18-Criteria evaluation...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -3037,6 +3075,7 @@
                                     <span class="text-xs font-bold text-blue-400 block">Score ${c.composite_score}/100</span>
                                     <span class="text-[10px] text-slate-400">R:R 1:${c.rr_ratio}</span>
                                 </div>
+                                <button onclick="auditInScorecard('${c.symbol}')" class="px-2 py-1.5 rounded-lg bg-violet-600/20 hover:bg-violet-600 border border-violet-500/30 text-violet-200 text-[10px] font-bold transition">18-Pt Audit</button>
                                 <button onclick="openInTerminal('${c.symbol}')" class="px-2.5 py-1.5 rounded-lg bg-slate-700/70 hover:bg-blue-600 text-white text-[10px] font-bold transition">Chart S&amp;R</button>
                             </div>
                         `;
@@ -3090,9 +3129,12 @@
                                 <div class="text-[10px] text-amber-300 font-bold mt-1.5">${b.breakout_stage}</div>
                                 <div class="text-[10px] font-mono text-slate-300 mt-1">LTP ₹${b.ltp} • R1 Trigger ₹${b.r1} • Vol <b>${b.vol_ratio}x</b> • 20D <b class="${b.roc_20d >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${b.roc_20d >= 0 ? '+' : ''}${b.roc_20d}%</b></div>
                             </div>
-                            <div class="flex justify-between items-center pt-2 border-t border-slate-800">
+                            <div class="flex justify-between items-center gap-1.5 pt-2 border-t border-slate-800">
                                 <span class="text-[10px] text-slate-400 font-mono">52W Disc: -${b.ath_discount_pct}%</span>
-                                <button onclick="openInTerminal('${b.symbol}')" class="px-2 py-1 rounded bg-rose-600/20 hover:bg-rose-600 text-rose-200 text-[10px] font-bold transition">Chart S&amp;R</button>
+                                <div class="flex items-center gap-1">
+                                    <button onclick="auditInScorecard('${b.symbol}')" class="px-2 py-1 rounded bg-violet-600/20 hover:bg-violet-600 text-violet-200 text-[10px] font-bold transition">Audit</button>
+                                    <button onclick="openInTerminal('${b.symbol}')" class="px-2 py-1 rounded bg-rose-600/20 hover:bg-rose-600 text-rose-200 text-[10px] font-bold transition">Chart S&amp;R</button>
+                                </div>
                             </div>
                         `;
                         brkGrid.appendChild(card);
@@ -3149,7 +3191,10 @@
                             <td class="p-3 text-right font-bold ${r.rsi_14 <= 42 ? 'text-emerald-400' : (r.rsi_14 >= 68 ? 'text-rose-400' : 'text-slate-200')}">${r.rsi_14}</td>
                             <td class="p-3 font-sans">${zoneSignalBadge(r.signal_code, r.zone_signal)}</td>
                             <td class="p-3 text-center"><b class="text-white">${r.composite_score}</b> / <span class="text-rose-300">${r.breakout_score}</span></td>
-                            <td class="p-3 text-center"><button onclick="openInTerminal('${r.symbol}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-cyan-600 text-cyan-300 hover:text-white text-[10px] font-bold transition">Chart</button></td>
+                            <td class="p-3 text-center whitespace-nowrap">
+                                <button onclick="auditInScorecard('${r.symbol}')" class="px-2 py-1 rounded bg-violet-600/20 hover:bg-violet-600 text-violet-300 hover:text-white text-[10px] font-bold transition mr-1">Audit</button>
+                                <button onclick="openInTerminal('${r.symbol}')" class="px-2 py-1 rounded bg-slate-800 hover:bg-cyan-600 text-cyan-300 hover:text-white text-[10px] font-bold transition">Chart</button>
+                            </td>
                         </tr>
                     `;
                 }).join('');
@@ -3179,32 +3224,105 @@
             });
         }
 
-        // Scorecard Loader
-        async function loadScorecard() {
+        let lastScorecardData = null;
+        let currentScorecardFilter = 'ALL';
+
+        function onScorecardSelectChange() {
             const sym = document.getElementById('scorecardSelect').value;
+            const custom = document.getElementById('scorecardCustomInput');
+            if (custom) custom.value = '';
+            loadScorecard(sym);
+        }
+
+        function auditInScorecard(symbol) {
+            const clean = (symbol || '').trim().toUpperCase();
+            if (!clean) return;
+            const custom = document.getElementById('scorecardCustomInput');
+            if (custom) custom.value = clean;
+            loadScorecard(clean);
+            document.getElementById('scorecardDisclaimer')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function setScorecardFilter(mode) {
+            currentScorecardFilter = mode;
+            document.querySelectorAll('.sc-filter-btn').forEach(btn => {
+                const active = btn.getAttribute('data-scfilter') === mode;
+                btn.className = active
+                    ? 'sc-filter-btn px-2.5 py-1 rounded-lg bg-violet-600 text-white font-bold'
+                    : 'sc-filter-btn px-2.5 py-1 rounded-lg bg-dark-800 text-slate-300 border border-slate-700 font-bold';
+            });
+            renderScorecardTable();
+        }
+
+        function renderScorecardTable() {
+            const tbody = document.getElementById('scorecardTableBody');
+            if (!tbody || !lastScorecardData) return;
+            const rows = (lastScorecardData.criteria || []).filter(c => {
+                if (currentScorecardFilter === 'ALL') return true;
+                return c.status === currentScorecardFilter;
+            });
+            if (rows.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-400">No criteria in this filter view.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = rows.map(c => {
+                const statusBadge =
+                    c.status === 'PASS' ? '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">PASS</span>' :
+                    c.status === 'FAIL' ? '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">FAIL</span>' :
+                    c.status === 'MANUAL_CHECK' ? '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">MANUAL AUDIT</span>' :
+                    '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700/60 text-slate-300 border border-slate-600">N/A</span>';
+                const tierCls = c.severity_weight === 3 ? 'text-rose-300 bg-rose-500/10 border-rose-500/30' :
+                    (c.severity_weight === 2 ? 'text-amber-300 bg-amber-500/10 border-amber-500/30' : 'text-cyan-300 bg-cyan-500/10 border-cyan-500/30');
+                return `
+                    <tr class="hover:bg-slate-800/40 transition">
+                        <td class="p-3 font-mono font-bold text-slate-400">${c.id}</td>
+                        <td class="p-3 whitespace-nowrap"><span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${tierCls}">${c.tier}</span></td>
+                        <td class="p-3">
+                            <div class="font-bold text-white text-xs">${c.name}</div>
+                            <div class="text-[10px] text-slate-400 font-mono">${c.category}</div>
+                        </td>
+                        <td class="p-3 text-center whitespace-nowrap">${statusBadge}</td>
+                        <td class="p-3 font-mono text-[11px]">
+                            <div class="text-white font-semibold">${c.actual_value}</div>
+                            <div class="text-[10px] text-slate-400">Rule: ${c.threshold}</div>
+                        </td>
+                        <td class="p-3 text-slate-300 text-[11px] leading-relaxed max-w-md">${c.reason}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Dynamic 18-Criteria Scorecard Loader
+        async function loadScorecard(overrideSym = null) {
+            const sym = (overrideSym || document.getElementById('scorecardSelect')?.value || 'HDFCBANK').trim();
+            const tbody = document.getElementById('scorecardTableBody');
+            if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Evaluating ${sym} across all 18 Frozen Criteria (live financials + S&amp;R)...</td></tr>`;
             try {
-                const res = await fetch(`/api/scorecard/${sym}`);
+                const res = await fetch(`/api/scorecard/${encodeURIComponent(sym)}`);
                 const data = await res.json();
+                lastScorecardData = data;
 
-                document.getElementById('scorecardDisclaimer').innerHTML = data.disclaimer;
-                
-                const passedList = document.getElementById('scorecardPassedList');
-                passedList.innerHTML = '';
-                data.passed.forEach(p => {
-                    passedList.innerHTML += `<li>✓ ${p}</li>`;
-                });
+                const counts = data.summary_counts || {};
+                const setTxt = (id, v) => { const el = document.getElementById(id); if (el) el.innerText = v; };
+                setTxt('scorecardScoreBadge', `${data.name || sym} (${data.symbol || ''}) • ${data.score || '--'}`);
+                setTxt('scPassCountPill', `Passed: ${counts.passed ?? '--'}`);
+                setTxt('scFailCountPill', `Failed/Caution: ${counts.failed ?? '--'}`);
+                setTxt('scManualCountPill', `Manual Audit: ${counts.manual_check ?? '--'}`);
+                setTxt('scTier1FailPill', `Tier-1 Dealbreaker Fails: ${counts.tier1_fails ?? 0}`);
 
-                const cautionsList = document.getElementById('scorecardCautionsList');
-                cautionsList.innerHTML = '';
-                if (data.cautions.length === 0) {
-                    cautionsList.innerHTML = '<li class="text-emerald-400">No major red flags detected. Clean profile.</li>';
-                } else {
-                    data.cautions.forEach(c => {
-                        cautionsList.innerHTML += `<li class="text-rose-300">⚠️ <b>${c.pointer}:</b> ${c.detail}</li>`;
-                    });
+                const discEl = document.getElementById('scorecardDisclaimer');
+                if (discEl) {
+                    const isDanger = (counts.tier1_fails || 0) > 0;
+                    const isClean = (counts.failed || 0) === 0;
+                    discEl.className = isDanger
+                        ? 'p-4 bg-rose-500/15 border border-rose-500/40 rounded-xl text-xs text-rose-200 font-medium mb-4'
+                        : (isClean ? 'p-4 bg-emerald-500/15 border border-emerald-500/40 rounded-xl text-xs text-emerald-200 font-medium mb-4'
+                        : 'p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-200 font-medium mb-4');
+                    discEl.innerHTML = `<div class="font-bold mb-1">${data.verdict_badge || ''} (LTP: ₹${data.ltp || '--'} • ${data.cap_tier || ''} • ${data.sector || ''})</div><div>${data.disclaimer || ''}</div>`;
                 }
+                renderScorecardTable();
             } catch (e) {
-                console.error(e);
+                console.error('Scorecard load error:', e);
             }
         }
 
