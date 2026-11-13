@@ -1,7 +1,7 @@
 {
   "starting_capital": 1000000.0,
   "created_at": "2026-11-13T09:15:00+05:30",
-  "last_sync": "2026-11-13T12:57:09.198457",
+  "last_sync": "2026-11-13T17:10:56.667879",
   "segments": {
     "INTRADAY": {
       "name": "Intraday S&R Precision",
@@ -12,7 +12,14 @@
       "realized_pnl": 0.0,
       "closed_count": 0,
       "win_count": 0,
-      "loss_count": 0
+      "loss_count": 0,
+      "invested": 96837.5,
+      "current_stock_value": 96525.0,
+      "unrealized_pnl": -312.5,
+      "total_pnl": -312.5,
+      "cash_buffer": 3162.5,
+      "total_segment_value": 99687.5,
+      "total_pnl_pct": -0.31
     },
     "WEEKLY": {
       "name": "Weekly Swing",
@@ -23,7 +30,14 @@
       "realized_pnl": 0.0,
       "closed_count": 0,
       "win_count": 0,
-      "loss_count": 0
+      "loss_count": 0,
+      "invested": 197871.6,
+      "current_stock_value": 197796.65,
+      "unrealized_pnl": -74.95,
+      "total_pnl": -74.95,
+      "cash_buffer": 2128.4,
+      "total_segment_value": 199925.05,
+      "total_pnl_pct": -0.04
     },
     "MULTI_MONTH": {
       "name": "Multi-Month Positional",
@@ -34,7 +48,14 @@
       "realized_pnl": 0.0,
       "closed_count": 0,
       "win_count": 0,
-      "loss_count": 0
+      "loss_count": 0,
+      "invested": 447972.15,
+      "current_stock_value": 448542.93,
+      "unrealized_pnl": 570.78,
+      "total_pnl": 570.78,
+      "cash_buffer": 2027.85,
+      "total_segment_value": 450570.78,
+      "total_pnl_pct": 0.13
     },
     "MULTI_YEAR": {
       "name": "Multi-Year Bedrock",
@@ -45,7 +66,14 @@
       "realized_pnl": 0.0,
       "closed_count": 0,
       "win_count": 0,
-      "loss_count": 0
+      "loss_count": 0,
+      "invested": 242142.5,
+      "current_stock_value": 239682.5,
+      "unrealized_pnl": -2460.0,
+      "total_pnl": -2460.0,
+      "cash_buffer": 7857.5,
+      "total_segment_value": 247540.0,
+      "total_pnl_pct": -0.98
     }
   },
   "trades": [
@@ -68,16 +96,16 @@
       "exit_price": null,
       "realized_pnl": 0.0,
       "peak_high": 2450.3,
-      "trough_low": 2405.5,
+      "trough_low": 2400.2,
       "discrepancy_noticed": "None. Sitting directly at S1 demand floor.",
       "corrective_measure": "None required (within normal parameters).",
       "is_anomaly": false,
       "mfe_pct": 1.62,
-      "mae_pct": -0.24,
-      "current_ltp": 2411.0,
-      "current_value": 48220.0,
-      "unrealized_pnl": -6.0,
-      "unrealized_pnl_pct": -0.01
+      "mae_pct": -0.46,
+      "current_ltp": 2407.5,
+      "current_value": 48150.0,
+      "unrealized_pnl": -76.0,
+      "unrealized_pnl_pct": -0.16
     },
     {
       "id": "INT-20261113-ONGC",
@@ -104,10 +132,10 @@
       "is_anomaly": false,
       "mfe_pct": 0.31,
       "mae_pct": -0.49,
-      "current_ltp": 226.08,
-      "current_value": 48607.2,
-      "unrealized_pnl": -4.3,
-      "unrealized_pnl_pct": -0.01
+      "current_ltp": 225.0,
+      "current_value": 48375.0,
+      "unrealized_pnl": -236.5,
+      "unrealized_pnl_pct": -0.49
     },
     {
       "id": "SWG-20261113-POWERGRID",
@@ -128,16 +156,16 @@
       "exit_price": null,
       "realized_pnl": 0.0,
       "peak_high": 260.1,
-      "trough_low": 257.7,
+      "trough_low": 256.0,
       "discrepancy_noticed": "None. Power utility demand floor tested.",
       "corrective_measure": "None required.",
       "is_anomaly": false,
       "mfe_pct": 0.81,
-      "mae_pct": -0.12,
-      "current_ltp": 257.95,
-      "current_value": 99310.75,
-      "unrealized_pnl": -19.25,
-      "unrealized_pnl_pct": -0.02
+      "mae_pct": -0.78,
+      "current_ltp": 257.45,
+      "current_value": 99118.25,
+      "unrealized_pnl": -211.75,
+      "unrealized_pnl_pct": -0.21
     },
     {
       "id": "SWG-20261113-VBL",
@@ -164,10 +192,10 @@
       "is_anomaly": false,
       "mfe_pct": 1.8,
       "mae_pct": -0.32,
-      "current_ltp": 432.35,
-      "current_value": 98575.8,
-      "unrealized_pnl": 34.2,
-      "unrealized_pnl_pct": 0.03
+      "current_ltp": 432.8,
+      "current_value": 98678.4,
+      "unrealized_pnl": 136.8,
+      "unrealized_pnl_pct": 0.14
     },
     {
       "id": "POS-20261113-TCS",
@@ -188,16 +216,16 @@
       "exit_price": null,
       "realized_pnl": 0.0,
       "peak_high": 2450.3,
-      "trough_low": 2405.5,
+      "trough_low": 2400.2,
       "discrepancy_noticed": "None. 18-Point Thesis compliant (ROCE 48%, zero debt).",
       "corrective_measure": "None required.",
       "is_anomaly": false,
       "mfe_pct": 1.62,
-      "mae_pct": -0.24,
-      "current_ltp": 2411.0,
-      "current_value": 173592.0,
-      "unrealized_pnl": -21.6,
-      "unrealized_pnl_pct": -0.01
+      "mae_pct": -0.46,
+      "current_ltp": 2407.5,
+      "current_value": 173340.0,
+      "unrealized_pnl": -273.6,
+      "unrealized_pnl_pct": -0.16
     },
     {
       "id": "POS-20261113-HDFCBANK",
@@ -224,10 +252,10 @@
       "is_anomaly": false,
       "mfe_pct": 1.07,
       "mae_pct": -0.27,
-      "current_ltp": 801.0,
-      "current_value": 174618.0,
-      "unrealized_pnl": 174.4,
-      "unrealized_pnl_pct": 0.1
+      "current_ltp": 804.0,
+      "current_value": 175272.0,
+      "unrealized_pnl": 828.4,
+      "unrealized_pnl_pct": 0.47
     },
     {
       "id": "POS-20261113-JSWCEMENT",
@@ -254,10 +282,10 @@
       "is_anomaly": false,
       "mfe_pct": 0.96,
       "mae_pct": -0.82,
-      "current_ltp": 125.06,
-      "current_value": 99922.94,
-      "unrealized_pnl": 7.99,
-      "unrealized_pnl_pct": 0.01
+      "current_ltp": 125.07,
+      "current_value": 99930.93,
+      "unrealized_pnl": 15.98,
+      "unrealized_pnl_pct": 0.02
     },
     {
       "id": "BED-20261113-TITAN",
@@ -284,10 +312,10 @@
       "is_anomaly": false,
       "mfe_pct": 2.08,
       "mae_pct": -0.2,
-      "current_ltp": 4852.8,
-      "current_value": 121320.0,
-      "unrealized_pnl": 145.0,
-      "unrealized_pnl_pct": 0.12
+      "current_ltp": 4844.9,
+      "current_value": 121122.5,
+      "unrealized_pnl": -52.5,
+      "unrealized_pnl_pct": -0.04
     },
     {
       "id": "BED-20261113-POLYCAB",
@@ -308,18 +336,30 @@
       "exit_price": null,
       "realized_pnl": 0.0,
       "peak_high": 8148.0,
-      "trough_low": 8001.5,
+      "trough_low": 7880.0,
       "discrepancy_noticed": "None. Zero debt, 24% market share dominance.",
       "corrective_measure": "Long-term compounding hold.",
       "is_anomaly": false,
       "mfe_pct": 1.04,
-      "mae_pct": -0.78,
-      "current_ltp": 8074.5,
-      "current_value": 121117.5,
-      "unrealized_pnl": 150.0,
-      "unrealized_pnl_pct": 0.12
+      "mae_pct": -2.29,
+      "current_ltp": 7904.0,
+      "current_value": 118560.0,
+      "unrealized_pnl": -2407.5,
+      "unrealized_pnl_pct": -1.99
     }
   ],
   "closed_trades": [],
-  "anomalies_log": []
+  "anomalies_log": [],
+  "portfolio_net_worth": 997723.33,
+  "cash_in_hand": 15176.25,
+  "stocks_invested_value": 982547.08,
+  "total_unrealized_pnl": -2276.67,
+  "total_net_pnl": -2276.67,
+  "total_net_pnl_pct": -0.23,
+  "peak_portfolio_net_worth": 997723.33,
+  "current_drawdown_pct": 0.0,
+  "max_drawdown_pct": 0.0,
+  "drawdown_status": "NORMAL CAPITAL SAFETY (<2.0% DD) \u2705",
+  "anomaly_rate_pct": 0.0,
+  "noise_filter_status": "TIER 1: NORMAL MARKET NOISE (<5%) \u2014 ZERO ACTION REQUIRED \u2705"
 }

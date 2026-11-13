@@ -1011,6 +1011,15 @@ def export_testing_excel():
         filename=os.path.basename(excel_path),
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
+
+@app.get("/api/testing-lab/universe-bench")
+def get_universe_bench():
+    return testing_engine.sync_universe_bench_live(force_yfinance=False)
+
+@app.get("/api/testing-lab/executive-summary")
+def get_exec_summary():
+    return testing_engine.get_executive_eod_summary()
+
 @app.get("/api/sr-backtest")
 def get_sr_backtest():
     backtest_file = os.path.join(APP_DIR, "sr_backtest_5y.json")
