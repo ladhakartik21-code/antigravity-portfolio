@@ -2133,7 +2133,7 @@
                 const res = await fetch('/api/modules', { cache: 'no-store' });
                 const d = await res.json();
                 if (d.modules && Array.isArray(d.modules) && d.modules.length > 0) {
-                    moduleRegistryList = d.modules;
+                    moduleRegistryList = d.modules.filter(m => m.id !== 'intraday');
                 }
             } catch (e) {
                 console.warn('Using embedded module defaults:', e);
@@ -2168,12 +2168,11 @@
                     return { text: '₹65k/mo @ 14%–16% CAGR Path', cls: 'text-sky-300' };
                 }
                 if (modId === 'testing') {
-                    return { text: '5Y S&R Backtest: 90.6% Acc', cls: 'text-amber-300' };
-                }
-                if (modId === 'intraday' && intradayData?.account) {
-                    const a = intradayData.account;
-                    const pfx = a.day_return_pct >= 0 ? '+' : '';
-                    return { text: `${formatINR(a.total_value)} (${pfx}${a.day_return_pct.toFixed(2)}%)`, cls: a.day_return_pct >= 0 ? 'text-emerald-400' : 'text-rose-400' };
+                    if (testingLabData && testingLabData.portfolio_net_worth) {
+                        const pfx = testingLabData.total_net_pnl >= 0 ? '+' : '';
+                        return { text: `${formatINR(testingLabData.portfolio_net_worth)} (${pfx}${testingLabData.total_net_pnl_pct.toFixed(2)}%)`, cls: testingLabData.total_net_pnl >= 0 ? 'text-emerald-400' : 'text-rose-400' };
+                    }
+                    return { text: '₹10L Shadow Portfolio Active', cls: 'text-amber-300' };
                 }
             } catch (e) {}
             if (modId.startsWith('planned-')) return { text: 'Open in Master Tracker →', cls: 'text-slate-400' };

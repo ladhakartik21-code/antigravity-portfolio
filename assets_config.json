@@ -76,25 +76,58 @@
       "mechanism": "Strategy_Virtual_Short_Tracking",
       "applies_to": "AI_Testing_Portfolio_Exits_Only",
       "user_sales_auto_shorted": false,
-      "drift_windows": ["30D", "90D", "180D", "365D"]
+      "drift_windows": [
+        "30D",
+        "90D",
+        "180D",
+        "365D"
+      ]
     }
   },
   "wealth_goals": {
     "monthly_target_inflow": 65000,
-    "annual_step_up_rate": 0.10,
+    "annual_step_up_rate": 0.1,
     "target_corpus_primary_15y_inr": 85000000,
     "target_corpus_extended_18y_inr": 120000000,
     "target_corpus_super_20y_inr": 150000000,
     "target_cagr_hurdle_rate": 0.155,
     "alpha_dip_buying_cagr_target": 0.175,
     "milestones": [
-      { "amount": 2500000, "label": "Seed Capital (₹25 Lakhs)", "target_age": 25 },
-      { "amount": 5000000, "label": "Half-Crore Milestone (₹50 Lakhs)", "target_age": 27 },
-      { "amount": 10000000, "label": "First Crore (₹1.0 Crore)", "target_age": 29 },
-      { "amount": 25000000, "label": "Multi-Crore Compounding (₹2.5 Crores)", "target_age": 32 },
-      { "amount": 50000000, "label": "Financial Sovereignty (₹5.0 Crores)", "target_age": 35 },
-      { "amount": 100000000, "label": "Deca-Crore Milestone (₹10.0 Crores)", "target_age": 38 },
-      { "amount": 150000000, "label": "Dynasty Wealth Milestone (₹15.0 Crores)", "target_age": 41 }
+      {
+        "amount": 2500000,
+        "label": "Seed Capital (\u20b925 Lakhs)",
+        "target_age": 25
+      },
+      {
+        "amount": 5000000,
+        "label": "Half-Crore Milestone (\u20b950 Lakhs)",
+        "target_age": 27
+      },
+      {
+        "amount": 10000000,
+        "label": "First Crore (\u20b91.0 Crore)",
+        "target_age": 29
+      },
+      {
+        "amount": 25000000,
+        "label": "Multi-Crore Compounding (\u20b92.5 Crores)",
+        "target_age": 32
+      },
+      {
+        "amount": 50000000,
+        "label": "Financial Sovereignty (\u20b95.0 Crores)",
+        "target_age": 35
+      },
+      {
+        "amount": 100000000,
+        "label": "Deca-Crore Milestone (\u20b910.0 Crores)",
+        "target_age": 38
+      },
+      {
+        "amount": 150000000,
+        "label": "Dynasty Wealth Milestone (\u20b915.0 Crores)",
+        "target_age": 41
+      }
     ]
   },
   "asset_allocation_mandate": {
@@ -119,7 +152,7 @@
       "per_fund_sip": 3000,
       "rebalance_tolerance": 0.03,
       "execution_day": 2,
-      "description": "5 Core Pillars @ ₹3,000/month each (Axis Small, Parag Parikh, JioBlackRock, HDFC Mid, SBI Contra)"
+      "description": "5 Core Pillars @ \u20b93,000/month each (Axis Small, Parag Parikh, JioBlackRock, HDFC Mid, SBI Contra)"
     }
   },
   "investment_decision_checklist": {
@@ -134,46 +167,225 @@
   },
   "asset_mappings": {
     "initial_core_stocks": {
-      "HDFC BANK": { "nse_ticker": "HDFCBANK.NS", "sector": "Private Banking", "role": "Moat Financial Leader" },
-      "TCS": { "nse_ticker": "TCS.NS", "sector": "Information Technology", "role": "Free Cash-Flow Compounder" },
-      "RELIANCE": { "nse_ticker": "RELIANCE.NS", "sector": "Diversified Conglomerate", "role": "Macro Growth Pillar" },
-      "VARUN BEVERAGES": { "nse_ticker": "VBL.NS", "sector": "Consumer Discretionary", "role": "High-Alpha Consumption" }
+      "HDFC BANK": {
+        "nse_ticker": "HDFCBANK.NS",
+        "sector": "Private Banking",
+        "role": "Moat Financial Leader"
+      },
+      "TCS": {
+        "nse_ticker": "TCS.NS",
+        "sector": "Information Technology",
+        "role": "Free Cash-Flow Compounder"
+      },
+      "RELIANCE": {
+        "nse_ticker": "RELIANCE.NS",
+        "sector": "Diversified Conglomerate",
+        "role": "Macro Growth Pillar"
+      },
+      "VARUN BEVERAGES": {
+        "nse_ticker": "VBL.NS",
+        "sector": "Consumer Discretionary",
+        "role": "High-Alpha Consumption"
+      }
     },
     "investment_radar_watchlist": {
-      "TITAN": { "nse_ticker": "TITAN.NS", "sector": "Consumer Luxury / Jewelry", "moat": "Unrivaled brand trust in jewelry (Tanishq); organized market share shift.", "discount_bracket": "15-20% from ATH" },
-      "LARSEN & TOUBRO": { "nse_ticker": "LT.NS", "sector": "Capital Goods & Infrastructure", "moat": "Monopoly-scale EPC execution, multi-year record order book.", "discount_bracket": "15-20% from ATH" },
-      "BHARTI AIRTEL": { "nse_ticker": "BHARTIARTL.NS", "sector": "Telecom & Digital Services", "moat": "Duopoly pricing power, secular ARPU growth, high operating leverage.", "discount_bracket": "10-15% from ATH" },
-      "POLYCAB": { "nse_ticker": "POLYCAB.NS", "sector": "Wires & Cables / FMEG", "moat": "#1 market leader in wires/cables, massive real estate/infra tailwind.", "discount_bracket": "25-30% from ATH" },
-      "DIXON TECH": { "nse_ticker": "DIXON.NS", "sector": "Electronic Manufacturing Services", "moat": "#1 EMS player in India, PLI champion, rapid smartphone/telecom localization.", "discount_bracket": "35-45% from ATH" },
-      "CDSL": { "nse_ticker": "CDSL.NS", "sector": "Capital Market Infrastructure", "moat": "Duopoly depository, 60%+ EBITDA margin, toll-gate on Indian demat expansion.", "discount_bracket": "35-42% from ATH" },
-      "TATA POWER": { "nse_ticker": "TATAPOWER.NS", "sector": "Power & Renewable Energy", "moat": "Integrated clean energy transition, rooftop solar, EV charging leader.", "discount_bracket": "25-30% from ATH" }
+      "TITAN": {
+        "nse_ticker": "TITAN.NS",
+        "sector": "Consumer Luxury / Jewelry",
+        "moat": "Unrivaled brand trust in jewelry (Tanishq); organized market share shift.",
+        "discount_bracket": "15-20% from ATH"
+      },
+      "LARSEN & TOUBRO": {
+        "nse_ticker": "LT.NS",
+        "sector": "Capital Goods & Infrastructure",
+        "moat": "Monopoly-scale EPC execution, multi-year record order book.",
+        "discount_bracket": "15-20% from ATH"
+      },
+      "BHARTI AIRTEL": {
+        "nse_ticker": "BHARTIARTL.NS",
+        "sector": "Telecom & Digital Services",
+        "moat": "Duopoly pricing power, secular ARPU growth, high operating leverage.",
+        "discount_bracket": "10-15% from ATH"
+      },
+      "POLYCAB": {
+        "nse_ticker": "POLYCAB.NS",
+        "sector": "Wires & Cables / FMEG",
+        "moat": "#1 market leader in wires/cables, massive real estate/infra tailwind.",
+        "discount_bracket": "25-30% from ATH"
+      },
+      "DIXON TECH": {
+        "nse_ticker": "DIXON.NS",
+        "sector": "Electronic Manufacturing Services",
+        "moat": "#1 EMS player in India, PLI champion, rapid smartphone/telecom localization.",
+        "discount_bracket": "35-45% from ATH"
+      },
+      "CDSL": {
+        "nse_ticker": "CDSL.NS",
+        "sector": "Capital Market Infrastructure",
+        "moat": "Duopoly depository, 60%+ EBITDA margin, toll-gate on Indian demat expansion.",
+        "discount_bracket": "35-42% from ATH"
+      },
+      "TATA POWER": {
+        "nse_ticker": "TATAPOWER.NS",
+        "sector": "Power & Renewable Energy",
+        "moat": "Integrated clean energy transition, rooftop solar, EV charging leader.",
+        "discount_bracket": "25-30% from ATH"
+      }
     },
     "etfs": {
-      "TATASIL": { "nse_ticker": "TATSILV.NS", "category": "Precious Metals", "role": "Industrial Growth & Inflation Hedge" },
-      "TATAGOLD": { "nse_ticker": "TATAGOLD.NS", "category": "Precious Metals", "role": "Global Safe Haven & Rupee Depreciation Hedge" },
-      "NIFTYBEES": { "nse_ticker": "NIFTYBEES.NS", "category": "Equity Index", "role": "India Inc Top 50 Index Foundation" }
+      "TATASIL": {
+        "nse_ticker": "TATSILV.NS",
+        "category": "Precious Metals",
+        "role": "Industrial Growth & Inflation Hedge"
+      },
+      "TATAGOLD": {
+        "nse_ticker": "TATAGOLD.NS",
+        "category": "Precious Metals",
+        "role": "Global Safe Haven & Rupee Depreciation Hedge"
+      },
+      "NIFTYBEES": {
+        "nse_ticker": "NIFTYBEES.NS",
+        "category": "Equity Index",
+        "role": "India Inc Top 50 Index Foundation"
+      }
     },
     "mutual_funds": {
-      "Axis Small Cap Fund": { "amfi_code": 125354, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Small Cap" },
-      "Parag Parikh Flexi Cap Fund": { "amfi_code": 122639, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Flexi Cap" },
-      "JioBlackRock Flexi Cap": { "amfi_code": 153859, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Flexi Cap" },
-      "HDFC Mid Cap": { "amfi_code": 118989, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Mid Cap" },
-      "SBI Contra": { "amfi_code": 119835, "plan": "Direct Plan - Growth", "monthly_sip": 3000, "category": "Contra / Value" }
+      "Axis Small Cap Fund": {
+        "amfi_code": 125354,
+        "plan": "Direct Plan - Growth",
+        "monthly_sip": 3000,
+        "category": "Small Cap"
+      },
+      "Parag Parikh Flexi Cap Fund": {
+        "amfi_code": 122639,
+        "plan": "Direct Plan - Growth",
+        "monthly_sip": 3000,
+        "category": "Flexi Cap"
+      },
+      "JioBlackRock Flexi Cap": {
+        "amfi_code": 153859,
+        "plan": "Direct Plan - Growth",
+        "monthly_sip": 3000,
+        "category": "Flexi Cap"
+      },
+      "HDFC Mid Cap": {
+        "amfi_code": 118989,
+        "plan": "Direct Plan - Growth",
+        "monthly_sip": 3000,
+        "category": "Mid Cap"
+      },
+      "SBI Contra": {
+        "amfi_code": 119835,
+        "plan": "Direct Plan - Growth",
+        "monthly_sip": 3000,
+        "category": "Contra / Value"
+      }
     }
   },
   "module_registry": [
-    { "id": "dashboard", "title": "Overview & Trajectory", "icon": "layout-dashboard", "accent": "blue", "status": "Pending Review", "description": "Core portfolio KPIs, Allocation Drift Donut & ₹10–15 Cr 15-Year compounding curve." },
-    { "id": "holdings", "title": "Holdings & Markets", "icon": "wallet", "accent": "emerald", "status": "Pending Review", "description": "Live valuation across Stocks (3), ETFs (3) & Mutual Funds (5 Direct Growth schemes)." },
-    { "id": "indices", "title": "Index Matrix (32)", "icon": "line-chart", "accent": "cyan", "status": "Pending Review", "description": "Real-time 4×4 NSE & Global market matrices with interactive multi-timeframe candlesticks." },
-    { "id": "terminal", "title": "S&R Terminal", "icon": "candlestick-chart", "accent": "indigo", "status": "Pending Review", "description": "TradingView chart workspace overlaid with S1/S2 Demand & R1/R2 Supply levels." },
-    { "id": "roadmap", "title": "Master Tracker", "icon": "clipboard-check", "accent": "emerald", "status": "Pending Review", "description": "Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge." },
-    { "id": "allocator", "title": "Best Monthly Buy", "icon": "target", "accent": "violet", "status": "Pending Review", "description": "350+ NSE/BSE Dual-Filter Screener, Breakout Alpha Bucket & Precious Metals Ratio Thesis." },
-    { "id": "goal", "title": "₹10–15 Cr Goal", "icon": "milestone", "accent": "sky", "status": "Pending Review", "description": "Monthly SIP step-up compounding calculator tracking your 14%–16% CAGR path." },
-    { "id": "testing", "title": "1-Week Testing Lab", "icon": "flask-conical", "accent": "amber", "status": "Live Lab", "description": "5-Year walk-forward S&R backtest (90.6% accuracy) & forward test bench." },
-    { "id": "intraday", "title": "Intraday AI Lab", "icon": "zap", "accent": "amber", "status": "Live Lab", "description": "High-frequency S&R proving lab with 3s stream & auto EOD Test Analysis exports." },
-    { "id": "planned-breakout", "title": "Breakout Scanner", "icon": "radar", "accent": "slate", "status": "Planned", "target_tab": "roadmap", "subtab": "pipeline", "description": "Multi-Year Stage-1 to R1 breakout finder (Sterlite Blueprint) for 14%–16% alpha." },
-    { "id": "planned-mf", "title": "MF Macro Flows", "icon": "pie-chart", "accent": "slate", "status": "Pending User", "target_tab": "roadmap", "subtab": "pipeline", "description": "Equity, Debt, Passive ETF & SIF AUM analytics from Mutual Fund Data folder." },
-    { "id": "planned-research", "title": "Research Reports", "icon": "file-text", "accent": "slate", "status": "Pending User", "target_tab": "roadmap", "subtab": "pipeline", "description": "Institutional research PDF ingestion & Moat consensus cross-verification." },
-    { "id": "planned-allocator", "title": "Monthly Tranche Rule", "icon": "calendar-check", "accent": "slate", "status": "Planned", "target_tab": "roadmap", "subtab": "journey", "description": "December fresh capital allocation signals gated strictly by S1/S2 & MOS triggers." }
+    {
+      "id": "dashboard",
+      "title": "Overview & Trajectory",
+      "icon": "layout-dashboard",
+      "accent": "blue",
+      "status": "Pending Review",
+      "description": "Core portfolio KPIs, Allocation Drift Donut & \u20b910\u201315 Cr 15-Year compounding curve."
+    },
+    {
+      "id": "holdings",
+      "title": "Holdings & Markets",
+      "icon": "wallet",
+      "accent": "emerald",
+      "status": "Pending Review",
+      "description": "Live valuation across Stocks (3), ETFs (3) & Mutual Funds (5 Direct Growth schemes)."
+    },
+    {
+      "id": "indices",
+      "title": "Index Matrix (32)",
+      "icon": "line-chart",
+      "accent": "cyan",
+      "status": "Pending Review",
+      "description": "Real-time 4\u00d74 NSE & Global market matrices with interactive multi-timeframe candlesticks."
+    },
+    {
+      "id": "terminal",
+      "title": "S&R Terminal",
+      "icon": "candlestick-chart",
+      "accent": "indigo",
+      "status": "Pending Review",
+      "description": "TradingView chart workspace overlaid with S1/S2 Demand & R1/R2 Supply levels."
+    },
+    {
+      "id": "roadmap",
+      "title": "Master Tracker",
+      "icon": "clipboard-check",
+      "accent": "emerald",
+      "status": "Pending Review",
+      "description": "Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge."
+    },
+    {
+      "id": "allocator",
+      "title": "Best Monthly Buy",
+      "icon": "target",
+      "accent": "violet",
+      "status": "Pending Review",
+      "description": "350+ NSE/BSE Dual-Filter Screener, Breakout Alpha Bucket & Precious Metals Ratio Thesis."
+    },
+    {
+      "id": "goal",
+      "title": "\u20b910\u201315 Cr Goal",
+      "icon": "milestone",
+      "accent": "sky",
+      "status": "Pending Review",
+      "description": "Monthly SIP step-up compounding calculator tracking your 14%\u201316% CAGR path."
+    },
+    {
+      "id": "testing",
+      "title": "Testing Lab",
+      "icon": "flask-conical",
+      "accent": "amber",
+      "status": "Live Lab",
+      "description": "Autonomous \u20b910 Lakhs Shadow Portfolio testing S&R across 4 Timeframes (1D, Weekly, Multi-Month, Multi-Year)."
+    },
+    {
+      "id": "planned-breakout",
+      "title": "Breakout Scanner",
+      "icon": "radar",
+      "accent": "slate",
+      "status": "Planned",
+      "target_tab": "roadmap",
+      "subtab": "pipeline",
+      "description": "Multi-Year Stage-1 to R1 breakout finder (Sterlite Blueprint) for 14%\u201316% alpha."
+    },
+    {
+      "id": "planned-mf",
+      "title": "MF Macro Flows",
+      "icon": "pie-chart",
+      "accent": "slate",
+      "status": "Pending User",
+      "target_tab": "roadmap",
+      "subtab": "pipeline",
+      "description": "Equity, Debt, Passive ETF & SIF AUM analytics from Mutual Fund Data folder."
+    },
+    {
+      "id": "planned-research",
+      "title": "Research Reports",
+      "icon": "file-text",
+      "accent": "slate",
+      "status": "Pending User",
+      "target_tab": "roadmap",
+      "subtab": "pipeline",
+      "description": "Institutional research PDF ingestion & Moat consensus cross-verification."
+    },
+    {
+      "id": "planned-allocator",
+      "title": "Monthly Tranche Rule",
+      "icon": "calendar-check",
+      "accent": "slate",
+      "status": "Planned",
+      "target_tab": "roadmap",
+      "subtab": "journey",
+      "description": "December fresh capital allocation signals gated strictly by S1/S2 & MOS triggers."
+    }
   ]
 }
