@@ -974,224 +974,43 @@ def get_radar():
     ]
     return radar_stocks
 
+try:
+    import testing_engine
+except ImportError:
+    from app import testing_engine
+
 @app.get("/api/testing")
+@app.get("/api/testing-lab/portfolio")
 def get_testing_data(response: Response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "0"
     
-    # Real-time / Latest NSE market prices
-    live_prices = {
-        "VBL.NS": 416.0,
-        "POLYCAB.NS": 7718.0,
-        "CDSL.NS": 1222.0,
-        "TATSILV.NS": 18.46,
-        "TATAPOWER.NS": 339.10,
-        "TCS.NS": 2496.90
+    summary = testing_engine.sync_live_prices(force_yfinance=False)
+    summary["shadow_capital"] = {
+        "initial_capital": summary["starting_capital"],
+        "monthly_inflow": summary["starting_capital"],
+        "total_deployed": summary["stocks_invested_value"],
+        "cash_balance": summary["cash_in_hand"],
+        "current_value": summary["portfolio_net_worth"],
+        "unrealized_pnl": summary["total_unrealized_pnl"],
+        "unrealized_pnl_pct": summary["total_net_pnl_pct"]
     }
-    
-    # Use CACHE if updated
-    for sym in live_prices.keys():
-        if sym in CACHE.get("prices", {}):
-            val = CACHE["prices"][sym]
-            if isinstance(val, dict):
-                live_prices[sym] = float(val.get("price", live_prices[sym]))
-            elif isinstance(val, (int, float)):
-                live_prices[sym] = float(val)
+    summary["active_testing_trades"] = summary["trades"]
+    return summary
 
-    raw_trades = [
-        {
-            "symbol": "VBL.NS",
-            "name": "Varun Beverages",
-            "action": "BUY",
-            "entry_date": "2026-10-26",
-            "entry_price": 408.0,
-            "quantity": 35,
-            "allocated_capital": 14280.0,
-            "target_price": 432.0,
-            "stop_loss": 394.0,
-            "upside_potential_pct": 5.88,
-            "downside_risk_pct": 3.43,
-            "risk_reward_ratio": "1 : 1.71",
-            "duration": "1 Week (Review: 02 Nov 2026)",
-            "thesis_score": "7 / 8 Passed",
-            "thesis_checklist_summary": "Pepsi exclusive bottling moat, 27% ROCE, strong FCF, testing multi-month demand shelf ₹395-₹408.",
-            "thesis_reason": "Sitting directly on Monthly S1 Demand Zone (₹395 - ₹408) after 22.4% pullback. Q3 festive volume off-take and beverage consolidation makes this a prime 1-week oversold demand bounce candidate.",
-            "evaluation_criteria": {
-                "thesis_confirmed_if": "Holds above ₹395 and closes week above ₹420 (momentum returning to 20-DMA).",
-                "thesis_invalidated_if": "Daily close below ₹394 Stop Loss, signalling deeper consolidation towards BevCo debt absorption."
-            }
-        },
-        {
-            "symbol": "POLYCAB.NS",
-            "name": "Polycab India",
-            "action": "BUY",
-            "entry_date": "2026-10-26",
-            "entry_price": 7739.0,
-            "quantity": 2,
-            "allocated_capital": 15478.0,
-            "target_price": 8180.0,
-            "stop_loss": 7430.0,
-            "upside_potential_pct": 5.70,
-            "downside_risk_pct": 3.99,
-            "risk_reward_ratio": "1 : 1.43",
-            "duration": "1 Week (Review: 02 Nov 2026)",
-            "thesis_score": "8 / 8 Passed",
-            "thesis_checklist_summary": "Zero debt, 28% ROCE, 24% market share, resting at Fib 50% retracement demand zone.",
-            "thesis_reason": "Tested and held institutional Monthly Demand Zone (₹7,195 - ₹7,440) on declining selling volume. FII/DII accumulation node at ₹7,650-₹7,750 provides strong 1-week support for a relief rally towards 50-DMA.",
-            "evaluation_criteria": {
-                "thesis_confirmed_if": "Rebounds past ₹7,950 with volume confirmation.",
-                "thesis_invalidated_if": "Breaks below ₹7,430 S1 pivot support."
-            }
-        },
-        {
-            "symbol": "CDSL.NS",
-            "name": "Central Depository Services",
-            "action": "BUY",
-            "entry_date": "2026-10-26",
-            "entry_price": 1196.0,
-            "quantity": 12,
-            "allocated_capital": 14352.0,
-            "target_price": 1275.0,
-            "stop_loss": 1148.0,
-            "upside_potential_pct": 6.61,
-            "downside_risk_pct": 4.01,
-            "risk_reward_ratio": "1 : 1.65",
-            "duration": "1 Week (Review: 02 Nov 2026)",
-            "thesis_score": "8 / 8 Passed",
-            "thesis_checklist_summary": "70%+ demat market share monopoly duopoly, debt-free, 40%+ margins, 39.2% discount from ATH.",
-            "thesis_reason": "Formed a classic technical double bottom at ₹1,150 - ₹1,196 with 14-day RSI oversold at 34. Record October SIP flows (>₹25k Cr/mo) guarantee ongoing transaction revenue. High probability 1-week mean reversion bounce.",
-            "evaluation_criteria": {
-                "thesis_confirmed_if": "Closes week above ₹1,240, confirming double-bottom reversal.",
-                "thesis_invalidated_if": "Breaks below ₹1,148 52-week horizontal shelf."
-            }
-        },
-        {
-            "symbol": "TATSILV.NS",
-            "name": "Tata Silver ETF",
-            "action": "BUY",
-            "entry_date": "2026-10-26",
-            "entry_price": 18.78,
-            "quantity": 600,
-            "allocated_capital": 11268.0,
-            "target_price": 20.15,
-            "stop_loss": 17.80,
-            "upside_potential_pct": 7.30,
-            "downside_risk_pct": 5.22,
-            "risk_reward_ratio": "1 : 1.40",
-            "duration": "1 Week (Review: 02 Nov 2026)",
-            "thesis_score": "8 / 8 Passed",
-            "thesis_checklist_summary": "Empirical COMEX/MCX thesis: Silver down -53.2% from ATH, GSR 73.75x vs 67.7x historical median.",
-            "thesis_reason": "26-year COMEX/LBMA precious metals study proves Silver has a 2.4x beta over Gold. With DXY pausing at 101.60 and spot silver finding buyers at $54/oz, Silver ETF is at extreme value demand accumulation band.",
-            "evaluation_criteria": {
-                "thesis_confirmed_if": "Crosses ₹19.50 as global silver stabilizes above $55/oz.",
-                "thesis_invalidated_if": "Drops below ₹17.80 (signalling dollar index breakout above 102.5)."
-            }
-        },
-        {
-            "symbol": "TATAPOWER.NS",
-            "name": "Tata Power",
-            "action": "BUY",
-            "entry_date": "2026-10-26",
-            "entry_price": 338.5,
-            "quantity": 28,
-            "allocated_capital": 9478.0,
-            "target_price": 358.0,
-            "stop_loss": 328.0,
-            "upside_potential_pct": 5.76,
-            "downside_risk_pct": 3.10,
-            "risk_reward_ratio": "1 : 1.86",
-            "duration": "1 Week (Review: 02 Nov 2026)",
-            "thesis_score": "7 / 8 Passed",
-            "thesis_checklist_summary": "Clean energy capex leader, PM Surya Ghar solar execution, sitting at lower band of 10-month channel.",
-            "thesis_reason": "Hovering directly above Monthly S2 demand zone (₹330.0 - ₹338.5) after 28.8% discount from peak. Energy transition fundamentals remain intact with expanding rooftop order book. High R:R 1-week swing.",
-            "evaluation_criteria": {
-                "thesis_confirmed_if": "Maintains ₹330 floor and rebounds above ₹348.",
-                "thesis_invalidated_if": "Decisive daily breakdown below ₹328."
-            }
-        }
-    ]
+@app.post("/api/testing-lab/sync")
+def sync_testing_portfolio():
+    return testing_engine.sync_live_prices(force_yfinance=True)
 
-    # Calculate live LTP, PnL, and value for each trade
-    total_deployed = sum(t["allocated_capital"] for t in raw_trades)
-    total_unrealized_pnl = 0.0
-
-    for t in raw_trades:
-        sym = t["symbol"]
-        ltp = round(float(live_prices.get(sym, t["entry_price"])), 2)
-        pnl = round((ltp - t["entry_price"]) * t["quantity"], 2)
-        pnl_pct = round((ltp - t["entry_price"]) / t["entry_price"] * 100, 2)
-        
-        t["ltp"] = ltp
-        t["current_price"] = ltp
-        t["pnl"] = pnl
-        t["pnl_pct"] = pnl_pct
-        total_unrealized_pnl += pnl
-
-    total_unrealized_pnl = round(total_unrealized_pnl, 2)
-    unrealized_pnl_pct = round(total_unrealized_pnl / total_deployed * 100, 2) if total_deployed > 0 else 0.0
-
-    # TCS Virtual Short calculation
-    tcs_ltp = round(float(live_prices.get("TCS.NS", 2496.90)), 2)
-    tcs_exit = 2535.0
-    tcs_drift = round((tcs_ltp - tcs_exit) / tcs_exit * 100, 2)
-    tcs_saved = round((tcs_exit - tcs_ltp) * 4, 2)
-
-    fresh_testing_state = {
-        "status": "Active 1-Week Forward Strategy Test",
-        "benchmark_review_date": "2026-11-02",
-        "evaluation_window": "7 Days (26 Oct 2026 to 02 Nov 2026)",
-        "shadow_capital": {
-            "initial_capital": 65000.0,
-            "monthly_inflow": 65000.0,
-            "total_deployed": total_deployed,
-            "cash_balance": 144.0,
-            "current_value": round(total_deployed + total_unrealized_pnl + 144.0, 2),
-            "unrealized_pnl": total_unrealized_pnl,
-            "unrealized_pnl_pct": unrealized_pnl_pct
-        },
-        "active_testing_trades": raw_trades,
-        "virtual_short_exit_log": [
-            {
-                "symbol": "TCS.NS",
-                "name": "Tata Consultancy Services",
-                "action": "VIRTUAL SHORT / EXIT TEST",
-                "exit_date": "2026-10-26",
-                "exit_price": 2535.0,
-                "current_price": tcs_ltp,
-                "quantity": 4,
-                "virtual_capital": 10140.0,
-                "target_cover_price": 2420.0,
-                "stop_loss": 2610.0,
-                "expected_drift_pct": -4.54,
-                "post_exit_drift_pct": tcs_drift,
-                "capital_saved": tcs_saved,
-                "duration": "1 Week (Review: 02 Nov 2026)",
-                "verdict": "MONITORING (Day 1 of 7) • Capital Saved ₹152.40",
-                "hypothesis": "Testing tactical exit discipline: TCS hit upper channel resistance with IT discretionary spend slowdown. Exiting at ₹2,535 has currently saved 1.5% capital drag as stock dipped to ₹2,496.90 towards Monthly S1 (₹2,420)."
-            }
-        ],
-        "one_week_benchmark_rules": [
-            "1. Decision Vindication: If 3 or more of 5 Long trades gain > 2.5% or hit target, the Demand Zone confluence thesis is confirmed.",
-            "2. Risk Strictness: If any trade hits its Stop Loss, that trade is exited immediately and capital saved is logged.",
-            "3. Virtual Short Test: If TCS drifts down towards ₹2,420, it confirms tactical exits preserve capital during range-bound regimes."
-        ],
-        "forward_testing_policy": {
-            "start_date": "2026-10-26",
-            "review_date": "2026-11-02",
-            "duration": "1 Week",
-            "permitted_assets": "Cash Equities & ETFs ONLY",
-            "prohibited": "Futures, Options, and Commodity Derivatives strictly prohibited",
-            "post_exit_tracking": "Activates virtual short on strategy exits over 1W, 30D, 90D."
-        }
-    }
-    
-    with open(TEST_DB_PATH, "w", encoding="utf-8") as f:
-        json.dump(fresh_testing_state, f, indent=2)
-        
-    return fresh_testing_state
-
-
+@app.get("/api/testing-lab/export-daily-excel")
+def export_testing_excel():
+    excel_path = testing_engine.export_daily_testing_excel()
+    return FileResponse(
+        excel_path,
+        filename=os.path.basename(excel_path),
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 @app.get("/api/sr-backtest")
 def get_sr_backtest():
     backtest_file = os.path.join(APP_DIR, "sr_backtest_5y.json")
@@ -1562,6 +1381,20 @@ async def background_market_worker():
                     print(f"[{ist_now.strftime('%H:%M:%S IST')}] [Market Active] Intraday Tick Evaluated: {open_cnt} Open, {closed_cnt} Closed, Realized PnL: Rs.{pnl}", flush=True)
                 except Exception as eval_err:
                     print(f"[Worker Eval Error]: {eval_err}", flush=True)
+
+                # Sync Testing Lab 4-Timeframe Shadow Portfolio
+                try:
+                    await asyncio.to_thread(testing_engine.sync_live_prices, False)
+                except Exception as t_err:
+                    print(f"[Testing Engine Tick Error]: {t_err}", flush=True)
+
+                # Auto-export daily testing Excel at EOD (15:30 IST)
+                if ist_now.hour == 15 and ist_now.minute == 30:
+                    try:
+                        await asyncio.to_thread(testing_engine.export_daily_testing_excel)
+                        print(f"[{ist_now.strftime('%H:%M:%S IST')}] [EOD Auto-Export] Daily Testing Ledger saved!", flush=True)
+                    except Exception as ex_err:
+                        pass
                 
                 sleep_sec = 15
             else:

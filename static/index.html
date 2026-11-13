@@ -212,8 +212,7 @@
                     <option value="roadmap">📋 Master Tracker</option>
                     <option value="allocator">🎯 Best Monthly Buy &amp; Thesis</option>
                     <option value="goal">🏆 ₹10–15 Cr Goal Engine</option>
-                    <option value="testing">🔬 1-Week Testing Lab</option>
-                    <option value="intraday">⚡ Intraday AI Lab (₹1L)</option>
+                    <option value="testing">🔬 Testing Lab (₹10L Portfolio)</option>
                 </select>
             </div>
         </div>
@@ -1212,633 +1211,203 @@
 
         <!-- ==================== VIEW 6: TESTING LAB & SHADOW PORTFOLIO ==================== -->
                 <!-- ==================== VIEW 6: 1-WEEK TESTING LAB & SHADOW PORTFOLIO ==================== -->
+        <!-- ==================== VIEW 6: UNIFIED TESTING LAB (₹10 LAKHS 4-TIMEFRAME SHADOW PORTFOLIO) ==================== -->
         <section id="view-testing" class="space-y-6 hidden">
-            <!-- Testing Banner -->
-            <div class="glass-panel p-6 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-950/30 via-dark-800 to-amber-950/20 shadow-xl">
-                <div class="flex flex-wrap justify-between items-center gap-4">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span class="text-xs font-bold uppercase tracking-widest text-amber-400">⚡ 1-Week Forward Strategy Test Active</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">26 Oct 2026 -> 02 Nov 2026</span>
-                        </div>
-                        <h2 class="text-2xl font-black text-white">🔬 Testing Lab & AI Shadow Portfolio</h2>
-                        <p class="text-xs text-slate-300 mt-1 max-w-3xl">
-                            <b>5 High-Conviction Positions Executed at Today's EOD Closing Prices</b> + 1 Tactical Virtual Short Test. 
-                            Evaluated over a strict <b>1-week duration (Review Date: 02 Nov 2026)</b> to empirically vindicate our Investment Thesis.
-                        </p>
-                    </div>
-                    <div class="flex flex-col items-end gap-1.5 font-mono">
-                        <span class="px-3.5 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-xl text-xs font-bold">
-                            Capital Deployed: ₹64,856 / ₹65,000 (99.8%)
-                        </span>
-                        <span class="text-[11px] text-slate-400">Review Benchmark: <b>02 Nov 2026 (7 Days)</b></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testing Metrics Strip -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Shadow Capital</span>
-                    <span class="text-xl font-black text-white font-mono mt-1 block">₹65,000.00</span>
-                    <span class="text-[11px] text-slate-400 mt-0.5 block">Allocated Monthly Inflow</span>
-                </div>
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Active Deployed</span>
-                    <span class="text-xl font-black text-emerald-400 font-mono mt-1 block">₹64,856.00</span>
-                    <span class="text-[11px] text-emerald-500/80 mt-0.5 block">99.8% Capital Utilization</span>
-                </div>
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Unrealized P&L (Testing)</span>
-                    <span class="text-xl font-black text-emerald-400 font-mono mt-1 block" id="testingLivePnl">+₹374.80</span>
-                    <span class="text-[11px] text-emerald-400/80 mt-0.5 block" id="testingLivePnlPct">+0.58% Overall Gain</span>
-                </div>
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Test Window & Status</span>
-                    <span class="text-xl font-black text-cyan-400 font-mono mt-1 block">Day 0 of 7</span>
-                    <span class="text-[11px] text-cyan-400/80 mt-0.5 block">Verdict Date: 02 Nov 2026</span>
-                </div>
-            </div>
-
-            <!-- Master Active Testing Positions Table -->
-            <div class="glass-panel rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
-                <div class="p-4 bg-dark-800/90 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex items-center gap-2.5">
-                        <i data-lucide="table" class="w-4 h-4 text-amber-400"></i>
-                        <h3 class="font-extrabold text-white text-sm uppercase tracking-wider">
-                            Active 1-Week Test Positions Book (Today's Closing Prices • 26 Oct 2026)
-                        </h3>
-                    </div>
-                    <span class="text-[11px] px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-lg font-mono font-semibold">
-                        Cash Equities & ETFs ONLY (No F&O)
-                    </span>
-                </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr class="bg-dark-900/90 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700/60">
-                                <th class="p-3.5">Action</th>
-                                <th class="p-3.5">Security</th>
-                                <th class="p-3.5 text-right">Purchase Price</th>
-                                <th class="p-3.5 text-right">LTP (NSE)</th>
-                                <th class="p-3.5 text-right">Profit / Loss</th>
-                                <th class="p-3.5 text-right">Qty</th>
-                                <th class="p-3.5 text-right">Deployed</th>
-                                <th class="p-3.5 text-right">1-Week Target</th>
-                                <th class="p-3.5 text-right">Stop Loss</th>
-                                <th class="p-3.5 text-center">R : R</th>
-                                <th class="p-3.5 text-center">Thesis Match</th>
-                                <th class="p-3.5">1-Week Catalyst & Hypothesis</th>
-                            </tr>
-                        </thead>
-                        <tbody id="testingTableBody" class="divide-y divide-slate-800 font-mono">
-                            <!-- Pre-rendered Static Fallback: Row 1 VBL -->
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (LONG)</span></td>
-                                <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">Varun Beverages</div><span class="text-[10px] text-slate-400">VBL.NS • FMCG Moat</span></td>
-                                <td class="p-3.5 text-right text-white font-bold">₹408.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹416.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold font-mono">+₹280.00 <span class="text-[10px] block text-emerald-300">(+1.96%)</span></td>
-                                <td class="p-3.5 text-right text-slate-300">35</td>
-                                <td class="p-3.5 text-right text-purple-400 font-bold">₹14,280.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹432.00 <span class="text-[10px] block text-emerald-300">(+5.88%)</span></td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold">₹394.00 <span class="text-[10px] block text-rose-300">(-3.43%)</span></td>
-                                <td class="p-3.5 text-center text-amber-400 font-bold">1 : 1.71</td>
-                                <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-blue-500/20 text-blue-300 rounded text-[10px] font-bold">7 / 8 Passed</span></td>
-                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Sitting directly on Monthly S1 Demand Zone (₹395-₹408) after 22.4% pullback. Festive off-take bounce.</td>
-                            </tr>
-                            <!-- Pre-rendered Static Fallback: Row 2 POLYCAB -->
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (LONG)</span></td>
-                                <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">Polycab India</div><span class="text-[10px] text-slate-400">POLYCAB.NS • Cables & Wires</span></td>
-                                <td class="p-3.5 text-right text-white font-bold">₹7,739.00</td>
-                                <td class="p-3.5 text-right text-slate-200 font-bold">₹7,718.00</td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold font-mono">-₹42.00 <span class="text-[10px] block text-rose-300">(-0.27%)</span></td>
-                                <td class="p-3.5 text-right text-slate-300">2</td>
-                                <td class="p-3.5 text-right text-purple-400 font-bold">₹15,478.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹8,180.00 <span class="text-[10px] block text-emerald-300">(+5.70%)</span></td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold">₹7,430.00 <span class="text-[10px] block text-rose-300">(-3.99%)</span></td>
-                                <td class="p-3.5 text-center text-amber-400 font-bold">1 : 1.43</td>
-                                <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-bold">8 / 8 Passed</span></td>
-                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Tested and held institutional Monthly Demand Zone (₹7,195-₹7,440). Zero debt, 28% ROCE. Relief rally to 50-DMA.</td>
-                            </tr>
-                            <!-- Pre-rendered Static Fallback: Row 3 CDSL -->
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (LONG)</span></td>
-                                <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">Central Depository (CDSL)</div><span class="text-[10px] text-slate-400">CDSL.NS • Market Infrastructure</span></td>
-                                <td class="p-3.5 text-right text-white font-bold">₹1,196.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹1,222.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold font-mono">+₹312.00 <span class="text-[10px] block text-emerald-300">(+2.17%)</span></td>
-                                <td class="p-3.5 text-right text-slate-300">12</td>
-                                <td class="p-3.5 text-right text-purple-400 font-bold">₹14,352.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹1,275.00 <span class="text-[10px] block text-emerald-300">(+6.61%)</span></td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold">₹1,148.00 <span class="text-[10px] block text-rose-300">(-4.01%)</span></td>
-                                <td class="p-3.5 text-center text-amber-400 font-bold">1 : 1.65</td>
-                                <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-bold">8 / 8 Passed</span></td>
-                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Double bottom at ₹1,150-₹1,196 with RSI oversold (34). 70%+ demat market share monopoly riding ₹25k Cr SIPs.</td>
-                            </tr>
-                            <!-- Pre-rendered Static Fallback: Row 4 TATSILV -->
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (LONG)</span></td>
-                                <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">Tata Silver ETF</div><span class="text-[10px] text-slate-400">TATSILV.NS • Precious Metals</span></td>
-                                <td class="p-3.5 text-right text-white font-bold">₹18.78</td>
-                                <td class="p-3.5 text-right text-slate-200 font-bold">₹18.46</td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold font-mono">-₹192.00 <span class="text-[10px] block text-rose-300">(-1.70%)</span></td>
-                                <td class="p-3.5 text-right text-slate-300">600</td>
-                                <td class="p-3.5 text-right text-purple-400 font-bold">₹11,268.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹20.15 <span class="text-[10px] block text-emerald-300">(+7.30%)</span></td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold">₹17.80 <span class="text-[10px] block text-rose-300">(-5.22%)</span></td>
-                                <td class="p-3.5 text-center text-amber-400 font-bold">1 : 1.40</td>
-                                <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 rounded text-[10px] font-bold">8 / 8 Passed</span></td>
-                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Empirical COMEX/MCX thesis: Silver down -53.2% from peak, GSR 73.75x vs 67.7x median. Spot finding $54 floor.</td>
-                            </tr>
-                            <!-- Pre-rendered Static Fallback: Row 5 TATAPOWER -->
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">BUY (LONG)</span></td>
-                                <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">Tata Power</div><span class="text-[10px] text-slate-400">TATAPOWER.NS • Power Transition</span></td>
-                                <td class="p-3.5 text-right text-white font-bold">₹338.50</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹339.10</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold font-mono">+₹16.80 <span class="text-[10px] block text-emerald-300">(+0.18%)</span></td>
-                                <td class="p-3.5 text-right text-slate-300">28</td>
-                                <td class="p-3.5 text-right text-purple-400 font-bold">₹9,478.00</td>
-                                <td class="p-3.5 text-right text-emerald-400 font-bold">₹358.00 <span class="text-[10px] block text-emerald-300">(+5.76%)</span></td>
-                                <td class="p-3.5 text-right text-rose-400 font-bold">₹328.00 <span class="text-[10px] block text-rose-300">(-3.10%)</span></td>
-                                <td class="p-3.5 text-center text-amber-400 font-bold">1 : 1.86</td>
-                                <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-blue-500/20 text-blue-300 rounded text-[10px] font-bold">7 / 8 Passed</span></td>
-                                <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">Hovering above Monthly S2 demand zone (₹330-₹338). PM Surya Ghar solar rooftop orders drive high R:R bounce.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Detailed Thesis Breakdown Cards -->
-            <div class="space-y-4" id="testingTradesContainer">
-                <!-- Rendered dynamically with full checklist pointers & hypothesis -->
-            </div>
-
-            <!-- S&R Confluence System-Wide Validation Scorecard (Rolling Walk-Forward Backtest) -->
-            <div class="glass-panel p-5 rounded-2xl border border-slate-700/80 bg-slate-900/60 shadow-xl space-y-4">
-                <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-3">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center">
-                            <i data-lucide="crosshair" class="w-4 h-4 text-cyan-400"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="font-extrabold text-white text-sm uppercase tracking-wider">
-                                    System-Wide S&R Empirical Testing Scorecard
-                                </h3>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">Rolling Walk-Forward</span>
-                            </div>
-                            <p class="text-[11px] text-slate-400">Zero Lookahead Bias Backtest across 14 Securities & 60 Monthly Cycles</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap items-center gap-2">
-                        <!-- Timeframe Selector Toggle -->
-                        <div class="flex bg-dark-950/80 p-1 rounded-xl border border-slate-800 text-[11px] font-mono">
-                            <button id="srBtn1Y" onclick="setSrBacktestTimeframe('1Y')" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition">1-Year</button>
-                            <button id="srBtn3Y" onclick="setSrBacktestTimeframe('3Y')" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white transition">3-Years</button>
-                            <button id="srBtn5Y" onclick="setSrBacktestTimeframe('5Y')" class="px-2.5 py-1 rounded-lg bg-cyan-600 text-white font-bold shadow">5-Years (Recommended)</button>
-                        </div>
-
-                        <span id="srAccuracyBadge" class="px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-xl text-xs font-bold font-mono">
-                            90.6% Multi-Source Accuracy
-                        </span>
-
-                        <button onclick="openSrAuditModal()" class="px-3 py-1 bg-dark-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition shadow">
-                            <i data-lucide="layers" class="w-3.5 h-3.5 text-amber-400"></i>
-                            <span>Multidisciplinary Audit</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 4 Metrics Boxes (Dynamically updated via JS) -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono">
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <span class="text-[10px] text-slate-400 uppercase font-sans font-bold block">Demand Zone Bounces</span>
-                        <span id="srDemandWin" class="text-lg font-black text-emerald-400 mt-0.5 block">91.1% Win Rate</span>
-                        <span id="srDemandAvgGain" class="text-[10px] text-emerald-300/80">Avg +6.0% Gain in 7-15 Days</span>
-                    </div>
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <span class="text-[10px] text-slate-400 uppercase font-sans font-bold block">Supply Zone Rejections</span>
-                        <span id="srSupplyWin" class="text-lg font-black text-amber-400 mt-0.5 block">90.2% Win Rate</span>
-                        <span id="srSupplyAvgSave" class="text-[10px] text-amber-300/80">Avg -5.8% Pullback Saved</span>
-                    </div>
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <span class="text-[10px] text-slate-400 uppercase font-sans font-bold block">Total Zones Audited</span>
-                        <span id="srTotalTouches" class="text-lg font-black text-cyan-400 mt-0.5 block">403 Test Touches</span>
-                        <span id="srBacktestLabel" class="text-[10px] text-slate-400">5-Year Institutional Backtest</span>
-                    </div>
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <span class="text-[10px] text-slate-400 uppercase font-sans font-bold block">Breach / Breakdown Protocol</span>
-                        <span id="srFalseDefense" class="text-lg font-black text-rose-400 mt-0.5 block">8.9% False Defense</span>
-                        <span id="srWickHunts" class="text-[10px] text-rose-300/80">37 Wick Hunts Absorbed</span>
-                    </div>
-                </div>
-
-                <!-- Multidisciplinary & Misleading Numbers Architecture Panel -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] font-sans">
-                    <div class="p-3 bg-dark-900/90 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-                        <div class="flex items-center gap-1.5 text-amber-400 font-bold mb-1">
-                            <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
-                            <span>1. Detecting Misleading Numbers (Intraday Wick vs Daily Close)</span>
-                        </div>
-                        <p class="text-slate-400">
-                            <b>Empirical Fact:</b> In our 5-year audit, <b class="text-emerald-400">74.2%</b> of touches that momentarily dipped below S2 rebounded back above the zone before 3:30 PM (institutional liquidity stop-hunts). Naive models falsely count these as breakdowns. 
-                            <span class="text-white block mt-1"><b>Our Action Protocol:</b> Never panic-sell an intraday wick. Only a <b>Daily Delivery Close > 2% below S2</b> on heavy volume triggers an immediate Stop-Loss.</span>
-                        </p>
-                    </div>
-
-                    <div class="p-3 bg-dark-900/90 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-                        <div class="flex items-center gap-1.5 text-cyan-400 font-bold mb-1">
-                            <i data-lucide="git-merge" class="w-3.5 h-3.5"></i>
-                            <span>2. Multidisciplinary 4-Pillar Confluence Engine</span>
-                        </div>
-                        <p class="text-slate-400">
-                            No technical number is trusted in isolation. Every zone must satisfy 4 disciplines:
-                            <span class="block text-slate-300 mt-0.5">• <b>Quant:</b> Fibonacci 50-61.8% shelf & Volume-Weighted consolidation node.</span>
-                            <span class="block text-slate-300">• <b>Business Moat:</b> RoCE > 20%, low leverage, pricing power duopoly.</span>
-                            <span class="block text-slate-300">• <b>Macro & Cycle:</b> Industry capex growth & de-dollarization thesis.</span>
-                            <span class="block text-slate-300">• <b>Risk:</b> Minimum 1 : 1.4 Risk-to-Reward ratio with asymmetric upside.</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Virtual Short Post-Exit Vindicating Engine Table -->
-            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden shadow">
-                <div class="p-4 bg-dark-800/80 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-2">
-                    <div>
-                        <h3 class="font-bold text-white text-xs uppercase tracking-wider flex items-center gap-2">
-                            <i data-lucide="crosshair" class="w-4 h-4 text-rose-400"></i> Virtual Short Post-Exit Vindicating Engine
-                        </h3>
-                        <p class="text-[11px] text-slate-400">Simulates tactical exits to measure whether selling preserved capital or caused premature drag</p>
-                    </div>
-                    <span class="text-[11px] px-2.5 py-1 bg-slate-800 border border-slate-700 text-slate-300 rounded-lg font-mono">
-                        Active 1-Week Test: TCS.NS
-                    </span>
-                </div>
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr class="bg-dark-900/80 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
-                                <th class="p-3">Exit Action</th>
-                                <th class="p-3">Security</th>
-                                <th class="p-3 text-right">Exit Price (Close)</th>
-                                <th class="p-3 text-right">Target Re-entry</th>
-                                <th class="p-3 text-right">Stop Loss</th>
-                                <th class="p-3 text-center">Post-Exit Drift</th>
-                                <th class="p-3 text-center">Duration</th>
-                                <th class="p-3 text-center">Empirical Verdict</th>
-                                <th class="p-3">Tactical Exit Hypothesis</th>
-                            </tr>
-                        </thead>
-                        <tbody id="virtualShortTableBody" class="divide-y divide-slate-800 font-mono">
-                            <tr class="hover:bg-slate-800/30">
-                                <td class="p-3 font-sans"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold text-[10px] border border-rose-500/30">VIRTUAL SHORT</span></td>
-                                <td class="p-3 font-sans"><div class="font-bold text-white text-xs">Tata Consultancy Services</div><span class="text-[10px] text-slate-400">TCS.NS • IT Services</span></td>
-                                <td class="p-3 text-right text-white font-bold">₹2,535.00</td>
-                                <td class="p-3 text-right text-emerald-400 font-bold">₹2,420.00 <span class="text-[10px] block text-emerald-300">(-4.54%)</span></td>
-                                <td class="p-3 text-right text-rose-400 font-bold">₹2,610.00 <span class="text-[10px] block text-rose-300">(+2.96%)</span></td>
-                                <td class="p-3 text-center text-slate-300 font-bold">0.00%</td>
-                                <td class="p-3 text-center font-sans text-slate-300 text-[11px]">1 Week (02 Nov)</td>
-                                <td class="p-3 text-center font-sans"><span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 rounded text-[10px] font-bold">MONITORING (Day 0)</span></td>
-                                <td class="p-3 font-sans text-slate-300 max-w-xs text-[11px] leading-tight">Testing exit discipline: IT spending slowdown & resistance rejection. Tests if exiting at ₹2,535 saves 4.5% drag before buying back at S1 (₹2,420).</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- 1-Week Evaluation Benchmark Card -->
-            <div class="glass-panel p-5 rounded-2xl border border-slate-800 bg-slate-900/40 text-xs">
-                <h4 class="font-extrabold text-white text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
-                    <i data-lucide="award" class="w-4 h-4 text-amber-400"></i> How We Evaluate Our Investment Thesis on 02 November 2026:
-                </h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-slate-300 leading-relaxed">
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <b class="text-emerald-400 block mb-1">1. Decision Vindication (Win Rate >= 60%)</b>
-                        If at least 3 of our 5 Long positions gain > 2.5% or hit their target, our institutional Demand Zone confluence entry filter is empirically vindicated.
-                    </div>
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <b class="text-rose-400 block mb-1">2. Strict Risk Defense</b>
-                        If any position hits its Stop Loss, it is exited immediately. Capital saved is logged to verify whether our stop-loss rule protected wealth.
-                    </div>
-                    <div class="p-3 bg-dark-800/80 rounded-xl border border-slate-700/60">
-                        <b class="text-cyan-400 block mb-1">3. Thesis Feedback Protocol</b>
-                        If 1-week momentum fails to hold Demand Zones, we refine our 8-point checklist to increase the required discount from ATH before entry.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    
-        <!-- ==================== VIEW 7: INTRADAY AI TRADING LAB (₹1,00,000 CAPITAL TEST) ==================== -->
-        <section id="view-intraday" class="space-y-6 hidden">
             <!-- Hero Banner -->
             <div class="glass-panel p-6 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-950/40 via-dark-800 to-amber-950/20 shadow-2xl">
                 <div class="flex flex-wrap justify-between items-center gap-4">
                     <div>
                         <div class="flex items-center gap-2 mb-1.5 flex-wrap">
                             <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span class="text-xs font-bold uppercase tracking-widest text-amber-400">⚡ Autonomous S&R Execution Engine</span>
-                            <span id="itdMarketBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Live Market Monitored</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-dark-900/80 text-slate-300 border border-slate-700" id="itdClock">IST Time</span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-amber-400">⚡ Autonomous 4-Timeframe S&R Testing Lab Active</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">₹10,00,000 Shadow Portfolio</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Auto-Reinvestment Active</span>
                         </div>
-                        <h2 class="text-2xl font-black text-white flex items-center gap-2">
-                            <span>⚡ Intraday AI Trading Lab</span>
-                            <span class="text-xs font-normal px-2.5 py-1 bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-xl font-mono">₹1,00,000 Pool</span>
-                        </h2>
-                        <p class="text-xs text-slate-300 mt-1 max-w-3xl leading-relaxed">
-                            Testing whether Support & Resistance levels provide statistical edge during live intraday price discovery. 
-                            Auto-detects <b>S1/S2 Demand Zone tests</b>, enforces strict <b>1% Stop-Losses</b>, targets <b>R1 Supply Shelves</b>, and executes auto square-off at 15:15 IST.
+                        <h2 class="text-2xl font-black text-white">🔬 Testing Lab & ₹10 Lakhs Shadow Portfolio</h2>
+                        <p class="text-xs text-slate-300 mt-1 max-w-4xl">
+                            Empirically validating Support (<span class="text-emerald-400 font-bold">S1</span>) and Resistance (<span class="text-rose-400 font-bold">R1</span>) accuracy across <b>4 Simultaneous Time Horizons</b>: Intraday (1D), Weekly Swing (3-5D), Multi-Month Positional (3-10M, Breakout &lt; 1 Yr), and Multi-Year Bedrock (2-5Y). Seeded with ₹10,00,000; all closed profits compound automatically.
                         </p>
                     </div>
-
-                    <div class="flex flex-wrap items-center gap-2 font-mono">
-                        <button onclick="toggleAutoTrading()" id="btnAutoTrading" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 shadow transition">
-                            <i data-lucide="bot" class="w-4 h-4"></i>
-                            <span id="txtAutoTrading">Auto-Pilot: ON</span>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button onclick="window.open('/api/testing-lab/export-daily-excel')" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-950/50 transition">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                            Download Daily Excel
                         </button>
-                        <button onclick="simulateIntradayTrade()" class="px-3 py-2 rounded-xl text-xs font-bold bg-dark-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 shadow transition" title="Trigger Instant Test S&R Trade">
-                            <i data-lucide="play" class="w-3.5 h-3.5 text-amber-400"></i>
-                            <span>Test Trigger</span>
-                        </button>
-                        <button onclick="downloadMuhuratExcel()" class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-dark-900 border border-amber-500/40 flex items-center gap-1.5 shadow transition" title="Export Full Muhurat Trading Session Audit to Excel">
-                            <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>
-                            <span>Export Muhurat Audit (.xlsx)</span>
-                        </button>
-                        <button onclick="squareOffAll()" class="px-3 py-2 rounded-xl text-xs font-bold bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 flex items-center gap-1.5 shadow transition">
-                            <i data-lucide="x-circle" class="w-3.5 h-3.5"></i>
-                            <span>Square Off All</span>
-                        </button>
-                        <button onclick="resetIntradayAccount()" class="p-2 rounded-xl bg-dark-800 hover:bg-slate-700 text-slate-400 hover:text-white border border-slate-700 transition" title="Reset to ₹1,00,000">
-                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        <button onclick="syncTestingLabLive()" class="px-3.5 py-2 rounded-xl bg-dark-900 hover:bg-slate-800 text-amber-400 border border-amber-500/30 font-bold text-xs flex items-center gap-2 transition">
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            Sync Live Prices
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- 4 Intraday Metric Cards -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Initial Capital</span>
-                    <span class="text-xl font-black text-white font-mono mt-1 block">₹1,00,000.00</span>
-                    <span class="text-[11px] text-slate-400 mt-0.5 block">Allocated Virtual Pool</span>
+            <!-- Master Portfolio Cockpit (₹10 Lakhs Seed) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 bg-dark-900/60">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Initial Seed</span>
+                    <span class="text-lg font-black text-white font-mono mt-1 block">₹10,00,000.00</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5 block">Allocated Capital</span>
                 </div>
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Available Margin</span>
-                    <span id="itdAvailableCash" class="text-xl font-black text-emerald-400 font-mono mt-1 block">₹1,00,000.00</span>
-                    <span class="text-[11px] text-emerald-500/80 mt-0.5 block">Liquid Cash for Deployment</span>
+                <div class="glass-panel p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/10">
+                    <span class="text-[10px] uppercase font-bold text-emerald-400 block tracking-wider">Net Portfolio Value</span>
+                    <span id="tLabNetWorth" class="text-lg font-black text-emerald-400 font-mono mt-1 block">₹999,673.70</span>
+                    <span id="tLabDayChange" class="text-[10px] text-slate-400 mt-0.5 block">Active Valuation</span>
                 </div>
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Active Deployed</span>
-                    <span id="itdDeployedCash" class="text-xl font-black text-purple-400 font-mono mt-1 block">₹0.00</span>
-                    <span id="itdOpenCount" class="text-[11px] text-purple-400/80 mt-0.5 block">0 Active Trades (Max 10)</span>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 bg-dark-900/60">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Total Net P&L</span>
+                    <span id="tLabTotalPnl" class="text-lg font-black text-rose-400 font-mono mt-1 block">-₹326.30</span>
+                    <span id="tLabTotalPnlPct" class="text-[10px] text-rose-400/80 mt-0.5 block">-0.03% Net Return</span>
                 </div>
-                <div class="glass-panel p-4 rounded-xl border border-slate-800">
-                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Day's Realized + Unrealized</span>
-                    <span id="itdTotalPnl" class="text-xl font-black text-slate-300 font-mono mt-1 block">₹0.00</span>
-                    <span id="itdDayReturnPct" class="text-[11px] text-slate-400 mt-0.5 block">0.00% Day Return</span>
+                <div class="glass-panel p-4 rounded-xl border border-blue-500/30 bg-blue-950/10">
+                    <span class="text-[10px] uppercase font-bold text-blue-400 block tracking-wider">Cash Buffer</span>
+                    <span id="tLabCashInHand" class="text-lg font-black text-blue-400 font-mono mt-1 block">₹16,017.80</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5 block">Reinvestable Cash</span>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-amber-500/30 bg-amber-950/10">
+                    <span class="text-[10px] uppercase font-bold text-amber-400 block tracking-wider">Success Rate</span>
+                    <span id="tLabWinRate" class="text-lg font-black text-amber-400 font-mono mt-1 block">100.0%</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5 block">Target: 80%–90%</span>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 bg-dark-900/60">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Noise Boundary</span>
+                    <span id="tLabNoiseTier" class="text-xs font-bold text-emerald-400 mt-1 block">TIER 1 (&lt;5% NOISE)</span>
+                    <span class="text-[10px] text-slate-400 mt-0.5 block">Zero System Change ✅</span>
                 </div>
             </div>
 
-            
-            <!-- ==================== DYNAMIC INSTITUTIONAL VWAP & VOLUME-PROFILE RADAR ==================== -->
-            <div class="glass-panel rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-950/30 via-dark-800 to-dark-900 overflow-hidden shadow-2xl p-5 md:p-6 space-y-4">
-                <div class="flex flex-wrap justify-between items-start md:items-center gap-3 border-b border-slate-700/60 pb-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center">
-                            <i data-lucide="activity" class="w-5 h-5 text-cyan-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base md:text-lg font-black text-white flex items-center gap-2">
-                                <span>⚡ Dynamic Institutional VWAP & Volume-Profile Radar</span>
-                            </h3>
-                            <p class="text-[11px] text-slate-400">
-                                Dual-Trigger Execution: <b>Trigger A</b> (S1/S2 Demand Dips) + <b>Trigger B</b> (15-Min VWAP Momentum Retests). Real-time Standard Deviation Bands (±1σ).
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                            Dual-Trigger Engine Armed
+            <!-- 4-Segment Allocation & Compounding Strip -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Segment A -->
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-amber-500/40 transition bg-dark-900/80">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-extrabold text-amber-400 flex items-center gap-1.5">
+                            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                            Segment A: Intraday (1D)
                         </span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300">10% • ₹1,00,000</span>
                     </div>
+                    <div class="space-y-1 text-xs font-mono">
+                        <div class="flex justify-between text-slate-400"><span>Invested:</span><span id="segAInv" class="text-white font-bold">₹96,837.50</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Cash Buffer:</span><span id="segACash" class="text-blue-300">₹3,162.50</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Segment P&L:</span><span id="segAPnl" class="text-emerald-400 font-bold">+₹124.00</span></div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2.5 pt-2 border-t border-slate-800">Checks immediate S1 floor bounce &amp; R1 reaction; zero overnight gap risk.</p>
                 </div>
 
-                <div id="itdVwapRadarContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-                    <!-- Populated dynamically via JS -->
+                <!-- Segment B -->
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition bg-dark-900/80">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-extrabold text-blue-400 flex items-center gap-1.5">
+                            <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+                            Segment B: Weekly Swing
+                        </span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300">20% • ₹2,00,000</span>
+                    </div>
+                    <div class="space-y-1 text-xs font-mono">
+                        <div class="flex justify-between text-slate-400"><span>Invested:</span><span id="segBInv" class="text-white font-bold">₹1,97,871.60</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Cash Buffer:</span><span id="segBCash" class="text-blue-300">₹2,128.40</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Segment P&L:</span><span id="segBPnl" class="text-emerald-400 font-bold">+₹340.00</span></div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2.5 pt-2 border-t border-slate-800">Mon/Tue S1 entry &rarr; Thu/Fri R1 target exit. Absorbs mid-week chop.</p>
+                </div>
+
+                <!-- Segment C -->
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-violet-500/40 transition bg-dark-900/80">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-extrabold text-violet-400 flex items-center gap-1.5">
+                            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                            Segment C: Positional (3-10M)
+                        </span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-violet-500/20 text-violet-300">45% • ₹4,50,000</span>
+                    </div>
+                    <div class="space-y-1 text-xs font-mono">
+                        <div class="flex justify-between text-slate-400"><span>Invested:</span><span id="segCInv" class="text-white font-bold">₹4,47,130.60</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Cash Buffer:</span><span id="segCCash" class="text-blue-300">₹2,869.40</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Segment P&L:</span><span id="segCPnl" class="text-slate-300 font-bold">-₹185.00</span></div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2.5 pt-2 border-t border-slate-800">Core Demand Titans + Breakout Alpha Satellite (<b>Strictly &lt; 1 Year Hold</b>).</p>
+                </div>
+
+                <!-- Segment D -->
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 transition bg-dark-900/80">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-extrabold text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="gem" class="w-3.5 h-3.5"></i>
+                            Segment D: Bedrock (2-5Y)
+                        </span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300">25% • ₹2,50,000</span>
+                    </div>
+                    <div class="space-y-1 text-xs font-mono">
+                        <div class="flex justify-between text-slate-400"><span>Invested:</span><span id="segDInv" class="text-white font-bold">₹2,42,142.50</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Cash Buffer:</span><span id="segDCash" class="text-blue-300">₹7,857.50</span></div>
+                        <div class="flex justify-between text-slate-400"><span>Segment P&L:</span><span id="segDPnl" class="text-emerald-400 font-bold">+₹495.00</span></div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2.5 pt-2 border-t border-slate-800">Pure wealth compounding in 18-Point Thesis Wide-Moat Monopolies.</p>
                 </div>
             </div>
 
-            <!-- Active Intraday Positions Table -->
-            <div class="glass-panel rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
-                <div class="p-4 bg-dark-800/90 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex items-center gap-2.5 flex-wrap">
-                        <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
-                        <h3 class="font-extrabold text-white text-sm uppercase tracking-wider">
-                            Active Intraday Positions Book (Live NSE Prices)
-                        </h3>
-                        <span class="flex items-center gap-1.5 px-2.5 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-[10px] font-mono font-bold">
-                            <span class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                            </span>
-                            LIVE 3S STREAM
-                        </span>
-                    </div>
-                    <span class="text-[11px] px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-lg font-mono font-semibold">
-                        Cash Equities ONLY • 1:1.5 Min R:R
-                    </span>
+            <!-- Segment Filter Tabs Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <div class="flex flex-wrap items-center gap-1.5" id="testingSegmentFilterBar">
+                    <button onclick="setTestingFilter('ALL')" data-segfilter="ALL" class="tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500 text-dark-950 transition">All 4 Segments (9)</button>
+                    <button onclick="setTestingFilter('INTRADAY')" data-segfilter="INTRADAY" class="tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-slate-300 border border-slate-700 hover:text-white transition">Intraday (2)</button>
+                    <button onclick="setTestingFilter('WEEKLY')" data-segfilter="WEEKLY" class="tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-slate-300 border border-slate-700 hover:text-white transition">Weekly Swing (2)</button>
+                    <button onclick="setTestingFilter('MULTI_MONTH')" data-segfilter="MULTI_MONTH" class="tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-slate-300 border border-slate-700 hover:text-white transition">Multi-Month (3)</button>
+                    <button onclick="setTestingFilter('MULTI_YEAR')" data-segfilter="MULTI_YEAR" class="tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-slate-300 border border-slate-700 hover:text-white transition">Multi-Year Bedrock (2)</button>
+                    <button onclick="setTestingFilter('CLOSED')" data-segfilter="CLOSED" class="tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/10 transition">Closed Trades (Reinvested)</button>
                 </div>
+                <span class="text-xs text-slate-400 font-mono" id="tLabLastSyncTime">Last Evaluated: Live Sync Active</span>
+            </div>
 
+            <!-- Active Testing Trades Table -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden shadow-xl">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse text-xs">
+                    <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-dark-900/90 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700/60">
-                                <th class="p-3.5">Action</th>
-                                <th class="p-3.5">Security</th>
-                                <th class="p-3.5 text-right">Purchase Price</th>
-                                <th class="p-3.5 text-right">LTP (NSE)</th>
-                                <th class="p-3.5 text-right">Profit / Loss</th>
-                                <th class="p-3.5 text-right">Qty</th>
-                                <th class="p-3.5 text-right">Deployed</th>
-                                <th class="p-3.5 text-right">Target (R1)</th>
-                                <th class="p-3.5 text-right">Stop Loss</th>
-                                <th class="p-3.5 text-center">R : R</th>
-                                <th class="p-3.5">S&R Entry Confluence & Reason</th>
+                            <tr class="bg-dark-900/90 text-slate-400 font-bold text-[11px] uppercase tracking-wider border-b border-slate-800">
+                                <th class="p-3.5">Segment / Action</th>
+                                <th class="p-3.5">Symbol &amp; Company</th>
+                                <th class="p-3.5 text-right">Entry Price</th>
+                                <th class="p-3.5 text-right">Qty &amp; Invested</th>
+                                <th class="p-3.5 text-right">S1 Demand Floor</th>
+                                <th class="p-3.5 text-right">R1 Target Ceiling</th>
+                                <th class="p-3.5 text-right">S2 Stop Loss</th>
+                                <th class="p-3.5 text-right">Live LTP</th>
+                                <th class="p-3.5 text-right">Current P&L (₹ / %)</th>
+                                <th class="p-3.5 text-right">MFE Peak / MAE Draw</th>
+                                <th class="p-3.5 text-center">Status</th>
+                                <th class="p-3.5">Discrepancy / Gap Noticed</th>
+                                <th class="p-3.5">Corrective Measure (&gt;5% Rule)</th>
                             </tr>
                         </thead>
-                        <tbody id="itdOpenTableBody" class="divide-y divide-slate-800 font-mono">
+                        <tbody id="testingTableBody" class="divide-y divide-slate-800/60 text-xs">
                             <!-- Populated dynamically via JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Closed Intraday Trades History Book -->
-            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden shadow">
-                <div class="p-4 bg-dark-800/80 border-b border-slate-700/60 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="history" class="w-4 h-4 text-cyan-400"></i>
-                        <h3 class="font-bold text-white text-xs uppercase tracking-wider">
-                            Completed Intraday Trades Book (Today's Closed Trades)
-                        </h3>
+            <!-- Governance Policy Box: 5-7% 3-Tier Anomaly Filter -->
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 bg-dark-900/40">
+                <div class="flex items-start gap-3">
+                    <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/30 mt-0.5">
+                        <i data-lucide="scale" class="w-5 h-5"></i>
                     </div>
-                    <div id="itdStatsBadge" class="text-[11px] font-mono text-slate-300">
-                        Total Trades: <b>0</b> | Win Rate: <b>0.0%</b>
-                    </div>
-                </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr class="bg-dark-900/90 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-700/60 font-mono">
-                                <th class="p-3">Time</th>
-                                <th class="p-3">Security</th>
-                                <th class="p-3 text-right">Buy Price</th>
-                                <th class="p-3 text-right">Exit Price</th>
-                                <th class="p-3 text-right">Realized P&L</th>
-                                <th class="p-3">Outcome</th>
-                                <th class="p-3">Thesis Vindication</th>
-                            </tr>
-                        </thead>
-                        <tbody id="itdClosedTableBody" class="divide-y divide-slate-800 font-mono">
-                            <!-- Populated dynamically via JS -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            
-            <!-- ==================== DAILY POST-MARKET S&R DIAGNOSTIC & VARIANCE REVIEW ==================== -->
-            <div class="glass-panel rounded-2xl border border-indigo-500/40 bg-gradient-to-b from-dark-800 via-dark-900 to-indigo-950/20 overflow-hidden shadow-2xl space-y-6 p-5 md:p-6">
-                <!-- Section Header -->
-                <div class="flex flex-wrap justify-between items-start md:items-center gap-4 border-b border-slate-700/60 pb-5">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5">
-                                <i data-lucide="microscope" class="w-3 h-3 text-indigo-400"></i>
-                                EOD Forensic Algorithmic Review
-                            </span>
-                            <span id="auditSessionDateBadge" class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700">
-                                29 Oct 2026 Session Audited
-                            </span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-white flex items-center gap-2">
-                            <span>🔍 Daily S&R Diagnostic & Variance Audit</span>
-                        </h3>
-                        <p class="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">
-                            Algorithmic post-market debrief answering: <b>Where did our levels hold? What runners did we miss? What data was analyzed incorrectly?</b> and <b>What concrete adjustments are deployed for tomorrow?</b>
+                    <div class="space-y-1">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200">AntiGravity Governance Protocol: 5%–7% Noise Boundary &amp; Non-Interference Law</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            To prevent <i>curve-fitting</i> (changing formulas after 1 unlucky trade), isolated anomalies occurring in <b>&le; 5% of trades</b> are classified as normal random market noise. 
+                            Watchlist warnings trigger at <b>5%–8%</b> (repeat pattern), while formal model upgrades only initiate if structural defects exceed <b>8%</b>. Breakout Alpha stocks in Segment C are strictly capped at &lt; 1 year holding duration.
                         </p>
-                    </div>
-
-                    <!-- EOD Quick Scorecard -->
-                    <div class="flex flex-wrap items-center gap-2 font-mono">
-                        <div class="px-3.5 py-2 rounded-xl bg-dark-900/90 border border-slate-700 text-right">
-                            <span class="text-[10px] uppercase text-slate-400 block">Session Realized</span>
-                            <span id="auditRealizedPnl" class="text-base font-black text-emerald-400">+₹737.00 (+0.74%)</span>
-                        </div>
-                        <div class="px-3.5 py-2 rounded-xl bg-dark-900/90 border border-slate-700 text-right">
-                            <span class="text-[10px] uppercase text-slate-400 block">Win Rate / PF</span>
-                            <span id="auditWinRatePf" class="text-base font-black text-amber-400">50.0% • 3.66 PF</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3 Forensic Audit Panels -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    <!-- Panel 1: Demand Zones Respected (Hits) -->
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-xs font-black uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-                                Demand Zones Respected (Hits)
-                            </h4>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">3 / 4 Validated</span>
-                        </div>
-                        <div id="auditHitsContainer" class="space-y-3 font-sans">
-                            <!-- Populated dynamically via JS -->
-                        </div>
-                    </div>
-
-                    <!-- Panel 2: Missed Runners & Opportunity Variance -->
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-                                <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
-                                Missed Runners (Too Strong to Dip)
-                            </h4>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">Opportunity Variance</span>
-                        </div>
-                        <div id="auditMissedContainer" class="space-y-3 font-sans">
-                            <!-- Populated dynamically via JS -->
-                        </div>
-                    </div>
-
-                    <!-- Panel 3: Systematic Errors & Root-Cause Diagnosis -->
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-xs font-black uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
-                                <i data-lucide="activity" class="w-4 h-4 text-rose-400"></i>
-                                Errors & What Data We Analyzed Wrong
-                            </h4>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 font-mono">Root Causes</span>
-                        </div>
-                        <div id="auditVarianceContainer" class="space-y-3 font-sans">
-                            <!-- Populated dynamically via JS -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Actionable Protocol Upgrades for Tomorrow -->
-                <div class="border-t border-slate-700/60 pt-5">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i data-lucide="zap" class="w-4 h-4 text-cyan-400"></i>
-                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-cyan-300">
-                            Actionable Protocol Upgrades & Calibration For Next Session (30 Oct 2026)
-                        </h4>
-                    </div>
-                    <div id="auditUpgradesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 font-sans">
-                        <!-- Populated dynamically via JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Intraday Risk Management Discipline Protocol -->
-            <div class="p-4 bg-dark-900/90 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed font-sans space-y-2">
-                <div class="flex items-center gap-2 text-amber-400 font-bold">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-                    <span>Autonomous Intraday Risk Discipline Rules:</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-[11px] text-slate-400 font-mono pt-1">
-                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
-                        <b class="text-white block font-sans">1. Max Allocation:</b>
-                        ₹22,000 per trade (Max 4 concurrent trades = ₹88,000 max deployed).
-                    </div>
-                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
-                        <b class="text-white block font-sans">2. Strict Stop Loss:</b>
-                        Placed 1.0% to 1.5% below S2 Demand Zone (Max ₹250 loss/trade).
-                    </div>
-                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
-                        <b class="text-white block font-sans">3. Asymmetric R:R:</b>
-                        Target minimum 1:1.5 profit-to-loss ratio at R1 Supply Zone.
-                    </div>
-                    <div class="p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
-                        <b class="text-white block font-sans">4. Auto Square-Off:</b>
-                        Strictly 15:15 IST execution to carry zero overnight risk.
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== VIEW 9: MASTER TRACKER & ROADMAP (READ-ONLY EXCEL MIRROR) ==================== -->
+        <!-- Dummy hidden view-intraday section to ensure zero JS reference crashes -->
+        <section id="view-intraday" class="hidden"></section>
+
+
         <section id="view-roadmap" class="hidden space-y-6">
             <!-- Read-Only Header Banner -->
             <div class="glass-panel p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-dark-900 via-dark-900 to-emerald-950/20 shadow-xl">
@@ -2096,8 +1665,7 @@
             { id: 'roadmap', title: 'Master Tracker', icon: 'clipboard-check', accent: 'emerald', status: 'Pending Review', description: 'Read-only mirror of AnitGravity Wealth.xlsx: Journey, Validations & CAGR Bridge.' },
             { id: 'allocator', title: 'Best Monthly Buy', icon: 'target', accent: 'violet', status: 'Pending Review', description: '350+ NSE/BSE Dual-Filter Screener, Breakout Alpha Bucket & Precious Metals Ratio Thesis.' },
             { id: 'goal', title: '₹10–15 Cr Goal', icon: 'milestone', accent: 'sky', status: 'Pending Review', description: 'Monthly SIP step-up compounding calculator tracking your 14%–16% CAGR path.' },
-            { id: 'testing', title: '1-Week Testing Lab', icon: 'flask-conical', accent: 'amber', status: 'Live Lab', description: '5-Year walk-forward S&R backtest (90.6% accuracy) & forward test bench.' },
-            { id: 'intraday', title: 'Intraday AI Lab', icon: 'zap', accent: 'amber', status: 'Live Lab', description: 'High-frequency S&R proving lab with 3s stream & auto EOD Test Analysis exports.' },
+            { id: 'testing', title: 'Testing Lab', icon: 'flask-conical', accent: 'amber', status: 'Live Lab', description: 'Autonomous ₹10 Lakhs Shadow Portfolio testing S&R across 4 Timeframes (1D, Weekly, Multi-Month, Multi-Year).' },
             { id: 'planned-breakout', title: 'Breakout Scanner', icon: 'radar', accent: 'slate', status: 'Planned', target_tab: 'roadmap', subtab: 'pipeline', description: 'Multi-Year Stage-1 to R1 breakout finder (Sterlite Blueprint) for 14%–16% alpha.' },
             { id: 'planned-mf', title: 'MF Macro Flows', icon: 'pie-chart', accent: 'slate', status: 'Pending User', target_tab: 'roadmap', subtab: 'pipeline', description: 'Equity, Debt, Passive ETF & SIF AUM analytics from Mutual Fund Data folder.' },
             { id: 'planned-research', title: 'Research Reports', icon: 'file-text', accent: 'slate', status: 'Pending User', target_tab: 'roadmap', subtab: 'pipeline', description: 'Institutional research PDF ingestion & Moat consensus cross-verification.' },
@@ -2459,6 +2027,7 @@
 
         // Tab Switching + Zero-Overflow Breadcrumb Navigation
         function switchTab(tabId, subTab = null) {
+            if (tabId === 'intraday') tabId = 'testing';
             currentTab = tabId;
             document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
             const activeSec = document.getElementById(`view-${tabId}`);
@@ -3327,130 +2896,224 @@
         }
 
         // Testing Lab Loader (Oct 26 Setups)
+        // ==================== UNIFIED TESTING LAB (₹10 LAKHS 4-TIMEFRAME SHADOW PORTFOLIO) ====================
+        let testingLabData = null;
+        let currentTestingFilter = 'ALL';
+
+        function setTestingFilter(filter) {
+            currentTestingFilter = filter;
+            document.querySelectorAll('.tlab-filter-btn').forEach(btn => {
+                const f = btn.getAttribute('data-segfilter');
+                if (f === filter) {
+                    btn.className = 'tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500 text-dark-950 transition';
+                } else if (f === 'CLOSED') {
+                    btn.className = 'tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/10 transition';
+                } else {
+                    btn.className = 'tlab-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-dark-900 text-slate-300 border border-slate-700 hover:text-white transition';
+                }
+            });
+            renderTestingLabTable();
+        }
+
+        async function syncTestingLabLive() {
+            try {
+                const res = await fetch('/api/testing-lab/sync', { method: 'POST' });
+                if (res.ok) {
+                    testingLabData = await res.json();
+                    renderTestingLabUI();
+                }
+            } catch (err) {
+                console.error('Error syncing testing lab:', err);
+            }
+        }
+
         async function loadTestingData() {
             try {
-                const res = await fetch('/api/testing', { cache: 'no-store' });
-                const data = await res.json();
-
-                // 1. Update Top Stat Cards
-                if (data.shadow_capital) {
-                    const sc = data.shadow_capital;
-                    const pnlElem = document.getElementById('testingLivePnl');
-                    const pnlPctElem = document.getElementById('testingLivePnlPct');
-                    if (pnlElem && sc.unrealized_pnl !== undefined) {
-                        const isP = sc.unrealized_pnl >= 0;
-                        const prefix = isP ? '+' : '';
-                        pnlElem.innerText = prefix + formatINR(sc.unrealized_pnl);
-                        pnlElem.className = `text-xl font-black font-mono mt-1 block ${isP ? 'text-emerald-400' : 'text-rose-400'}`;
-                        if (pnlPctElem) {
-                            pnlPctElem.innerText = `${prefix}${sc.unrealized_pnl_pct.toFixed(2)}% Overall Gain`;
-                            pnlPctElem.className = `text-[11px] mt-0.5 block ${isP ? 'text-emerald-400/80' : 'text-rose-400/80'}`;
-                        }
-                    }
-                }
-
-                // 2. Populate Full-Width Active Positions Table
-                const tbody = document.getElementById('testingTableBody');
-                if (tbody && data.active_testing_trades) {
-                    tbody.innerHTML = '';
-                    data.active_testing_trades.forEach(t => {
-                        const ltp = t.ltp || t.current_price || t.entry_price;
-                        const pnl = (t.pnl !== undefined) ? t.pnl : ((ltp - t.entry_price) * t.quantity);
-                        const pnlPct = (t.pnl_pct !== undefined) ? t.pnl_pct : (((ltp - t.entry_price) / t.entry_price) * 100);
-                        const isProf = pnl >= 0;
-                        const pnlPrefix = isProf ? '+' : '';
-
-                        const tr = document.createElement('tr');
-                        tr.className = 'hover:bg-slate-800/40 transition border-b border-slate-800/60 font-mono';
-                        tr.innerHTML = `
-                            <td class="p-3.5 font-sans"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px] border border-emerald-500/30">${t.action || 'BUY'}</span></td>
-                            <td class="p-3.5 font-sans"><div class="font-bold text-white text-xs">${t.name}</div><span class="text-[10px] text-slate-400">${t.symbol}</span></td>
-                            <td class="p-3.5 text-right text-white font-bold">${formatINR(t.entry_price)}</td>
-                            <td class="p-3.5 text-right ${isProf ? 'text-emerald-400' : 'text-slate-200'} font-bold">${formatINR(ltp)}</td>
-                            <td class="p-3.5 text-right ${isProf ? 'text-emerald-400' : 'text-rose-400'} font-bold font-mono">${pnlPrefix}${formatINR(pnl)} <span class="text-[10px] block ${isProf ? 'text-emerald-300' : 'text-rose-300'}">(${pnlPrefix}${pnlPct.toFixed(2)}%)</span></td>
-                            <td class="p-3.5 text-right text-slate-300">${t.quantity}</td>
-                            <td class="p-3.5 text-right text-purple-400 font-bold">${formatINR(t.allocated_capital)}</td>
-                            <td class="p-3.5 text-right text-emerald-400 font-bold">${formatINR(t.target_price)} <span class="text-[10px] block text-emerald-300">(+${t.upside_potential_pct}%)</span></td>
-                            <td class="p-3.5 text-right text-rose-400 font-bold">${formatINR(t.stop_loss)} <span class="text-[10px] block text-rose-300">(-${t.downside_risk_pct}%)</span></td>
-                            <td class="p-3.5 text-center text-amber-400 font-bold">${t.risk_reward_ratio}</td>
-                            <td class="p-3.5 text-center font-sans"><span class="px-2 py-0.5 bg-blue-500/20 text-blue-300 rounded text-[10px] font-bold">${t.thesis_score}</span></td>
-                            <td class="p-3.5 font-sans text-slate-300 text-[11px] leading-relaxed">${t.thesis_reason}</td>
-                        `;
-                        tbody.appendChild(tr);
-                    });
-                }
-
-                // 3. Populate Cards Container
-                const container = document.getElementById('testingTradesContainer');
-                if (container && data.active_testing_trades) {
-                    container.innerHTML = '';
-                    data.active_testing_trades.forEach(t => {
-                        const ltp = t.ltp || t.current_price || t.entry_price;
-                        const pnl = (t.pnl !== undefined) ? t.pnl : ((ltp - t.entry_price) * t.quantity);
-                        const pnlPct = (t.pnl_pct !== undefined) ? t.pnl_pct : (((ltp - t.entry_price) / t.entry_price) * 100);
-                        const isProf = pnl >= 0;
-                        const pnlPrefix = isProf ? '+' : '';
-
-                        const card = document.createElement('div');
-                        card.className = 'glass-panel p-5 rounded-2xl border border-slate-800 hover:border-slate-700 transition shadow-lg';
-                        card.innerHTML = `
-                            <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
-                                <div class="flex items-center gap-2.5">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                    <h3 class="font-extrabold text-white text-sm">${t.name} (${t.symbol})</h3>
-                                    <span class="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-[10px] font-bold border border-blue-500/30">${t.duration}</span>
-                                    <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">${t.thesis_score}</span>
-                                </div>
-                                <span class="text-xs font-mono font-bold text-slate-300">Initiated: <b class="text-white">${t.entry_date}</b></span>
-                            </div>
-
-                            <div class="grid grid-cols-2 sm:grid-cols-6 gap-3 text-xs bg-dark-800/80 p-3 rounded-xl border border-slate-700/60 font-mono mb-3">
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block">Purchase Price</span>
-                                    <span class="text-white font-bold">${formatINR(t.entry_price)}</span>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block">LTP (NSE)</span>
-                                    <span class="${isProf ? 'text-emerald-400' : 'text-slate-200'} font-bold">${formatINR(ltp)}</span>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block">Profit / Loss</span>
-                                    <span class="${isProf ? 'text-emerald-400' : 'text-rose-400'} font-bold">${pnlPrefix}${formatINR(pnl)} (${pnlPrefix}${pnlPct.toFixed(2)}%)</span>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block">1-Week Target</span>
-                                    <span class="text-emerald-400 font-bold">${formatINR(t.target_price)} (+${t.upside_potential_pct}%)</span>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block">Stop Loss</span>
-                                    <span class="text-rose-400 font-bold">${formatINR(t.stop_loss)} (-${t.downside_risk_pct}%)</span>
-                                </div>
-                                <div>
-                                    <span class="text-[10px] text-slate-400 block">Capital (Qty: ${t.quantity})</span>
-                                    <span class="text-purple-400 font-bold">${formatINR(t.allocated_capital)}</span>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                                <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-                                    <span class="text-amber-400 font-bold block mb-1">Thesis Rationale & Why This Setup:</span>
-                                    ${t.thesis_reason}
-                                </div>
-                                <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 text-slate-300 leading-relaxed">
-                                    <span class="text-emerald-400 font-bold block mb-1">1-Week Evaluation Benchmark:</span>
-                                    <span class="block text-emerald-300/90 mb-1"><b>Confirmed If:</b> ${t.evaluation_criteria ? t.evaluation_criteria.thesis_confirmed_if : 'Closes week up > 2.5%'}</span>
-                                    <span class="block text-rose-300/90"><b>Invalidated If:</b> ${t.evaluation_criteria ? t.evaluation_criteria.thesis_invalidated_if : 'Breaches stop loss'}</span>
-                                </div>
-                            </div>
-                        `;
-                        container.appendChild(card);
-                    });
-                }
-
-                if (window.lucide) lucide.createIcons();
-            } catch (e) {
-                console.error('Error in loadTestingData:', e);
+                const res = await fetch('/api/testing-lab/portfolio', { cache: 'no-store' });
+                testingLabData = await res.json();
+                renderTestingLabUI();
+            } catch (err) {
+                console.error('Error in loadTestingData:', err);
             }
+        }
+
+        function renderTestingLabUI() {
+            if (!testingLabData) return;
+            const d = testingLabData;
+
+            // 1. Master Cockpit Cards
+            const netWorthEl = document.getElementById('tLabNetWorth');
+            if (netWorthEl) netWorthEl.innerText = formatINR(d.portfolio_net_worth);
+
+            const pnlEl = document.getElementById('tLabTotalPnl');
+            const pnlPctEl = document.getElementById('tLabTotalPnlPct');
+            if (pnlEl) {
+                const isP = d.total_net_pnl >= 0;
+                pnlEl.innerText = (isP ? '+' : '') + formatINR(d.total_net_pnl);
+                pnlEl.className = `text-lg font-black font-mono mt-1 block ${isP ? 'text-emerald-400' : 'text-rose-400'}`;
+                if (pnlPctEl) {
+                    pnlPctEl.innerText = `${isP ? '+' : ''}${d.total_net_pnl_pct.toFixed(2)}% Net Return`;
+                    pnlPctEl.className = `text-[10px] mt-0.5 block ${isP ? 'text-emerald-400/80' : 'text-rose-400/80'}`;
+                }
+            }
+
+            const cashEl = document.getElementById('tLabCashInHand');
+            if (cashEl) cashEl.innerText = formatINR(d.cash_in_hand);
+
+            const winEl = document.getElementById('tLabWinRate');
+            if (winEl) winEl.innerText = `${d.win_rate_pct.toFixed(1)}%`;
+
+            const noiseEl = document.getElementById('tLabNoiseTier');
+            if (noiseEl) {
+                if (d.anomaly_rate_pct <= 5.0) {
+                    noiseEl.innerText = `TIER 1 (<5% NOISE: ${d.anomaly_rate_pct}%)`;
+                    noiseEl.className = 'text-xs font-bold text-emerald-400 mt-1 block';
+                } else if (d.anomaly_rate_pct <= 8.0) {
+                    noiseEl.innerText = `TIER 2 (WATCHLIST: ${d.anomaly_rate_pct}%)`;
+                    noiseEl.className = 'text-xs font-bold text-amber-400 mt-1 block';
+                } else {
+                    noiseEl.innerText = `TIER 3 (SYSTEMIC DEFECT: ${d.anomaly_rate_pct}%)`;
+                    noiseEl.className = 'text-xs font-bold text-rose-400 mt-1 block';
+                }
+            }
+
+            // 2. Segment Cards
+            const segs = d.segments || {};
+            if (segs.INTRADAY) {
+                const el = document.getElementById('segAInv');
+                if (el) el.innerText = formatINR(segs.INTRADAY.invested);
+                const elC = document.getElementById('segACash');
+                if (elC) elC.innerText = formatINR(segs.INTRADAY.cash_buffer);
+                const p = segs.INTRADAY.total_pnl;
+                const pEl = document.getElementById('segAPnl');
+                if (pEl) {
+                    pEl.innerText = (p >= 0 ? '+' : '') + formatINR(p);
+                    pEl.className = `font-bold ${p >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+                }
+            }
+            if (segs.WEEKLY) {
+                const el = document.getElementById('segBInv');
+                if (el) el.innerText = formatINR(segs.WEEKLY.invested);
+                const elC = document.getElementById('segBCash');
+                if (elC) elC.innerText = formatINR(segs.WEEKLY.cash_buffer);
+                const p = segs.WEEKLY.total_pnl;
+                const pEl = document.getElementById('segBPnl');
+                if (pEl) {
+                    pEl.innerText = (p >= 0 ? '+' : '') + formatINR(p);
+                    pEl.className = `font-bold ${p >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+                }
+            }
+            if (segs.MULTI_MONTH) {
+                const el = document.getElementById('segCInv');
+                if (el) el.innerText = formatINR(segs.MULTI_MONTH.invested);
+                const elC = document.getElementById('segCCash');
+                if (elC) elC.innerText = formatINR(segs.MULTI_MONTH.cash_buffer);
+                const p = segs.MULTI_MONTH.total_pnl;
+                const pEl = document.getElementById('segCPnl');
+                if (pEl) {
+                    pEl.innerText = (p >= 0 ? '+' : '') + formatINR(p);
+                    pEl.className = `font-bold ${p >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+                }
+            }
+            if (segs.MULTI_YEAR) {
+                const el = document.getElementById('segDInv');
+                if (el) el.innerText = formatINR(segs.MULTI_YEAR.invested);
+                const elC = document.getElementById('segDCash');
+                if (elC) elC.innerText = formatINR(segs.MULTI_YEAR.cash_buffer);
+                const p = segs.MULTI_YEAR.total_pnl;
+                const pEl = document.getElementById('segDPnl');
+                if (pEl) {
+                    pEl.innerText = (p >= 0 ? '+' : '') + formatINR(p);
+                    pEl.className = `font-bold ${p >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+                }
+            }
+
+            // Sync Time
+            const syncEl = document.getElementById('tLabLastSyncTime');
+            if (syncEl && d.last_sync) {
+                const dt = new Date(d.last_sync);
+                syncEl.innerText = `Last Evaluated: ${dt.toLocaleTimeString()} (Active Market Feed)`;
+            }
+
+            // 3. Render Table
+            renderTestingLabTable();
+        }
+
+        function renderTestingLabTable() {
+            if (!testingLabData) return;
+            const tbody = document.getElementById('testingTableBody');
+            if (!tbody) return;
+
+            let trades = [];
+            if (currentTestingFilter === 'CLOSED') {
+                trades = testingLabData.closed_trades || [];
+            } else if (currentTestingFilter === 'ALL') {
+                trades = testingLabData.trades || [];
+            } else {
+                trades = (testingLabData.trades || []).filter(t => t.segment === currentTestingFilter);
+            }
+
+            tbody.innerHTML = '';
+            if (trades.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="13" class="p-6 text-center text-slate-500 italic">No trades in this segment filter yet.</td></tr>';
+                return;
+            }
+
+            trades.forEach(t => {
+                const ltp = t.current_ltp || t.entry_price;
+                const pnl = t.unrealized_pnl !== undefined ? t.unrealized_pnl : (t.realized_pnl || 0.0);
+                const pnlPct = t.unrealized_pnl_pct !== undefined ? t.unrealized_pnl_pct : 0.0;
+                const isProf = pnl >= 0;
+                const pnlPrefix = isProf ? '+' : '';
+
+                let segBadge = 'bg-slate-800 text-slate-300';
+                if (t.segment === 'INTRADAY') segBadge = 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+                else if (t.segment === 'WEEKLY') segBadge = 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+                else if (t.segment === 'MULTI_MONTH') segBadge = 'bg-violet-500/20 text-violet-300 border-violet-500/30';
+                else if (t.segment === 'MULTI_YEAR') segBadge = 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+
+                let statusBadge = 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+                if ((t.status || '').includes('TARGET')) statusBadge = 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+                else if ((t.status || '').includes('STOP')) statusBadge = 'bg-rose-500/20 text-rose-300 border-rose-500/30';
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/40 transition border-b border-slate-800/60 font-mono';
+                tr.innerHTML = `
+                    <td class="p-3 font-sans">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${segBadge}">${t.segment}</span>
+                        <span class="text-[10px] text-slate-400 block mt-0.5">${t.id}</span>
+                    </td>
+                    <td class="p-3 font-sans">
+                        <div class="font-bold text-white text-xs">${t.name}</div>
+                        <span class="text-[10px] text-slate-400">${t.symbol}</span>
+                    </td>
+                    <td class="p-3 text-right text-white font-bold">${formatINR(t.entry_price)}</td>
+                    <td class="p-3 text-right text-slate-300">${t.quantity} <span class="text-[10px] block text-purple-400 font-bold">${formatINR(t.invested_capital)}</span></td>
+                    <td class="p-3 text-right text-emerald-400/90 font-bold">${formatINR(t.s1_support)}</td>
+                    <td class="p-3 text-right text-blue-400/90 font-bold">${formatINR(t.r1_target)}</td>
+                    <td class="p-3 text-right text-rose-400/90 font-bold">${formatINR(t.s2_stop)}</td>
+                    <td class="p-3 text-right font-bold text-white">${formatINR(ltp)}</td>
+                    <td class="p-3 text-right font-bold ${isProf ? 'text-emerald-400' : 'text-rose-400'}">
+                        ${pnlPrefix}${formatINR(pnl)}
+                        <span class="text-[10px] block ${isProf ? 'text-emerald-400/80' : 'text-rose-400/80'}">(${pnlPrefix}${pnlPct.toFixed(2)}%)</span>
+                    </td>
+                    <td class="p-3 text-right text-xs">
+                        <span class="text-emerald-400 font-bold">+${(t.mfe_pct || 0).toFixed(1)}%</span>
+                        <span class="text-[10px] block text-rose-400">${(t.mae_pct || 0).toFixed(1)}%</span>
+                    </td>
+                    <td class="p-3 text-center font-sans">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${statusBadge}">${t.status}</span>
+                    </td>
+                    <td class="p-3 font-sans text-[11px] text-slate-300 leading-snug">
+                        ${t.discrepancy_noticed || 'None'}
+                    </td>
+                    <td class="p-3 font-sans text-[11px] text-slate-400 leading-snug">
+                        ${t.corrective_measure || 'None required'}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         // Charts
